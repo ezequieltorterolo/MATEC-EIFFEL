@@ -1,0 +1,139 @@
+/* Esta pagina es especificamente el estilo de producto.html, Tal vez sea elimanada a futuro o fusionada con el style principal. La separe
+para que haya orden porque no se bien como funcionaria la arquitectura de css en este caso. */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Este codigo raro de arriba es para modificar la apariencia del input type number, lo use para que las flechitas no aparezcan en el contador de cantidad.
+Lo saque de internet */
+
+
+
+
+
+#back {
+    margin:30px;
+    text-decoration:underline;
+    transition: all 1s;
+    height:20px;
+    width:600px;
+  color:#253141;
+    display: flex;
+    align-items: center; 
+}
+
+#back:hover {
+    width: 650px; /* Cambia el ancho del div */
+    height: 25px;
+
+font-size: 17px;
+}
+
+
+#back img {
+    
+    height:20px;
+    width:20px;
+}
+
+
+#producto {
+
+height:30%;
+width:30%;
+margin-top: 20px;
+margin-left:110px;
+border:3px solid;
+float:left;
+margin-right:5%;
+
+
+}
+
+#producto img {
+    height:100%;
+    width:100%;
+}
+
+#info {
+width: 30%;
+overflow:hidden;
+float:left;
+ margin-right:50px;
+
+}
+
+
+#container {
+    overflow: hidden;
+}
+th, td {
+    width:100%;
+padding: 8px;
+text-align: left;
+border-bottom: 1px solid #DDD;
+}
+
+#table {
+    width:100%;
+    margin-top:17px;
+}
+
+#compra {
+    float:left;
+    
+    padding:10px;
+    height: fit-content;
+    width:20%;
+   background-color:#B7BCC0;
+   display:flex;
+   flex-wrap:wrap;
+   justify-content: center;
+   align-items: center;
+
+ 
+}
+
+#precio {
+    color:#253141;
+    text-decoration:underline;
+}
+
+
+
+#quitaragregar button {
+    padding:6px;
+    border:none;
+   
+   
+}
+
+
+
+#botones button  {
+    border:none;
+   width: 90%;
+   text-align:center;
+   background-color:#253141;
+   color:#ffffff;
+  margin:15px;
+  height:50px;
+  font-size: 17px;
+   transition: all 1s  
+}
+
+#botones button:hover {
+  transform:scale(1.1);
+ 
+ 
+}
+
