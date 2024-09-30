@@ -137,3 +137,8 @@ border-bottom: 1px solid #DDD;
  
 }
 
+#campoPrecioTotal{
+    padding: 8px;
+    background-color: #DDD;
+    width: 80%;
+}

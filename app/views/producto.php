@@ -31,18 +31,28 @@
             <div id="table">
                 <table>
                 <tr>
+                    <th> CANTIDAD POR CAJA </th>
+                    <td><?=$prd["cantidadCaja"]?></td> 
+                </tr>
+                <tr>
+                    <th> PRECIO CAJA </th>
+                    <td><?=$prd["precioCaja"]?></td> 
+                </tr>
+              
+                <tr>
                     <th> CATEGORIA </th>
                     <td><?=$prd["categoria"]?></td> 
                 </tr>
                 <tr>
-                    <th> CATEGORIA   </th>
+                    <th>SUBCATEGORIA   </th>
                     <td><?=$prd["subcategoria"]?> </td>
                 </tr>
                 </table> 
             </div>
         </div>
-
+    
         <div id="compra">
+            <p>Stock: <?=$prd["stock"]?></p>
             <h1> Precio: <span id="precio"> UYU <?=$prd["precio"]?> </span> </h1>
             <br>
             
@@ -56,7 +66,14 @@
                 <button> Comprar producto ya</button>
                 <button id = "añadir"> Añadir a carrito </button>
             </div>
-       
+            <div id="campoPrecioTotal">
+                <table>
+                <tr>
+                    <th>TOTAL</th>
+                    <td><?=$prd["precioCaja"]?></td> 
+                </tr>
+                </table>
+            </div>
         </div>
   
     </div>
