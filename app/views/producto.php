@@ -47,14 +47,14 @@
             <br>
             
             <div id="quitaragregar">
-                Cantidad  <button onclick="quitar()">-</button>
+                  Cantidad  <button onclick="quitar()">-</button>
                 <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
                 <button onclick="agregar()">+</button>    
             </div>
 
             <div id="botones">
                 <button> Comprar producto ya</button>
-                <button onclick="añadirProducto()"> Añadir a carrito </button>
+                <button id = "añadir"> Añadir a carrito </button>
             </div>
        
         </div>
@@ -69,9 +69,6 @@ if (cantidad.value < cantidad.max) {
     cantidad.value = parseInt(cantidad.value) + 1;
 }
 
-
-
-
 }
 
 function quitar() {
@@ -79,14 +76,27 @@ function quitar() {
 let cantidad = document.getElementById('cantidad');
 if (cantidad.value > cantidad.min) {
     cantidad.value = parseInt(cantidad.value) - 1;
+    alert (cantidad);
 }
 }
 
-function añadirProducto(){
-let cantidad = document.getElementById("cantidad").value;
-let id = <?=$prd["id"]?>;
-alert(id);
-}
+</script>
+<script>
+
+
+
+var producto = <?php echo json_encode($prd); ?>;
+
+
+
+document.getElementById('añadir').addEventListener('click', function() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.push(producto);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            alert('Producto añadido al carrito');
+
+        });
+
 
     </script>
     <?php include  "segments/footer.php" ?>

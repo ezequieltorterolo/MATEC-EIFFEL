@@ -13,7 +13,7 @@
 
     <div id="contenedor-destacados"></div>
     <div id="slides">
-        <div class="slide showing"></div>
+        <div class="slide showing"></div> 
         <div class="slide"></div>
         <div class="slide"></div>
         
