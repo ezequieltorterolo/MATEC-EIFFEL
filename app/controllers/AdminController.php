@@ -57,7 +57,8 @@ class AdminController extends BaseController
         return $this->view("admin/reservas", $data);}
 
     function delete($data){
-        return "queremos borrar el producto".$_GET["prdid"];
+        return "queremos eliminar el producto ".$_GET["prdid"];
+
         }
     
     }

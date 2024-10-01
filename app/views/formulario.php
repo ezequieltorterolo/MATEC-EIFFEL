@@ -1,4 +1,4 @@
-<title><?=getenv("APP_NAME")?></title>
+<title>Eiffel Importaciones</title>
 <link rel="stylesheet" href="/static/css/user_form.css">
 
 
@@ -14,7 +14,7 @@
         <div class="form-group">
             <?php if ($mode=="registro"):?>
                 <label for="nombre">Nombre:</label>
-                <input id="nombre" name="nombre" type="text" placeholder="user name" value="<?=$name ?? ""?>">
+                <input id="nombre" name="nombre" type="text" placeholder="nombre" value="<?=$name ?? ""?>">
             <?php endif?>
 
             <label for="email">Email:</label>
@@ -29,12 +29,11 @@
             <?php endif ?>
         </div>
 
-        <?php if (isset($data["msg"])):?>
+        <?php if(!empty($data["msg"])):?>
             <div class="divmsg">
-                <div><?=$data["msg"]?></div>
+                <div><?= $data["msg"] ?></div>
             </div>
         <?php endif?>
-
         <div class="button-group">
             <?php if ($mode=="login"):?>
                 <button>LOGIN</button>

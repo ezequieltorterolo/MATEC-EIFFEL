@@ -21,7 +21,6 @@ function login($data)
 
     function validaringreso($data)
     {
-    
         $data["email"] = $_POST["email"];
 
         if (empty($_POST["email"])) {
@@ -43,7 +42,7 @@ function login($data)
         if ($usuario->affected_rows()==0)
         {
             $data["msg"] = "Usuario no registrado. Ingrese sus datos";
-            return $this->registro($data);
+             $this->registro($data);
         } 
         else if ($_POST["contraseña"] == $datosusuario["contraseña"]) 
         {
@@ -54,7 +53,7 @@ function login($data)
         else 
         {
             $data["msg"] = "Contraseña incorrecta";
-            return $this->login($data);
+             $this->login($data);
         }
 
     }
@@ -74,21 +73,32 @@ function login($data)
 
         if ($_POST["contraseña"] !== $_POST["repass"]) {
             $data["msg"] = "Contraseñas no coinciden";
-            return $this->registro($data);
+             $this->registro($data);
         }
-        $email = $usuario->where("email","=",$_POST["email"])->select()->getAll();
+        $email = $usuario->where("email","=",$_POST["email"])->select()->getFirst();
         if($_POST["email"] == $email){
             $data["msg"] = "ya hay una cuenta con ese email";
-            return $this->registro($data);
+            $this->registro($data);
         }
 
         $usuario->insert($_POST);
 
         if ($usuario->success()) {
-            $this->login($data);
+            $this->redirect("login");
         }
         else {
+            $data["msg"] = "hubo un error al registrar el usuario";
             return $this->registro($data);
+        }
+    }
+    function logout($data){
+        $usuario = $_SESSION["usuario"];
+        $idUsuario = $_GET["usuarioid"];
+        if($usuario["id"] == $idUsuario){
+            unset($_SESSION["usuario"]);
+            $this->redirect("/");
+        }else{
+            return "error";
         }
     }
 }

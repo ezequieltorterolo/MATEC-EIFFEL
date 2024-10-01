@@ -9,6 +9,7 @@ Route::get("/"          , [HomeController::class, "index"]);
 Route::get("/producto"  , [HomeController::class, "producto"]);
 Route::get("/catalogo"  , [HomeController::class, "catalogo"]);
 Route::get("/carrito"  , [HomeController::class, "carrito"]);
+
 //ADMINISTRADOR
 Route::get("/admin"          , [AdminController::class, "login"]);
 Route::post("/ValidarIngreso", [AdminController::class, "ValidarIngresoAdmin"]);
@@ -20,5 +21,8 @@ Route::get("/admin/delete", [AdminController::class, "delete"]);
 //login
 Route::get("/login"                 , [UserController::class, "login"]);
 Route::get("/registro"          , [UserController::class, "registro"]);
+Route::get("/logout"          , [UserController::class, "logout"]);
+
+//validacion login/registro
 Route::post("/login"                , [UserController::class, "ValidarIngreso"]);
 Route::post("/ValidarRegistro"      , [UserController::class, "ValidarRegistro"]);
