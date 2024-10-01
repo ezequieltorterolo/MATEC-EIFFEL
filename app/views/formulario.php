@@ -29,9 +29,9 @@
             <?php endif ?>
         </div>
 
-        <?php if(!empty($data["msg"])):?>
+        <?php if(!empty($msg)):?>
             <div class="divmsg">
-                <div><?= $data["msg"] ?></div>
+                <div><?= $msg?></div>
             </div>
         <?php endif?>
         <div class="button-group">

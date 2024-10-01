@@ -42,7 +42,7 @@ function login($data)
         if ($usuario->affected_rows()==0)
         {
             $data["msg"] = "Usuario no registrado. Ingrese sus datos";
-             $this->registro($data);
+            return $this->registro($data);
         } 
         else if ($_POST["contraseña"] == $datosusuario["contraseña"]) 
         {
@@ -53,7 +53,7 @@ function login($data)
         else 
         {
             $data["msg"] = "Contraseña incorrecta";
-             $this->login($data);
+            return $this->login($data);
         }
 
     }
@@ -71,14 +71,30 @@ function login($data)
         $data["email"] = $_POST["email"];
 
 
+        if (empty($_POST["nombre"])) {
+            $data["msg"] = "Debe ingresar un nombre de usuario";
+            return $this->registro($data);
+        }
+
+
+        if (empty($_POST["email"])) {
+            $data["msg"] = "Debe ingresar un email de usuario";
+            return $this->registro($data);
+        }
+
+        if (empty($_POST["contraseña"])) {
+            $data["msg"] = "Debe ingresar la contraseña";
+            return $this->registro($data);
+        }
+
         if ($_POST["contraseña"] !== $_POST["repass"]) {
             $data["msg"] = "Contraseñas no coinciden";
-             $this->registro($data);
+            return $this->registro($data);
         }
         $email = $usuario->where("email","=",$_POST["email"])->select()->getFirst();
-        if($_POST["email"] == $email){
+        if(!empty($email)){
             $data["msg"] = "ya hay una cuenta con ese email";
-            $this->registro($data);
+            return $this->registro($data);
         }
 
         $usuario->insert($_POST);
