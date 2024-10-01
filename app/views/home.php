@@ -26,7 +26,7 @@
             </div>
       </div>
     </div>
-    <h1 class="subtitulo">OFERTAS hola</h1>
+    <h1 class="subtitulo">OFERTAS</h1>
     <div id="productos-nuevos">
        <?php foreach($ofertas as $prd):?>
             <div class="producto-posicion">

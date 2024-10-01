@@ -93,7 +93,7 @@ function quitar() {
 let cantidad = document.getElementById('cantidad');
 if (cantidad.value > cantidad.min) {
     cantidad.value = parseInt(cantidad.value) - 1;
-    alert (cantidad);
+   
 }
 }
 
@@ -102,18 +102,39 @@ if (cantidad.value > cantidad.min) {
 
 
 
-var producto = <?php echo json_encode($prd); ?>;
+
+    var producto = <?php echo json_encode($prd); ?>;
 
 
 
 document.getElementById('añadir').addEventListener('click', function() {
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+     var cantidad = document.getElementById("cantidad").value;
+
+  
+     producto.cantidad = cantidad;
+
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            
+        
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
             alert('Producto añadido al carrito');
 
         });
 
+
+
+        function total(){
+
+// vamos a agarrar el $tamañoCaja  , $precioCaja, $precioUnidad ,let cantidad (cantidad del usuario elejida)
+//cantidad/ $tamaño caja = numero decimal  
+// se separa el numero decimal en dos variables (antes y despues del punto)
+// let antesPunto x $precioCaja = let valorCaja
+// (let despuesPunto x  $tamañoCaja ) x $precioUnidad = let valorUnidad
+//let valorCaja + let valorUnidad = total
+
+        }
 
     </script>
     <?php include  "segments/footer.php" ?>

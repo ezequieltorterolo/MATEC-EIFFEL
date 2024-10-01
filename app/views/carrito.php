@@ -44,7 +44,7 @@ if (carrito.length > 0) {
     <td>100 x 1</td>
     <td><div id="quitaragregar">
                  <button onclick="quitar()">-</button>
-                <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
+                <input type="number" id="cantidad" value="${producto.cantidad}" min="1" max="99" readonly>
                 <button onclick="agregar()">+</button>    
             </div></td>
     <td> 100 x 1 </td>
