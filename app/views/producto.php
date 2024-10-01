@@ -97,6 +97,10 @@ if (cantidad.value > cantidad.min) {
 }
 }
 
+
+function total() {
+    
+}
 </script>
 <script>
 
