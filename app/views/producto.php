@@ -63,7 +63,6 @@
             </div>
 
             <div id="botones">
-                <button> Comprar producto ya</button>
                 <button id = "añadir"> Añadir a carrito </button>
             </div>
             <div id="campoPrecioTotal">
