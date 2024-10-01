@@ -52,10 +52,15 @@
         </div>
     
         <div id="compra">
+            <div id="precios">
             <p>Stock: <?=$prd["stock"]?></p>
             <h1> Precio: <span id="precio"> UYU <?=$prd["precio"]?> </span> </h1>
             <br>
-            
+             <h3>TOTAL
+                    <td><?=$prd["precioCaja"]?></td> 
+                  </h3>  
+</div>
+               
             <div id="quitaragregar">
                   Cantidad  <button onclick="quitar()">-</button>
                 <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
@@ -63,16 +68,9 @@
             </div>
 
             <div id="botones">
-                <button> Comprar producto ya</button>
                 <button id = "añadir"> Añadir a carrito </button>
             </div>
-            <div id="campoPrecioTotal">
-                <table>
-                <tr>
-                    <th>TOTAL</th>
-                    <td><?=$prd["precioCaja"]?></td> 
-                </tr>
-                </table>
+         
             </div>
         </div>
   
