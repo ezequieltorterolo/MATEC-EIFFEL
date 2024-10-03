@@ -53,17 +53,18 @@
     
         <div id="compra">
             <div id="precios">
-            <p>Stock: <?=$prd["stock"]?></p>
+            <p>  Stock: <?=$prd["stock"]?></p>
             <h1> Precio: <span id="precio"> UYU <?=$prd["precio"]?> </span> </h1>
             <br>
-             <h3>TOTAL
-                    <td><?=$prd["precioCaja"]?></td> 
-                  </h3>  
+             <h3 class = "total">TOTAL</h3>  
+                    
+                  
+                  
 </div>
                
             <div id="quitaragregar">
-                  Cantidad  <button onclick="quitar()">-</button>
-                <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
+                   Cantidad  <button onclick="quitar()">-</button>
+                  <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
                 <button onclick="agregar()">+</button>    
             </div>
 
@@ -74,71 +75,58 @@
             </div>
         </div>
   
-    </div>
+    </div>`
 <script>
 
     function agregar() {
 
-let cantidad = document.getElementById('cantidad');
-if (cantidad.value < cantidad.max) {
-    cantidad.value = parseInt(cantidad.value) + 1;
-}
+         let cantidad = document.getElementById('cantidad');
+         if (cantidad.value < cantidad.max) {
+         cantidad.value = parseInt(cantidad.value) + 1;
+        total();
+    }
 
 }
 
-function quitar() {
+   function quitar() {
 
-let cantidad = document.getElementById('cantidad');
-if (cantidad.value > cantidad.min) {
-    cantidad.value = parseInt(cantidad.value) - 1;
-   
-}
-}
+       let cantidad = document.getElementById('cantidad');
+       if (cantidad.value > cantidad.min) {
+       cantidad.value = parseInt(cantidad.value) - 1;
+       total();
 
+            } 
+    }
 
-function total() {
-    
-}
 </script>
+
+ 
+</script>
+
+
 <script>
-
-
 
 
     var producto = <?php echo json_encode($prd); ?>;
 
+    
+       document.getElementById('añadir').addEventListener('click', function() {
 
+          var cantidadElejida = document.getElementById("cantidad").value;
 
-document.getElementById('añadir').addEventListener('click', function() {
+          producto.cantidad = cantidadElejida;
 
-     var cantidad = document.getElementById("cantidad").value;
-
-  
-     producto.cantidad = cantidad;
-
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-            
+          let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+   
         
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
             alert('Producto añadido al carrito');
 
         });
+        </script>
 
 
-
-        function total(){
-
-// vamos a agarrar el $tamañoCaja  , $precioCaja, $precioUnidad ,let cantidad (cantidad del usuario elejida)
-//cantidad/ $tamaño caja = numero decimal  
-// se separa el numero decimal en dos variables (antes y despues del punto)
-// let antesPunto x $precioCaja = let valorCaja
-// (let despuesPunto x  $tamañoCaja ) x $precioUnidad = let valorUnidad
-//let valorCaja + let valorUnidad = total
-
-        }
-
-    </script>
     <?php include  "segments/footer.php" ?>
 </body>
 </html>

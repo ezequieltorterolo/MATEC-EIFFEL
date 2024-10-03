@@ -19,16 +19,7 @@
     </div>
 
 
-
 <div id="tabla-prod">
-
-<table>
-  <tr> 
-    <th>Producto</th> 	
-    <th>Precio x Unidad</th>
-    <th>Cantidad</th>
-    <th>Total</th>
-  </tr>
 
 <script> let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -37,13 +28,19 @@ let carritoContainer = document.getElementById('tabla-prod');
 if (carrito.length > 0) {
             carrito.forEach(function(producto) {
                 // Crear elementos para mostrar cada producto
-                let productDiv = document.createElement('tr');
+                let productDiv = document.createElement('div');
                 productDiv.innerHTML = `
 
-
-
+<table>
+  <tr> 
+    <th>Producto</th> 	
+    <th>Precio x Unidad</th>
+    <th>Cantidad</th>
+    <th>Total</th>
+  </tr>
+  <tr>
     <td style="width:30%;">     
-     <img id="imagen" src="img/${producto.imagen}"><p>${producto.nombre} </p> <span id="code"> codigo de producto</span></td>
+     <img src="img/${producto.imagen}"><p>${producto.nombre} </p> <span id="code"> codigo de producto</span></td>
     <td>100 x 1</td>
     <td><div id="quitaragregar">
                  <button onclick="quitar()">-</button>
@@ -53,13 +50,10 @@ if (carrito.length > 0) {
     <td> 100 x 1 </td>
     
 <td> <img src="img/basura.svg" id="basura"> </img> </td>
-  
-
-
-   
+  </tr>
+</table>   
 
 `  ;
-
 carritoContainer.appendChild(productDiv);
 
      });
@@ -70,9 +64,9 @@ carritoContainer.appendChild(productDiv);
 
 </div>
 
-</table>
+
 
 
 
     </div>
-</body> 
+</body>
