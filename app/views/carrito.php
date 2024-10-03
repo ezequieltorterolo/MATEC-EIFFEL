@@ -19,7 +19,16 @@
     </div>
 
 
+
+    
 <div id="tabla-prod">
+    <table>
+        <tr> 
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+         </tr>
+</table>
 
 <script> let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -32,12 +41,7 @@ if (carrito.length > 0) {
                 productDiv.innerHTML = `
 
 <table>
-  <tr> 
-    <th>Producto</th> 	
-    <th>Precio x Unidad</th>
-    <th>Cantidad</th>
-    <th>Total</th>
-  </tr>
+  
   <tr>
     <td style="width:30%;">     
      <img src="img/${producto.imagen}"><p>${producto.nombre} </p> <span id="code"> codigo de producto</span></td>
@@ -60,13 +64,27 @@ carritoContainer.appendChild(productDiv);
         } else {
             carritoContainer.innerHTML = "<p>El carrito está vacío</p>";
         }
-    </script>
+</script>
+</div>
 
+<div id="cont-abajo">
+    <div id="formulario-carrito">
+        <form id="form-carrito" method="post">
+            Dirección:</br>
+            <input class="input-form" required  type="text"></br>
+            Horario de entrega: </br>
+            <input class="input-form" required type="text"></br>
+            Aclaraciones: </br>
+            <textarea id="msg" type="message"></textarea>
+        </form>
+        <button id="conf" >CONFIRMAR</button>
+    </div>
+    <div id="cont-total">
+        <h1>TOTAL</h1>
+        <h2>$xxxx</h2>
+    </div>
 </div>
 
 
-
-
-
-    </div>
+</div>
 </body>

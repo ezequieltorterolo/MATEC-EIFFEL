@@ -244,13 +244,80 @@ float:left;
     padding:6px;
     border:none;
    
-   
 }
 
-input {
+#cantidad {
     width:25px;
     height:25px;
     font-size:90%;
     padding:5px;
     text-align:center;
+}
+
+#cont-abajo {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #B7BCC0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#formulario-carrito {
+    width: 50%;
+    margin-right: 20px;
+    padding-right: 62px;
+    border-right: solid   1px #253141;
+}
+
+.input-form {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#conf  {
+    border:none;
+   width: 90%;
+   text-align:center;
+   background-color:#253141;
+   color:#ffffff;
+  margin:15px;
+  height:50px;
+  font-size: 17px;
+   transition: all 1s  
+}
+
+#conf:hover {
+  transform:scale(1.1);
+ 
+ 
+}
+
+#msg {
+    max-width:100%;
+    min-width: 60%;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: both; /* Permitir redimensionar el área de texto */
+    min-height: 100px; /* Altura mínima */
+    box-sizing: border-box;
+}
+
+#cont-total {
+    width: 40%;
+    color: white;
+    min-height: 200px; /* Altura mínima */
+    text-align: center;
+    padding: 20px;
+    background-color: #253141;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }

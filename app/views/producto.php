@@ -107,6 +107,12 @@ var producto = <?php echo json_encode($prd); ?>;
 
 
 document.getElementById('añadir').addEventListener('click', function() {
+        let cantidadUsuario = document.getElementById('cantidad').value;
+        if(<?=$prd["cantidadCaja"]?> <= cantidadsuario){
+            paquetes = Math.floor()
+            
+        }
+
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
