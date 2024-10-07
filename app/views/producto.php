@@ -52,60 +52,109 @@
         </div>
     
         <div id="compra">
-            <p>Stock: <?=$prd["stock"]?></p>
+            <div id="precios">
+            <p>  Stock: <?=$prd["stock"]?></p>
             <h1> Precio: <span id="precio"> UYU <?=$prd["precio"]?> </span> </h1>
             <br>
-            
+             <h3 id= "total">TOTAL</h3>  
+                    
+                  
+                  
+</div>
+               
             <div id="quitaragregar">
-                  Cantidad  <button onclick="quitar()">-</button>
-                <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
+                   Cantidad  <button onclick="quitar()">-</button>
+                  <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
                 <button onclick="agregar()">+</button>    
             </div>
 
             <div id="botones">
-                <button> Comprar producto ya</button>
                 <button id = "añadir"> Añadir a carrito </button>
             </div>
-            <div id="campoPrecioTotal">
-                <table>
-                <tr>
-                    <th>TOTAL</th>
-                    <td><?=$prd["precioCaja"]?></td> 
-                </tr>
-                </table>
+         
             </div>
         </div>
   
-    </div>
+    </div>`
 <script>
 
     function agregar() {
 
-let cantidad = document.getElementById('cantidad');
-if (cantidad.value < cantidad.max) {
-    cantidad.value = parseInt(cantidad.value) + 1;
-}
+         let cantidad = document.getElementById('cantidad');
+         if (cantidad.value < cantidad.max) {
+         cantidad.value = parseInt(cantidad.value) + 1;
+        total();
+    }
 
 }
 
-function quitar() {
+   function quitar() {
 
-let cantidad = document.getElementById('cantidad');
-if (cantidad.value > cantidad.min) {
-    cantidad.value = parseInt(cantidad.value) - 1;
-    alert (cantidad);
-}
-}
+       let cantidad = document.getElementById('cantidad');
+       if (cantidad.value > cantidad.min) {
+       cantidad.value = parseInt(cantidad.value) - 1;
+
+       total();
+
+            } 
+
+
+          
+    }
+
+
+    function total() {
+                var precioCaja =  "<?=$prd["precioCaja"]?> ";
+                var cantidadCaja = "<?=$prd["cantidadCaja"]?>" ;
+                var precioUnidad= "<?=$prd["precio"]?>" ;
+                var stock= <?=$prd["stock"]?> ;
+                var cantidad = document.getElementById('cantidad').value;
+
+
+                if(cantidad < cantidadCaja){
+                 
+               let total =  cantidad * precioUnidad;
+               document.getElementById('total').innerText=  "TOTAL $"+ total;
+                } 
+
+
+              if(cantidad > (cantidadCaja - 1) ){
+                 
+                    let total =  cantidad * precioCaja;
+                    document.getElementById('total').innerText= "TOTAL $"+ total;
+                    if(cantidad == (stock + 1)){ 
+                        alert("el stock no es suficiente")
+                        let cantidadElejida = document.getElementById('cantidad');
+                        cantidadElejida.value = parseInt(cantidadElejida.value) - 1;
+                       let nuevoTotal = total - precioCaja;
+                        document.getElementById('total').innerText= "TOTAL $"+ nuevoTotal;
+                    }
+
+            }
+        }
 
 </script>
+
+ 
+</script>
+
+
 <script>
 
 
+    var producto = <?php echo json_encode($prd); ?>;
 
-var producto = <?php echo json_encode($prd); ?>;
+    
+       document.getElementById('añadir').addEventListener('click', function() {
 
 
+          var totalElejido = document.getElementById("total").value;
+          var cantidadElejida = document.getElementById("cantidad").value;
+         
+          producto.total = totalElejido;
+          producto.cantidad = cantidadElejida;
 
+<<<<<<< HEAD
 document.getElementById('añadir').addEventListener('click', function() {
         let cantidadUsuario = document.getElementById('cantidad').value;
         if(<?=$prd["cantidadCaja"]?> <= cantidadsuario){
@@ -114,14 +163,19 @@ document.getElementById('añadir').addEventListener('click', function() {
         }
 
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+=======
+          let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+   
+        
+>>>>>>> 40c0cae9aa76d2053f2b0e4e02bc8fef364617dd
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
             alert('Producto añadido al carrito');
 
         });
+        </script>
 
 
-    </script>
     <?php include  "segments/footer.php" ?>
 </body>
 </html>
