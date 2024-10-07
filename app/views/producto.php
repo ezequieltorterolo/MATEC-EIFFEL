@@ -56,7 +56,7 @@
             <p>  Stock: <?=$prd["stock"]?></p>
             <h1> Precio: <span id="precio"> UYU <?=$prd["precio"]?> </span> </h1>
             <br>
-             <h3 class = "total">TOTAL</h3>  
+             <h3 id= "total">TOTAL</h3>  
                     
                   
                   
@@ -93,10 +93,45 @@
        let cantidad = document.getElementById('cantidad');
        if (cantidad.value > cantidad.min) {
        cantidad.value = parseInt(cantidad.value) - 1;
+
        total();
 
             } 
+
+
+          
     }
+
+
+    function total() {
+                var precioCaja =  "<?=$prd["precioCaja"]?> ";
+                var cantidadCaja = "<?=$prd["cantidadCaja"]?>" ;
+                var precioUnidad= "<?=$prd["precio"]?>" ;
+                var stock= <?=$prd["stock"]?> ;
+                var cantidad = document.getElementById('cantidad').value;
+
+
+                if(cantidad < cantidadCaja){
+                 
+               let total =  cantidad * precioUnidad;
+               document.getElementById('total').innerText=  "TOTAL $"+ total;
+                } 
+
+
+              if(cantidad > (cantidadCaja - 1) ){
+                 
+                    let total =  cantidad * precioCaja;
+                    document.getElementById('total').innerText= "TOTAL $"+ total;
+                    if(cantidad == (stock + 1)){ 
+                        alert("el stock no es suficiente")
+                        let cantidadElejida = document.getElementById('cantidad');
+                        cantidadElejida.value = parseInt(cantidadElejida.value) - 1;
+                       let nuevoTotal = total - precioCaja;
+                        document.getElementById('total').innerText= "TOTAL $"+ nuevoTotal;
+                    }
+
+            }
+        }
 
 </script>
 
@@ -112,8 +147,11 @@
     
        document.getElementById('añadir').addEventListener('click', function() {
 
-          var cantidadElejida = document.getElementById("cantidad").value;
 
+          var totalElejido = document.getElementById("total").value;
+          var cantidadElejida = document.getElementById("cantidad").value;
+         
+          producto.total = totalElejido;
           producto.cantidad = cantidadElejida;
 
           let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
