@@ -153,21 +153,10 @@
          
           producto.total = totalElejido;
           producto.cantidad = cantidadElejida;
+    
 
-<<<<<<< HEAD
-document.getElementById('añadir').addEventListener('click', function() {
-        let cantidadUsuario = document.getElementById('cantidad').value;
-        if(<?=$prd["cantidadCaja"]?> <= cantidadsuario){
-            paquetes = Math.floor()
-            
-        }
-
+    
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-=======
-          let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-   
-        
->>>>>>> 40c0cae9aa76d2053f2b0e4e02bc8fef364617dd
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
             alert('Producto añadido al carrito');
