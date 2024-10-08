@@ -1,7 +1,6 @@
 <title>Eiffel Importaciones</title>
 <link rel="stylesheet" href="/static/css/user_form.css">
 
-
 <div class="form-container">
     <h2><?=$title ?? ucfirst($mode) . " User"?></h2>
 

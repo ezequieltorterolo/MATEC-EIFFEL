@@ -39,9 +39,18 @@ class AdminController extends BaseController
         }
 
     function gestionProductos($data) {
-
-
-        return $this->view("admin/gestionProductos", $data);}
+            $producto  = new Producto;
+    
+           if (isset($_GET["nombre"])) {
+                $nombre = $_GET["nombre"];
+                if (!empty($nombre)) $producto->where("nombre", "like", "%$nombre%");
+            };
+    
+            $data["data"]   = $producto->getAll();
+            $data["totrec"] = $producto->affected_rows();
+    
+        return $this->view("admin/gestionProductos", $data);
+    }
 
         function productoAdmin($data){
             $producto    = new Producto;

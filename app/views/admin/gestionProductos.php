@@ -1,43 +1,72 @@
-
 <!DOCTYPE html>
 <html>
-<head> 
-    <link href="../styles/style6.css" rel="stylesheet" type="text/css">
-    <meta charset="UTF-8" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Eiffel Importaciones</title>
+
+<head>
+  <link href="../styles/style6.css" rel="stylesheet" type="text/css">
+  <script src="../scripts/producto.js"></script>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Eiffel Importaciones</title>
 </head>
+
 <body>
-<div id="title">
-<h1>Gestionar productos</h1>
-</div>
-<br>
-<br>
-<div id="tabla-prod">
-<table>
-  <tr> 
-    <th>Producto</th> 	
-    <th>Precio x Unidad</th>
-    <th>Cantidad</th>
-    <th>Total</th>
-  </tr>
-  <tr>
-    <td style="width:30%;">     
-     <img src="../img/placeholder.png"><p>Nombre de producto </p> <span id="code"> codigo de producto</span></td>
-    <td>100 x 1</td>
-    <td><div id="quitaragregar">
-                 <button onclick="quitar()">-</button>
-                <input type="number" id="cantidad" value="1" min="1" max="99" readonly>
-                <button onclick="agregar()">+</button>    
-            </div></td>
-    <td> 100 x 1 </td>
-    
-<td> <img src="../img/basura.svg" id="basura"> </img> </td>
-  </tr>
-</table>   
-</div>
+  <?php include  "segments/header.php" ?>
+  <div id="title">
+    <h1>Gestionar productos</h1>
+  </div>
+  <br>
+  <br>
+  <div id="tabla-prod">
+
+
+    <?php foreach ($data as $prd): ?>
+      <table>
+        <tr>
+          <th>Producto</th>
+          <th>Precio x Unidad</th>
+          <th>Precio x Caja</th>
+          <th>Stock</th>
+          <th>Oferta</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td style="width:30%;">
+            <a href=/admin/productoAdmin?id=<?= $prd["id"] ?>><img src=../img/<?= $prd["imagen"] ?>></a>
+            <?= $prd["nombre"] ?></p> <span id="code"> codigo de producto</span>
+          <td><input type="number" id="precio" value=<?= $prd["precio"] ?> min="1"></td>
+          <td>
+            <div id="quitaragregar">
+              <button onclick="quitar($prd['stock'])">-</button>
+              <input type="number" id="stock" value=<?= $prd["stock"] ?> min="0" max="99" readonly>
+              <button onclick="agregar()">+</button>
+            </div>
+          </td>
+
+          <td> <img src="../img/basura.svg" id="basura"> </img> </td>
+        <?php endforeach ?>
+        <button></button>
+        </tr>
+      </table>
+  </div>
+
+<script>
+function agregar(cantidad) {
+if (cantidad.value < cantidad.max) {
+cantidad.value = parseInt(cantidad.value) + 1;
+}
+
+}
+
+function quitar(cantidad) {
+if (cantidad.value > cantidad.min) {
+cantidad.value = parseInt(cantidad.value) - 1;
+   } 
+
+
+ 
+}
+</script>
 
 
 
-
-<a href="/admin">ADMIN HOME</p>
+  <a href="/admin">ADMIN HOME</a>
