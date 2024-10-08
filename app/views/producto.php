@@ -141,19 +141,16 @@
 
 <script>
 
-
     var producto = <?php echo json_encode($prd); ?>;
+
+    
 
     
        document.getElementById('añadir').addEventListener('click', function() {
 
 
-          var totalElejido = document.getElementById("total").value;
-          var cantidadElejida = document.getElementById("cantidad").value;
          
-          producto.total = totalElejido;
-          producto.cantidad = cantidadElejida;
-    
+            agregarP();
 
     
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -162,6 +159,18 @@
             alert('Producto añadido al carrito');
 
         });
+
+        
+   function agregarP(){
+
+var totalElejido = document.getElementById("total").value;
+var cantidadElejida = document.getElementById("cantidad").value;
+alert(totalElejido);
+producto.total = totalElejido;
+producto.cantidad = cantidadElejida;
+
+
+}
         </script>
 
 

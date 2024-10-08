@@ -30,41 +30,86 @@
          </tr>
 </table>
 
-<script> let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-let carritoContainer = document.getElementById('tabla-prod');
+<script>
+    // Obtener el carrito desde el localStorage
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-if (carrito.length > 0) {
-            carrito.forEach(function(producto) {
-                // Crear elementos para mostrar cada producto
-                let productDiv = document.createElement('div');
-                productDiv.innerHTML = `
+    let carritoContainer = document.querySelector('#tabla-prod table');
 
-<table>
-  
-  <tr>
-    <td style="width:30%;">     
-     <img src="img/${producto.imagen}"><p>${producto.nombre} </p> <span id="code"> codigo de producto</span></td>
-    <td>100 x 1</td>
-    <td><div id="quitaragregar">
-                 <button onclick="quitar()">-</button>
-                <input type="number" id="cantidad" value="${producto.cantidad}" min="1" max="99" readonly>
-                <button onclick="agregar()">+</button>    
-            </div></td>
-    <td> 100 x 1 </td>
-    
-<td> <img src="img/basura.svg" id="basura"> </img> </td>
-  </tr>
-</table>   
+    // Función para mostrar productos en la tabla
+    function mostrarCarrito() {
+        carritoContainer.innerHTML = `
+            <tr> 
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+               
+            </tr>`;
+        
+        if (carrito.length > 0) {
+            carrito.forEach(function(producto, index) {
+                // Crear una fila para cada producto
+                let productRow = document.createElement('tr');
+                productRow.innerHTML = `
+                    <td style="width:30%;">
+                        <img src="img/${producto.imagen}">
+                        <p>${producto.nombre}</p> 
+                        <span id="code"> código de producto</span>
+                    </td>
+                    <td><button onclick="quitar()">-</button>
+                  <input type="number" id="cantidad" value="${producto.cantidad}" min="1" max="99" readonly>
+                <button onclick="agregar()">+</button> </td>
+                    <td>${producto.total}</td>
+                    <td><img onclick="borrarProducto(${index})" src="img/basura.svg" id="basura" style="cursor: pointer;"></td>
+                `;
 
-`  ;
-carritoContainer.appendChild(productDiv);
-
-     });
+                carritoContainer.appendChild(productRow);
+            });
         } else {
-            carritoContainer.innerHTML = "<p>El carrito está vacío</p>";
+            carritoContainer.innerHTML += "<tr><td colspan='4'>El carrito está vacío</td></tr>";
         }
-</script>
+    }
+
+    // Función para borrar producto
+    function borrarProducto(index) {
+        // Eliminar el producto del array
+        carrito.splice(index, 1);
+
+        // Actualizar el localStorage
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+
+        // Recargar la tabla
+        mostrarCarrito();
+    }
+
+    // Mostrar el carrito al cargar la página
+    mostrarCarrito();
+    </script>
+
+    <script> function agregar() {
+    let cantidadInput = document.getElementById('cantidad');
+    let cantidad = parseInt(cantidadInput.value);
+
+    // Aumentar la cantidad solo si es menor que el máximo
+    if (cantidad < parseInt(cantidadInput.max)) {
+        cantidadInput.value = cantidad + 1; // Actualizar el valor del input
+    }
+}
+
+function quitar() {
+    let cantidadInput = document.getElementById('cantidad');
+    let cantidad = parseInt(cantidadInput.value);
+
+    // Disminuir la cantidad solo si es mayor que el mínimo
+    if (cantidad > parseInt(cantidadInput.min)) {
+        cantidadInput.value = cantidad - 1; // Actualizar el valor del input
+    
+        
+    }
+}
+   
+   </script>
 </div>
 
 <div id="cont-abajo">
