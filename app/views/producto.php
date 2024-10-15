@@ -56,7 +56,7 @@
             <p>  Stock: <?=$prd["stock"]?></p>
             <h1> Precio: <span id="precio"> UYU <?=$prd["precio"]?> </span> </h1>
             <br>
-             <h3 id= "total">TOTAL</h3>  
+             <h3 id= "total">TOTAL  $<?=$prd["precio"]?> </h3>  
                     
                   
                   
@@ -77,6 +77,9 @@
   
     </div>`
 <script>
+
+var producto = <?php echo json_encode($prd); ?>;
+
 
     function agregar() {
 
@@ -109,48 +112,60 @@
                 var precioUnidad= "<?=$prd["precio"]?>" ;
                 var stock= <?=$prd["stock"]?> ;
                 var cantidad = document.getElementById('cantidad').value;
+                cantidad = parseInt(cantidad, 10);
 
-
+                
                 if(cantidad < cantidadCaja){
+    
                  
-               let total =  cantidad * precioUnidad;
+               var total =  cantidad * precioUnidad;
+    
                document.getElementById('total').innerText=  "TOTAL $"+ total;
+               producto.total = total;
+               var nuevoTotal = total - precioUnidad;
                 } 
 
 
               if(cantidad > (cantidadCaja - 1) ){
                  
-                    let total =  cantidad * precioCaja;
+                    var total =  cantidad * precioCaja;
+                
                     document.getElementById('total').innerText= "TOTAL $"+ total;
-                    if(cantidad == (stock + 1)){ 
+                  
+                    producto.total = total;
+                    var nuevoTotal = total - precioCaja;
+
+            }
+
+            if(cantidad == (stock + 1)){ 
                         alert("el stock no es suficiente")
                         let cantidadElejida = document.getElementById('cantidad');
                         cantidadElejida.value = parseInt(cantidadElejida.value) - 1;
-                       let nuevoTotal = total - precioCaja;
+        
+                      
+                      
+                     
+                     
                         document.getElementById('total').innerText= "TOTAL $"+ nuevoTotal;
+                        producto.total = nuevoTotal;                    
                     }
 
-            }
+
         }
 
-</script>
-
- 
-</script>
 
 
-<script>
 
-    var producto = <?php echo json_encode($prd); ?>;
+
+  
 
     
 
     
        document.getElementById('añadir').addEventListener('click', function() {
 
-
-         
-            agregarP();
+        var cantidadElejida = document.getElementById("cantidad").value;
+        producto.cantidad = cantidadElejida;
 
     
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -161,17 +176,7 @@
         });
 
         
-   function agregarP(){
-
-var totalElejido = document.getElementById("total").value;
-var cantidadElejida = document.getElementById("cantidad").value;
-alert(totalElejido);
-producto.total = totalElejido;
-producto.cantidad = cantidadElejida;
-
-
-}
-        </script>
+      </script>
 
 
     <?php include  "segments/footer.php" ?>

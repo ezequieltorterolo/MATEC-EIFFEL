@@ -32,6 +32,8 @@
 
 
 <script>
+
+    
     // Obtener el carrito desde el localStorage
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -49,20 +51,23 @@
         
         if (carrito.length > 0) {
             carrito.forEach(function(producto, index) {
+
+                id = producto.id;
                 // Crear una fila para cada producto
                 let productRow = document.createElement('tr');
                 productRow.innerHTML = `
                     <td style="width:30%;">
                         <img src="img/${producto.imagen}">
-                        <p>${producto.nombre}</p> 
+                        <a href =/producto?id=${producto.id} <p>${producto.nombre}</p> </a>
                         <span id="code"> código de producto</span>
                     </td>
-                    <td><button onclick="quitar()">-</button>
+                    <td><button onclick="quitar(${producto.id})">-</button>
                   <input type="number" id="cantidad" value="${producto.cantidad}" min="1" max="99" readonly>
-                <button onclick="agregar()">+</button> </td>
-                    <td>${producto.total}</td>
+                <button onclick="agregar(${producto.id})">+</button> </td>
+                    <td id="total">${producto.total}</td>
                     <td><img onclick="borrarProducto(${index})" src="img/basura.svg" id="basura" style="cursor: pointer;"></td>
                 `;
+              
 
                 carritoContainer.appendChild(productRow);
             });
@@ -73,6 +78,8 @@
 
     // Función para borrar producto
     function borrarProducto(index) {
+
+       
         // Eliminar el producto del array
         carrito.splice(index, 1);
 
@@ -81,23 +88,34 @@
 
         // Recargar la tabla
         mostrarCarrito();
-    }
+     }
 
     // Mostrar el carrito al cargar la página
-    mostrarCarrito();
-    </script>
+       mostrarCarrito();
+     
 
-    <script> function agregar() {
+    
+    
+    
+</script>
+<script>
+    
+    
+    function agregar(id){
+      
+        
+        
     let cantidadInput = document.getElementById('cantidad');
     let cantidad = parseInt(cantidadInput.value);
-
     // Aumentar la cantidad solo si es menor que el máximo
     if (cantidad < parseInt(cantidadInput.max)) {
         cantidadInput.value = cantidad + 1; // Actualizar el valor del input
+        total(id);
     }
 }
 
-function quitar() {
+function quitar(id) {
+
     let cantidadInput = document.getElementById('cantidad');
     let cantidad = parseInt(cantidadInput.value);
 
@@ -105,10 +123,74 @@ function quitar() {
     if (cantidad > parseInt(cantidadInput.min)) {
         cantidadInput.value = cantidad - 1; // Actualizar el valor del input
     
-        
+        total(id);
     }
 }
-   
+
+ </script>  
+<script>
+        function total(id){
+         
+            var cantidad = document.getElementById('cantidad').value;
+            
+            cantidad = parseInt(cantidad, 10);
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            
+            let producto = carrito.find(producto => producto.id === id);
+            
+            var precioCaja =  producto.precioCaja;
+            var cantidadCaja = producto.cantidadCaja ;
+            var precioUnidad= producto.precio ;
+            var stock= producto.stock ;
+        
+            alert(stock);
+          
+           
+            if(cantidad < cantidadCaja){
+                
+    
+               alert(stock);
+                var total =  cantidad * precioUnidad;
+
+                  document.getElementById('total').innerText=   total;
+                  
+                  var nuevoTotal = total - precioUnidad;
+     } 
+
+
+
+     if(cantidad > (cantidadCaja - 1) ){
+                 
+                 var total =  cantidad * precioCaja;
+             
+                 document.getElementById('total').innerText=  total;
+               
+                 
+                 var nuevoTotal = total - precioCaja;
+
+         }
+
+         if(cantidad == (stock + 1)){ 
+                     alert("el stock no es suficiente");
+                     let cantidadElejida = document.getElementById('cantidad');
+                     cantidadElejida.value = parseInt(cantidadElejida.value) - 1;
+     
+                   
+                   
+                  
+                  
+                     document.getElementById('total').innerText=  nuevoTotal;
+                                        
+                 }
+
+
+     }
+            
+    
+            
+        
+
+        
    </script>
 </div>
 
