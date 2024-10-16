@@ -59,8 +59,7 @@
         function confirmar(id){
           let confirmacion = confirm("Estas seguro de eliminar el producto?");
           if(confirmacion){
-            alert("paso");
-            document.location.href= "/admin/delete?prdid="+id;
+            document.location.href= "/admin/eliminar?prdid="+id;
         }
     }
 

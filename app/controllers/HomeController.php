@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use rutex\BaseController;
 use app\models\Producto;
-use app\models\Usuario;
+
 use PharData;
 
 class HomeController extends BaseController

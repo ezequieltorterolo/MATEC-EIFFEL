@@ -41,6 +41,7 @@
             <?php endif; ?>$<?=$prd["precio"]?> c/u </p>
             </div>
         <?php endforeach?>
+        
     </div>
     <?php include  "segments/footer.php" ?>
 </body>

@@ -65,7 +65,7 @@ function login($data)
         return $this->view("formulario", $data);
     }
     
-    function validarregistro($data){
+    function validarRegistro($data){
         $usuario = new Usuario;
         $data["nombre"] = $_POST["nombre"];
         $data["email"] = $_POST["email"];
