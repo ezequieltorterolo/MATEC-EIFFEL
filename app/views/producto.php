@@ -12,6 +12,7 @@
     <?php include  "segments/header.php" ?>
     <?php include  "segments/nav.php"    ?>
 <!-- general commit -->
+ 
 
     <div id="back" onclick="history.back()"> 
         <img src="img/angle-left.png"> <p>[Pagina anterior]</p>
@@ -96,7 +97,6 @@ var producto = <?php echo json_encode($prd); ?>;
        let cantidad = document.getElementById('cantidad');
        if (cantidad.value > cantidad.min) {
        cantidad.value = parseInt(cantidad.value) - 1;
-
        total();
 
             } 
@@ -163,17 +163,27 @@ var producto = <?php echo json_encode($prd); ?>;
 
     
        document.getElementById('añadir').addEventListener('click', function() {
+          let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        var idd= producto.id;
 
-        var cantidadElejida = document.getElementById("cantidad").value;
-        producto.cantidad = cantidadElejida;
+         if(carrito.find(producto => producto.id == idd)){
+            alert('ya tienes este producto en carrito');
+
+         } else {
+
+          let cantidad = producto.cantidad;
+
+           var cantidadElejida = document.getElementById("cantidad").value;
+           producto.cantidad = cantidadElejida;
 
     
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+           
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
             alert('Producto añadido al carrito');
+         }
 
-        });
+       } );
 
         
       </script>
