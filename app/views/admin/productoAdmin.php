@@ -48,7 +48,7 @@
             
 
             <div id="botones">
-                <button> Editar</button>
+                <button onclick="editar(<?=$prd['id']?>)"> Editar </button>
                 <button onclick="confirmar(<?=$prd['id']?>)"> Eliminar </button>
             </div>
        
@@ -59,8 +59,11 @@
         function confirmar(id){
           let confirmacion = confirm("Estas seguro de eliminar el producto?");
           if(confirmacion){
-            document.location.href= "/admin/eliminar?prdid="+id;
+            document.location.href="/admin/eliminar?prdid="+id;
         }
     }
+        function editar(id){
+            document.location.href="/admin/modificarProducto?prdid="+id;
+        }
 
     </script>

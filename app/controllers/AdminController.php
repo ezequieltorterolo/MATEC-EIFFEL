@@ -39,6 +39,7 @@ class AdminController extends BaseController
 
     function gestionProductos($data)
     {
+        $data["mode"]   = "editprd2";
         $producto  = new Producto;
 
         if (isset($_GET["nombre"])) {
@@ -70,32 +71,15 @@ class AdminController extends BaseController
     {
         return "queremos eliminar el producto " . $_GET["prdid"];
     }
-
-    function actualizarProductos($data)
-    {
-        $producto = new Producto();
-        $id = [$_POST['id']];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            foreach($id as $prd){
-                $prd = $producto->getById($id);
-                $prd->update($id,[
-                    "precio" => $_POST['precio'],
-                    "precioCaja" =>  $_POST['precioCaja'],
-                    "stock" => $_POST["stock"],
-                ]);
-                $this->redirect("admin/gestionProductos");
-            }
-        }
-    }
     function añadirProducto($data)
     {
         $data["title"]  = "Añadir Producto";
         $data["mode"]   = "addprd";
         $data["action"] = "/admin/aniadirProducto";
         $data["method"] = "POST";
-        return $this->view("admin/formularioProducto",$data);
+        return $this->view("admin/formularioProducto", $data);
     }
-    
+
     function modificarProducto($data)
     {
         $data["title"]  = "Modificar Producto";
@@ -104,49 +88,112 @@ class AdminController extends BaseController
         $data["method"] = "POST";
 
         $producto = new Producto();
-        if(isset($_GET["prdid"])){
-            $data["prd"] = $producto -> getById($_GET["prdid"]);
+        if (isset($_GET["prdid"])) {
+            $data["prd"] = $producto->getById($_GET["prdid"]);
         }
-        return $this->view("admin/formularioProducto",$data);
+        return $this->view("admin/formularioProducto", $data);
     }
-    function validarProducto($data){
-        $producto = new Producto;
-        $id = $_POST["id"];
-        $_POST["oferta"] = $_POST["oferta"] ? 1 : 0;
-        if($_POST["modo"] == "addprd"){
+    
+    function validarProducto($data)
+    {
+        $producto = new Producto();
+        $modo = $_POST['modo'];
+
+        $directorioDestino = $_SERVER['DOCUMENT_ROOT'] . "../../public/img/";
+
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+
+            $nombreArchivo = basename($_FILES['imagen']['name']);
+            $rutaDestino = $directorioDestino . $nombreArchivo;
+
+            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
+            } else {
+                $data['msg'] = "Error al subir la imagen.";
+                return $this->view('admin/formularioProducto', $data);
+            }
+        }
+
+        if ($modo === 'addprd') {
+            $_POST['imagen'] = $nombreArchivo;
+            $_POST["oferta"] = isset($_POST["oferta"]);
             $producto->insert($_POST);
-            if ($producto->success()) {
-            $data["msg"] = "El producto se a ingresado con exito";
-               return $this->añadirProducto($data);
-            }
-            else {
-                $data["msg"] = "hubo un error al registrar el producto";
-                return $this->añadirProducto($data);
-            }
+           
 
-
-        }elseif($_POST["modo"] == "editprd"){
-            $producto->update($id,[
-                "nombre" => $_POST["nombre"],
-                "descripcion" => $_POST["descripcion"],
-                "precioCaja" => $_POST["precioCaja"],
-                "precio" => $_POST["precio"],
-                "imagen" =>$_POST["imagen"] ,
-                "categoria" => $_POST["categoria"],
-                "subcategoria" => $_POST["subcategoria"],
-                "stock" => $_POST["stock"],
-                "oferta" => $_POST["oferta"] ? 1 : 0,
-                "cantidadCaja" => $_POST["cantidadCaja"],
-            ]
-        );
             if ($producto->success()) {
-            $data["msg"] = "El producto se a modificado con exito";
-               return $this->view("admin/modificarProducto",$data);
+                $data['msg'] = "El producto se ha ingresado con éxito.";
+            } else {
+                $data['msg'] = "Hubo un error al registrar el producto.";
             }
-            else {
-                $data["msg"] = "hubo un error al modificar el producto";
-                return $this->view("admin/modificarProducto",$data);
+            return $this->añadirProducto($data);
+
+        } elseif ($modo === 'editprd') {
+            $id = $_POST['id'];
+            $campos = [
+                "nombre"        => $_POST["nombre"],
+                "descripcion"   => $_POST["descripcion"],
+                "precioCaja"    => $_POST["precioCaja"],
+                "precio"        => $_POST["precio"],
+                "categoria"     => $_POST["categoria"],
+                "subcategoria"  => $_POST["subcategoria"],
+                "stock"         => $_POST["stock"],
+                "oferta"        => isset($_POST["oferta"]),
+                "cantidadCaja"  => $_POST["cantidadCaja"],
+            ];
+
+            if (!empty($nombreArchivo)) {
+                $campos['imagen'] = $nombreArchivo;
+            }
+            $producto->update($id, $campos);
+
+            if ($producto->success()) {
+                $data['msg'] = "El producto se ha modificado con éxito.";
+                $this->redirect("/admin/gestionProductos");
+            } else {
+                $data['msg'] = "Hubo un error al modificar el producto.";
+                return $this->view('admin/formularioProducto', $data);
+            }
+        }elseif($modo == "editprd2"){
+            foreach($_POST["id"] as $id){
+            $campos = [
+                "precioCaja"    => $_POST["precioCaja"],
+                "precio"        => $_POST["precio"],
+                "stock"         => $_POST["stock"],
+                "oferta"        => isset($_POST["oferta"]),
+            ];
+            $producto->update($id, $campos);
+        }
+            if ($producto->success()) {
+                $this->redirect("/admin/gestionProductos");
+            } else {
+                $data['msg'] = "Hubo un error al modificar el producto.";
+                return $this->view('admin/formularioProducto', $data);
             }
         }
     }
+    function guardarTodo($data) {
+        $producto = new Producto();
+        if (is_array($_POST["id"])) {
+            foreach ($_POST["id"] as $index => $id) {
+                $campos = [
+                    "precioCaja" => $_POST["precioCaja"][$index],
+                    "precio"     => $_POST["precio"][$index],
+                    "stock"      => $_POST["stock"][$index],
+                    "oferta"     => isset($_POST["oferta"][$index]),
+                ];
+                $producto->update($id, $campos);
+            }
+    
+            if ($producto->success()) {
+                $data["msg"] = "los cambios se realizaron con exito";
+                return $this->gestionProductos($data);
+            } else {
+                $data['msg'] = "Hubo un error al modificar el producto.";
+                return $this->gestionProductos($data);
+            }
+        } else {
+            $data['msg'] = "No se recibieron productos para actualizar.";
+            return $this->gestionProductos($data);
+        }
+        }
+    
 }
