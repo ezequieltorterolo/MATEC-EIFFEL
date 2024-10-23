@@ -82,6 +82,7 @@
 var producto = <?php echo json_encode($prd); ?>;
 
 
+
     function agregar() {
 
          let cantidad = document.getElementById('cantidad');

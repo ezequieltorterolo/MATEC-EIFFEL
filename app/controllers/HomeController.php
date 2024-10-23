@@ -73,4 +73,11 @@ class HomeController extends BaseController
 
         return $this->view("carrito");
     }
+
+    function prdinfo($data){
+ 
+        $prd = new Producto ;
+
+        return $prd->getById($data["id"]);
+    }
 }
