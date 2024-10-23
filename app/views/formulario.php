@@ -27,12 +27,6 @@
                 <input id="repass" name="repass" type="password" placeholder="confirme password">
             <?php endif ?>
         </div>
-
-        <?php if(!empty($msg)):?>
-            <div class="divmsg">
-                <div><?= $msg?></div>
-            </div>
-        <?php endif?>
         <div class="button-group">
             <?php if ($mode=="login"):?>
                 <button>LOGIN</button>
@@ -45,3 +39,11 @@
         </div>
     </form>
 </div>
+<script>
+    window.addEventListener("load", (event) => {
+      <?php if (!empty($msg)): ?>
+        let mensaje = <?= json_encode($msg) ?>;
+        alert(mensaje);
+      <?php endif; ?>
+    });
+</script>

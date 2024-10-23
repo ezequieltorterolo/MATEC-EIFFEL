@@ -25,7 +25,7 @@ Route::get("/admin"          , [AdminController::class, "login"]);
 Route::post("/ValidarIngreso", [AdminController::class, "ValidarIngresoAdmin"]);
 
 Route::get("/admin/gestionProductos"  , [AdminController::class, "gestionProductos"]);
-Route::post("/admin/gestionProductos" , [AdminController::class, "actualizarProductos"]);
+Route::post("/admin/gestionProductos"  , [AdminController::class, "guardarTodo"]);
 
 Route::get("/admin/aniadirProducto"    , [AdminController::class, "añadirProducto"]);
 Route::get("/admin/modificarProducto" , [AdminController::class, "modificarProducto"]);
