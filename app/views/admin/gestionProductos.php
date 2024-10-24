@@ -90,13 +90,13 @@
     }
 
     function editar(id) {
-      document.location.href = "/admin/modificarProducto?prdid=" + id;
+      document.location.href = "/admin/modificarProducto?prdid="+id;
     }
 
     function eliminar(id) {
       let confirmacion = confirm("Estas seguro de eliminar el producto?");
       if (confirmacion) {
-        document.location.href = "/admin/eliminar?prdid=" + id;
+        document.location.href = "/admin/eliminar?prdid="+id;
       }
     }
 

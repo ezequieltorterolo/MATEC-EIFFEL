@@ -7,10 +7,12 @@ class Usuario extends Model {
 
     //Estructura de la tabla indicando los campos obligatorios en el insert
     protected $struct = [
-        "id"               => ["required" => false],  
-        "nombre"           => ["required" => true ],
-        "email"            => ["required" => true ],  
-        "contraseña"       => ["required" => true ],      
+        "id"               => ["required" => false ],  
+        "nombre"           => ["required" => true  ],
+        "email"            => ["required" => true  ],  
+        "contraseña"       => ["required" => true  ],
+        "direccion"        => ["required" => false ],
+        "telefono"         => ["required" => false ],          
 
    ];
    function usuarioLoggeado() {
