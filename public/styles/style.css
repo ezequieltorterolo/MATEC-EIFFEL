@@ -190,18 +190,71 @@ header {
 .precio-prod{
     text-align: center;
 }
-footer{
-    margin-top: 50px;
-    background-color: #253141;
+
+footer {
+    background-color: #1d2a3a;
+    color: #b2b2b2;
+    padding: 20px 0;
 }
-#footer-cont{
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
 }
-#footer-cont img{
-    width: 300px;
+
+.footer-container div {
+    flex: 1;
+    padding: 10px;
 }
-#footer-cont p{
-    color: whitesmoke;
+
+.logo img {
+    width: 20px;
+    margin-bottom: 10px;
+}
+
+.logo p {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-top: 10px;
+}
+
+.contact-info p, .about a, .social h4, .payment-methods h4 {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-bottom: 8px;
+}
+
+.contact-info a, .about a {
+    color: #b2b2b2;
+    text-decoration: none;
+}
+
+.payment-methods .payment-icons {
+    display: flex;
+    gap: 5px;
+}
+
+.payment-icons .icon {
+    width: 30px;
+    height: 20px;
+    background-color: #333;
+    display: inline-block;
+}
+
+.social h4 {
+    margin-bottom: 10px;
+}
+
+.social .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
 }
