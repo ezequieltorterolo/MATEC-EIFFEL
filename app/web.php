@@ -25,18 +25,22 @@ Route::post("/ValidarRegistro"      , [UserController::class, "ValidarRegistro"]
 Route::get("/admin"          , [AdminController::class, "login"]);
 Route::post("/ValidarIngreso", [AdminController::class, "ValidarIngresoAdmin"]);
 
+//Administrador-paginas de productos
+Route::get("/admin/productoAdmin", [AdminController::class, "productoAdmin"]);
 Route::get("/admin/gestionProductos"  , [AdminController::class, "gestionProductos"]);
-Route::post("/admin/gestionProductos"  , [AdminController::class, "guardarTodo"]);
 
+//Formularios de producto
 Route::get("/admin/aniadirProducto"    , [AdminController::class, "añadirProducto"]);
 Route::get("/admin/modificarProducto" , [AdminController::class, "modificarProducto"]);
+
+//Validacion de cambios o eliminacion del producto
+Route::post("/admin/gestionProductos"  , [AdminController::class, "guardarTodo"]);
 Route::post("/admin/aniadirProducto"    , [AdminController::class, "validarProducto"]);
 Route::post("/admin/modificarProducto" , [AdminController::class, "validarProducto"]);
-
-
-Route::get("/admin/productoAdmin", [AdminController::class, "productoAdmin"]);
 Route::get("/admin/eliminar", [AdminController::class, "eliminar"]);
 
+
+//Administrador-pagina de reservas
 Route::get("/admin/reservas" , [AdminController::class, "reservas"]);
 
 

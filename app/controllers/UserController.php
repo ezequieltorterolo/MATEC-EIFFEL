@@ -71,21 +71,6 @@ function login($data)
         $data["email"] = $_POST["email"];
 
 
-        if (empty($_POST["nombre"])) {
-            $data["msg"] = "Debe ingresar un nombre de usuario";
-            return $this->registro($data);
-        }
-
-
-        if (empty($_POST["email"])) {
-            $data["msg"] = "Debe ingresar un email de usuario";
-            return $this->registro($data);
-        }
-
-        if (empty($_POST["contraseña"])) {
-            $data["msg"] = "Debe ingresar la contraseña";
-            return $this->registro($data);
-        }
 
         if ($_POST["contraseña"] !== $_POST["repass"]) {
             $data["msg"] = "Contraseñas no coinciden";
@@ -96,7 +81,7 @@ function login($data)
             $data["msg"] = "ya hay una cuenta con ese email";
             return $this->registro($data);
         }
-
+        $_POST["contraseña"] = password_hash($_POST["contraseña"], PASSWORD_BCRYPT);
         $usuario->insert($_POST);
 
         if ($usuario->success()) {

@@ -13,27 +13,33 @@
         <div class="form-group">
             <?php if ($mode=="registro"):?>
                 <label for="nombre">Nombre:</label>
-                <input id="nombre" name="nombre" type="text" placeholder="nombre" value="<?=$name ?? ""?>">
+                <input id="nombre" name="nombre" type="text" placeholder="nombre" value="<?=$name ?? ""?>" required><br><br>
             <?php endif?>
 
             <label for="email">Email:</label>
-            <input id="email" name="email" type="email"  placeholder="email" value="<?=$email ?? ""?>">
+            <input id="email" name="email" type="email"  placeholder="email" value="<?=$email ?? ""?>" required><br><br>
 
             <label for="contraseña">Contraseña:</label>
-            <input id="contraseña" name="contraseña" type="password" placeholder="password">
+            <input id="contraseña" name="contraseña" type="password" placeholder="contraseña" required><br><br>
 
             <?php if ($mode=="registro"):?>
                 <label for="repass">Confirme la Contraseña:</label>
-                <input id="repass" name="repass" type="password" placeholder="confirme password">
+                <input id="repass" name="repass" type="password" placeholder="confirme contraseña" required><br><br>
+
+                <label for="direccion">Direccion:</label>
+                <input id="direccion" name="direccion" type="text" placeholder="direccion de la empresa/local"><br><br>
+
+                <label for="telefono">Telefono</label>
+                <input id="telefono" name="telefono" type="tel" placeholder="telefono de contacto"><br><br>
+
             <?php endif ?>
         </div>
         <div class="button-group">
+        <button>Confirmar <?=$mode?></button>
             <?php if ($mode=="login"):?>
-                <button>LOGIN</button>
                 <p><a href="/registro">Registrarse</a></p>
             <?php else:?>
-                <button>Confirmar</button>
-                <p><a href="/login">Loguearse</a></p>
+                <p><a href="/login">Iniciar Sesion</a></p>
             <?php endif?>
             <button type="button" onclick="location.href='/';">Cancelar</button>
         </div>
