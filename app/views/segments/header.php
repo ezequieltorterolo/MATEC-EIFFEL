@@ -1,4 +1,5 @@
 <ul class="menu">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 <header><img src="img/logo.jpg">
     <form action="/catalogo" method="GET">
         <input  id ="buscador" type="text" name="nombre" placeholder="Buscar...">
@@ -11,7 +12,7 @@
             </ul>
         </li>
     <?php else: ?>
-    <a href="/login">Inicio sesion</a>
+    <a href="/login"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> </a>
   
     <?php endif?>
     <a href="carrito"> <img src="img/carrito.svg" style="width:25px; height:25px;"> </a> </img>

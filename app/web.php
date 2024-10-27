@@ -8,6 +8,7 @@ use rutex\Route;
 Route::get("/"          , [HomeController::class, "index"]);
 Route::get("/producto"  , [HomeController::class, "producto"]);
 Route::get("/catalogo"  , [HomeController::class, "catalogo"]);
+Route::post("/catalogo"  , [HomeController::class, "catalogo"]);
 Route::get("/carrito"   , [HomeController::class, "carrito"]);
 Route::get("/prdinfo/:id"   , [HomeController::class, "prdinfo"]);
 
