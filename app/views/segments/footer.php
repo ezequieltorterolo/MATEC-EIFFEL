@@ -1,38 +1,106 @@
+<footer>
+<style>
 
-<footer class="container-fluid">
-<div class="row">  
-        <div id="footer-cont">
-     
+footer {
+    background-color: #253141;
+    color: #b2b2b2;
+    padding: 20px 0;
+}
 
-            <div class="row mt-4">
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+}
 
-            
-                <div class="col-sm-12 col-md-3 col-lg-3 ">
-                    <h3> SOBRE NOSOTROS </h3>
-            <p> INFO INFO INFO INFO INFO INFO INFO INFO INFO INFO INFO INFOINFO INFO INFO INFO </p>
-</div>
+.footer-container div {
+    flex: 1;
+    padding: 10px;
+}
 
-<div class="col-sm-12 col-md-3 col-lg-3">
-    <h3> CONTACTO </h3>
-          <p>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" > </svg> DIRECCION DIRECCION DIRECCION </p>
- <p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-</svg> TELEFONO
-</p>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
-</svg> CORREO </p>
-        </div>
-      
-          <div class="col-sm-12 col-md-12 col-lg-3">
-            <div class="float-end">
-<img src="img/cepillo.jpg">
-</div>
-</div>
+.logo img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.logo p {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-top: 10px;
+}
+
+.contact-info p, .about a, .social h4, .payment-methods h4 {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-bottom: 8px;
+}
+
+.contact-info a, .about a {
+    color: #b2b2b2;
+    text-decoration: none;
+}
+
+.payment-methods .payment-icons {
+    display: flex;
+    gap: 5px;
+}
+
+.payment-icons .icon {
+    width: 30px;
+    height: 20px;
+    background-color: #333;
+    display: inline-block;
+}
+
+.social h4 {
+    margin-bottom: 10px;
+}
+
+.social .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+}
+</style>
 
 
-
-
-</div>
-    </footer> 
+    <div class="footer-container">
+            <div class="logo">
+                <img src="img/logo.jpg" alt="Logo Eiffel">
+                <p>Ayudando a las empresas a conseguir los mejores precios</p>
+            </div>
+            <div class="contact-info">
+                <p><strong>Teléfono:</strong> <a href="tel:44404042">44404042</a></p><br>
+                <p><strong>Ubicación:</strong> <a href="#">Minas, Lavalleja</a></p>
+            </div>
+            <div class="payment-methods">
+                <h4>MEDIOS DE PAGO</h4>
+                <div class="payment-icons">
+                    <span class="icon"></span>
+                    <span class="icon"></span>
+                    <span class="icon"></span>
+                    <span class="icon"></span>
+                </div>
+            </div>
+            <div class="about">
+                <h4>SOBRE EIFFEL</h4>
+                <a href="#"><u>Sobre nosotros</a><br>
+                <a href="#">Cómo encargar</u></a>
+            </div>
+            <div class="social">
+                <h4>SÍGUENOS EN</h4>
+                <div class="social-icons">
+                    <a href="#"><img src="img/icons8-instagram.svg" alt="Instagram"></a>
+                    <a href="#"><img src="img/icons8-facebook.svg" alt="Icono adicional"></a>
+                </div>
+            </div>
+    </div>
+</footer> 
+</footer>

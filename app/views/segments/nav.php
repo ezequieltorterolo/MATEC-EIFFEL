@@ -11,7 +11,7 @@
          
         </li>
         <li><a href="/catalogo">CATALOGO</a></li>
-        <li><a href="#sobreNosotros">SOBRE NOSOTROS</a></li>
+        <li><a href="/sobreNosotros">SOBRE NOSOTROS</a></li>
     </ul>
 
 

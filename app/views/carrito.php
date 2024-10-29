@@ -185,5 +185,6 @@
             </div>
         </div>
     </div>
+    <?php include  "segments/footer.php" ?>
 </body>
 </html>
