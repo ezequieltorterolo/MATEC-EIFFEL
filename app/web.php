@@ -47,6 +47,4 @@ Route::get("/admin/eliminar", [AdminController::class, "eliminar"]);
 
 
 //Administrador-pagina de reservas
-Route::get("/admin/reservas" , [AdminController::class, "reservas"]);
-
-
+Route::get("/admin/gestionReservas" , [AdminController::class, "gestionReservas"]);
