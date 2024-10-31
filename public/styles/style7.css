@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #253141;
+}
+    header img{
+        height: 100px;
+    } 
+    #buscador {
+        width: 60%;
+        padding: 6px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+
+#titulo {
+    background-color:#dee1e3;
+    padding-bottom:30px;
+}

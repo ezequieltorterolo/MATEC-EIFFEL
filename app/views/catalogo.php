@@ -1,8 +1,11 @@
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <meta charset="UTF-8" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="styles/style3.css" rel="stylesheet" type="text/css">
+    <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>CATÁLOGO</title>
 </head>

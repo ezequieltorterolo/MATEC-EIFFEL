@@ -27,7 +27,7 @@ use rutex\BaseController;
 
 
    
-<div class="iconos">
+<div class="iconos" style="display:none;">
  <div class="derecha"> 
     
   <!-- Carrito -->

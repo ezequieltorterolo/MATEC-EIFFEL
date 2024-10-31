@@ -11,9 +11,8 @@
 <body>
     <?php include  "segments/header.php" ?>
     <?php include  "segments/nav.php"    ?>
-<!-- general commit -->
- 
 
+ 
     <div id="back" onclick="history.back()"> 
         <img src="img/angle-left.png"> <p>[Pagina anterior]</p>
     </div>

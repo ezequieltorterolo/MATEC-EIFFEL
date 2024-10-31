@@ -2,14 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,800;1,600&display=swap');
 
 
-.iconos {
-    display:none;
-}
 
 
 * {
     padding: 0px;
     margin: 0px;
+    
 }
 
 #iconos{
@@ -20,6 +18,7 @@
 body {
     background-color: #EFF3F6;
     font-family: 'Poppins', semi-bold;
+    font-weight: 0px;
 }
 
 header {
@@ -219,7 +218,7 @@ footer{
 
  .iconos {
     background-color: #B7BCC0;
-   display:inline-block;
+   display:inline-block !important;
    width:100%;
    
    
