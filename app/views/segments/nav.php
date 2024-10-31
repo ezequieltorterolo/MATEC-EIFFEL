@@ -1,12 +1,22 @@
+<?php
+use app\models\Categoria;
+use rutex\BaseController;
+
+  $catego = new Categoria;
+  $categoria = $catego->getall();
+?>
+
+
+
 <nav class="navegacion">
 
     <ul class="menu" id="nav-menu">
         <li><a href="/">INICIO</a></li>
         <li>CATEGORIAS
             <ul class="submenu">
-                <li><a href="/catalogo?catego=1">Alimentos</a></li>
-                <li><a href="/catalogo?catego=2">Higiene</a></li>
-                <li><a href="/catalogo?catego=3">Limpieza</a></li>
+            <?php foreach($categoria as $cate):?>
+                <li><a href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></a></li>
+            <?php endforeach?>
             </ul>
          
         </li>

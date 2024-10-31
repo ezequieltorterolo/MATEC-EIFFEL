@@ -48,38 +48,13 @@ class HomeController extends BaseController
         $ordenarPor = $_POST["ordenarPor"] ?? "id"  ;
         $producto->orderBy($ordenarPor);
 
-        $data["ordenadoPor"] = $_POST[$ordenarPor];
+        $data["ordenadoPor"] = $ordenarPor;
         $data["data"]   = $producto->getAll();
         $data["totrec"] = $producto->affected_rows();
 
         return $this->view("catalogo", $data);
     }
 
-    // function catalogoOrdenado($data) {
-    //     $producto  = new Producto;
-
-    //     if (isset($_GET["catego"])) {
-    //         $catego = $this->categorias()[$_GET["catego"]];
-    //         if (!empty($catego)) $producto->where("categoria", "=", $catego);
-
-    //     } elseif (isset($_GET["nombre"])) {
-    //         $nombre = $_GET["nombre"];
-    //         if (!empty($nombre)) $producto->where("nombre", "like", "%$nombre%");
-    //     };
-
-    //     $producto ->orderBy($_POST["ordenarPor"]);
-
-    //     $data["ordenadoPor"] = $_POST["ordenarPor"];
-
-    //     $data["data"]   = $producto->getAll();
-    //     $data["totrec"] = $producto->affected_rows();
-
-    //     return $this->view("catalogo", $data);
-
-    // }
-
-
-    //SIMULACION DE TABLA CATEGORIAS
     function categorias()
     {
         $categoria[1] = "Alimentos";
