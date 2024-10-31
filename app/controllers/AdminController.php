@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Producto;
+use app\models\Reserva;
+use app\models\ReservaProductos;
 use rutex\BaseController;
 
 class AdminController extends BaseController
@@ -21,15 +23,10 @@ class AdminController extends BaseController
     function ValidarIngresoAdmin($data)
     {
 
-        //cuando no esta logueado
-
         if ($_POST["pass"] == "secreto" && $_POST["name"] == "martin") {
-            //mostrar pagina de dos opciones
 
-            //Guardo en la sesion el nombre del usuario logueado
             $_SESSION["admin"] = $_POST["name"];
 
-            //Parametros de la pagina
             $data["user"] = $_POST["name"];
 
             return $this->view("admin/homeAdmin", $data);
@@ -118,7 +115,7 @@ class AdminController extends BaseController
             if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
             } else {
                 $data['msg'] = "Error al subir la imagen.";
-                return $this->view('admin/formularioProducto', $data);
+                return $this->view("admin/formularioProducto", $data);
             }
         }
 
@@ -158,7 +155,7 @@ class AdminController extends BaseController
                 $this->redirect("/admin/gestionProductos");
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                return $this->view('admin/formularioProducto', $data);
+                return $this->view("admin/formularioProducto", $data);
             }
         } elseif ($modo == "editprd2") {
             foreach ($_POST["id"] as $id) {
@@ -174,7 +171,7 @@ class AdminController extends BaseController
                 $this->redirect("/admin/gestionProductos");
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                return $this->view('admin/formularioProducto', $data);
+                return $this->view("admin/formularioProducto", $data);
             }
         }
     }
@@ -203,5 +200,14 @@ class AdminController extends BaseController
             $data['msg'] = "No se recibieron productos para actualizar.";
             return $this->gestionProductos($data);
         }
+    }
+    function gestionReservas($data){
+        $reservas = new Reserva();
+        $producto = new Producto();
+        $resprd = new ReservaProductos();
+        $data["reservas"] = $reservas->getAll();
+        $data["producto"] = $producto->getAll();
+        $data["resprd"] = $resprd->getAll();
+        return $this->view("admin/gestionReservas",$data);
     }
 }

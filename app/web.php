@@ -3,14 +3,20 @@ use app\controllers\HomeController;
 use app\controllers\AdminController;
 use app\controllers\UserController;
 use rutex\Route;
+use app\controllers\CarritoController;
 
 //usuario comun
 Route::get("/"          , [HomeController::class, "index"]);
 Route::get("/producto"  , [HomeController::class, "producto"]);
 Route::get("/catalogo"  , [HomeController::class, "catalogo"]);
 Route::post("/catalogo"  , [HomeController::class, "catalogo"]);
-Route::get("/carrito"   , [HomeController::class, "carrito"]);
-Route::get("/prdinfo/:id"   , [HomeController::class, "prdinfo"]);
+
+
+
+//CARRITO
+Route::get("/carrito"                  , [CarritoController::class , "carrito"]             );
+Route::get("/prdinfo/:id"              , [CarritoController::class , "prdinfo"]             );
+Route::post("/carrito_confirmar"       , [CarritoController::class , "carrito_confirmar"]   );
 
 //login
 Route::get("/login"                 , [UserController::class, "login"]);
@@ -41,6 +47,4 @@ Route::get("/admin/eliminar", [AdminController::class, "eliminar"]);
 
 
 //Administrador-pagina de reservas
-Route::get("/admin/reservas" , [AdminController::class, "reservas"]);
-
-
+Route::get("/admin/gestionReservas" , [AdminController::class, "gestionReservas"]);

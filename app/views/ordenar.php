@@ -34,7 +34,6 @@ exit;
         header('Content-Type: application/json');
         echo json_encode([]);
     }
-
     $conexion->close();
 }
 ?>
