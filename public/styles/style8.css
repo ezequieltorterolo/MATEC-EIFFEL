@@ -28,14 +28,7 @@ header img {
     border-radius: 20px;
 }
 
-#title {
-    width: 100%;
-    background-color: #90A8C8;
-    padding: 2px;
-    height: 10%;
-    padding-left: 20px;
 
-}
 
 body {
     background-color: #EFF3F6;
@@ -47,6 +40,33 @@ body {
     flex-direction: row;
     flex: auto;
     margin-left: 50px;
+}
+
+#atras {
+
+  text-decoration: underline;
+  transition: all 1s;
+  height: 20px;
+  width: 600px;
+  color: #253141;
+  display: flex;
+  align-items: center;
+}
+
+
+
+#botones button {
+    border: 0px solid;
+    background-color:#253141;
+    color:#b3b9bd;
+    margin: 20px;
+
+}
+
+
+#titulo img {
+    height:30px;
+    width:30px;
 }
 
 td {

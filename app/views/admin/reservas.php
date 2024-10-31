@@ -12,13 +12,13 @@
     <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link href="../styles/style7.css" rel="stylesheet" type="text/css">
-    <title>Gestion de reservas</title>
+    <title>Reservas</title>
     
 
 </head>
 <body>
     <div class="container-fluid" id="titulo">
-       <h1> GESTION DE RESERVAS </h1>
+       <h1> RESERVAS </h1>
 </div>
 <a href="/admin">ADMIN HOME</a>
 </body>
