@@ -1,5 +1,15 @@
 /* Hoja de style para casi todos los views asi no tengo que copiar y pegar como boluda */
+ * {
+   padding: 0px;
+   margin: 0px;
+   
+}
 
+body {
+   background-color: #EFF3F6;
+   font-family: 'Poppins', semi-bold;
+
+}
 /* Responsividad */
 @media (max-width: 768px) { 
     .navegacion ul {
@@ -35,16 +45,7 @@
  }
 
 
- * {
-   padding: 0px;
-   margin: 0px;
-}
 
-body {
-   background-color: #EFF3F6;
-   font-family: 'Poppins', semi-bold;
-
-}
 
 
 

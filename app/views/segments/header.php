@@ -4,7 +4,7 @@
 
 <ul class="menu" class="container-fluid">    
 
-
+<div>
     <form action="/catalogo" method="GET">
        
         <input  id ="buscador" type="text" name="nombre" placeholder="Buscar..." style="width:90%;">

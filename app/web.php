@@ -10,6 +10,7 @@ Route::get("/"          , [HomeController::class, "index"]);
 Route::get("/producto"  , [HomeController::class, "producto"]);
 Route::get("/catalogo"  , [HomeController::class, "catalogo"]);
 Route::post("/catalogo"  , [HomeController::class, "catalogo"]);
+Route::get("/sobreNosotros" , [HomeController::class, "sobreNos"]);
 
 
 
