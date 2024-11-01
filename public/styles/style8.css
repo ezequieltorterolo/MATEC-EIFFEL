@@ -77,26 +77,11 @@ body {
     width:30px;
 }
 
-td {
-
-    text-align: center;
-    padding-top: 30px;
-
-}
-
-
-
-table {
-
-
-    width: 90%;
-    
-
-}
 
 th {
     font-size: 20px;
     background-color: #B7BCC0;
+    text-align:center;
 
 }
 
@@ -106,6 +91,9 @@ td {
     font-size: 20px;
     padding-bottom: 14px;
     border-bottom: solid 1px #253141;
+    width:5px;
+    text-align: center;
+    padding-top: 30px;
 
 
 }
@@ -126,7 +114,8 @@ td img {
 
 }
 table {
-    width: 100%;
+    width: 90%;
+    margin:auto;
     border-collapse: collapse;
   }
     

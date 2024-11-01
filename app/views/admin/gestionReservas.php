@@ -28,10 +28,11 @@
 </div>
   
 
-  <div id="botones">
+  <div id="botones" class="container-fluid">
     <form method="POST" action="/admin/validarCambios">
-      <button type="submit" class="btn btn-primary">Guardar cambios</button>
-      <button type="submit" class="btn btn-primary">Editar</button>
+      <div class="row">
+      <div class="col-1"> <button type="submit" class="btn btn-primary">Guardar cambios</button> </div>
+<div class="col-1"> <button type="submit" class="btn btn-primary">Editar</button> </div>
     </form>
 
   </div>

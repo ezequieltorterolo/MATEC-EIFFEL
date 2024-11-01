@@ -27,9 +27,7 @@ header img {
     margin: 10px;
     border-radius: 20px;
 }
-#precio{
 
-}
 
 /* Firefox */
 input[type=number] {
@@ -41,20 +39,38 @@ input[type=number] {
     margin: 0px;
 }
 
-#title {
-    width: 100%;
-    background-color: #90A8C8;
-    padding: 2px;
-    height: 10%;
-    padding-left: 20px;
-
-}
-
 body {
     background-color: #EFF3F6;
     font-family: 'Poppins', semi-bold;
 
 }
+#atras {
+
+    text-decoration: underline;
+    transition: all 1s;
+    height: 20px;
+    width: 600px;
+    color: #253141;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  
+  #botones button {
+      border: 0px solid;
+      background-color:#253141;
+      color:#EFF3F6;
+      margin: 20px;
+      margin-bottom: 30px;
+  
+  }
+  
+  
+  #titulo img {
+      height:30px;
+      width:30px;
+  }
 
 #tabla-prod {
     flex-direction: row;
