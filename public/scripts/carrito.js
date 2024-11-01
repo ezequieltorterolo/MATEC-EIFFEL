@@ -4,7 +4,30 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 let carritoContainer = document.querySelector('#tabla-prod table');
 
 function carrito_confirmar() {
-    
+   /* Enviar al server POST un json con esta estructura:
+   
+            {
+                "dirent"      : "calle y numero",
+                "horaent"     : "24/10/2024 17:50",
+                "aclaraciones": "dos pisos por escalera",
+                "carrito"     : [
+                                {"id":3 , "cantidad":5},
+                                {"id":12, "cantidad":2},
+                                {"id":37, "cantidad":1}
+                            ]
+            }
+   
+   */
+
+    let reserva = {
+        "dirent"        : document.getElementById("dirent").value, 
+        "horaent"       : document.getElementById("horaent").value,
+        "aclaraciones"  : document.getElementById("aclaraciones").value,
+        "carrito"       : localStorage.getItem('carrito')
+    }
+
+    //enviar reserva con POST a la ruta: "/carrito_confirmar"
+    //recibe un mensaje con la respuesta y hay que renderizaral en document
 
 
 }
@@ -63,7 +86,7 @@ function agregarFila(producto, index) {
         stockIndicator = `${prdinfo.stock}`;
     }
 
-    productRow.innerHTML = `s
+    productRow.innerHTML = `
         <td style="width:30%;">
             <img src="img/${prdinfo.imagen}">
             <a href="/producto?id=${prdinfo.id}"><p>${prdinfo.nombre}</p></a>

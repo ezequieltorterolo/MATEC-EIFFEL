@@ -24,41 +24,40 @@ class CarritoController extends BaseController
     }
 
     function carrito_confirmar($data) {
+         //tomar el userid de la SESSION
+         $user_id = $_SESSION["usuario"]["id"] ?? 21;
 
-        $reserva = json_decode($_POST["reserva"], true);
-
-        //crear el objeto reserva cabezal
-        $model_reserva = new Reserva;
-
-        //tomar el userid de la SESSION
-        $user_id = 21;
-
-        //CARBAR EL REGISTRO CABEZAL
-        $cabezal_reserva["usuario_id"]        = $user_id;   //$_SESSION["userid"];
-        $cabezal_reserva["entrega_direccion"] = $reserva["dirent"];
-        $cabezal_reserva["entrega_fechahora"] = $reserva["horaent"];
-        $cabezal_reserva["aclaraciones"]      = $reserva["aclaraciones"];
-        $cabezal_reserva["estado"]            = 0;
-        $reserva_id = $model_reserva->insert($cabezal_reserva);
+        $reserva_json = json_decode($_POST["reserva"], true);
 
 
-        foreach($reserva["carrito"] as $producto) {
-            $model_reserva_productos = new ReservaProductos;
-
-            $prd      = new Producto;
-            $prdinfo  = $prd->getbyid($producto["id"]);
+         //crear el objeto reserva cabezal
+         $reserva = new Reserva;
 
 
-            $data_reserva["reserva_id"]  = $reserva_id;
-            $data_reserva["producto_id"] = $producto["id"];
-            $data_reserva["cantidad"]    = $producto["cantidad"];
+         //CARBAR EL REGISTRO CABEZAL
+         $cabezal_reserva["usuario_id"]        = $user_id;   //$_SESSION["userid"];
+         $cabezal_reserva["entrega_direccion"] = $reserva_json["dirent"];
+         $cabezal_reserva["entrega_fechahora"] = $reserva_json["horaent"];
+         $cabezal_reserva["aclaraciones"]      = $reserva_json["aclaraciones"];
+         $cabezal_reserva["estado"]            = 0;
+         $reserva_id = $reserva->insert($cabezal_reserva);
 
-//CALVULAR PRECIO            
-            $data_reserva["precio"]      =  $producto["cantidad"] * $prdinfo["precio"];
+         
+         $reservaProductos = new ReservaProductos;
+         foreach(json_decode($reserva_json["carrito"],true) as $producto) {
 
-            $model_reserva_productos->insert($data_reserva);
+            $reserva_producto["reserva_id"]  = $reserva_id;
+            $reserva_producto["producto_id"] = $producto["id"];
+            $reserva_producto["cantidad"]    = $producto["cantidad"];
+            $reserva_producto["precio"]      = $producto["precio"];
+            $reservaProductos->insert($reserva_producto);
 
-        }
+         }
+
+        $reserva_response = "reserva registrada correctamente";
+
+
+        return $reserva_response;
 
 
     }
