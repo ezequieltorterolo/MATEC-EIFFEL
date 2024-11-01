@@ -7,9 +7,7 @@ use rutex\BaseController;
 ?>
 
 
-
 <nav class="navegacion">
-
     <ul class="menu" id="nav-menu">
         <li><a href="/">INICIO</a></li>
         <li>CATEGORIAS

@@ -1,21 +1,16 @@
-
-
 <header><img src="img/logo.jpg">
 
-<ul class="menu" class="container-fluid">    
-
-
+<div class="cont-menu">    
     <form action="/catalogo" method="GET">
-       
         <input  id ="buscador" type="text" name="nombre" placeholder="Buscar..." style="width:90%;">
         <button type="submit">Buscar</button>
 
     </form>
     <?php if (isset($_SESSION["usuario"])): ?>
         <li><h3><?=$_SESSION["usuario"]["nombre"]?></h3>
-        <ul class="submenu">
+        <div class="cont-cerrar-sesion">
                 <li onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)"><h3>Cerrar sesion</a></li>
-            </ul>
+        </div>
         </li>
     <?php else: ?>
     <a href="/login">Inicio sesion</a>

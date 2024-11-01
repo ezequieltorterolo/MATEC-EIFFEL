@@ -6,10 +6,14 @@
     <title>ADMIN</title>
 </head>
 <body>
-    <h1>Soy la pagina home del administrador</h1>
-
-    Usuario logueado=<?= $user ?>
-
-<a href="/admin/gestionProductos">Gestionar Productos</a>
-<a href="/admin/reservas">Gestionar Reservas</a>
+    <div id="cont-admin">
+        <div id="cont-user">
+            <h1>ADMINISTRADOR DE EIFFEL</h1>
+            <p>Usuario logueado: <b><?= $user ?></b></p>
+            <hr>
+        </div>
+        <div class="boton-admin-opciones"><a href="/admin/gestionProductos">Gestionar Productos</a></div>
+        <div class="boton-admin-opciones"><a href="/admin/reservas">Gestionar Reservas</a></div>
+        <img src="img/logo.jpg">
+    </div>
 

@@ -69,8 +69,6 @@ class HomeController extends BaseController
 
     function carrito()
     {
-      
-
         return $this->view("carrito");
     }
 
