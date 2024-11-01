@@ -39,7 +39,14 @@ body {
 #tabla-prod {
     flex-direction: row;
     flex: auto;
-    margin-left: 50px;
+    margin-left: 10px;
+}
+
+#dropdown {
+    width:50%;
+    position: relative;
+    float:right;
+    
 }
 
 #atras {
@@ -58,8 +65,9 @@ body {
 #botones button {
     border: 0px solid;
     background-color:#253141;
-    color:#b3b9bd;
+    color:#EFF3F6;
     margin: 20px;
+    margin-bottom: 30px;
 
 }
 
@@ -82,7 +90,7 @@ table {
 
 
     width: 90%;
-    margin-left: 60px;
+    
 
 }
 
@@ -105,9 +113,6 @@ td {
 
 #code {
     font-size: 17px;
-
-    margin-left: 40px;
-    float: left;
     color: #B7BCC0;
 }
 

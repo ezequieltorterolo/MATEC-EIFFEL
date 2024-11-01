@@ -31,7 +31,9 @@
   <div id="botones">
     <form method="POST" action="/admin/validarCambios">
       <button type="submit" class="btn btn-primary">Guardar cambios</button>
+      <button type="submit" class="btn btn-primary">Editar</button>
     </form>
+
   </div>
 
   <div id="tabla-prod">
@@ -66,6 +68,7 @@
           </tr>
           <tr class="detalles-fila" style="display: none;">
             <td colspan="6">
+              <div id="dropdown">
               <table class="detalles-contenido">
                 <thead>
                   <tr>
@@ -73,6 +76,7 @@
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Subtotal</th>
+                    <th> Accion </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,10 +85,11 @@
                     <?php foreach ($producto as $prod):?>
                       <?php if($prod["id"] == $prd["producto_id"]):?>
                     <tr>
-                      <td><img src="../img/<?= $prod['imagen']?>" alt="Imagen del producto "><?= $prod["nombre"] ?></td>
+                      <td><img src="../img/<?= $prod['imagen']?>" alt="Imagen del producto " id="imagen-pro" ><?= $prod["nombre"] ?></td>
                       <td><?= $prd["cantidad"] ?></td>
                       <td><?= number_format($prd["precio"], 2) ?></td>
                       <td><?= number_format($prd["cantidad"] * $prd["precio"], 2) ?></td>
+                     <td> <img src="../img/basura.svg"> </td>
                     </tr>
                     <?php endif; ?>
                     <?php endforeach; ?>
@@ -97,6 +102,7 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+                      </div>
   </div>
 
   <script>
