@@ -40,7 +40,7 @@ Route::get("/admin/aniadirProducto"    , [AdminController::class, "añadirProduc
 Route::get("/admin/modificarProducto" , [AdminController::class, "modificarProducto"]);
 
 //Validacion de cambios o eliminacion del producto
-Route::post("/admin/gestionProductos"  , [AdminController::class, "guardarTodo"]);
+Route::post("/admin/gestionProductos"  , [AdminController::class, "guardarTodoProductos"]);
 Route::post("/admin/aniadirProducto"    , [AdminController::class, "validarProducto"]);
 Route::post("/admin/modificarProducto" , [AdminController::class, "validarProducto"]);
 Route::get("/admin/eliminar", [AdminController::class, "eliminar"]);
@@ -48,3 +48,4 @@ Route::get("/admin/eliminar", [AdminController::class, "eliminar"]);
 
 //Administrador-pagina de reservas
 Route::get("/admin/gestionReservas" , [AdminController::class, "gestionReservas"]);
+Route::post("/admin/gestionReservas"  , [AdminController::class, "guardarTodoReservas"]);

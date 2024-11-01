@@ -18,32 +18,29 @@
   <br>
 
   <div id="botones">
-    <form method="POST" action="/admin/validarCambios">
+    <form method="POST" action="/admin/gestionReservas"> <!-- Formulario envuelve toda la tabla -->
       <button type="submit">Guardar cambios</button>
-    </form>
   </div>
 
   <div id="tabla-prod">
     <table>
       <thead>
         <tr>
-          <th>Reserva</th>
           <th>Estado</th>
-          <th>Dirección</th>
+          <th>Calle</th>
           <th>Fecha</th>
           <th>Aclaraciones</th>
-          <th>Productos</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($reservas as $res): ?>
           <tr>
-            <td><?=$res["id"]?></td>
+            <input type="hidden" name="id[]" value="<?= $res["id"] ?>">
             <td>
-              <select name="estado_<?= $res["id"] ?>">
-                <option <?= $res['estado'] == 'En proceso' ? 'selected' : '0' ?>>En proceso</option>
-                <option <?= $res['estado'] == 'Finalizado' ? 'selected' : '1' ?>>Finalizado</option>
-                <option <?= $res['estado'] == 'Cancelado' ? 'selected' : '2' ?>>Cancelado</option>
+              <select name="estado[]">
+                <option value="0" <?php if($res["estado"] == 0):?>selected <?php endif?>>En proceso</option>
+                <option value="1" <?php if($res["estado"] == 1):?>selected <?php endif?>>Finalizado</option>
+                <option value="2" <?php if($res["estado"] == 2):?>selected <?php endif?>>Cancelado</option>
               </select>
             </td>
             <td><?= $res["entrega_direccion"] ?></td>
@@ -53,6 +50,7 @@
               <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
             </td>
           </tr>
+
           <tr class="detalles-fila" style="display: none;">
             <td colspan="6">
               <table class="detalles-contenido">
@@ -65,18 +63,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($resprd as $prd):?>
-                  <?php if($prd["reserva_id"] == $res["id"]):?>
-                    <?php foreach ($producto as $prod):?>
-                      <?php if($prod["id"] == $prd["producto_id"]):?>
-                    <tr>
-                      <td><img src="../img/<?= $prod['imagen']?>" alt="Imagen del producto "><?= $prod["nombre"] ?></td>
-                      <td><?= $prd["cantidad"] ?></td>
-                      <td><?= number_format($prd["precio"], 2) ?></td>
-                      <td><?= number_format($prd["cantidad"] * $prd["precio"], 2) ?></td>
-                    </tr>
-                    <?php endif; ?>
-                    <?php endforeach; ?>
+                  <?php foreach ($resprd as $prd): ?>
+                    <?php if($prd["reserva_id"] == $res["id"]): ?>
+                      <?php foreach ($producto as $prod): ?>
+                        <?php if($prod["id"] == $prd["producto_id"]): ?>
+                          <tr>
+                            <td><img src="../img/<?= $prod['imagen']?>" alt="Imagen del producto"><?= $prod["nombre"] ?></td>
+                            <td><?= $prd["cantidad"] ?></td>
+                            <td><?= number_format($prd["precio"], 2) ?></td>
+                            <td><?= number_format($prd["cantidad"] * $prd["precio"], 2) ?></td>
+                          </tr>
+                        <?php endif; ?>
+                      <?php endforeach; ?>
                     <?php endif; ?>
                   <?php endforeach; ?>
                 </tbody>
@@ -86,9 +84,17 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+    </form>
   </div>
 
   <script>
+    window.addEventListener("load", (event) => {
+      <?php if (!empty($msg)): ?>
+        let mensaje = <?= json_encode($msg) ?>;
+        alert(mensaje);
+      <?php endif; ?>
+    });
+
     function mostrarProductos(boton) {
       const detallesFila = boton.closest("tr").nextElementSibling;
       if (detallesFila.style.display === "none") {

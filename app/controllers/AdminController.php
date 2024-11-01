@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Producto;
 use app\models\Reserva;
+use app\models\Categoria;
 use app\models\ReservaProductos;
 use rutex\BaseController;
 
@@ -83,6 +84,8 @@ class AdminController extends BaseController
         $data["mode"]   = "addprd";
         $data["action"] = "/admin/aniadirProducto";
         $data["method"] = "POST";
+        $categoria = $this->categoria();
+        $data["categoria"] = $categoria;
         return $this->view("admin/formularioProducto", $data);
     }
 
@@ -92,8 +95,9 @@ class AdminController extends BaseController
         $data["mode"]   = "editprd";
         $data["action"] = "/admin/modificarProducto";
         $data["method"] = "POST";
-
         $producto = new Producto();
+        $categoria = $this->categoria();
+        $data["categoria"] = $categoria;
         if (isset($_GET["prdid"])) {
             $data["prd"] = $producto->getById($_GET["prdid"]);
         }
@@ -123,7 +127,6 @@ class AdminController extends BaseController
             $_POST['imagen'] = $nombreArchivo;
             $_POST["oferta"] = isset($_POST["oferta"]);
             $producto->insert($_POST);
-
 
             if ($producto->success()) {
                 $data['msg'] = "El producto se ha ingresado con éxito.";
@@ -175,7 +178,7 @@ class AdminController extends BaseController
             }
         }
     }
-    function guardarTodo($data)
+    function guardarTodoProductos($data)
     {
         $producto = new Producto();
         if (is_array($_POST["id"])) {
@@ -202,6 +205,8 @@ class AdminController extends BaseController
         }
     }
     function gestionReservas($data){
+        $data["mode"]   = "vista";
+        $data["action"] = "/admin/gestionReservas";
         $reservas = new Reserva();
         $producto = new Producto();
         $resprd = new ReservaProductos();
@@ -210,4 +215,33 @@ class AdminController extends BaseController
         $data["resprd"] = $resprd->getAll();
         return $this->view("admin/gestionReservas",$data);
     }
+    function guardarTodoReservas($data)
+    {
+        $reserva = new Reserva();
+        if (is_array($_POST["id"])) {
+            foreach ($_POST["id"] as $index => $id) {
+                $campos = [
+                    "estado" => $_POST["estado"][$index],
+                ];
+                $reserva->update($id, $campos);
+            }
+
+            if ($reserva->success()) {
+                $data["msg"] = "los cambios se realizaron con exito";
+                return $this->gestionReservas($data);
+            } else {
+                $data['msg'] = "Hubo un error al modificar el producto.";
+                return $this->gestionReservas($data);
+            }
+        } else {
+            $data['msg'] = "No se recibieron productos para actualizar.";
+            return $this->gestionReservas($data);
+        }
+    }
+    function categoria(){
+        $catego = new Categoria;
+        $categoria = $catego->getAll();
+        return $categoria;
+    }
+
 }
