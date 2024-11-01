@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <script src="scripts/script.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <title>Eiffel Importaciones</title>
 </head>
 <body>

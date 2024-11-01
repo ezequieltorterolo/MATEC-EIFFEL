@@ -2,7 +2,12 @@
 <html>
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
+ 
   <script src="../scripts/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,15 +16,26 @@
 
 <body>
   <?php include "segments/header.php" ?>
-  <div id="title">
-    <h1>Gestión de Reservas</h1>
-  </div>
-  <br>
-  <br>
+  <div id="titulo" class="container-fluid">
+    <div class="row">
+    
+<div class="col-12 text-left mt-3">
+   <h2> Gestión de Reservas </h2> 
+</div>
+<hr>
+  <div class="col-4 mt-3 mb-3" id="atras"  onclick="history.back()">
+   <p> <img src="../img/angle-left.png"> Volver atras <p>
+</div>
+</div>
+</div>
+  
 
-  <div id="botones">
+  <div id="botones" class="container">
     <form method="POST" action="/admin/gestionReservas"> <!-- Formulario envuelve toda la tabla -->
-      <button type="submit">Guardar cambios</button>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="submit" class="btn btn-primary">Guardar cambios</button> 
+<button type="submit" class="btn btn-primary">Editar</button> 
+
   </div>
 
   <div id="tabla-prod">
@@ -53,6 +69,7 @@
 
           <tr class="detalles-fila" style="display: none;">
             <td colspan="6">
+              <div id="dropdown">
               <table class="detalles-contenido">
                 <thead>
                   <tr>
@@ -60,6 +77,7 @@
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Subtotal</th>
+                    <th> Accion </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,10 +86,11 @@
                       <?php foreach ($producto as $prod): ?>
                         <?php if($prod["id"] == $prd["producto_id"]): ?>
                           <tr>
-                            <td><img src="../img/<?= $prod['imagen']?>" alt="Imagen del producto"><?= $prod["nombre"] ?></td>
+                            <td><img src="../img/<?= $prod['imagen']?>" alt="Imagen del producto" id="imagen-pro" ><?= $prod["nombre"] ?></td>
                             <td><?= $prd["cantidad"] ?></td>
                             <td><?= number_format($prd["precio"], 2) ?></td>
                             <td><?= number_format($prd["cantidad"] * $prd["precio"], 2) ?></td>
+                     <td> <img src="../img/basura.svg"> </td>
                           </tr>
                         <?php endif; ?>
                       <?php endforeach; ?>

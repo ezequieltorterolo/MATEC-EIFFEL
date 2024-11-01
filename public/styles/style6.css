@@ -7,54 +7,41 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #253141;
-}
 
-header img {
-    height: 100px;
-}
-
-#buscador {
-    width: 60%;
-    padding: 6px;
-    margin: 10px;
-    border-radius: 20px;
-}
-#precio{
-
-}
 
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
 }
 
-* {
-    padding: 0px;
-    margin: 0px;
-}
 
-#title {
-    width: 100%;
-    background-color: #90A8C8;
-    padding: 2px;
-    height: 10%;
-    padding-left: 20px;
+#atras {
 
-}
-
-body {
-    background-color: #EFF3F6;
-    font-family: 'Poppins', semi-bold;
-
-}
+    text-decoration: underline;
+    transition: all 1s;
+    height: 20px;
+    width: 600px;
+    color: #253141;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  
+  #botones button {
+      border: 0px solid;
+      background-color:#253141;
+      color:#EFF3F6;
+     
+      margin-bottom: 30px;
+  
+  }
+  
+  
+  #titulo img {
+      height:30px;
+      width:30px;
+  }
 
 #tabla-prod {
     flex-direction: row;
@@ -75,7 +62,7 @@ table {
 
 
     width: 90%;
-    margin-left: 60px;
+   margin:auto;
 
 }
 
