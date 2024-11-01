@@ -7,27 +7,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #253141;
-}
-
-header img {
-    height: 100px;
-}
-
-#buscador {
-    width: 60%;
-    padding: 6px;
-    margin: 10px;
-    border-radius: 20px;
-}
-
+h
 
 
 body {
@@ -66,7 +46,6 @@ body {
     border: 0px solid;
     background-color:#253141;
     color:#EFF3F6;
-    margin: 20px;
     margin-bottom: 30px;
 
 }
@@ -119,6 +98,13 @@ table {
     border-collapse: collapse;
   }
     
+input {
+    width:50px;
+}
+
+
+
+
   .detalles-fila {
     display: none;
   }

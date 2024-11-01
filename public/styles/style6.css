@@ -7,26 +7,6 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #253141;
-}
-
-header img {
-    height: 100px;
-}
-
-#buscador {
-    width: 60%;
-    padding: 6px;
-    margin: 10px;
-    border-radius: 20px;
-}
 
 
 /* Firefox */
@@ -34,16 +14,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-* {
-    padding: 0px;
-    margin: 0px;
-}
 
-body {
-    background-color: #EFF3F6;
-    font-family: 'Poppins', semi-bold;
-
-}
 #atras {
 
     text-decoration: underline;
@@ -61,7 +32,7 @@ body {
       border: 0px solid;
       background-color:#253141;
       color:#EFF3F6;
-      margin: 20px;
+     
       margin-bottom: 30px;
   
   }
@@ -91,7 +62,7 @@ table {
 
 
     width: 90%;
-    margin-left: 60px;
+   margin:auto;
 
 }
 

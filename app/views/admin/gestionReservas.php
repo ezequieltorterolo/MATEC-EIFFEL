@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
+ 
   <script src="../scripts/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,18 +23,18 @@
    <h2> Gestión de Reservas </h2> 
 </div>
 <hr>
-  <div class="col-4 mt-3 mb-3" id="atras">
+  <div class="col-4 mt-3 mb-3" id="atras"  onclick="history.back()">
    <p> <img src="../img/angle-left.png"> Volver atras <p>
 </div>
 </div>
 </div>
   
 
-  <div id="botones" class="container-fluid">
+  <div id="botones" class="container">
     <form method="POST" action="/admin/validarCambios">
-      <div class="row">
-      <div class="col-1"> <button type="submit" class="btn btn-primary">Guardar cambios</button> </div>
-<div class="col-1"> <button type="submit" class="btn btn-primary">Editar</button> </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="submit" class="btn btn-primary">Guardar cambios</button> 
+<button type="submit" class="btn btn-primary">Editar</button> 
     </form>
 
   </div>
