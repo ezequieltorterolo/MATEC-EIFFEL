@@ -91,7 +91,7 @@ footer{
 }
 #footer-cont p{
     color: whites
-
+}
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 
