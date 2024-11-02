@@ -35,5 +35,4 @@ exit;
         echo json_encode([]);
     }
     $conexion->close();
-}
 ?>

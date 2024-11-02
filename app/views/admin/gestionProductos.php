@@ -131,17 +131,12 @@
     }
 
     function actualizarStock(id, accion) {
-      const stockInput = document.getElementById(`stock-${id}`); // Selección específica
+      const stockInput = document.getElementById(`stock-${id}`);
       let stock = parseInt(stockInput.value);
 
-      // Incrementar o decrementar el stock
       if (accion === 'agregar' && stock < 99) stock++;
       if (accion === 'quitar' && stock > 0) stock--;
-
-      // Actualizar el valor del input
       stockInput.value = stock;
-
-      // Llamar a la función para enviar los cambios a la base de datos
       actualizarProducto(id, 'stock', stock);
     }
   </script>
