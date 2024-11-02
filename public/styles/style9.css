@@ -18,12 +18,13 @@ label {
 
 .btn-primary  {
     border:none;
-
+   height:fit-content;
+    max-height:90px;
    text-align:center;
    background-color:#253141;
    color:#ffffff;
 
-  height:50px;
+ 
   font-size: 17px;
    transition: all 1s  
 }
