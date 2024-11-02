@@ -5,8 +5,9 @@
 
 }
 #page {
-    margin:20px;
+   
     margin-bottom:29px;
+    overflow:hidden;
 }
 
 label {
@@ -43,4 +44,11 @@ input {
 #botones {
   margin:auto;
   width:30%;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
