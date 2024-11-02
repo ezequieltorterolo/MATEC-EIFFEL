@@ -87,7 +87,7 @@ border-bottom: 1px solid #DDD;
 
 #compra {
     float:left;
-    
+   
     padding:10px;
     height: fit-content;
     width:20%;
@@ -121,7 +121,9 @@ border-bottom: 1px solid #DDD;
 float:right;
 }
 
-
+#compra {
+    margin-bottom:10px;
+}
 
 #botones1 button  {
     border:none;
@@ -132,8 +134,10 @@ float:right;
   margin:15px;
   height:50px;
   font-size: 17px;
-   transition: all 1s  
+   transition: all 1s; 
+
 }
+
 
 #botones1 button:hover {
   transform:scale(1.1);

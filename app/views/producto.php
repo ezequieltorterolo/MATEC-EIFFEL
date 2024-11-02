@@ -86,7 +86,7 @@
             </div> </div>
 
 <div class="row">
-            <div id="botones">
+            <div id="botones1">
                 <button id="añadir" class="btn btn-primary">Añadir a carrito</button>
             </div> </div>
         </div>
