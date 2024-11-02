@@ -1,0 +1,46 @@
+#title {
+   margin-left:5px;
+    margin-bottom:20px;
+    width:fit-content;
+
+}
+#page {
+    margin:20px;
+    margin-bottom:29px;
+}
+
+label {
+    margin-right:10px;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.btn-primary  {
+    border:none;
+
+   text-align:center;
+   background-color:#253141;
+   color:#ffffff;
+
+  height:50px;
+  font-size: 17px;
+   transition: all 1s  
+}
+
+input {
+    width:100%;
+    height:50px;
+}
+
+#login {
+   
+  width: 50%;
+  padding: 10px;
+    margin:auto;
+    margin-bottom:2%;
+}
+
+#botones {
+  margin:auto;
+  width:30%;
+}

@@ -77,6 +77,21 @@ header img {
     display: block;
 }
 
+footer{
+    margin-top: 50px;
+    background-color: #253141;
+}
+#footer-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#footer-cont img{
+    width: 300px;
+}
+#footer-cont p{
+    color: whites
+
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 
