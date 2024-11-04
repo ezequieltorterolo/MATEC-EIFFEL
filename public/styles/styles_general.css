@@ -75,17 +75,19 @@ body {
    font-family: 'Poppins', semi-bold;
 
 }
+
 /* Responsividad */
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     .navegacion ul {
         display:none;
     }
 
- .iconos {
-    background-color: #B7BCC0;
-   display:inline-block !important;
-   width:100%;
-   
+    .iconos {
+        background-color: #B7BCC0;
+    display:inline-block !important;
+    width:100%;
+    }
+
    svg {
     width:50px;
     height:30px;
@@ -107,7 +109,6 @@ body {
   .menu {
      display:none;
   }
- }
 
 
 
@@ -213,6 +214,8 @@ footer{
     color: whites
 }
 
+}
+
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 
     .navegacion ul {
@@ -223,7 +226,8 @@ footer{
     background-color: #B7BCC0;
    display:inline-block !important;
    width:100%;
-   
+ }
+
    svg {
     width:50px;
     height:30px;
@@ -245,4 +249,4 @@ footer{
   .menu {
      display:none;
   }
- }
+}
