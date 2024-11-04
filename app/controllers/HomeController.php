@@ -72,6 +72,11 @@ class HomeController extends BaseController
         return $this->view("carrito");
     }
 
+    function sobreNos() 
+    {
+        return $this ->view ("sobreNosotros");
+    }
+
     function prdinfo($data){
  
         $prd = new Producto ;

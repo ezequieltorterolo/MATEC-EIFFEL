@@ -3,8 +3,10 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="styles/style3.css" rel="stylesheet" type="text/css">
+    <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>SOBRE NOSOTROS</title>
 </head>

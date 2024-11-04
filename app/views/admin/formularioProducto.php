@@ -28,9 +28,9 @@
 
             <label for="categoria">Categoria:</label>
             <select name="categoria">
-                <option>Limpieza</option>
-                <option>Alimentos</option>
-                <option>Higiene</option>
+                <?php foreach($categoria as $catego):?>
+                <option><?=$catego["nombreCategoria"]?></option>
+                <?php endforeach ?>
             </select required><br><br>
 
             <label for="subcategoria">Subcategoria:</label>

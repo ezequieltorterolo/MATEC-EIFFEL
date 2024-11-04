@@ -9,6 +9,7 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/home.js"></script>
     <meta charset="UTF-8" />
+    <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link href="styles/style.css" rel="stylesheet" type="text/css">
     <title>Eiffel Importaciones</title>
