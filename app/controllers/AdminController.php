@@ -195,53 +195,91 @@ class AdminController extends BaseController
             if ($producto->success()) {
                 $data["msg"] = "los cambios se realizaron con exito";
                 return $this->gestionProductos($data);
+                $this->redirect("admin/gestionProductos");
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
                 return $this->gestionProductos($data);
+                $this->redirect("admin/gestionProductos");
             }
         } else {
             $data['msg'] = "No se recibieron productos para actualizar.";
             return $this->gestionProductos($data);
         }
     }
-    function gestionReservas($data){
-        $data["mode"]   = "vista";
-        $data["action"] = "/admin/gestionReservas";
+    function gestionReservas($data)
+    {
         $reservas = new Reserva();
         $producto = new Producto();
-        $resprd = new ReservaProductos();
+        $reservaproducto = new ReservaProductos();
         $data["reservas"] = $reservas->getAll();
         $data["producto"] = $producto->getAll();
-        $data["resprd"] = $resprd->getAll();
-        return $this->view("admin/gestionReservas",$data);
+        $data["reservaproducto"] = $reservaproducto->getAll();
+        return $this->view("admin/gestionReservas", $data);
     }
     function guardarTodoReservas($data)
-    {
-        $reserva = new Reserva();
-        if (is_array($_POST["id"])) {
-            foreach ($_POST["id"] as $index => $id) {
-                $campos = [
-                    "estado" => $_POST["estado"][$index],
-                ];
-                $reserva->update($id, $campos);
+{
+    $reserva = new Reserva();
+    $reservaProductos = new ReservaProductos();
+    if (is_array($_POST["id"])) {
+        foreach ($_POST["id"] as $index => $id) {
+            $campos = [
+                "estado"                => $_POST["estado"][$index],
+                "entrega_direccion"     => $_POST["direccion"][$index],
+                "entrega_fechahora"     => $_POST["fecha"][$index],
+                "aclaraciones"          => $_POST["aclaraciones"][$index],
+            ];
+            $reserva->update($id, $campos);
+            if(!empty($_POST["idPrd"])){
+            if (is_array($_POST["idPrd"])) {
+                foreach ($_POST["idPrd"] as $index2 => $idPrd) {
+                    $camposProducto = [
+                        "cantidad"    => $_POST["cantidad"][$index2],
+                    ];
+                    $reservaProductos->update($idPrd, $camposProducto);
+                }
             }
-
-            if ($reserva->success()) {
-                $data["msg"] = "los cambios se realizaron con exito";
-                return $this->gestionReservas($data);
-            } else {
-                $data['msg'] = "Hubo un error al modificar el producto.";
-                return $this->gestionReservas($data);
-            }
-        } else {
-            $data['msg'] = "No se recibieron productos para actualizar.";
-            return $this->gestionReservas($data);
         }
     }
-    function categoria(){
+    }
+    if ($reserva->success() || $reservaProductos->success()) {
+        $data["msg"] = "Los cambios se realizaron con éxito";
+        return $this->gestionReservas($data);
+    } else {
+        $data['msg'] = "Hubo un error al guardar las reservas y productos.";
+        return $this->gestionReservas($data);
+    }
+}
+
+function agregarProducto($data){
+    $reserva = new Reserva();
+    $id = $_GET["resid"];
+    $reserva = $reserva->where("id","=",$id);
+    var_dump($reserva);
+
+}
+
+function eliminarProducto($data){
+    $reservaProductos = new ReservaProductos();
+    $id =$_GET["prdid"];
+    $reservaProductos->delete($id);
+    if ($reservaProductos->success()) {
+        $data["msg"] = "el producto fue eliminado con exito";
+        $this->redirect("/admin/gestionReservas");
+        return $this->gestionReservas($data);
+       
+    } else {
+        $data["msg"] = "no se pudo eliminar el producto";
+        $this->redirect("/admin/gestionReservas");
+        return $this->gestionReservas($data);
+    }
+
+}
+
+
+    function categoria()
+    {
         $catego = new Categoria;
         $categoria = $catego->getAll();
         return $categoria;
     }
-
 }

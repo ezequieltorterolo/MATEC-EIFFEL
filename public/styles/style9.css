@@ -54,4 +54,58 @@ hr{
 .lista-pasos li{
     margin-bottom: 5px;
     padding: 5px;
+#title {
+   margin-left:5px;
+    margin-bottom:20px;
+    width:fit-content;
+
+}
+#page {
+   
+    margin-bottom:29px;
+    overflow:hidden;
+}
+
+label {
+    margin-right:10px;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.btn-primary  {
+    border:none;
+   height:fit-content;
+    max-height:90px;
+   text-align:center;
+   background-color:#253141;
+   color:#ffffff;
+
+ 
+  font-size: 17px;
+   transition: all 1s  
+}
+
+input {
+    width:100%;
+    height:50px;
+}
+
+#login {
+   
+  width: 50%;
+  padding: 10px;
+    margin:auto;
+    margin-bottom:2%;
+}
+
+#botones {
+  margin:auto;
+  width:30%;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }

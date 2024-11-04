@@ -48,26 +48,23 @@ font-size: 17px;
 
 #producto {
 
-height:30%;
-width:30%;
+
 margin-top: 20px;
 margin-left:110px;
 border:3px solid;
 float:left;
 margin-right:5%;
-
+background-color: #ffffff;
+border: 3px solid #253141;
 
 }
 
-#producto img {
-    height:100%;
-    width:100%;
-}
+
 
 #info {
 width: 30%;
 overflow:hidden;
-float:left;
+
  margin-right:50px;
 
 }
@@ -90,7 +87,7 @@ border-bottom: 1px solid #DDD;
 
 #compra {
     float:left;
-    
+   
     padding:10px;
     height: fit-content;
     width:20%;
@@ -106,20 +103,29 @@ border-bottom: 1px solid #DDD;
 #precio {
     color:#253141;
     text-decoration:underline;
+    font-size:smaller;
 }
 
-
+#total {
+    font-size:17px;
+}
 
 #quitaragregar button {
-    padding:6px;
+   
     border:none;
    
    
 }
 
+#controles {
+float:right;
+}
 
+#compra {
+    margin-bottom:10px;
+}
 
-#botones button  {
+#botones1 button  {
     border:none;
    width: 90%;
    text-align:center;
@@ -128,10 +134,12 @@ border-bottom: 1px solid #DDD;
   margin:15px;
   height:50px;
   font-size: 17px;
-   transition: all 1s  
+   transition: all 1s; 
+
 }
 
-#botones button:hover {
+
+#botones1 button:hover {
   transform:scale(1.1);
  
  
@@ -141,4 +149,37 @@ border-bottom: 1px solid #DDD;
     padding: 8px;
     background-color: #DDD;
     width: 80%;
+}
+#tituloalter {
+    display:none;
+    text-align:center;
+}   
+
+@media (max-width: 768px) { 
+#info {
+width: 90%;
+margin:auto;
+}
+
+#producto {
+    width:90%;
+}
+#compra {
+    
+    width: 90%;
+margin:auto;
+
+
+ 
+}
+
+#titulodesca {
+    display:none;
+}
+
+#tituloalter {
+display:inline-block
+}
+
+
 }

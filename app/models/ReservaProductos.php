@@ -11,6 +11,7 @@ class ReservaProductos extends Model {
         "reserva_id"   => ["required" => true ],      
         "producto_id"  => ["required" => true ],
         "cantidad"     => ["required" => true ],
-        "precio"       => ["required" => true ],
+        "totalProducto"       => ["required" => true ],
+       
    ];
 }
