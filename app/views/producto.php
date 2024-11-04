@@ -191,15 +191,35 @@ var producto = <?php echo json_encode($prd); ?>;
          } else {
 
           let cantidad = producto.cantidad;
+          
 
            var cantidadElejida = document.getElementById("cantidad").value;
            producto.cantidad = cantidadElejida;
+    
+            // mostrar la cantidad de productos en el carrito del nav
+
+
+
 
     
+           /// 
            
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
             alert('Producto añadido al carrito');
+
+             // mostrar la cantidad de productos en el carrito del nav
+
+             let cantidadCarrito = carrito.length;   
+ 
+           // Cambiar el contenido de un div
+             document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
+// Guardar el cambio en localStorage
+             localStorage.setItem("contenidoDiv", cantidadCarrito);
+
+// Al recargar la página, restaurar el contenido
+  
+/// 
          }
 
        } );

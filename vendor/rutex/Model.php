@@ -4,17 +4,14 @@ namespace rutex;
 use mysqli;
 use Exception;
 
-const MODEL_VERSION = "2.7.1";
+const MODEL_VERSION = "2.7.2";
 
 class Model {
 
     protected $dbconn;
     protected $cursor;
 
-    //inherited al instanciar clase que hereda de Model, ej: User.php
-    //Por defecto usa el datastore "default", eso se puede modificar en la clase de la entidad
-    //Por ejemplo agregando: protected $datastore = "legacy"; y creando el archivo app/config/datastores/legacy.php
-    protected $dbcfg, $table, $struct=[], $sqlVerbose, $datastore= "default";
+    protected $table, $struct=[], $sqlVerbose;
 
     private $result, $record;
 
@@ -25,32 +22,32 @@ class Model {
 
     static function version() {return MODEL_VERSION;}
 
-    public function __construct() {
-        $this->dbcfg = getConfig("datastores/{$this->datastore}");
-
-        $this->sqlVerbose = $this->dbcfg["SQL_VERBOSE"];
-        $this->connect();
+    public function __construct($datastore="default") {
+        $this->connect($datastore);
     }
 
-    private function connect() {
+    private function connect($datastore) {
         if (is_null($this->dbconn)) {
+            $dbcfg = self::getDatastore($datastore);
             try {
 
-                $this->dbconn = new MySqlI($this->dbcfg["DB_HOST"], 
-                                           $this->dbcfg["DB_USERNAME"],
-                                           $this->dbcfg["DB_PASSWORD"], 
-                                           $this->dbcfg["DB_DATABASE"], 
-                                           $this->dbcfg["DB_PORT"]);
+                $this->dbconn = new MySqlI($dbcfg["DB_HOST"], 
+                                           $dbcfg["DB_USERNAME"],
+                                           $dbcfg["DB_PASSWORD"], 
+                                           $dbcfg["DB_DATABASE"], 
+                                           $dbcfg["DB_PORT"]);
 
-                $this->dbconn->autocommit($this->dbcfg["DB_AUTOCOMMIT"]);
+                $this->dbconn->autocommit($dbcfg["DB_AUTOCOMMIT"]);
 
                 //FORZAR EL USO DE UTF8
                 $this->dbconn->set_charset("utf8mb4");
                 // $this->dbconn->set_charset("utf8");
 
+                $this->sqlVerbose = $dbcfg["SQL_VERBOSE"];
+
             } catch(Exception $e) {
                 //Mostrar mensaje en pantalla (por si están deshabilitados los warnings en php.ihi)
-                die(htmlError("500", "Falló la conexión a la base de datos"));
+                die("<h3>Error 500 - Falló la conexión al datastore $datastore</h3>");
             }
         }
     }
@@ -80,13 +77,7 @@ class Model {
         return $this->result["content"];
     }
 
-    private function BlankFields() {
-        foreach($this->struct as $fieldName => $def) {
-            $this->struct[$fieldName]["_value"] = "";
-        }
-    }
-
-    private function RequiredFields_Verify($data)  {
+    function RequiredFields_Verify($data)  {
         $this->record   = [];
         $requiredFields = [];
 
@@ -104,14 +95,12 @@ class Model {
     }
 
 
-    private function query(string $sqlcmd) {
+    function query(string $sqlcmd) {
         $this->cursor = $this->dbconn->query($sqlcmd);
-
-        $this->BlankFields();
         return $this;
     }
 
-    function getWhereCondition() {
+    function makeWhereCondition() {
         if (count($this->orCondition) > 0) {
             $this->condition[] = $this->orCondition;
             $this->orCondition = [];
@@ -143,7 +132,7 @@ class Model {
     }
 
     private function makeSelectCmd($fields="*", $page=0, $rows=0) {
-        $whereCondition = $this->getWhereCondition();
+        $whereCondition = $this->makeWhereCondition();
 
         if (empty($fields)) $fields = "*";
         else if (is_array($fields)) $fields = implode(",", $fields);
@@ -168,15 +157,6 @@ class Model {
 
     function getFirst() {
         $this->current = $this->cursor->fetch_assoc();
-
-        if ($this->current) {
-            //Carga los valores de los campos 
-            foreach($this->struct as $fieldName => $def) {
-                if (isset($this->current[$fieldName]))
-                    $this->struct[$fieldName]["_value"] = $this->current[$fieldName];
-            }
-        }
-
         return $this->current;
     }
 
@@ -217,8 +197,6 @@ class Model {
         $this->condition   = [];
         $this->orCondition = [[$field, $op, $value]];
         $this->orderBy     = "";
-
-        $this->BlankFields();
         
         return $this;
     }
@@ -249,7 +227,7 @@ class Model {
     }
 
     function totPages($rows=0) {
-        $whereCondition = $this->getWhereCondition();
+        $whereCondition = $this->makeWhereCondition();
         if (empty($whereCondition)) $sqlcmd= "select count(*) as reccount from {$this->table}";
         else $sqlcmd= "select count(*) as reccount from {$this->table} where {$whereCondition}";
 
@@ -287,7 +265,7 @@ class Model {
         //verificar que los campos a insertar estén en la estructura
         if (!$this->RequiredFields_Verify($data)) {
             if ($this->sqlVerbose) throw new Exception("ERROR on sql insert => {$this->content()}");
-            return false;
+            return 0;
         }
 
         $sqlcmd= "insert into {$this->table} (" . implode(",", array_keys($this->record)) . ") values (" . trim(str_repeat("?,", count($this->record)), ",") . ")";
@@ -296,21 +274,14 @@ class Model {
             $stmt= $this->dbconn->prepare($sqlcmd);
             $stmt->execute(array_values($this->record));
 
-            //recupera el registro recien guardado
-            $insert_id = $this->dbconn->insert_id;
-
-            $this->getById($insert_id);
-
-            $this->setResult(true, $this->current);
-            return true;
+            return $this->dbconn->insert_id;
 
         } catch (Exception $e) {
             if ($this->sqlVerbose) throw new Exception("ERROR on sql insert => {$e->getMessage()}");
             $this->setResult(false, $e->getMessage());
-            return false;
+            return 0;
         }
     }
-
 
     function update(int $id, array $replacements) {
         $id     = $this->dbconn->real_escape_string($id);
@@ -352,9 +323,26 @@ class Model {
         $id= $this->dbconn->real_escape_string($id);
         $this->query("delete from {$this->table} where id=$id");
 
-        if ($this->affected_rows()>0) $this->setResult(true, "Registro Eliminado OK.");
+        $affected_rows = $this->affected_rows();
+
+        if ($affected_rows>0) $this->setResult(true, "$affected_rows Registros Eliminados OK.");
         else $this->setResult(false, "NO se eliminaron registros");
 
         return ($this->success());
     }
+
+    static function getDatastore($datastore) {
+        if  (is_readable("../app/models/datastores/$datastore.php")) return include "../app/models/datastores/$datastore.php";
+        elseif ($datastore=="default") return [
+                                                  "DB_HOST"       => getenv("DB_HOST"),
+                                                  "DB_PORT"       => (int) getenv("DB_PORT"),
+                                                  "DB_DATABASE"   => getenv("DB_DATABASE"),
+                                                  "DB_USERNAME"   => getenv("DB_USERNAME"),
+                                                  "DB_PASSWORD"   => getenv("DB_PASSWORD"),
+                                                  "DB_AUTOCOMMIT" => getenv("DB_AUTOCOMMIT"),
+                                                  "SQL_VERBOSE"   => getenv("SQL_VERBOSE"),
+                                              ];
+        else die("<h3>Datastore no encontrado $datastore");
+    }
+
 }

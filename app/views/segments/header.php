@@ -20,10 +20,19 @@
         <?php else: ?>
         <a href="/login"> <img src="img/avatar-user.svg" style="width:35px; height:35px;"> </a>
         <?php endif?>
-        <a href="carrito"> <img src="img/carrito.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger">5      CAMBIA ACA</div> </a>
+        <a href="carrito"> <img src="img/carrito.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger">0</div> </a>
     </div>
 </header>
 <script>
+
+window.addEventListener("load", function() {
+    const contenidoGuardado = localStorage.getItem("contenidoDiv");
+    if (contenidoGuardado) {
+        document.getElementById("badge-carrito").innerHTML = contenidoGuardado;
+    }
+});
+    
+
     function cerrarSesion(id){
         document.location.href= "/logout?usuarioid="+id;
     };
