@@ -1,36 +1,55 @@
-console.log("carrito.js cargado correctamente");
 
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 let carritoContainer = document.querySelector('#tabla-prod table');
+console.log(carrito);
 
-function carrito_confirmar() {
-   /* Enviar al server POST un json con esta estructura:
-   
-            {
-                "dirent"      : "calle y numero",
-                "horaent"     : "24/10/2024 17:50",
-                "aclaraciones": "dos pisos por escalera",
-                "carrito"     : [
-                                {"id":3 , "cantidad":5},
-                                {"id":12, "cantidad":2},
-                                {"id":37, "cantidad":1}
-                            ]
-            }
-   
-   */
+function carrito_confirmar(event) {
+    // Prevenir el envío por defecto del formulario
+    event.preventDefault();
 
-    let reserva = {
-        "dirent"        : document.getElementById("dirent").value, 
-        "horaent"       : document.getElementById("horaent").value,
-        "aclaraciones"  : document.getElementById("aclaraciones").value,
-        "carrito"       : localStorage.getItem('carrito')
+    // Obtener los elementos del formulario
+    const dirent = document.getElementById("dirent").value;
+    const horaent = document.getElementById("horaent").value;
+    const aclaraciones = document.getElementById("msg").value;
+
+    // Verifica que 'carrito' esté definido antes de continuar
+    if (typeof carrito === 'undefined' || !Array.isArray(carrito)) {
+        console.error("Error: 'carrito' no está definido o no es un array.");
+        alert("El carrito no está definido correctamente.");
+        return;
     }
 
-    //enviar reserva con POST a la ruta: "/carrito_confirmar"
-    //recibe un mensaje con la respuesta y hay que renderizaral en document
+    // Construir el objeto reserva solo si todos los campos están completos
+    let reserva = {
+        "dirent": dirent,
+        "horaent": horaent,
+        "aclaraciones": aclaraciones,
+        "carrito": carrito // Asegúrate de que 'carrito' esté definido correctamente
+    };
 
+    console.log(reserva); // Verifica que el objeto se construyó correctamente
 
+    // Ejecutar el fetch solo si reserva está correctamente definido
+    fetch("carrito_confirmar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(reserva) // Convertir el objeto reserva a una cadena JSON
+    })
+   
+    .then(data => {
+        console.log("Éxito:", data); 
+        alert("Reserva registrada correctamente");
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Ha ocurrido un error: " + error.message);
+    });
+    
 }
+
+
 
 
 
