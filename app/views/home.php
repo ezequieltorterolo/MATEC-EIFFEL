@@ -46,18 +46,14 @@
             <div class="producto-posicion">
                 <a href =/producto?id=<?=$prd["id"]?>><img class="img-prod" src=img/<?=$prd["imagen"]?>></a>
                 <p class="nombre-prod"><?=$prd["nombre"]?></p>
-                <p class="precio-prod"><?php if(isset($prd["precioMayor"])): ?>
-                    $<?=$prd["precioMayor"]?> Al por mayor -
-            <?php else: ?>
-                &nbsp
-            <?php endif; ?>$<?=$prd["precio"]?> c/u </p>
+                <p class="precio-prod"><?php if(isset($prd["precioCaja"])): ?>
+                    $<?=$prd["precioCaja"]?> Al por mayor -
+                    <?php else: ?>
+                    &nbsp
+                     <?php endif; ?>$<?=$prd["precio"]?> c/u </p>
             </div>
-        <?php endforeach?>
+            <?php endforeach?>
     </div>
-            </div>
-            </div>
-    
-    <div id="productos" onclick="redirigir()">
 </div>
 
 <?php include  "segments/footer.php" ?>

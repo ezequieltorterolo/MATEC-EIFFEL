@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,800;1,600&display=swap');
+
+
+
 body{
-    background-color: #EFF3F6;
+    background-color: #253141;
     margin: 0px;
+    font-family: 'Poppins', semi-bold;
 }
+
+
 
 body > #cont-admin{
     display: flex;
@@ -45,10 +52,16 @@ a {
     transition: all 0.2s;
 }
 
-.boton-admin-opciones:hover{
+.boton-admin-opciones:hover {
+    background-color: #EFF3F6;
     transform: scale(1.02);
     box-shadow: 2px 4px 8px rgb(19, 2, 41);
 }
+
+.boton-admin-opciones:hover a {
+    color:#253141;
+}
+
 img{
     margin-top: 50px;
     width: 400px;

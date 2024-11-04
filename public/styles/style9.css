@@ -1,0 +1,57 @@
+body{
+    background-color: antiquewhite;
+    text-align: justify;
+}
+
+.seccion-titulo{
+    margin-bottom: 20px ;
+    width: fit-content;
+}
+
+#seccion-subtitulo{
+    margin-left: 20px;
+    margin-bottom: 10px ;
+    width: fit-content;
+}
+#seccion-subtitulo hr{
+    margin-top: 10px;
+}
+
+
+hr{
+    width: 90%;
+    margin-top: 20px;
+}
+.body-info{
+    margin: 20px;
+    margin-bottom: 50px;
+}
+
+.imagen-margen{
+    background-image: url(../img/foto-empresa-eiffel.jpg);
+    background-position: center;
+    margin: 0px;
+    width: 100%;
+    height: 200px;
+}
+
+#cont-todo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#seccion-imagen img{
+    width: 600px;
+}
+
+.lista-pasos{
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 80%;
+}
+.lista-pasos li{
+    margin-bottom: 5px;
+    padding: 5px;
+}

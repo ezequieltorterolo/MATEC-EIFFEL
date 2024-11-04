@@ -22,24 +22,7 @@ body {
   
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #253141;
-}
-    header img{
-        height: 100px;
-    } 
-    #buscador {
-        width: 60%;
-        padding: 6px;
-        margin: 10px;
-        border-radius: 20px;
-    }
+
 
 
 
@@ -165,11 +148,15 @@ header {
     font-weight:bold;
 }
 
+
+
+
+
 #productos-nuevos{
     display: flex;
-    justify-content: center;
-    
-    
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .producto-posicion{
@@ -177,16 +164,22 @@ header {
     border: 2px solid black;
     width: 200px;
     transition: 0.2s;
+    margin-bottom: 20px;
 }
 
-.producto-posicion:hover{
+.producto-posicion:hover {
     border-radius: 5px;
     transform: scale(1.01);
     box-shadow: 5px 5px 8px 0px #0000008c;
 }
 
+.producto-posicion:hover .img-prod{
+    border-radius: 5px;
+}
+
+
 .img-prod{
-    width: 200px;
+    width: 196px;
     height: 200px;
 }
 .nombre-prod{

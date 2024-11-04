@@ -9,7 +9,7 @@
     <div id="cont-admin">
         <div id="cont-user">
             <h1>ADMINISTRADOR DE EIFFEL</h1>
-            <p>Usuario logueado: <b><?= $user ?></b></p>
+            <p>Bienvenido, <b><?= $user ?></b></p>
             <hr>
         </div>
         <div class="boton-admin-opciones"><a href="/admin/gestionProductos">Gestionar Productos</a></div>

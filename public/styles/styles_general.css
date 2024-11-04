@@ -5,6 +5,70 @@
    
 }
 
+/*header*/
+
+header {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #253141;
+}
+    header img{
+        height: 100px;
+    } 
+    #buscador {
+        width: 60%;
+        padding: 6px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+
+
+.cont-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.cont-buscador{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+#lupa {
+    margin-right: 50px;
+    cursor:pointer;
+    opacity: 0.8;
+}
+
+.cont-buscador #buscador {
+    width: 100%;
+}
+
+.icono-user{
+    fill: red;
+    color: red; /* Sin color inicial */
+    stroke: red; /* Color inicial de borde */
+    transition: fill 0.3s, stroke 0.3s; /* Transición suave */
+}
+
+
+.icono-user:hover {
+    color:red /* Color de borde blanco al hacer hover */
+}
+
+
+ 
+#badge-carrito {
+    position: relative;
+    right: 15px;
+    bottom: 10px;
+}
+
 body {
    background-color: #EFF3F6;
    font-family: 'Poppins', semi-bold;
@@ -27,7 +91,8 @@ body {
  
     padding:2px;
   }
- 
+
+
  
   .derecha {
      float:right;
@@ -68,6 +133,12 @@ header {
     background-color: #253141;
 }
 
+a { 
+    outline: none; 
+    border: 0; 
+    text-decoration: none; 
+  }
+
 header img {
     height: 100px;
 }
@@ -77,6 +148,10 @@ header img {
     padding: 6px;
     margin: 10px;
     border-radius: 20px;
+}
+
+a svg:hover{
+    fill: aqua;
 }
 
 /* Nav */
@@ -101,6 +176,7 @@ header img {
 }
 
 .submenu{
+    padding: 0px;
     width: 150%;
     position: absolute;
     display: none;
