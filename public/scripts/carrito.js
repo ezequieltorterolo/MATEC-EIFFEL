@@ -60,6 +60,7 @@ function mostrarCarrito() {
             <th>Cantidad</th>
             <th>Total</th>
             <th>Stock</th>
+            <th>Eliminar</th>
         </tr>`;
 
     if (carrito.length > 0) {
@@ -108,8 +109,8 @@ function agregarFila(producto, index) {
     productRow.innerHTML = `
         <td style="width:30%;">
             <img src="img/${prdinfo.imagen}">
-            <a href="/producto?id=${prdinfo.id}"><p>${prdinfo.nombre}</p></a>
-            <span id="code">${prdinfo.id}</span>
+            <a href="/producto?id=${prdinfo.id}"><p id="pnombre">${prdinfo.nombre}</p></a>
+            <span id="code">codigo de producto:${prdinfo.id}</span>
         </td>
         <td>
             <button onclick="quitar(${producto.id})">-</button>

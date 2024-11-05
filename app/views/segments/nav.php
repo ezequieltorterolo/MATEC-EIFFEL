@@ -16,15 +16,13 @@ use rutex\BaseController;
         </li>
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          CATEGORIAS
-</a>
-       
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" >Dropdown</a>
+<ul class="dropdown-menu">
             <?php foreach($categoria as $cate):?>
                <li> <a class="dropdown-item"  href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></a></li> <li><hr class="dropdown-divider"></li>
             <?php endforeach?>
             </div>
-    
+            </ul>
         </li>
    
         <li class="nav-item"><a href="/catalogo">CATALOGO</a></li> 
@@ -76,3 +74,7 @@ use rutex\BaseController;
 </nav>
 
 </body>
+<script>
+const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
+</script>

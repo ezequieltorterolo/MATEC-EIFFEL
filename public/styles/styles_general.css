@@ -62,7 +62,7 @@ header {
 .icono-user:hover {
     color:red /* Color de borde blanco al hacer hover */
 }
-
+ /* ??? que es esto*/
 
  
 #badge-carrito {
@@ -76,16 +76,6 @@ body {
    font-family: 'Poppins', semi-bold;
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -117,31 +107,9 @@ a svg:hover{
     color: #253141;
 }
 
-.menu li a:hover{
-    text-decoration: underline;
-}
 
-.submenu{
-    padding: 0px;
-    width: 150%;
-    position: absolute;
-    display: none;
-    z-index: 100;
-    
-}
 
-.submenu a{
-    text-decoration: none;
-    color: whitesmoke;
-}
-.submenu li{
-    background-color: #253141;
-    border-bottom: 1px solid black;
-    padding: 15px;
-}
-.menu li:hover .submenu{
-    display: block;
-}
+
 
 
 nav ul li a::after {
@@ -181,6 +149,73 @@ footer{
 }
 
 
+footer {
+    background-color: #253141;
+    color: #b2b2b2;
+    padding: 20px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+
+.footer-container div {
+    flex: 1;
+    padding: 10px;
+}
+
+.logo img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.logo p {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-top: 10px;
+}
+
+.contact-info p, .about a, .social h4, .payment-methods h4 {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-bottom: 8px;
+}
+
+.contact-info a, .about a {
+    color: #b2b2b2;
+    text-decoration: none;
+}
+
+.payment-methods .payment-icons {
+    display: flex;
+    gap: 5px;
+}
+
+.payment-icons .icon {
+    width: 30px;
+    height: 20px;
+    background-color: #333;
+    display: inline-block;
+}
+
+.social h4 {
+    margin-bottom: 10px;
+}
+
+.social .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+}
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 

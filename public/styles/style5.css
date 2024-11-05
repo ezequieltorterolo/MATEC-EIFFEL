@@ -15,83 +15,19 @@ input[type=number] {
 
 
 
+
+
 .subtitulo{
     text-align: center;
     margin-top: 50px;
 }
 
-.carrito-hover{
-    display: none;
-    position: relative;
-    background-color: rgb(107, 156, 33);
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    cursor: pointer;
-    transition: 0.2s;
-}
 
-.productos-nuevos{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    
-    
-}
-
-.producto-posicion{
-    height:fit-content;
-    border: 2px solid black;
-    width: 200px;
-    transition: 0.2s;
-}
-
-.producto-posicion:hover{
-    border-radius: 5px;
-    transform: scale(1.01);
-    box-shadow: 5px 5px 8px 0px #0000008c;
-}
-.producto-posicion:hover > .carrito-hover{
-    display: block;
-}
-.carrito-hover:hover{
-    transform: scale(1.05);
-}
-
-.img-prod{
-    width: 200px;
-    height: 200px;
-}
-.nombre-prod{
-    margin: 0px;
-    background-color: #253141;
-    color: whitesmoke;
-}
-.precio-prod{
-    text-align: center;
-}
-
-footer{
-    margin-top: 50px;
-    background-color: #253141;
-}
-#footer-cont{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#footer-cont img{
-    width: 300px;
-}
-#footer-cont p{
-    color: whitesmoke;
-}
 
     #seccion-titulo{
-        margin-bottom: 20px ;
-        width: fit-content;
-        margin-left: 60px;
+        margin-bottom: 20px;
+      
+      
     }
 
     
@@ -99,27 +35,20 @@ footer{
     margin: 20px;
 }
 
-#tabla-prod {
-    flex-direction: row;
-    flex:auto;
-    margin-left:50px;
+
+
+
+
+
+
+tr {
+    border-bottom:2px solid #253141 !important;
 }
-
-td{
-    
-    text-align:center;
-  padding-top:30px;
-
-}
-
-
-
 table {
  
-  
-    width:90%;
-    margin-left: 60px;
-  
+  text-align:center;
+
+   
 }
 
 th {
@@ -133,7 +62,10 @@ td {
     margin-top: 5px;
     font-size:20px;
   padding-bottom:14px;
-        border-bottom: solid   1px #253141;
+   align-content:center;
+          
+    text-align:center;
+    padding-top:30px;
    
     
 }
@@ -150,8 +82,8 @@ td {
 
 td img{
 height:fit-content;
-width:80px;
-border:3px solid #253141;
+width:95px;
+border:1px solid #253141;
 
 float:left;
 
@@ -161,6 +93,7 @@ float:left;
 #basura {
     width:35px;
     height:35px;
+  
     border: none;
    transition: all 1s  
 
@@ -253,4 +186,15 @@ float:left;
     background-color: #253141;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) { 
+#pnombre {
+    display:none;
+}
+    
+#body-carrito{
+    margin: 5px;
+}
+
 }
