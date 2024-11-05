@@ -41,6 +41,7 @@
           <thead>
             <tr>
               <th>Estado</th>
+              <th>Usuario</th>
               <th>Calle</th>
               <th>Fecha</th>
               <th>Aclaraciones</th>
@@ -57,6 +58,9 @@
                     <option value="2" <?php if ($res["estado"] == 2): ?>selected <?php endif ?>>Cancelado</option>
                   </select>
                 </td>
+                <?php foreach($usuario as $user):?> <?php if($user["id"] == $res["usuario_id"]):?>
+                <td><?= $user["nombre"] ?> <?php endif;?></td>
+                <?php endforeach;?>
                 <td><input type="text" name="direccion[]" value="<?= $res["entrega_direccion"] ?>" disabled></td>
                 <td><input type="datetime-local" name="fecha[]" value="<?= date('Y-m-d\TH:i', strtotime($res['entrega_fechahora'])) ?>" disabled></td>
                 <td><input type="text" name="aclaraciones[]" value="<?= $res["aclaraciones"] ?>" disabled></td>
@@ -91,12 +95,12 @@
                                   <td>
                                     <div id="quitaragregar">
                                       <button type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'quitar')" disabled>-</button>
-                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd["cantidad"] ?>" min="1" max="<?php $prod['stock'] ?>" disabled>
+                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock']?>"disabled>
                                       <button type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'agregar')" disabled>+</button>
                                     </div>
                                   </td>
-                                  <td class="precio"><?= number_format($resprd["precio"], 2) ?></td>
-                                  <td class="subtotal"><?= number_format($resprd["cantidad"] * $resprd["precio"], 2) ?></td>
+                                  <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
+                                  <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
                                   <td><img onclick="eliminarProducto(<?= $resprd['id'] ?>)"src="../img/basura.svg"></td>
                                 </tr>
                               <?php endif; ?>

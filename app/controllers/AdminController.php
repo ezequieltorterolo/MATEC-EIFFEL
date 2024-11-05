@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Producto;
 use app\models\Reserva;
 use app\models\Categoria;
+use app\models\Usuario;
 use app\models\ReservaProductos;
 use rutex\BaseController;
 
@@ -211,9 +212,15 @@ class AdminController extends BaseController
         $reservas = new Reserva();
         $producto = new Producto();
         $reservaproducto = new ReservaProductos();
+        $usuario = new Usuario();
+        if (isset($_GET["nombre"])) {
+            $nombre = $_GET["nombre"];
+            if (!empty($nombre)) $usuario->where("nombre", "like", "%$nombre%");
+        };
         $data["reservas"] = $reservas->getAll();
         $data["producto"] = $producto->getAll();
         $data["reservaproducto"] = $reservaproducto->getAll();
+        $data["usuario"] = $usuario->getAll();
         return $this->view("admin/gestionReservas", $data);
     }
     function guardarTodoReservas($data)

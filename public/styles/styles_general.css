@@ -6,6 +6,7 @@
    
 }
 
+
 /*header*/
 
 header {
@@ -61,7 +62,7 @@ header {
 .icono-user:hover {
     color:red /* Color de borde blanco al hacer hover */
 }
-
+ /* ??? que es esto*/
 
  
 #badge-carrito {
@@ -76,73 +77,7 @@ body {
 
 }
 
-/* Responsividad */
-@media (max-width: 768px) {
-    .navegacion ul {
-        display:none;
-    }
 
-    .iconos {
-        background-color: #B7BCC0;
-    display:inline-block !important;
-    width:100%;
-    }
-
-   svg {
-    width:50px;
-    height:30px;
- 
-    padding:2px;
-  }
- 
- 
-  .derecha {
-     float:right;
- 
-  }
- 
-  .izquierda {
-     float:left;
-  }
- 
- 
-  .menu {
-     display:none;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
- /* Header */
-
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #253141;
-}
-
-a { 
-    outline: none; 
-    border: 0; 
-    text-decoration: none; 
-  }
-
-header img {
-    height: 100px;
-}
 
 #buscador {
     width: 60%;
@@ -172,31 +107,30 @@ a svg:hover{
     color: #253141;
 }
 
-.menu li a:hover{
-    text-decoration: underline;
-}
 
-.submenu{
-    padding: 0px;
-    width: 150%;
+
+
+
+
+nav ul li a::after {
+    content: "";
     position: absolute;
-    display: none;
-    z-index: 100;
-    
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #253141;
+    transition: width 0.3s;
+   
 }
 
-.submenu a{
-    text-decoration: none;
-    color: whitesmoke;
-}
-.submenu li{
-    background-color: #253141;
-    border-bottom: 1px solid black;
-    padding: 15px;
-}
-.menu li:hover .submenu{
-    display: block;
-}
+nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  a  {
+    text-decoration:none !important;
+  }
 
 footer{
     margin-top: 50px;
@@ -214,6 +148,73 @@ footer{
     color: whites
 }
 
+
+footer {
+    background-color: #253141;
+    color: #b2b2b2;
+    padding: 20px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+
+.footer-container div {
+    flex: 1;
+    padding: 10px;
+}
+
+.logo img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.logo p {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-top: 10px;
+}
+
+.contact-info p, .about a, .social h4, .payment-methods h4 {
+    font-size: 14px;
+    color: #b2b2b2;
+    margin-bottom: 8px;
+}
+
+.contact-info a, .about a {
+    color: #b2b2b2;
+    text-decoration: none;
+}
+
+.payment-methods .payment-icons {
+    display: flex;
+    gap: 5px;
+}
+
+.payment-icons .icon {
+    width: 30px;
+    height: 20px;
+    background-color: #333;
+    display: inline-block;
+}
+
+.social h4 {
+    margin-bottom: 10px;
+}
+
+.social .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
 }
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
