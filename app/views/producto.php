@@ -218,7 +218,13 @@ var producto = <?php echo json_encode($prd); ?>;
              localStorage.setItem("contenidoDiv", cantidadCarrito);
 
 // Al recargar la página, restaurar el contenido
-  
+window.addEventListener("load", function() {
+    const contenidoGuardado = localStorage.getItem("contenidoDiv");
+    if (contenidoGuardado) {
+        document.getElementById("miDiv").innerHTML = contenidoGuardado;
+    }
+});
+    
 /// 
          }
 

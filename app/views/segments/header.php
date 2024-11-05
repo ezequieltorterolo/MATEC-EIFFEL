@@ -20,16 +20,22 @@
         <?php else: ?>
         <a href="/login"> <img src="img/avatar-user.svg" style="width:35px; height:35px;"> </a>
         <?php endif?>
-        <a href="carrito"> <img src="img/carrito.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger">0</div> </a>
+        <a href="carrito"> <img src="img/carrito.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger"></div> </a>
     </div>
 </header>
 <script>
+  function mostrarCantidadP(){
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let cantidadCarrito = carrito.length; 
+    localStorage.setItem("contenidoDiv", cantidadCarrito);
+    document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
 
+           }
 window.addEventListener("load", function() {
-    const contenidoGuardado = localStorage.getItem("contenidoDiv");
-    if (contenidoGuardado) {
-        document.getElementById("badge-carrito").innerHTML = contenidoGuardado;
-    }
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let cantidadCarrito = carrito.length; 
+    localStorage.setItem("contenidoDiv", cantidadCarrito);
+    document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
 });
     
 

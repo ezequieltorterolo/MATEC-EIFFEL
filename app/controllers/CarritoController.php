@@ -54,7 +54,7 @@ class CarritoController extends BaseController
             ];
         
             // Insertar la reserva en la base de datos
-          $reserva->insert($cabezal_reserva);
+            $reserva_id = $reserva->insert($cabezal_reserva);
         
             
         
@@ -69,7 +69,7 @@ foreach ($data["carrito"] as $producto) {
    
     $reserva_producto = [
         "totalProducto" => $total,
-        "reserva_id" => $reserva,
+        "reserva_id" => $reserva_id,
         "producto_id" => $producto["id"],
         "cantidad" => $producto["cantidad"],
     ];

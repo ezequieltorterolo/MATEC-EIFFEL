@@ -41,6 +41,11 @@ function carrito_confirmar(event) {
     .then(data => {
         console.log("Éxito:", data); 
         alert("Reserva registrada correctamente");
+
+        localStorage.setItem('carrito', JSON.stringify([]));
+        
+        window.location.href = window.location.href;
+
     })
     .catch(error => {
         console.error("Error:", error);
