@@ -44,7 +44,7 @@ Route::get("/admin/modificarProducto"  , [AdminController::class, "modificarProd
 Route::post("/admin/gestionProductos"  , [AdminController::class, "guardarTodoProductos"]);
 Route::post("/admin/aniadirProducto"   , [AdminController::class, "validarProducto"]);
 Route::post("/admin/modificarProducto" , [AdminController::class, "validarProducto"]);
-Route::get("/admin/eliminar", [AdminController::class, "eliminar"]);
+Route::get("/admin/eliminar"           , [AdminController::class, "eliminar"]);
 
 
 //Administrador-pagina de reservas
