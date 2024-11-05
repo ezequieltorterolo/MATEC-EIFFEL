@@ -66,10 +66,10 @@ $reservaProductos = new ReservaProductos;
 
 foreach ($data["carrito"] as $producto) {
     $total = 1; 
-    $reserva_id=4;
+   
     $reserva_producto = [
         "totalProducto" => $total,
-        "reserva_id" => $reserva_id,
+        "reserva_id" => $reserva,
         "producto_id" => $producto["id"],
         "cantidad" => $producto["cantidad"],
     ];
