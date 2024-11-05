@@ -160,6 +160,9 @@ nav ul li a:hover::after {
     width: 100%;
   }
   
+  a  {
+    text-decoration:none !important;
+  }
 
 footer{
     margin-top: 50px;
