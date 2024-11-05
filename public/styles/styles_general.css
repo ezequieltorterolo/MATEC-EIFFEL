@@ -6,6 +6,7 @@
    
 }
 
+
 /*header*/
 
 header {
@@ -87,27 +88,6 @@ body {
 
 
 
- /* Header */
-
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #253141;
-}
-
-a { 
-    outline: none; 
-    border: 0; 
-    text-decoration: none; 
-  }
-
-header img {
-    height: 100px;
-}
 
 #buscador {
     width: 60%;
@@ -162,6 +142,24 @@ a svg:hover{
 .menu li:hover .submenu{
     display: block;
 }
+
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #253141;
+    transition: width 0.3s;
+   
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+  }
+  
 
 footer{
     margin-top: 50px;
