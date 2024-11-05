@@ -50,8 +50,9 @@
             </div>
         <?php endforeach?>
         
+        </div>
     </div>
+
     <?php include  "segments/footer.php" ?>
 </body>
-
 </html>

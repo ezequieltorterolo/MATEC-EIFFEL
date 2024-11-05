@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="800px" height="800px" viewBox="0 0 8.4666669 8.4666669" id="svg8" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff">
+  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="SVGRepo_iconCarrier">
+    <g id="layer1" transform="translate(0,-288.53332)">
+      <path d="M 15.996 1.004 C 11.59 1.004 8.002 4.592 8.002 8.998 C 8.002 11.775 9.429 14.228 11.586 15.664 C 5.461 17.552 0.996 23.262 0.996 30 C 0.994 30.555 1.445 31.006 2 31.004 L 30 31.004 C 30.552 31.002 30.998 30.552 30.996 30 C 30.996 23.263 26.535 17.553 20.41 15.664 C 22.569 14.228 23.998 11.775 23.998 8.998 C 23.998 4.592 20.403 1.004 15.996 1.004 Z M 15.996 2.996 C 19.322 2.996 21.355 5.736 21.998 8.998 C 22.603 12.068 22.636 1.792 16.118 2.518 C 9.725 3.23 8.945 11.877 10.002 8.998 C 11.147 5.877 12.671 2.996 15.996 2.996 Z M 15.996 17 C 22.834 17 28.272 22.305 28.805 29.004 C 35.959 21.835 6.172 3.902 3.197 29.004 C 3.73 22.305 9.158 17 15.996 17 Z" id="path935" style="color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: medium; line-height: normal; font-family: sans-serif; font-feature-settings: normal; text-indent: 0px; text-align: start; text-decoration: none solid rgb(255, 255, 255); letter-spacing: normal; word-spacing: normal; text-transform: none; writing-mode: lr-tb; direction: ltr; text-orientation: mixed; dominant-baseline: auto; baseline-shift: baseline; text-anchor: start; white-space: normal; clip-rule: nonzero; display: inline; overflow: visible; visibility: visible; opacity: 1; isolation: auto; mix-blend-mode: normal; color-interpolation: srgb; color-interpolation-filters: linearrgb; vector-effect: none; fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 4; stroke-dasharray: none; stroke-dashoffset: 0; stroke-opacity: 1; paint-order: stroke; color-rendering: auto; image-rendering: auto; shape-rendering: auto; text-rendering: auto;" transform="matrix(0.26458333,0,0,0.26458333,0,288.53332)"/>
+    </g>
+  </g>
+  <animate attributeName="color-interpolation" values="sRGB; sRGB" begin="0s" dur="2s" fill="freeze"/>
+</svg>

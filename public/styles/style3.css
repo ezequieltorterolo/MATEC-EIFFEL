@@ -7,45 +7,6 @@
     margin-top: 50px;
 }
 
-#productos-nuevos{
-    padding-top: 20px;
-    max-width: 100%;
-    display: flex;
-    gap: 50px 100px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-
-}
-
-.producto-posicion{
-    margin-right: 20px;
-    border: 2px solid black;
-    width: 200px;
-    transition: 0.2s;
-    display:inline;
-
-}
-
-.producto-posicion:hover{
-    border-radius: 5px;
-    transform: scale(1.01);
-    box-shadow: 5px 5px 8px 0px #0000008c;
-}
-
-.img-prod{
-    background-color: white;
-    width: 200px;
-    height: 200px;
-}
-.nombre-prod{
-    margin: 0px;
-    background-color: #253141;
-    color: whitesmoke;
-}
-.precio-prod{
-    text-align: center;
-}
 
 footer{
     margin-top: 50px;
