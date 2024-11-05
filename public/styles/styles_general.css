@@ -51,19 +51,6 @@ header {
     width: 100%;
 }
 
-.icono-user{
-    fill: red;
-    color: red; /* Sin color inicial */
-    stroke: red; /* Color inicial de borde */
-    transition: fill 0.3s, stroke 0.3s; /* Transición suave */
-}
-
-
-.icono-user:hover {
-    color:red /* Color de borde blanco al hacer hover */
-}
- /* ??? que es esto*/
-
  
 #badge-carrito {
     position: relative;
@@ -216,6 +203,53 @@ footer {
     width: 24px;
     height: 24px;
 }
+
+/*FICHA PRODUCTO EN CATALOGO*/
+
+
+
+
+#productos-nuevos{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.producto-posicion{
+    margin-right: 20px;
+    border: 2px solid black;
+    width: 200px;
+    transition: 0.2s;
+    margin-bottom: 20px;
+}
+
+.producto-posicion:hover {
+    border-radius: 5px;
+    transform: scale(1.01);
+    box-shadow: 5px 5px 8px 0px #0000008c;
+}
+
+.producto-posicion:hover .img-prod{
+    border-radius: 5px;
+}
+
+
+.img-prod{
+    width: 196px;
+    height: 200px;
+}
+.nombre-prod{
+    margin: 0px;
+    background-color: #253141;
+    color: whitesmoke;
+}
+.precio-prod{
+    text-align: center;
+}
+
+
+
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 

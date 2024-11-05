@@ -1,7 +1,4 @@
 <footer>
-
-
-
     <div class="footer-container">
             <div class="logo">
                 <img src="img/logo.jpg" alt="Logo Eiffel">
