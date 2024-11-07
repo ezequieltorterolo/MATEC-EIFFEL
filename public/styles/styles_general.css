@@ -118,7 +118,7 @@ a svg:hover{
 
 
 
-nav ul li a::after {
+nav ul li ::after {
     content: "";
     position: absolute;
     width: 0;
@@ -136,6 +136,7 @@ nav ul li a:hover::after {
   
   a  {
     text-decoration:none !important;
+    
   }
 
 footer{
