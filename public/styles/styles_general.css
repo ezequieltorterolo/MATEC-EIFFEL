@@ -123,17 +123,7 @@ footer{
     margin-top: 50px;
     background-color: #253141;
 }
-#footer-cont{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#footer-cont img{
-    width: 300px;
-}
-#footer-cont p{
-    color: whites
-}
+
 
 
 footer {
@@ -203,6 +193,9 @@ footer {
     width: 24px;
     height: 24px;
 }
+
+
+
 
 /*FICHA PRODUCTO EN CATALOGO*/
 
@@ -279,9 +272,49 @@ footer {
   .izquierda {
      float:left;
   }
+
+  /*los subtitulos de las paginas*/
+.subtitulo {
+    margin-bottom: 20px;
+}
  
  
   .menu {
      display:none;
   }
+
+  .footer-container{
+    display: grid;
+    }
+    .logo img{
+        width: 200px ;
+    }
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .producto-posicion{
+        margin-right: 20px;
+        border: 2px solid black;
+        width: 150px;
+        transition: 0.2s;
+        margin-bottom: 20px;
+    }
+    
+    
+    .img-prod{
+        width: 150px;
+        height: 150px;
+    }
+    .nombre-prod{
+        margin: 0px;
+        background-color: #253141;
+        color: whitesmoke;
+    }
+    .precio-prod{
+        text-align: center;
+    }
+    
 }
+
+
