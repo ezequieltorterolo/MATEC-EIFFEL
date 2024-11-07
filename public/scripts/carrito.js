@@ -93,6 +93,8 @@ function mostrarCarrito() {
     } else {
         carritoContainer.innerHTML += "<tr><td colspan='4'>El carrito está vacío</td></tr>";
         document.querySelector('#cont-total h2').innerText = "$0.00";
+        
+        document.getElementById("cont-abajo").style.display="none";
     }
 }
 
