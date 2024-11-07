@@ -6,13 +6,10 @@
    
 }
 
-.titulos {
-    font-weight: bolder;
-}
-.letra {
-font-weight: bold;
-}
 
+#body-catalogo{
+    margin: 20px;
+}
 
 
 
@@ -38,6 +35,15 @@ header {
         border-radius: 20px;
     }
 
+
+.icono-alternativo-logueado{
+    
+}
+
+
+.cont-sesion-nombre-y-foto{
+    display: flex;
+}
 
 .cont-menu {
     display: flex;
@@ -70,7 +76,6 @@ header {
 body {
    background-color: #EFF3F6;
    font-family: 'Poppins', semi-bold;
-   
 
 }
 
@@ -112,17 +117,6 @@ a svg:hover{
 
 /* Nav */
 
-#buscador2 {
-      transition: width 1s;
-    width: 0%;
-    padding: 3px;
-    margin:5px;
-    border:none;
-    border-radius: 13px;
-    display:none;
-  
-}
-
 .iconos button {
     background-color:transparent;
     border:transparent;
@@ -145,28 +139,11 @@ a svg:hover{
 }
 
 
-.nav .dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; /* opcional: ajusta según el diseño */
-  }
-  
-  /* Opcional: aplicar una transición para un efecto más suave */
-  .dropdown-menu {
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    display: block; /* Para evitar problemas de transición */
-    visibility: hidden;
-  }
-  
-  .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-  }
 
 
 
 
-nav ul li ::after {
+nav ul li a::after {
     content: "";
     position: absolute;
     width: 0;
@@ -184,7 +161,6 @@ nav ul li a:hover::after {
   
   a  {
     text-decoration:none !important;
-    
   }
 
 footer{
@@ -299,6 +275,7 @@ footer {
 .img-prod{
     width: 196px;
     height: 200px;
+    background-color: white;
 }
 .nombre-prod{
     margin: 0px;
@@ -310,7 +287,30 @@ footer {
 }
 
 
+/*FILTROS CATALOGO*/
 
+#seccion-titulo{
+    margin-bottom: 20px ;
+    width: fit-content;
+}
+#seccion-filtros{
+    display: flex;
+}
+#seccion-filtros h3 {
+    margin-left: 50px;
+}
+#seccion-filtros select{
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+#seccion-filtros p{
+    margin-left: 50px;
+}
+#hr-catalogo{
+    width: 90%;
+    margin-top: 20px;
+}
 
 
 
@@ -346,11 +346,10 @@ footer {
   /*los subtitulos de las paginas*/
 .subtitulo {
     margin-bottom: 20px;
+    font-weight: bold;
 }
- 
- 
-  .cont-menu {
-     display:none !important;
+  .menu {
+     display:none;
   }
 
   .footer-container{
@@ -375,6 +374,7 @@ footer {
     .img-prod{
         width: 146px;
         height: 150px;
+        background-color: white;
     }
     .nombre-prod{
         margin: 0px;
@@ -393,6 +393,12 @@ footer {
     }
     #seccion-filtros p{
         margin-top: 5px;
+    }
+
+
+    /*SOBRE NOSOTROS*/
+    #seccion-imagen img{
+        display: none;
     }
 }
 

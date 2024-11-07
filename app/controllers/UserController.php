@@ -27,16 +27,14 @@ function login($data)
         $datosusuario = $usuario->where("email", "=", $_POST["email"])
                                 ->select()
                                 ->getFirst();
-        
         if ($usuario->affected_rows()==0)
         {
             $data["msg"] = "Usuario no registrado. Ingrese sus datos";
             return $this->login($data);
         }
-        elseif ($_POST["contraseña"] == $datosusuario["contraseña"])
+        elseif (password_verify($_POST["contraseña"], $datosusuario["contraseña"]))
         {
             $_SESSION["usuario"] = $usuario->usuarioLoggeado();
-
             $this->redirect("/");
         }else {
             $data["msg"] = "Contraseña incorrecta";
@@ -66,6 +64,7 @@ function login($data)
             $data["msg"] = "ya hay una cuenta con ese email";
             return $this->registro($data);
         }
+        $_POST["contraseña"] = password_hash($_POST["contraseña"], PASSWORD_DEFAULT);
         $usuario->insert($_POST);
 
         if ($usuario->success()) {
