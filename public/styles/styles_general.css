@@ -314,7 +314,16 @@ footer {
     .precio-prod{
         text-align: center;
     }
-    
+
+    #seccion-filtros {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        align-items: baseline;
+    }
+    #seccion-filtros p{
+        margin-top: 5px;
+    }
 }
 
 
