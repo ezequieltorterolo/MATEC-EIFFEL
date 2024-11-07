@@ -28,59 +28,72 @@ class CarritoController extends BaseController
     }
 
         
-        function carrito_confirmar() {
-            // Obtener el user_id de la sesión o asignar un valor predeterminado
-            $user_id = $_SESSION["usuario"]["id"];
-        
-            // Leer el cuerpo de la solicitud y decodificar el JSON
-            $data = json_decode(file_get_contents('php://input'), true);
-        
-            // Validar que los datos se hayan recibido correctamente
-            if (!$data) {
-                echo json_encode(["error" => "No se recibieron datos."]);
+    function carrito_confirmar()
+    {
+        $user_id = 3; // Obtener el user_id de la sesión o asignar un valor predeterminado
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if (!$data) {
+            echo json_encode(["success" => false, "error" => "No se recibieron datos."]);
+            return;
+        }
+
+        if (!$this->carrito_validar_stock($data["carrito"])) {
+            echo json_encode(["success" => false, "error" => "Stock insuficiente para uno o más productos."]);
+            return;
+        }
+
+        $reserva = new Reserva;
+        $cabezal_reserva = [
+            "usuario_id" => $user_id,
+            "entrega_direccion" => $data["dirent"],
+            "entrega_fechahora" => $data["horaent"],
+            "aclaraciones" => $data["aclaraciones"],
+            "estado" => 0,
+        ];
+
+        $reserva_id = $reserva->insert($cabezal_reserva);
+
+        if (!$reserva_id) {
+            echo json_encode(["success" => false, "error" => "Error al registrar la reserva en la base de datos."]);
+            return;
+        }
+
+        $reservaProductos = new ReservaProductos;
+        $obj_producto = new Producto;
+
+        foreach ($data["carrito"] as $producto) {
+            $stock_producto = $obj_producto->getbyid($producto["id"]);
+            $total = 1;
+
+            $reserva_producto = [
+                "totalProducto" => $total,
+                "reserva_id" => $reserva_id,
+                "producto_id" => $producto["id"],
+                "cantidad" => $producto["cantidad"],
+            ];
+
+            if (!$reservaProductos->insert($reserva_producto)) {
+                echo json_encode(["success" => false, "error" => "Error al registrar el producto en la reserva."]);
                 return;
             }
-        
-            // Crear el objeto reserva cabezal
-            $reserva = new Reserva;
-        
-            // Preparar el registro cabezal
-            $cabezal_reserva = [
-                "usuario_id" => $user_id,
-                "entrega_direccion" => $data["dirent"],
-                "entrega_fechahora" => $data["horaent"],
-                "aclaraciones" => $data["aclaraciones"],
-                "estado" => 0,
-            ];
-        
-            // Insertar la reserva en la base de datos
-            $reserva_id = $reserva->insert($cabezal_reserva);
-        
-            
-        
 
+            $stock = $stock_producto["stock"] - $producto["cantidad"];
+            $obj_producto->update($producto["id"], ["stock" => $stock]);
+        }
 
-          // Procesar los productos del carrito
-$reservaProductos = new ReservaProductos;
+        echo json_encode(["success" => true, "message" => "Reserva registrada correctamente."]);
+    }
 
+    private function carrito_validar_stock($carrito)
+    {
+        $obj_producto = new Producto;
 
-foreach ($data["carrito"] as $producto) {
-    $total = 1; 
-   
-    $reserva_producto = [
-        "totalProducto" => $total,
-        "reserva_id" => $reserva_id,
-        "producto_id" => $producto["id"],
-        "cantidad" => $producto["cantidad"],
-    ];
+        foreach ($carrito as $producto) {
+            $stock_producto = $obj_producto->getbyid($producto["id"]);
+            if ($stock_producto["stock"] < $producto["cantidad"]) return false;
+        }
 
-     $reservaProductos -> insert($reserva_producto);
-    
+        return true;
     }
 }
-
-}
-        
-    
-
-        

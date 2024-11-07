@@ -16,7 +16,10 @@
 
     <div id="body-catalogo">
         <div id="seccion-titulo">
-            <h1>CATÁLOGO</h1>
+            <!-- <?php foreach($categoria as $cate):?>
+               <h1 class="subtitulo"><?=$cate["nombreCategoria"]?></h1>
+            <?php endforeach?> -->
+            <h1 class="subtitulo">CATÁLOGO</h1>
             <hr>
         </div>
 

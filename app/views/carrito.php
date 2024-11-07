@@ -20,7 +20,7 @@
 
     <div id="body-carrito">
         <div id="seccion-titulo" class="container-fluid float-start">
-            <h1>CARRITO</h1>
+            <h1 class="subtitulo">CARRITO</h1>
             <hr>
         </div>
 
