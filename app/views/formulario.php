@@ -42,7 +42,7 @@
         <div class="form-group">
         <div class="row">
             <?php if ($mode=="registro"):?>
-                <label>for="nombre">Nombre:</label>
+                <label for="nombre">Nombre:</label>
                 <input id="nombre" name="nombre" type="text" placeholder="nombre" value="<?=$name ?? ""?>" required><br><br>
             <?php endif?>
             </div>
