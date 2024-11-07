@@ -1,9 +1,12 @@
+<head>
+<script src="scripts/popup.js"></script>
+</head>
 <header>
 
 
     <img src="img/logo.jpg">
 
-<div class="cont-menu" style="display: flex;">    
+<div class="cont-menu">    
     <form class="cont-buscador"  action="/catalogo" method="GET">
         <input  id ="buscador" type="text" name="nombre" placeholder="Buscar...">
         <input type="image" id="lupa" src="img/lupa.svg" style="width:25px; height:25px;">
@@ -16,7 +19,7 @@
                 </div>
             </div>
         <?php else: ?>
-        <a href="/login"> <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"> </a>
+       <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"  onclick="popUpOpen()">
         <?php endif?>
         <a href="carrito"> <img class="icono-principal"  src="img/carrito.svg" style="width:35px; height:35px;"><img class="icono-alternativo" src="img/carrito-relleno.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger"></div> </a>
     </div>

@@ -1,27 +1,125 @@
- 
- <!DOCTYPE html>
-<html lang="es">
-<html>
-<head> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts/home.js"></script>
-    <meta charset="UTF-8" />
-     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
-      <link href="styles/style9.css" rel="stylesheet" type="text/css">
-   
-  
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   
-    <title>Eiffel Importaciones</title>
-    
 
-</head>
+
+    
+    <style>
+body{
+    background-color:#ffffff;
+    text-align: justify;
+}
+
+.seccion-titulo{
+    margin-bottom: 20px ;
+    width: fit-content;
+}
+
+#seccion-subtitulo{
+    margin-left: 20px;
+    margin-bottom: 10px ;
+    width: fit-content;
+}
+#seccion-subtitulo hr{
+    margin-top: 10px;
+}
+
+
+hr{
+    width: 90%;
+    margin-top: 20px;
+}
+.body-info{
+    margin: 20px;
+    margin-bottom: 50px;
+}
+
+.imagen-margen{
+    background-image: url(../img/foto-empresa-eiffel.jpg);
+    background-position: center;
+    margin: 0px;
+    width: 100%;
+    height: 200px;
+}
+
+#cont-todo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#seccion-imagen img{
+    width: 600px;
+}
+
+.lista-pasos{
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 80%;
+}
+.lista-pasos li{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#title {
+   margin-left:5px;
+    margin-bottom:20px;
+    width:fit-content;
+
+}
+#page {
+   
+    margin-bottom:29px;
+    overflow:hidden;
+}
+
+label {
+    margin-right:10px;
+    font-size:19px;
+    font-weight:bold;
+}
+
+.btn-primary  {
+    border:none;
+   height:fit-content;
+    max-height:90px;
+   text-align:center;
+   background-color:#253141;
+   color:#ffffff;
+
+ 
+  font-size: 17px;
+   transition: all 1s  
+}
+
+input {
+    width:100%;
+    height:50px;
+}
+
+#login {
+   
+  width: 50%;
+  padding: 10px;
+    margin:auto;
+    margin-bottom:2%;
+}
+
+#botones {
+  margin:auto;
+  width:30%;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+</style>
+
+
 <body>
 
-<?php include  "segments/header.php" ?>
-    <?php include  "segments/nav.php" ?>
 
 <div class="container-fluid" id="page">
 
@@ -88,7 +186,6 @@
 </div>
             </div></div>
 
-<?php include  "segments/footer.php" ?>
 
 <script>
     window.addEventListener("load", (event) => {
