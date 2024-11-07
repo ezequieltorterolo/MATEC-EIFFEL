@@ -6,7 +6,7 @@
 
     <img src="img/logo.jpg">
 
-<div class="cont-menu" style="display: flex;">    
+<div class="cont-menu">    
     <form class="cont-buscador"  action="/catalogo" method="GET">
         <input  id ="buscador" type="text" name="nombre" placeholder="Buscar...">
         <input type="image" id="lupa" src="img/lupa.svg" style="width:25px; height:25px;">

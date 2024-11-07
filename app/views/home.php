@@ -26,7 +26,8 @@
     <?php include  "segments/nav.php" ?>
 
     <div id="myModal" class="modal" style="display:none;">
-<h1> PROBANDO </h1> 
+    <?php include  "formulario.php" ?>
+
     </div>
 
     <div id="contenedor-destacados" class="container-fluid"></div>

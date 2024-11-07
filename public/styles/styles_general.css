@@ -88,6 +88,16 @@ body {
     border-radius: 20px;
 }
 
+
+#buscador2 {
+    transition: all 1s;
+    width: 0%;
+    display:none;
+    padding: 6px;
+
+    border-radius: 20px;
+}
+
 a svg:hover{
     fill: aqua;
 }
@@ -96,14 +106,15 @@ a svg:hover{
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed;
-  
-    margin:auto;
+left: 25%;
+top:25%;
     width: 50%;
-    height: 50%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semi-transparente */
+    height: 60%;
+    background-color: #b2b2b2; /* Fondo oscuro semi-transparente */
     display: flex;
     justify-content: center;
     align-items: center;
+    border:2px solid #253141;
 }
 
 /* Estilos para el contenido del modal */
@@ -348,7 +359,7 @@ footer {
     margin-bottom: 20px;
     font-weight: bold;
 }
-  .menu {
+  .cont-menu {
      display:none;
   }
 
