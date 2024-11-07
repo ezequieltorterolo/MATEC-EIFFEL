@@ -7,6 +7,15 @@
    
 }
 
+.titulos {
+    font-weight: bolder;
+}
+.letra {
+font-weight: bold;
+}
+
+
+
 
 /*header*/
 
@@ -80,6 +89,12 @@ a svg:hover{
 }
 
 /* Nav */
+
+.iconos button {
+    background-color:transparent;
+    border:transparent;
+}
+
 
 .navegacion ul{
     list-style: none;
@@ -260,6 +275,8 @@ footer {
 .precio-prod{
     text-align: center;
 }
+
+
 
 
 
