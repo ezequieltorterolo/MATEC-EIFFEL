@@ -30,7 +30,7 @@ class CarritoController extends BaseController
         
         function carrito_confirmar() {
             // Obtener el user_id de la sesión o asignar un valor predeterminado
-            $user_id = 3;
+            $user_id = $_SESSION["usuario"]["id"];
         
             // Leer el cuerpo de la solicitud y decodificar el JSON
             $data = json_decode(file_get_contents('php://input'), true);
