@@ -7,6 +7,8 @@
 }
 
 
+
+
 /*header*/
 
 header {
@@ -276,9 +278,8 @@ footer {
   /*los subtitulos de las paginas*/
 .subtitulo {
     margin-bottom: 20px;
+    font-weight: bold;
 }
- 
- 
   .menu {
      display:none;
   }
@@ -305,6 +306,7 @@ footer {
     .img-prod{
         width: 150px;
         height: 150px;
+        background-color: white;
     }
     .nombre-prod{
         margin: 0px;
@@ -314,7 +316,22 @@ footer {
     .precio-prod{
         text-align: center;
     }
-    
+
+    #seccion-filtros {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        align-items: baseline;
+    }
+    #seccion-filtros p{
+        margin-top: 5px;
+    }
+
+
+    /*SOBRE NOSOTROS*/
+    #seccion-imagen img{
+        display: none;
+    }
 }
 
 

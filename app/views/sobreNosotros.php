@@ -16,7 +16,7 @@
     <?php include  "segments/nav.php"    ?>
     <div class="body-info">
         <div class="seccion-titulo">
-            <h1>SOBRE EIFFEL IMPORTACIONES</h1>
+            <h1 class="subtitulo">SOBRE EIFFEL IMPORTACIONES</h1>
             <hr>
         </div>
         <p>En Eiffel Importaciones, somos una distribuidora de Minas, Lavalleja con una sólida trayectoria en la venta y distribución de productos al por mayor. Nos especializamos en brindarles a las empresas una amplia variedad de productos de calidad a los mejores precios.</p>
