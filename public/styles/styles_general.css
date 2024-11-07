@@ -294,8 +294,8 @@ footer {
     }
 
     .producto-posicion{
-        margin-right: 20px;
-        border: 2px solid black;
+        margin-right: 15px;
+        border: 1px solid black;
         width: 150px;
         transition: 0.2s;
         margin-bottom: 20px;
@@ -303,7 +303,7 @@ footer {
     
     
     .img-prod{
-        width: 150px;
+        width: 146px;
         height: 150px;
     }
     .nombre-prod{
