@@ -7,6 +7,10 @@
 }
 
 
+#body-catalogo{
+    margin: 20px;
+}
+
 
 
 /*header*/
@@ -31,6 +35,15 @@ header {
         border-radius: 20px;
     }
 
+
+.icono-alternativo-logueado{
+    
+}
+
+
+.cont-sesion-nombre-y-foto{
+    display: flex;
+}
 
 .cont-menu {
     display: flex;
@@ -233,6 +246,7 @@ footer {
 .img-prod{
     width: 196px;
     height: 200px;
+    background-color: white;
 }
 .nombre-prod{
     margin: 0px;
@@ -243,6 +257,31 @@ footer {
     text-align: center;
 }
 
+
+/*FILTROS CATALOGO*/
+
+#seccion-titulo{
+    margin-bottom: 20px ;
+    width: fit-content;
+}
+#seccion-filtros{
+    display: flex;
+}
+#seccion-filtros h3 {
+    margin-left: 50px;
+}
+#seccion-filtros select{
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+#seccion-filtros p{
+    margin-left: 50px;
+}
+#hr-catalogo{
+    width: 90%;
+    margin-top: 20px;
+}
 
 
 

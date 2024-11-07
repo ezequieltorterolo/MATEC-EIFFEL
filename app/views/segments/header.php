@@ -10,11 +10,11 @@
     </form>
     <div class="cont-opciones-header">
         <?php if (isset($_SESSION["usuario"])): ?>
-            <li><h3><?=$_SESSION["usuario"]["nombre"]?></h3>
-            <div class="cont-cerrar-sesion">
-                    <li onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)"><h3>Cerrar sesion</a></li>
+            <div class="cont-sesion-nombre-y-foto"><img class="icono-alternativo-logueado" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"><p><?=$_SESSION["usuario"]["nombre"]?></p>
+                <div class="cont-cerrar-sesion">
+                        <a onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)"><p>Cerrar sesion</p></a>
+                </div>
             </div>
-            </li>
         <?php else: ?>
         <a href="/login"> <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"> </a>
         <?php endif?>
