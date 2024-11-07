@@ -1,7 +1,4 @@
- 
- <!DOCTYPE html>
-<html lang="es">
-<html>
+
 <head> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,8 +17,6 @@
 </head>
 <body>
 
-<?php include  "segments/header.php" ?>
-    <?php include  "segments/nav.php" ?>
 
 <div class="container-fluid" id="page">
 
@@ -88,7 +83,6 @@
 </div>
             </div></div>
 
-<?php include  "segments/footer.php" ?>
 
 <script>
     window.addEventListener("load", (event) => {

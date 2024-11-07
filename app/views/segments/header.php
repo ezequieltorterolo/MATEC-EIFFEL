@@ -1,3 +1,6 @@
+<head>
+<script src="scripts/popup.js"></script>
+</head>
 <header>
 
 
@@ -16,7 +19,7 @@
             </div>
             </li>
         <?php else: ?>
-        <a href="/login"> <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"> </a>
+       <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"  onclick="popUpOpen()">
         <?php endif?>
         <a href="carrito"> <img class="icono-principal"  src="img/carrito.svg" style="width:35px; height:35px;"><img class="icono-alternativo" src="img/carrito-relleno.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger"></div> </a>
     </div>

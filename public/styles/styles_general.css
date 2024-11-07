@@ -3,7 +3,6 @@
  * {
    padding: 0px;
    margin: 0px;
-   font-weight: bold !important;
    
 }
 
@@ -88,7 +87,41 @@ a svg:hover{
     fill: aqua;
 }
 
+/* Estilos para el contenedor principal del modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+  
+    margin:auto;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el contenido del modal */
+#myModal > div {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400;
+}
+
 /* Nav */
+
+#buscador2 {
+      transition: width 1s;
+    width: 0%;
+    padding: 3px;
+    margin:5px;
+    border:none;
+    border-radius: 13px;
+    display:none;
+  
+}
 
 .iconos button {
     background-color:transparent;

@@ -6,9 +6,8 @@
 
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="scripts/home.js"></script>
     <meta charset="UTF-8" />
     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
@@ -22,8 +21,13 @@
     
 
 
+
     <?php include  "segments/header.php" ?>
     <?php include  "segments/nav.php" ?>
+
+    <div id="myModal" class="modal" style="display:none;">
+<h1> PROBANDO </h1> 
+    </div>
 
     <div id="contenedor-destacados" class="container-fluid"></div>
     <div id="slides">
@@ -41,6 +45,7 @@
       </div>
     </div>
   
+   
    
     <h1 class="subtitulo">OFERTAS</h1>
     <div id="productos-nuevos" class="container">
