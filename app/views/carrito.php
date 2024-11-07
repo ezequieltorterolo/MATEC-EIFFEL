@@ -20,7 +20,7 @@
 
     <div id="body-carrito">
         <div id="seccion-titulo" class="container-fluid float-start">
-            <h1 class="subtitulo">CARRITO</h1>
+            <h1>CARRITO</h1>
             <hr>
         </div>
 
@@ -58,8 +58,8 @@
 </div>
 </div>
 
- <?php include  "segments/footer.php" ?>
+
     <script src="scripts/carrito.js"></script>
-   
+    <?php include  "segments/footer.php" ?>
 </body>
 </html>
