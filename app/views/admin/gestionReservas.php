@@ -34,9 +34,6 @@
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
         <button type="button" class="btn btn-primary" onclick="activarEdicion()">Editar</button>
-        <select >
-        <option></option>
-        </select>
       </div>
 
       <div id="tabla-prod">

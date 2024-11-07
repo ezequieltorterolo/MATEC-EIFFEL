@@ -16,7 +16,7 @@ class AdminController extends BaseController
     {
         if (isset($_SESSION["admin"])) {
             $data["user"] = $_SESSION["admin"];
-            $this->redirect("admin/homeAdmin", $data);
+            return $this->view("admin/homeAdmin",$data);
         } else {
             return $this->view("admin/formlogin", $data);
         }
@@ -30,9 +30,13 @@ class AdminController extends BaseController
 
             $data["user"] = $_POST["name"];
 
-            return $this->view("admin/homeAdmin", $data);
+            return $this->view("admin/homeAdmin",$data);
         } else
             return $this->view(htmlError("403", "Acceso denegado", ""));
+    }
+    function homeAdmin($data){
+        $data["user"] = $_SESSION["admin"];
+        return $this->view("admin/homeAdmin", $data);
     }
 
     function gestionProductos($data)
@@ -40,9 +44,13 @@ class AdminController extends BaseController
         if (isset($_SESSION["admin"])) {
             $data["action"] = "/admin/gestionProductos";
             $data["mode"]   = "editprd2";
+            $reserva = new Reserva;
             $producto  = new Producto;
-
-            if (isset($_GET["nombre"])) {
+            if (isset($_GET["estado"])) {
+                $estado = $_GET["estado"];
+                if (!empty($estado)) $reserva->where("estado", "=", $estado);
+    
+            } elseif (isset($_GET["nombre"])) {
                 $nombre = $_GET["nombre"];
                 if (!empty($nombre)) $producto->where("nombre", "like", "%$nombre%");
             };
@@ -111,6 +119,7 @@ class AdminController extends BaseController
     function validarProducto($data)
     {
         $producto = new Producto();
+        $categorias = new Categoria();
         $modo = $_POST['modo'];
 
         $directorioDestino = $_SERVER['DOCUMENT_ROOT'] . "../../public/img/";
@@ -130,6 +139,15 @@ class AdminController extends BaseController
         if ($modo === 'addprd') {
             $_POST['imagen'] = $nombreArchivo;
             $_POST["oferta"] = isset($_POST["oferta"]);
+            if(isset($_POST["categoria2"])){
+                $_POST['categoria'] = $_POST["categoria2"];
+                $campos2= [
+                    'nombreCategoria' => $_POST["categoria2"],
+                ];
+                $categorias->insert($campos2);
+
+            }
+
             $producto->insert($_POST);
 
             if ($producto->success()) {
@@ -155,6 +173,15 @@ class AdminController extends BaseController
             if (!empty($nombreArchivo)) {
                 $campos['imagen'] = $nombreArchivo;
             }
+            if(isset($_POST["categoria2"])){
+                $campos['categoria'] = $_POST["categoria2"];
+                $campos2= [
+                    'nombreCategoria' => $_POST["categoria2"],
+                ];
+                $categorias->insert($campos2);
+
+            }
+
             $producto->update($id, $campos);
 
             if ($producto->success()) {

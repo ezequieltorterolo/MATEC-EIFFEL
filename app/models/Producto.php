@@ -13,10 +13,10 @@ class Producto extends Model {
         "precioCaja"   => ["required" => false],
         "precio"       => ["required" => true ], 
         "imagen"       => ["required" => false],    
-        "categoria"    => ["required" => true ],
+        "categoria_id" => ["required" => true ],
         "subcategoria" => ["required" => true ],
         "stock"        => ["required" => true ],
-        "oferta"       => ["required" => true ],
+        "oferta"       => ["required" => false ],
         "cantidadCaja" => ["required" => false ],
    ];
 }

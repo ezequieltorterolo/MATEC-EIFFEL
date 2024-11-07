@@ -45,7 +45,7 @@ class CarritoController extends BaseController
 
         $reserva = new Reserva;
         $cabezal_reserva = [
-            "usuario_id" => $user_id,
+            "usuario_id" => $_SESSION["usuario"]["id"],
             "entrega_direccion" => $data["dirent"],
             "entrega_fechahora" => $data["horaent"],
             "aclaraciones" => $data["aclaraciones"],
