@@ -150,7 +150,7 @@ body {
 
 
 
-
+/* 
 
 #productos-nuevos{
     display: flex;
@@ -189,10 +189,14 @@ body {
 }
 .precio-prod{
     text-align: center;
-}
+} */
 
 
 @media (max-width: 768px) {
+
+    
+
+
     .navegacion ul {
         display:none;
     }
@@ -203,17 +207,6 @@ body {
    width:100%;
    
    
- }
-
-    
- #footer-cont img{
-    width: 150px;
- }
- svg {
-   width:50px;
-   height:30px;
-
-   padding:2px;
  }
 
 
@@ -240,6 +233,8 @@ background-size:contain;
     height:100%;
     width:100%;
  }
+
+
 
 }
     

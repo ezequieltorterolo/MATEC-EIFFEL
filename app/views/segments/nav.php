@@ -16,12 +16,12 @@ use rutex\BaseController;
         </li>
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" >Dropdown</a>
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">CATEGORIAS</a>
 <ul class="dropdown-menu">
             <?php foreach($categoria as $cate):?>
                <li> <a class="dropdown-item"  href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></a></li> <li><hr class="dropdown-divider"></li>
             <?php endforeach?>
-            </div>
+           
             </ul>
         </li>
    
