@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Categoria;
 use rutex\BaseController;
 use app\models\Producto;
 
@@ -35,10 +36,11 @@ class HomeController extends BaseController
     { 
 
         $producto  = new Producto;
+        $categorias = new Categoria;
 
         if (isset($_GET["catego"])) {
-            $catego = $this->categorias()[$_GET["catego"]];
-            if (!empty($catego)) $producto->where("categoria", "=", $catego);
+            $catego = $categorias->where("id","=",$_GET["catego"])->select()->getFirst();
+            if (!empty($catego)) $producto->where("categoria_id","=",$catego["id"])->select()->getAll();;
 
         } elseif (isset($_GET["nombre"])) {
             $nombre = $_GET["nombre"];
@@ -54,18 +56,6 @@ class HomeController extends BaseController
 
         return $this->view("catalogo", $data);
     }
-
-    function categorias()
-    {
-        $categoria[1] = "Alimentos";
-        $categoria[2] = "Limpieza";
-        $categoria[3] = "Higiene";
-        $categoria[4] = "Insumos de cocina";
-
-        return $categoria;
-    }
-
-
 
     function carrito()
     {

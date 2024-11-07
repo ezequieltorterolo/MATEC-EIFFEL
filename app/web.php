@@ -31,6 +31,7 @@ Route::post("/ValidarRegistro"         , [UserController::class, "ValidarRegistr
 //ADMINISTRADOR
 Route::get("/admin"                    , [AdminController::class, "login"]);
 Route::post("/ValidarIngreso"          , [AdminController::class, "ValidarIngresoAdmin"]);
+Route::get("/admin/homeAdmin"                    , [AdminController::class, "homeAdmin"]);
 
 //Administrador-paginas de productos
 Route::get("/admin/productoAdmin"      , [AdminController::class, "productoAdmin"]);

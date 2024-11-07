@@ -125,7 +125,6 @@ top:25%;
     width: 90%;
     max-width: 400;
 }
-
 /* Nav */
 
 .iconos button {
@@ -149,7 +148,22 @@ top:25%;
     color: #253141;
 }
 
-
+#sidebar { 
+    transition: 1s;
+    display:none;
+    background-color: #B7BCC0;
+ 
+    height: 100%; /* Toma toda la altura de la pantalla */
+width:0%; /* Ancho inicial de 0 para que esté oculta */
+    position: fixed; /* Fija la posición para superponerse */
+       top: 0;
+      left: 0;
+        
+      overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
+      /* Transición para un efecto suave */
+      z-index: 1001; /* Se superpone a otros elementos */
+     padding-top: 60px; /* Espacio superior */
+}
 
 
 
@@ -302,7 +316,7 @@ footer {
 
 #seccion-titulo{
     margin-bottom: 20px ;
-    width: fit-content;
+    width: 100%;
 }
 #seccion-filtros{
     display: flex;
@@ -353,6 +367,8 @@ footer {
   .izquierda {
      float:left;
   }
+
+  
 
   /*los subtitulos de las paginas*/
 .subtitulo {
