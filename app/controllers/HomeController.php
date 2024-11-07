@@ -32,7 +32,7 @@ class HomeController extends BaseController
     }
 
     function catalogo($data)
-    {
+    { 
 
         $producto  = new Producto;
 
@@ -49,7 +49,7 @@ class HomeController extends BaseController
         $producto->orderBy($ordenarPor);
 
         $data["ordenadoPor"] = $ordenarPor;
-        $data["data"]   = $producto->getAll();
+        $data["data"]   = $producto->where("stock", ">",0)->getAll();
         $data["totrec"] = $producto->affected_rows();
 
         return $this->view("catalogo", $data);
