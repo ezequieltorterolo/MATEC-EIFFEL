@@ -3,18 +3,8 @@
  * {
    padding: 0px;
    margin: 0px;
-   font-weight: bold !important;
    
 }
-
-.titulos {
-    font-weight: bolder;
-}
-.letra {
-font-weight: bold;
-}
-
-
 
 
 /*header*/
@@ -71,7 +61,6 @@ header {
 body {
    background-color: #EFF3F6;
    font-family: 'Poppins', semi-bold;
-   
 
 }
 
@@ -90,12 +79,6 @@ a svg:hover{
 
 /* Nav */
 
-.iconos button {
-    background-color:transparent;
-    border:transparent;
-}
-
-
 .navegacion ul{
     list-style: none;
     background-color: #B7BCC0;
@@ -112,28 +95,11 @@ a svg:hover{
 }
 
 
-.nav .dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; /* opcional: ajusta según el diseño */
-  }
-  
-  /* Opcional: aplicar una transición para un efecto más suave */
-  .dropdown-menu {
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    display: block; /* Para evitar problemas de transición */
-    visibility: hidden;
-  }
-  
-  .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-  }
 
 
 
 
-nav ul li ::after {
+nav ul li a::after {
     content: "";
     position: absolute;
     width: 0;
@@ -151,7 +117,6 @@ nav ul li a:hover::after {
   
   a  {
     text-decoration:none !important;
-    
   }
 
 footer{
@@ -279,8 +244,6 @@ footer {
 
 
 
-
-
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 
     .navegacion ul {
@@ -316,8 +279,8 @@ footer {
 }
  
  
-  .cont-menu {
-     display:none !important;
+  .menu {
+     display:none;
   }
 
   .footer-container{
@@ -331,8 +294,8 @@ footer {
     }
 
     .producto-posicion{
-        margin-right: 15px;
-        border: 1px solid black;
+        margin-right: 20px;
+        border: 2px solid black;
         width: 150px;
         transition: 0.2s;
         margin-bottom: 20px;
@@ -340,7 +303,7 @@ footer {
     
     
     .img-prod{
-        width: 146px;
+        width: 150px;
         height: 150px;
     }
     .nombre-prod{
@@ -351,16 +314,7 @@ footer {
     .precio-prod{
         text-align: center;
     }
-
-    #seccion-filtros {
-        display: flex;
-        flex-direction: column;
-        align-content: flex-start;
-        align-items: baseline;
-    }
-    #seccion-filtros p{
-        margin-top: 5px;
-    }
+    
 }
 
 

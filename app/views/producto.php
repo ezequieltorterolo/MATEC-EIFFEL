@@ -22,12 +22,12 @@
    
    
     <div id="back" onclick="history.back()"> 
-     <p><img src="img/angle-left.png" alt="Volver"> 
-   [Página anterior]</p>
+    <img src="img/angle-left.png" alt="Volver"> 
+    <p>[Página anterior]</p>
 </div> 
 
 <div class="container mb-5">    
-    <div class="row flex-column flex-md-row container">
+    <div class="row flex-column flex-md-row">
         <div id="tituloalter">
             <h2><?=$prd["nombre"]?></h2>
         </div>

@@ -4,53 +4,54 @@ let carritoContainer = document.querySelector('#tabla-prod table');
 console.log(carrito);
 
 function carrito_confirmar(event) {
+    // Prevenir el envío por defecto del formulario
     event.preventDefault();
 
+    // Obtener los elementos del formulario
     const dirent = document.getElementById("dirent").value;
     const horaent = document.getElementById("horaent").value;
     const aclaraciones = document.getElementById("msg").value;
 
+    // Verifica que 'carrito' esté definido antes de continuar
     if (typeof carrito === 'undefined' || !Array.isArray(carrito)) {
         console.error("Error: 'carrito' no está definido o no es un array.");
         alert("El carrito no está definido correctamente.");
         return;
     }
 
+    // Construir el objeto reserva solo si todos los campos están completos
     let reserva = {
         "dirent": dirent,
         "horaent": horaent,
         "aclaraciones": aclaraciones,
-        "carrito": carrito
+        "carrito": carrito // Asegúrate de que 'carrito' esté definido correctamente
     };
 
+    console.log(reserva); // Verifica que el objeto se construyó correctamente
+
+    // Ejecutar el fetch solo si reserva está correctamente definido
     fetch("carrito_confirmar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(reserva)
+        body: JSON.stringify(reserva) // Convertir el objeto reserva a una cadena JSON
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Error en la respuesta del servidor");
-        }
-        return response.json();
-    })
+   
     .then(data => {
-        if (data.success) {
-            alert("Reserva registrada correctamente");
-            localStorage.setItem('carrito', JSON.stringify([]));
-            window.location.reload();
-        } else {
-            alert("Error: " + data.error);
-            window.location.reload();
-        }
+        console.log("Éxito:", data); 
+        alert("Reserva registrada correctamente");
+
+        localStorage.setItem('carrito', JSON.stringify([]));
+        
+        window.location.href = window.location.href;
+
     })
     .catch(error => {
         console.error("Error:", error);
-        alert("Ha ocurrido un error en el servidor: " + error.message);
-        window.location.reload();
+        alert("Ha ocurrido un error: " + error.message);
     });
+    
 }
 
 
@@ -97,6 +98,8 @@ function mostrarCarrito() {
 }
 
 function agregarFila(producto, index) {
+    let cantidad = producto[cantidad];
+    alert (cantidad);
     let prdinfo = producto.info;
     let productRow = document.createElement('tr');
     let stockIndicator = "";

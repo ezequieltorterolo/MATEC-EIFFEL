@@ -32,7 +32,6 @@
   <div class="btn-group" role="group" aria-label="Basic example">
 
   <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
-  <button type="button" class="btn btn-primary" onclick="activarEdicion()">Editar</button>
     <form method="POST" action="/admin/gestionProductos"> 
  <button type="submit" class="btn btn-primary">Guardar Todo</button> </div>
 </div>
@@ -60,23 +59,23 @@
           </td>
 
           <td>
-            <input type="number" name="precio[]" value="<?= $prd['precio'] ?>" min="1" disabled>
+            <input type="number" name="precio[]" value="<?= $prd['precio'] ?>" min="1">
           </td>
 
           <td>
-            <input type="number" name="precioCaja[]" value="<?= $prd['precioCaja'] ?>" min="1" disabled>
+            <input type="number" name="precioCaja[]" value="<?= $prd['precioCaja'] ?>" min="1">
           </td>
 
           <td>
             <div id="quitaragregar">
               <button type="button" onclick="actualizarStock(<?= $index ?>, 'quitar')">-</button>
-              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly disabled>
+              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly>
               <button type="button" onclick="actualizarStock(<?= $index ?>, 'agregar')">+</button>
             </div>
           </td>
 
           <td>
-            <input type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled>
+            <input type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?>>
           </td>
 
           <td>
@@ -140,9 +139,8 @@
       stockInput.value = stock;
       actualizarProducto(id, 'stock', stock);
     }
-    function activarEdicion() {
-      document.querySelectorAll("input,button, select").forEach(element => {
-        element.disabled = false;
-      });
-    }
   </script>
+
+
+
+  <a href="/admin">ADMIN HOME</a>

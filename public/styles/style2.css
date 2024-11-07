@@ -19,12 +19,13 @@ Lo saque de internet */
 
 
 
+
 #back {
     margin:30px;
     text-decoration:underline;
     transition: all 1s;
     height:20px;
-    width:fit-content;
+    width:600px;
   color:#253141;
     display: flex;
     align-items: center; 
