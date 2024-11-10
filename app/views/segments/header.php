@@ -1,50 +1,55 @@
 <head>
-<script src="scripts/popup.js"></script>
+    <script src="scripts/popup.js"></script>
 </head>
+
+
 <header>
 
 
     <img src="img/logo.jpg">
 
-<div class="cont-menu">    
-    <form class="cont-buscador"  action="/catalogo" method="GET">
-        <input  id ="buscador" type="text" name="nombre" placeholder="Buscar...">
-        <input type="image" id="lupa" src="img/lupa.svg" style="width:25px; height:25px;">
-    </form>
-    <div class="cont-opciones-header">
-        <?php if (isset($_SESSION["usuario"])): ?>
-            <div class="cont-sesion-nombre-y-foto"><img class="icono-alternativo-logueado" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"><p><?=$_SESSION["usuario"]["nombre"]?></p>
-                <div class="cont-cerrar-sesion">
+    <div class="cont-menu">    
+        <form class="cont-buscador"  action="/catalogo" method="GET">
+            <input  id ="buscador" type="text" name="nombre" placeholder="Buscar...">
+            <input type="image" id="lupa" src="img/lupa.svg" style="width:25px; height:25px;">
+        </form>
+        
+        <div class="cont-opciones-header">
+            <?php if (isset($_SESSION["usuario"])): ?>
+                <div class="cont-sesion-nombre-y-foto"><img class="icono-alternativo-logueado" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"><p><?=$_SESSION["usuario"]["nombre"]?></p>
+                    <div class="cont-cerrar-sesion">
                         <a onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)"><p>Cerrar sesion</p></a>
+                    </div>
                 </div>
-            </div>
-        <?php else: ?>
-       <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"  onclick="popUpOpen()">
-        <?php endif?>
-        <a href="carrito"> <img class="icono-principal"  src="img/carrito.svg" style="width:35px; height:35px;"><img class="icono-alternativo" src="img/carrito-relleno.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger"></div> </a>
-    </div>
-    <script>
-    const iconosPrincipales = document.querySelectorAll(".icono-principal");
-    iconosPrincipales.forEach(iconosPrincipales => {
-    const iconoAlternativo = iconosPrincipales.nextElementSibling;
-    iconoAlternativo.style.display = "none";
-    
+            <?php else: ?>
+                <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"  onclick="popUpOpen()">
+            <?php endif?>
+            <a href="carrito"> <img class="icono-principal"  src="img/carrito.svg" style="width:35px; height:35px;"><img class="icono-alternativo" src="img/carrito-relleno.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger"></div> </a>
+        </div>
 
-    function mostrarIconoAlternativo() {
-        iconosPrincipales.style.display = "none";
-        iconoAlternativo.style.display = "inline-block";
-    }
 
-    function mostrarIconoPrincipal() {
-        iconosPrincipales.style.display = "inline-block";
-        iconoAlternativo.style.display = "none";
-    }
+        <script>
+            const iconosPrincipales = document.querySelectorAll(".icono-principal");
+            iconosPrincipales.forEach(iconosPrincipales => {
+            const iconoAlternativo = iconosPrincipales.nextElementSibling;
+            iconoAlternativo.style.display = "none";
+            
+            function mostrarIconoAlternativo() {
+                iconosPrincipales.style.display = "none";
+                iconoAlternativo.style.display = "inline-block";
+            }
 
-        iconosPrincipales.addEventListener("mouseover", mostrarIconoAlternativo);
-        iconoAlternativo.addEventListener("mouseout", mostrarIconoPrincipal);
-    });
-    </script>
+            function mostrarIconoPrincipal() {
+                iconosPrincipales.style.display = "inline-block";
+                iconoAlternativo.style.display = "none";
+            }
+
+                iconosPrincipales.addEventListener("mouseover", mostrarIconoAlternativo);
+                iconoAlternativo.addEventListener("mouseout", mostrarIconoPrincipal);
+            });
+        </script>
 </header>
+
 <script>
   function mostrarCantidadP(){
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -79,8 +84,6 @@ window.addEventListener("load", function() {
         $( ".cont-buscador" ).submit(); 
      });
 
-
-   
 </script>
 
 
