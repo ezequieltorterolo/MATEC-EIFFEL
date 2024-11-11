@@ -1,0 +1,23 @@
+#popup-alerta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Colores para tipos de alerta */
+#popup-alerta.exito {
+    background-color: #4CAF50; /* Verde para éxito */
+}
+#popup-alerta.error {
+    background-color: #f44336; /* Rojo para error */
+}

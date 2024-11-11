@@ -11,7 +11,8 @@ class HomeController extends BaseController
     function index($data)
     {
         $producto        = new Producto;
-        $data["ofertas"] = $producto->where("oferta", "=", true)->getall();
+        $data["ofertas"] =$producto-> where("oferta", "=", true)->and("stock", ">", 0)
+        ->getall();
 
         return $this->view("home", $data);
     }

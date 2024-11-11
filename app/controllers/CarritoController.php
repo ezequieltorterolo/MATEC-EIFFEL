@@ -30,7 +30,13 @@ class CarritoController extends BaseController
         
     function carrito_confirmar()
     {
-        $user_id = 3; // Obtener el user_id de la sesión o asignar un valor predeterminado
+        // Verificar si el usuario está logueado
+        if (!isset($_SESSION["usuario"])) {
+            echo json_encode(["success" => false, "error" => "Debes iniciar sesión para hacer una reserva."]);
+            return;
+        }
+
+        // Obtener datos de la solicitud
         $data = json_decode(file_get_contents('php://input'), true);
 
         if (!$data) {
@@ -38,11 +44,14 @@ class CarritoController extends BaseController
             return;
         }
 
-        if (!$this->carrito_validar_stock($data["carrito"])) {
-            echo json_encode(["success" => false, "error" => "Stock insuficiente para uno o más productos."]);
+        // Validar stock de cada producto en el carrito
+        $stockValido = $this->carrito_validar_stock($data["carrito"]);
+        if ($stockValido !== true) {
+            echo json_encode(["success" => false, "error" => "Stock insuficiente para el producto: " . $stockValido]);
             return;
         }
 
+        // Crear el objeto reserva cabezal
         $reserva = new Reserva;
         $cabezal_reserva = [
             "usuario_id" => $_SESSION["usuario"]["id"],
@@ -52,6 +61,7 @@ class CarritoController extends BaseController
             "estado" => 0,
         ];
 
+        // Insertar la reserva en la base de datos
         $reserva_id = $reserva->insert($cabezal_reserva);
 
         if (!$reserva_id) {
@@ -59,28 +69,18 @@ class CarritoController extends BaseController
             return;
         }
 
+        // Procesar los productos del carrito
         $reservaProductos = new ReservaProductos;
         $obj_producto = new Producto;
 
         foreach ($data["carrito"] as $producto) {
             $stock_producto = $obj_producto->getbyid($producto["id"]);
 
-            $total ="";
-
-            if ( $producto["cantidad"] >=  $stock_producto["cantidadCaja"])
-                $precio = $stock_producto["precioCaja"] ;
-            else
-                $precio= $stock_producto["precio"];
-            
-                
+            // Calcular el precio total para el producto
+            $precio = $producto["cantidad"] >= $stock_producto["cantidadCaja"] ? $stock_producto["precioCaja"] : $stock_producto["precio"];
             $total = $producto["cantidad"] * $precio;
-      
-
-
-
 
             $reserva_producto = [
-
                 "totalProducto" => $total,
                 "reserva_id" => $reserva_id,
                 "producto_id" => $producto["id"],
@@ -92,6 +92,7 @@ class CarritoController extends BaseController
                 return;
             }
 
+            // Actualizar stock del producto
             $stock = $stock_producto["stock"] - $producto["cantidad"];
             $obj_producto->update($producto["id"], ["stock" => $stock]);
         }
@@ -105,7 +106,9 @@ class CarritoController extends BaseController
 
         foreach ($carrito as $producto) {
             $stock_producto = $obj_producto->getbyid($producto["id"]);
-            if ($stock_producto["stock"] < $producto["cantidad"]) return false;
+            if ($stock_producto["stock"] < $producto["cantidad"]) {
+                return $producto["id"]; // Devuelve el ID del producto con stock insuficiente
+            }
         }
 
         return true;

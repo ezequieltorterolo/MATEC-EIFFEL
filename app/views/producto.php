@@ -11,7 +11,7 @@
     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link href="styles/style2.css" rel="stylesheet" type="text/css">
-   
+     <link href="styles/alertpopup.css" rel="stylesheet" type="text/css">
     <title>Eiffel Importaciones</title>
 </head>
 <body>
@@ -157,11 +157,11 @@ var producto = <?php echo json_encode($prd); ?>;
             }
 
             if(cantidad == (stock + 1)){ 
-                        alert("el stock no es suficiente")
+              
                         let cantidadElejida = document.getElementById('cantidad');
                         cantidadElejida.value = parseInt(cantidadElejida.value) - 1;
         
-                      
+                        mostrarPopup("el stock no es", false);
                       
                      
                      
@@ -186,7 +186,7 @@ var producto = <?php echo json_encode($prd); ?>;
         var idd= producto.id;
 
          if(carrito.find(producto => producto.id == idd)){
-            alert('ya tienes este producto en carrito');
+            mostrarPopup("ya tienes este producto en carrito", false);
 
          } else {
 
@@ -206,7 +206,7 @@ var producto = <?php echo json_encode($prd); ?>;
            
             carrito.push(producto);
             localStorage.setItem('carrito', JSON.stringify(carrito));
-            alert('Producto añadido al carrito');
+            mostrarPopup("Producto agregado al carrito", true);
 
              // mostrar la cantidad de productos en el carrito del nav
 
@@ -233,7 +233,7 @@ window.addEventListener("load", function() {
         
       </script>
 
-
+<script src="scripts/alertpopup.js"></script>
     <?php include  "segments/footer.php" ?>
 </body>
 </html>
