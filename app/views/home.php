@@ -20,16 +20,8 @@
 </head>
 <body>
     
-
-
-
     <?php include  "segments/header.php" ?>
     <?php include  "segments/nav.php" ?>
-
-    <div id="myModal" class="modal" style="display:none;">
-    <?php include  "formulario.php" ?>
-
-    </div>
 
     <div id="contenedor-destacados" class="container-fluid"></div>
     <div id="slides">
