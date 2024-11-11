@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="styles/styleAdmin.css" rel="stylesheet" type="text/css">
+    <link href="../styles/styleAdmin.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>ADMIN</title>
 </head>
@@ -14,6 +14,6 @@
         </div>
         <div class="boton-admin-opciones"><a href="/admin/gestionProductos">Gestionar Productos</a></div>
         <div class="boton-admin-opciones"><a href="/admin/gestionReservas">Gestionar Reservas</a></div>
-        <img src="img/logo.jpg">
+        <img src="../img/logo.jpg">
     </div>
 
