@@ -43,7 +43,7 @@
    
     <h1 class="subtitulo">OFERTAS</h1>
     <div id="productos-nuevos" class="container">
-            <?php foreach($data as $prd):?>
+            <?php foreach($ofertas as $prd):?>
                 <div class="producto-posicion">
                     <a href =/producto?id=<?=$prd["id"]?>><img class="img-prod" src=img/<?=$prd["imagen"]?>></a>
                     <a href=/producto?id=<?=$prd["id"]?>><p class="nombre-prod" title="<?=$prd["nombre"]?>"><?= (strlen($prd["nombre"]) > 35) ? substr($prd["nombre"], 0, 35) . "..." : $prd["nombre"] ?></p></a>
