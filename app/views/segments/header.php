@@ -1,3 +1,4 @@
+
 <header>
 
 
@@ -53,45 +54,47 @@
     // iconoAlternativoLogueado.addEventListener("mouseover", mostrarSubmenuLogueado);
     </script>
 </header>
+
 <script>
-  function mostrarCantidadP(){
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    let cantidadCarrito = carrito.length; 
-    localStorage.setItem("contenidoDiv", cantidadCarrito);
-    document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
+    function mostrarCantidadP() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let cantidadCarrito = carrito.length;
+        localStorage.setItem("contenidoDiv", cantidadCarrito);
+        document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
 
-           }
-window.addEventListener("load", function() {
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    let cantidadCarrito = carrito.length; 
-    localStorage.setItem("contenidoDiv", cantidadCarrito);
-    document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
-});
-    
+    }
+    window.addEventListener("load", function() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let cantidadCarrito = carrito.length;
+        localStorage.setItem("contenidoDiv", cantidadCarrito);
+        document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
+    });
 
-    function cerrarSesion(id){
-        document.location.href= "/logout?usuarioid="+id;
+
+    function cerrarSesion(id) {
+        document.location.href = "/logout?usuarioid=" + id;
     };
 
+<<<<<<< HEAD
 
 
 
     $("#lupa").mouseenter(function(){
+=======
+    $("#lupa").mouseenter(function() {
+>>>>>>> 0a351e2a361177a5ce08cbd733bfa9f4e42cb6c6
         $("#lupa").css("opacity", "1");
         $("#lupa").css("transform", "scale(1.1");
     });
 
-    $("#lupa").mouseleave(function(){
+    $("#lupa").mouseleave(function() {
         $("#lupa").css("opacity", "0.8");
         $("#lupa").css("transform", "scale(1");
     });
 
-    $( "#lupa" ).click(function() {
-        $( ".cont-buscador" ).submit(); 
-     });
-
-
-   
+    $("#lupa").click(function() {
+        $(".cont-buscador").submit();
+    });
 </script>
 
 

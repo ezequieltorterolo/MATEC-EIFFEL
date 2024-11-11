@@ -45,7 +45,7 @@ class CarritoController extends BaseController
 
         $reserva = new Reserva;
         $cabezal_reserva = [
-            "usuario_id" => $user_id,
+            "usuario_id" => $_SESSION["usuario"]["id"],
             "entrega_direccion" => $data["dirent"],
             "entrega_fechahora" => $data["horaent"],
             "aclaraciones" => $data["aclaraciones"],
@@ -64,9 +64,23 @@ class CarritoController extends BaseController
 
         foreach ($data["carrito"] as $producto) {
             $stock_producto = $obj_producto->getbyid($producto["id"]);
-            $total = 1;
+
+            $total ="";
+
+            if ( $producto["cantidad"] >=  $stock_producto["cantidadCaja"])
+                $precio = $stock_producto["precioCaja"] ;
+            else
+                $precio= $stock_producto["precio"];
+            
+                
+            $total = $producto["cantidad"] * $precio;
+      
+
+
+
 
             $reserva_producto = [
+
                 "totalProducto" => $total,
                 "reserva_id" => $reserva_id,
                 "producto_id" => $producto["id"],

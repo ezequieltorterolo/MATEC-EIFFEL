@@ -20,7 +20,7 @@
 
     <div id="body-carrito">
         <div id="seccion-titulo" class="container-fluid float-start">
-            <h1 class="subtitulo">CARRITO</h1>
+            <h1>CARRITO</h1>
             <hr>
         </div>
 
@@ -42,12 +42,12 @@
         <div id="cont-abajo" class="container">
     <div id="formulario-carrito">
     <form id="form-carrito" method="post" onsubmit="carrito_confirmar(event)">
-    Dirección:</br>
-    <input id="dirent" class="input-form" required type="text"></br>
+    Dirección:<br>
+    <input id="dirent" class="input-form" required type="text"><br>
     Horario de entrega:</br>
-    <input id="horaent" class="input-form" required type="text"></br>
-    Aclaraciones:</br>
-    <textarea id="msg" ></textarea></br>
+    <input id="horaent" class="input-form" required type="text"><br>
+    Aclaraciones:<br>
+    <textarea id="msg" ></textarea><br>
     <button type="submit">CONFIRMAR</button>
 </form>
     </div>
@@ -58,8 +58,8 @@
 </div>
 </div>
 
- <?php include  "segments/footer.php" ?>
+
+    <?php include  "segments/footer.php" ?>
     <script src="scripts/carrito.js"></script>
-   
 </body>
 </html>

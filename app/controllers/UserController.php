@@ -3,9 +3,7 @@
 namespace app\controllers;
 
 use rutex\BaseController;
-use app\models\Producto;
 use app\models\Usuario;
-use PharData;
 
 class UserController extends BaseController
 {
@@ -24,9 +22,8 @@ function login($data)
         $data["email"] = $_POST["email"];
 
         $usuario = new Usuario;
-        $datosusuario = $usuario->where("email", "=", $_POST["email"])
-                                ->select()
-                                ->getFirst();
+        $datosusuario = $usuario->where("email", "=", $_POST["email"])->getAll();
+        
         if ($usuario->affected_rows()==0)
         {
             $data["msg"] = "Usuario no registrado. Ingrese sus datos";

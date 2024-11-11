@@ -1,5 +1,4 @@
-<?php
-   require_once "../vendor/rutex/autoload.php";
-
-
-    
+ <?php
+ 
+ // LOCAL
+     require_once "../vendor/rutex/autoload.php";

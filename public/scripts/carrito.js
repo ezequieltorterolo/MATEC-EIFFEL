@@ -30,12 +30,8 @@ function carrito_confirmar(event) {
         },
         body: JSON.stringify(reserva)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Error en la respuesta del servidor");
-        }
-        return response.json();
-    })
+  
+    
     .then(data => {
         if (data.success) {
             alert("Reserva registrada correctamente");
@@ -93,6 +89,8 @@ function mostrarCarrito() {
     } else {
         carritoContainer.innerHTML += "<tr><td colspan='4'>El carrito está vacío</td></tr>";
         document.querySelector('#cont-total h2').innerText = "$0.00";
+
+        document.getElementById("cont-abajo").style.display="none";
     }
 }
 

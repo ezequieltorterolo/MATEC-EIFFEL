@@ -1,27 +1,10 @@
- 
- <!DOCTYPE html>
-<html lang="es">
 <html>
-<head> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts/home.js"></script>
-    <meta charset="UTF-8" />
-     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
-      <link href="styles/style9.css" rel="stylesheet" type="text/css">
-   
-  
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   
-    <title>Eiffel Importaciones</title>
-    
-
+<head>
+<title><?=getenv("APP_NAME")?></title>
+<link rel="stylesheet" href="/static/css/user_form.css">
 </head>
 <body>
 
-<?php include  "segments/header.php" ?>
-    <?php include  "segments/nav.php" ?>
 
 <div class="container-fluid" id="page">
 
@@ -88,7 +71,6 @@
 </div>
             </div></div>
 
-<?php include  "segments/footer.php" ?>
 
 <script>
     window.addEventListener("load", (event) => {

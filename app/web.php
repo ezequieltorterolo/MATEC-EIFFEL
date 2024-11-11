@@ -31,6 +31,7 @@ Route::post("/ValidarRegistro"         , [UserController::class, "ValidarRegistr
 //ADMINISTRADOR
 Route::get("/admin"                    , [AdminController::class, "login"]);
 Route::post("/ValidarIngreso"          , [AdminController::class, "ValidarIngresoAdmin"]);
+Route::get("/admin/homeAdmin"          , [AdminController::class, "homeAdmin"]);
 
 //Administrador-paginas de productos
 Route::get("/admin/productoAdmin"      , [AdminController::class, "productoAdmin"]);
@@ -52,4 +53,5 @@ Route::get("/admin/gestionReservas"    , [AdminController::class, "gestionReserv
 Route::post("/admin/gestionReservas"   , [AdminController::class, "guardarTodoReservas"]);
 Route::get("/admin/agregarProducto"    , [AdminController::class, "agregarProducto"]);
 Route::get("/admin/eliminarProducto"   , [AdminController::class, "eliminarProducto"]);
+Route::get("/admin/eliminarReserva"    , [AdminController::class, "eliminarReserva"]);
 

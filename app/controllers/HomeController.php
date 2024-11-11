@@ -5,20 +5,13 @@ namespace app\controllers;
 use rutex\BaseController;
 use app\models\Producto;
 
-use PharData;
-
 class HomeController extends BaseController
 {
 
     function index($data)
     {
-        $producto = new Producto;
-
-        $ofertas = $producto->where("oferta", "=", true)
-                            ->select()
-                            ->getCursor();
-
-        $data["ofertas"] = $ofertas;
+        $producto        = new Producto;
+        $data["ofertas"] = $producto->where("oferta", "=", true)->getall();
 
         return $this->view("home", $data);
     }
@@ -34,39 +27,28 @@ class HomeController extends BaseController
     function catalogo($data)
     { 
 
-        $producto  = new Producto;
+        $producto = new Producto;
+        $producto->where("stock", ">", 0);
 
         if (isset($_GET["catego"])) {
-            $catego = $this->categorias()[$_GET["catego"]];
-            if (!empty($catego)) $producto->where("categoria", "=", $catego);
-
-        } elseif (isset($_GET["nombre"])) {
+            $catego = $_GET["catego"];
+            $producto->and("categoria_id","=",$catego);
+        } 
+        
+        if (isset($_GET["nombre"])) {
             $nombre = $_GET["nombre"];
-            if (!empty($nombre)) $producto->where("nombre", "like", "%$nombre%");
+            $producto->and("nombre", "like", "%$nombre%");
         };
 
         $ordenarPor = $_POST["ordenarPor"] ?? "id"  ;
         $producto->orderBy($ordenarPor);
 
         $data["ordenadoPor"] = $ordenarPor;
-        $data["data"]   = $producto->where("stock", ">",0)->getAll();
-        $data["totrec"] = $producto->affected_rows();
+        $data["data"]        = $producto->getAll();
+        $data["totrec"]      = $producto->affected_rows();
 
         return $this->view("catalogo", $data);
     }
-
-    function categorias()
-    {
-        $categoria[1] = "Alimentos";
-        $categoria[2] = "Limpieza";
-        $categoria[3] = "Higiene";
-        $categoria[4] = "Insumos de cocina";
-
-        return $categoria;
-    }
-
-
-
     function carrito()
     {
         return $this->view("carrito");
@@ -77,10 +59,10 @@ class HomeController extends BaseController
         return $this ->view ("sobreNosotros");
     }
 
-    function prdinfo($data){
- 
-        $prd = new Producto ;
 
+    //REST llamado con fetch por carrigo.js
+    function prdinfo($data){
+        $prd = new Producto ;
         return $prd->getById($data["id"]);
     }
 }
