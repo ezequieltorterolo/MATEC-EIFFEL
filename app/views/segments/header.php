@@ -10,36 +10,47 @@
     </form>
     <div class="cont-opciones-header">
         <?php if (isset($_SESSION["usuario"])): ?>
-            <div class="cont-sesion-nombre-y-foto"><img class="icono-alternativo-logueado" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"><p><?=$_SESSION["usuario"]["nombre"]?></p>
-                <div class="cont-cerrar-sesion">
-                        <a onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)"><p>Cerrar sesion</p></a>
-                </div>
-            </div>
+        <div class="cont-sesion-nombre-y-foto">
+            <img class="icono-alternativo-logueado" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;">
+            <ul class="submenu-logueado">
+                <li><p class="esconder-nombre"><?=$_SESSION["usuario"]["nombre"]?></p></li>
+                <li><a class="esconder-nombre" onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)">Cerrar sesion</a></li>
+            </ul>
+        </div>
         <?php else: ?>
-        <a href="/login"> <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"> </a>
+
+        <a class="login-usuario-margin"  href="/login"> <img class="icono-principal" src="img/avatar-user.svg" style="width:35px; height:35px;"> <img class="icono-alternativo" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;"> </a>
         <?php endif?>
         <a href="carrito"> <img class="icono-principal"  src="img/carrito.svg" style="width:35px; height:35px;"><img class="icono-alternativo" src="img/carrito-relleno.svg" style="width:35px; height:35px;"> <div id="badge-carrito" class="badge bg-danger"></div> </a>
     </div>
     <script>
+    // const submenuLogueado = document.getElementById(".submenu-logueado");
+    // submenuLogueado.style.display = "none";
+    const iconoAlternativoLogueado = document.getElementById(".icono-alterativo-logueado");
     const iconosPrincipales = document.querySelectorAll(".icono-principal");
     iconosPrincipales.forEach(iconosPrincipales => {
-    const iconoAlternativo = iconosPrincipales.nextElementSibling;
-    iconoAlternativo.style.display = "none";
-    
-
-    function mostrarIconoAlternativo() {
-        iconosPrincipales.style.display = "none";
-        iconoAlternativo.style.display = "inline-block";
-    }
-
-    function mostrarIconoPrincipal() {
-        iconosPrincipales.style.display = "inline-block";
+        const iconoAlternativo = iconosPrincipales.nextElementSibling;
         iconoAlternativo.style.display = "none";
-    }
+        
 
-        iconosPrincipales.addEventListener("mouseover", mostrarIconoAlternativo);
-        iconoAlternativo.addEventListener("mouseout", mostrarIconoPrincipal);
-    });
+        function mostrarIconoAlternativo() {
+            iconosPrincipales.style.display = "none";
+            iconoAlternativo.style.display = "inline-block";
+        }
+
+        function mostrarIconoPrincipal() {
+            iconosPrincipales.style.display = "inline-block";
+            iconoAlternativo.style.display = "none";
+        }
+            iconosPrincipales.addEventListener("mouseover", mostrarIconoAlternativo);
+            iconoAlternativo.addEventListener("mouseout", mostrarIconoPrincipal);
+        });
+
+    // function mostrarSubmenuLogueado() {
+    //     submenuLogueado.style.display = "block";
+    // }
+
+    // iconoAlternativoLogueado.addEventListener("mouseover", mostrarSubmenuLogueado);
     </script>
 </header>
 <script>
@@ -61,6 +72,9 @@ window.addEventListener("load", function() {
     function cerrarSesion(id){
         document.location.href= "/logout?usuarioid="+id;
     };
+
+
+
 
     $("#lupa").mouseenter(function(){
         $("#lupa").css("opacity", "1");

@@ -22,7 +22,6 @@ header {
     justify-content: center;
     align-items: center;
     color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
     background-color: #253141;
 }
     header img{
@@ -35,15 +34,71 @@ header {
         border-radius: 20px;
     }
 
-
-.icono-alternativo-logueado{
-    
-}
+.cont-opciones-header{
+    display: flex;
+    position: relative;
+} 
 
 
 .cont-sesion-nombre-y-foto{
-    display: flex;
+    position: relative;
 }
+
+.icono-alternativo-logueado{
+    margin-right: 20px;
+}
+
+
+.submenu-logueado{
+    width: min-content; 
+    list-style: none;
+    left: 0;
+    position: absolute;
+    display: none;
+    z-index: 100;
+    padding: 0px;
+    
+}
+
+.submenu-logueado li{
+    background-color: #253141;
+    border-bottom: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+
+a.esconder-nombre{
+    text-decoration: underline;
+    color: whitesmoke;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+a.esconder-nombre:hover{
+    font-weight: 600;
+}
+
+
+p.esconder-nombre{
+    color: whitesmoke;
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+
+.cont-sesion-nombre-y-foto:hover .submenu-logueado {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+    flex-wrap: wrap;
+}
+
+
+
 
 .cont-menu {
     display: flex;
@@ -73,6 +128,11 @@ header {
     bottom: 10px;
 }
 
+
+.login-usuario-margin{
+    margin-right: 20px;
+}
+
 body {
    background-color: #EFF3F6;
    font-family: 'Poppins', semi-bold;
@@ -86,10 +146,6 @@ body {
     padding: 6px;
     margin: 10px;
     border-radius: 20px;
-}
-
-a svg:hover{
-    fill: aqua;
 }
 
 /* Nav */
@@ -131,7 +187,7 @@ nav ul li a:hover::after {
   }
   
   a  {
-    text-decoration:none !important;
+    text-decoration:none;
   }
 
 footer{
