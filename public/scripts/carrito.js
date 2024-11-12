@@ -105,7 +105,7 @@ function agregarFila(producto, index) {
     productRow.innerHTML = `
         <td style="width:30%;">
             <img src="img/${prdinfo.imagen}">
-         <p id="pnombre">   <a href="/producto?id=${prdinfo.id}">${prdinfo.nombre}</p></a>
+         <p id="pnombre">   <a href="/producto?id=${prdinfo.id}" style="color:black";>${prdinfo.nombre}</p></a>
             <span id="code">codigo de producto:${prdinfo.id}</span>
         </td>
         <td>
