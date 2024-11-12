@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Categoria;
 use rutex\BaseController;
 use app\models\Producto;
 
@@ -19,9 +20,12 @@ class HomeController extends BaseController
     function producto($data)
     {
         $producto    = new Producto;
+        $categoria   = new Categoria;
         $data["prd"] = $producto->getById($_GET["id"]);
+        $cat = $data["prd"]["categoria_id"];
+        $data["cat"] = $categoria->getById($cat);
 
-        return $this->view("producto", $data);
+        return $this->view("producto",$data);
     }
 
     function catalogo($data)

@@ -88,10 +88,10 @@ class AdminController extends BaseController
             $producto->delete($id);
             if ($producto->success()) {
                 $data["msg"] = "el producto fue eliminado con exito";
-                return $this->gestionProductos($data);
+                $this->redirect("gestionProductos", $data);
             } else {
                 $data["msg"] = "no se pudo eliminar el producto";
-                return $this->gestionProductos($data);
+                $this->redirect("gestionProductos", $data);
             }
         } else {
             $this->redirect("/admin");
@@ -169,7 +169,7 @@ class AdminController extends BaseController
             } else {
                 $data['msg'] = "Hubo un error al registrar el producto.";
             }
-            return $this->añadirProducto($data);
+            $this->redirect("admin/añadirProducto", $data);
         } elseif ($modo === 'editprd') {
             $id = $_POST['id'];
             $campos = [
@@ -196,7 +196,7 @@ class AdminController extends BaseController
                 $this->redirect("/admin/gestionProductos");
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                return $this->view("admin/formularioProducto", $data);
+                $this->redirect("admin/formularioProducto", $data);
             }
         } elseif ($modo == "editprd2") {
             foreach ($_POST["id"] as $id) {
@@ -212,7 +212,7 @@ class AdminController extends BaseController
                 $this->redirect("/admin/gestionProductos");
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                return $this->view("admin/formularioProducto", $data);
+                $this->redirect("admin/formularioProducto", $data);
             }
         }
     }
@@ -232,16 +232,14 @@ class AdminController extends BaseController
 
             if ($producto->success()) {
                 $data["msg"] = "los cambios se realizaron con exito";
-                return $this->gestionProductos($data);
-                $this->redirect("admin/gestionProductos");
+                $this->redirect("admin/gestionProductos", $data);
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                return $this->gestionProductos($data);
-                $this->redirect("admin/gestionProductos");
+                $this->redirect("admin/gestionProductos", $data);
             }
         } else {
             $data['msg'] = "No se recibieron productos para actualizar.";
-            return $this->gestionProductos($data);
+            $this->redirect("admin/gestionProductos", $data);
         }
     }
     function gestionReservas($data)
@@ -292,10 +290,10 @@ class AdminController extends BaseController
         }
         if ($reserva->success() || $reservaProductos->success()) {
             $data["msg"] = "Los cambios se realizaron con éxito";
-            return $this->gestionReservas($data);
+            $this->redirect("gestionReservas",$data);
         } else {
             $data['msg'] = "Hubo un error al guardar las reservas y productos.";
-            return $this->gestionReservas($data);
+            $this->redirect("gestionReservas",$data);
         }
     }
 
@@ -318,12 +316,10 @@ class AdminController extends BaseController
             $reservaProductos->delete($id);
             if ($reservaProductos->success()) {
                 $data["msg"] = "el producto fue eliminado con exito";
-                $this->redirect("/admin/gestionReservas");
-                return $this->gestionReservas($data);
+                $this->redirect("gestionReservas",$data);
             } else {
                 $data["msg"] = "no se pudo eliminar el producto";
-                $this->redirect("/admin/gestionReservas");
-                return $this->gestionReservas($data);
+                $this->redirect("gestionReservas",$data);
             }
         } else {
             $this->redirect("/admin");
@@ -337,43 +333,15 @@ class AdminController extends BaseController
             $reserva->delete($id);
             if ($reserva->success()) {
                 $data["msg"] = "la reserva fue eliminada con exito";
-                return $this->gestionReservas($data);
+                $this->redirect("gestionReservas",$data);
             } else {
                 $data["msg"] = "no se pudo eliminar la reserva";
-                return $this->gestionReservas($data);
+                $this->redirect("gestionReservas",$data);
             }
         } else {
             $this->redirect("/admin");
         }
     }
-public function getProductos() {
-    $productos = new Producto;
-    $productos = $productos->getAll();
-    echo json_encode($productos);
-}
-
-public function agregarProductoReserva() {
-    $producto = new Producto();
-    $reservaProducto = new ReservaProductos();
-    $reserva_id = $_POST['reserva_id'];
-    $producto_id = $_POST['producto_id'];
-    $cantidad = $_POST['cantidad'];
-
-    $producto = $producto->getById($producto_id);
-    $totalProducto = $producto->precio;
-    $campos = [
-        "id_reserva"    => $reserva_id,
-        "id_producto"   => $producto_id,
-        "cantidad"      => $cantidad,
-        'totalProducto' => $totalProducto,
-    ];
-
-    $reservaProducto->insert($campos);
-    
-    echo 'Producto agregado correctamente';
-}
-
-
 
     function categoria()
     {

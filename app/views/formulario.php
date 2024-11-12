@@ -73,12 +73,7 @@
 
 
 <script>
-    window.addEventListener("load", (event) => {
-      <?php if (!empty($msg)): ?>
-        let mensaje = <?= json_encode($msg) ?>;
-        alert(mensaje);
-      <?php endif; ?>
-    });
+ 
 </script>
 
 </body>
