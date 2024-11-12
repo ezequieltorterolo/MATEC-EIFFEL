@@ -10,7 +10,9 @@
 #body-catalogo{
     margin: 20px;
 }
-
+a {
+    text-decoration:none;
+}
 
 
 /*header*/
@@ -23,6 +25,8 @@ header {
     align-items: center;
     color: aliceblue;
     background-color: #253141;
+    background: rgb(37,49,65);
+    background: linear-gradient(180deg, rgba(37,49,65,1) 72%, rgba(24,33,45,1) 100%); 
 }
     header img{
         height: 100px;
@@ -104,6 +108,7 @@ p.esconder-nombre{
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 }
 .cont-buscador{
     display: flex;
@@ -161,11 +166,28 @@ body {
 .menu > li > a {
     display: block;
     padding: 15px 20px;
-    text-decoration: none;
-    color: #253141;
+    text-decoration: none !important;
+    color: #253141 !important;
 }
 
 
+.nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* opcional: ajusta según el diseño */
+  }
+  
+  /* Opcional: aplicar una transición para un efecto más suave */
+  .dropdown-menu {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    display: block; /* Para evitar problemas de transición */
+    visibility: hidden;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
 
 
 
@@ -186,10 +208,42 @@ nav ul li a:hover::after {
     width: 100%;
   }
   
-  a  {
-    text-decoration:none;
-  }
+.iconos button {
+background-color:transparent;
+border:none;
+}
 
+#buscador2 {
+  width:0px;
+    transition:width 1s;
+    display:none;
+   
+  
+}
+
+
+#sidebar { 
+    transition: 1s;
+    box-shadow: 13px 5px 25px -4px rgba(16,17,20,0.23);
+    background-color: #B7BCC0;
+    background: rgb(183,188,192);
+    background: linear-gradient(180deg, rgba(183,188,192,1) 0%, rgba(158,170,179,1) 35%); 
+    height: 100%; /* Toma toda la altura de la pantalla */
+    width:0%; /* Ancho inicial de 0 para que esté oculta */
+    position: fixed; /* Fija la posición para superponerse */
+       top: 0;
+      left: 0;
+        overflow:auto;
+      overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
+      /* Transición para un efecto suave */
+      z-index: 1001; /* Se superpone a otros elementos */
+     padding-top: 20px;
+     
+}
+
+.textopadding {
+    padding-left:24px;
+}
 footer{
     margin-top: 50px;
     background-color: #253141;
@@ -343,6 +397,8 @@ footer {
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 
+
+ 
     .navegacion ul {
         display:none;
     }
@@ -427,6 +483,10 @@ footer {
     #seccion-imagen img{
         display: none;
     }
+
+    .cont-menu {
+        display:none !important;
+     }
 }
 
 

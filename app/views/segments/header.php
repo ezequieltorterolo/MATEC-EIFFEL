@@ -4,7 +4,7 @@
 
     <img src="img/logo.jpg">
 
-<div class="cont-menu" style="display: flex;">    
+<div class="cont-menu" style="display:flex;">    
     <form class="cont-buscador"  action="/catalogo" method="GET">
         <input  id ="buscador" type="text" name="nombre" placeholder="Buscar...">
         <input type="image" id="lupa" src="img/lupa.svg" style="width:25px; height:25px;">
@@ -75,14 +75,10 @@
         document.location.href = "/logout?usuarioid=" + id;
     };
 
-<<<<<<< HEAD
 
 
 
     $("#lupa").mouseenter(function(){
-=======
-    $("#lupa").mouseenter(function() {
->>>>>>> 0a351e2a361177a5ce08cbd733bfa9f4e42cb6c6
         $("#lupa").css("opacity", "1");
         $("#lupa").css("transform", "scale(1.1");
     });

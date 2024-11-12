@@ -19,10 +19,13 @@
 
 </head>
 <body>
-    
+  
     <?php include  "segments/header.php" ?>
+    
     <?php include  "segments/nav.php" ?>
 
+
+  
     <div id="contenedor-destacados" class="container-fluid"></div>
     <div id="slides">
         <div class="slide showing"></div> 
@@ -57,6 +60,7 @@
                 </div>
             <?php endforeach?>
         </div>
+                        </div>
 </div>
 
 <?php include  "segments/footer.php" ?>
