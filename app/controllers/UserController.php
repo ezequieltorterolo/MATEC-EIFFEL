@@ -19,7 +19,6 @@ function login($data)
 
     function validaringreso($data)
     {
-        $data["email"] = $_POST["email"];
 
         $usuario = new Usuario;
         $datosusuario = $usuario->where("email", "=", $_POST["email"])->select()->getFirst();
