@@ -50,7 +50,7 @@ function carrito_confirmar(event) {
 function mostrarCarrito() {
     carritoContainer.innerHTML = `
         <tr>
-            <th>Producto</th>
+            <th id="pro">Producto</th>
             <th>Cantidad</th>
             <th>Total</th>
             <th>Stock</th>
@@ -105,17 +105,19 @@ function agregarFila(producto, index) {
     productRow.innerHTML = `
         <td style="width:30%;">
             <img src="img/${prdinfo.imagen}">
-            <a href="/producto?id=${prdinfo.id}"><p id="pnombre">${prdinfo.nombre}</p></a>
+         <p id="pnombre">   <a href="/producto?id=${prdinfo.id}">${prdinfo.nombre}</p></a>
             <span id="code">codigo de producto:${prdinfo.id}</span>
         </td>
         <td>
+        <p>
             <button onclick="quitar(${producto.id})">-</button>
             <input type="number" id="cantidad_${producto.id}" value="${producto.cantidad}" min="1" max="${prdinfo.stock}" readonly>
             <button onclick="agregar(${producto.id})">+</button>
+            </p>
         </td>
         <td id="total_${producto.id}">${calcularTotal(producto).toFixed(2)}</td>
         <td>${stockIndicator}</td>
-        <td><img onclick="borrarProducto(${index})" src="img/basura.svg" id="basura" style="cursor: pointer;"></td>
+        <td><button><img onclick="borrarProducto(${index})" src="img/basura.svg" id="basura"></button></td>
     `;
     carritoContainer.appendChild(productRow);
 }

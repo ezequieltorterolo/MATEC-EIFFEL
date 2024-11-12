@@ -6,6 +6,21 @@
    
 }
 
+.grueso5 {
+    font-weight:bolder;
+}
+
+.grueso4 {
+    font-weight:bold;
+}
+
+.grueso3 {
+    font-weight:600;
+}
+
+
+
+
 
 #body-catalogo{
     margin: 20px;
@@ -166,10 +181,13 @@ body {
 .menu > li > a {
     display: block;
     padding: 15px 20px;
-    text-decoration: none !important;
+ 
     color: #253141 !important;
 }
 
+a {
+    text-decoration:none !important;
+}
 
 .nav .dropdown:hover .dropdown-menu {
     display: block;
@@ -220,7 +238,9 @@ border:none;
    
   
 }
-
+#sidebar > a {
+    color: #253141 !important;
+}
 
 #sidebar { 
     transition: 1s;
@@ -238,11 +258,16 @@ border:none;
       /* Transición para un efecto suave */
       z-index: 1001; /* Se superpone a otros elementos */
      padding-top: 20px;
+   
      
 }
 
+
+
+
 .textopadding {
     padding-left:24px;
+      
 }
 footer{
     margin-top: 50px;

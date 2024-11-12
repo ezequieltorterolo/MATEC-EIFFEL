@@ -9,12 +9,12 @@ use app\models\Categoria;
 <nav class="navegacion">
     <ul class="menu nav">
         
-        <li class="nav-item">
+        <li class="nav-item grueso3">
           <a href="/">INICIO</a>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">CATEGORIAS</a>
+            <a class="nav-link dropdown-toggle grueso3" data-bs-toggle="dropdown">CATEGORIAS</a>
             <ul class="dropdown-menu">
                 <?php foreach($categoria as $cate):?>
                   <li> <a class="dropdown-item"  href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></a></li> <li><hr class="dropdown-divider"></li>
@@ -22,9 +22,9 @@ use app\models\Categoria;
             </ul>
         </li>
    
-        <li class="nav-item"><a href="/catalogo">CATALOGO</a></li> 
+        <li class="nav-item grueso3"><a href="/catalogo">CATALOGO</a></li> 
            
-        <li class="nav-item"><a href="/sobreNosotros"> SOBRE NOSOTROS </a></li>
+        <li class="nav-item grueso3"><a href="/sobreNosotros"> SOBRE NOSOTROS </a></li>
    
     </ul>
            
@@ -74,14 +74,41 @@ use app\models\Categoria;
 <div id="sidebar">
   <div class="row">
     <div class="col-8">
-  <h1 class="textopadding"> MENU </h1> </div> <div class="col-1 float-end"><span id="cerrar1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+  <h1 class="textopadding grueso5 text-align-left"> MENU </h1> </div> <div class="col-1 float-end"><span id="cerrar1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
   <path d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753"/>
 </svg></span> </div> 
 <hr>
                 </div>
                 
       <div>
+         <div class="row">
+         
+       <p class="textopadding grueso4"><a href="/catalogo">CATALOGO</a></p>
+ <hr>
+                </div>
+                <div class="row">
+         
+         <p class="textopadding grueso4"> <a href="/sobreNosotros"> SOBRE NOSOTROS </a></p>
+   <hr>
+      
+                </div>
+                <div class="row">
+         
+         <p class="textopadding grueso4"> CATEGORIAS </p>
+         <?php foreach($categoria as $cate):?>
+          <div class="row mb-1 ">
+                 <div class="col-9" <li> <a class="dropdown-item textopadding"  href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></a></div> <div class="col-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/></div>
+</svg></li> 
+         </div>
+                <?php endforeach?>
+         
+   <hr>
+                  </div>
+               
+               
       </div>
+     
 </div>   
 
 

@@ -19,7 +19,7 @@
     <?php include "segments/nav.php" ?>
 
     <div id="body-carrito">
-        <div id="seccion-titulo" class="container-fluid float-start">
+        <div id="parte-titulo" class="container-fluid">
             <h1>CARRITO</h1>
             <hr>
         </div>

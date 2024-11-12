@@ -15,6 +15,11 @@ input[type=number] {
 
 
 
+#pnombre {
+    overflow:hidden;
+    max-width:100%;
+    padding-left:17px;
+}
 
 
 .subtitulo{
@@ -24,17 +29,15 @@ input[type=number] {
 
 
 
-    #seccion-titulo{
-        margin-bottom: 20px;
+    #parte-titulo{
+        margin-bottom: 30px;
        text-align:left;
       
       
     }
 
     
-#body-carrito{
-    margin: 20px;
-}
+
 
 
 
@@ -46,7 +49,7 @@ tr {
     border-bottom:2px solid #253141 !important;
 }
 table {
- 
+ margin-top:5px;
   text-align:center;
 
    
@@ -64,28 +67,38 @@ td {
     font-size:20px;
   padding-bottom:14px;
    align-content:center;
-          
+   vertical-align: middle;
+   text-align: center;
     text-align:center;
     padding-top:30px;
    
     
 }
 
+td button {
+    background-color: none;
+    border:none;
+}
+
 
 
 #code {
-    font-size:17px;
+    font-size:10px;
 
    margin-left:40px;
     float:left;
     color:#B7BCC0;
 }
 
+td input {
+    width:26px;
+}
+
 td img{
 height:fit-content;
 width:95px;
 border:1px solid #253141;
-
+height:100px;
 float:left;
 
 
@@ -194,8 +207,59 @@ float:left;
     display:none;
 }
     
+tr {
+    border-bottom:2px solid #253141 !important;
+}
+table {
+ margin-top:5px;
+  text-align:center;
+  
+width:fit-content;
+
+
+   
+}
+
+#pro {
+    width:5px;
+    text-align:left;
+}
+
+th {
+    font-size:16px;
+
+   padding-left:2px;
+
+
+}
+td img{
+    height:100px;
+
+    
+    margin-left: 20px;
+    
+}
+
+
+#code {
+    font-size:10px;
+ 
+    
+    
+       margin-left:10px;
+        float:left;
+        color:#B7BCC0;
+    }
+    
+}
+td > input {
+    width:20px;
+    font-size:12px;
+}
+
+
 #body-carrito{
-    margin: 5px;
+  margin:3px;
 }
 
 }
