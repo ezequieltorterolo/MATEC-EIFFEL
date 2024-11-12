@@ -46,7 +46,7 @@
             <?php foreach($data as $prd):?>
                 <div class="producto-posicion">
                     <a href =/producto?id=<?=$prd["id"]?>><img class="img-prod" src=img/<?=$prd["imagen"]?>></a>
-                    <p class="nombre-prod"><?=$prd["nombre"]?></p>
+                    <a href=/producto?id=<?=$prd["id"]?>><p class="nombre-prod" title="<?=$prd["nombre"]?>"><?= (strlen($prd["nombre"]) > 35) ? substr($prd["nombre"], 0, 35) . "..." : $prd["nombre"] ?></p></a>
                     <p class="precio-prod">
                         <?php if(isset($prd["precioCaja"])): ?>
                             $<?=$prd["precioCaja"]?> Al por mayor -

@@ -27,10 +27,10 @@
             <input id="precioCaja" name="precioCaja" type="text" placeholder="precio Caja" <?php if (isset($prd)): ?>value="<?= $prd["precioCaja"] ?><?php endif ?>" required><br><br>
 
             <label for="categoria">Categoria:</label>
-            <select id="categoria" name="categoria">
+            <select id="categoria" name="categoria_id">
                 <option <?php if ($mode == "addprd"): ?>default <?php endif; ?>>Seleccione una categoria</option>
                 <?php foreach ($categoria as $catego): ?>
-                    <option><?= $catego["nombreCategoria"] ?></option>
+                    <option value="<?=$catego["id"]?>"><?= $catego["nombreCategoria"] ?></option>
                 <?php endforeach ?>
                 <option>Nueva categoría</option>
                 <input type="hidden" id="categoria2" name="categoria2" placeholder="nueva categoria">
@@ -53,7 +53,7 @@
             <input id="cantidadCaja" name="cantidadCaja" type="text" placeholder="cantidadCaja" <?php if (isset($prd)): ?>value="<?= $prd["cantidadCaja"] ?><?php endif ?>"><br><br>
 
             <label for="imagen"> Imagen:</label>
-            <input id="imagen" name="imagen" type="file" <?php if (!isset($prd)): ?>required <?php endif; ?>><br><br>
+            <input id="imagen" name="imagen" type="file" <?php if (!isset($prd)): ?>required <?php endif;?>><br><br>
             <div id="container-imagen">
                 <img id="preview" <?php if (isset($prd)): ?>src="../img/<?= $prd["imagen"] ?><?php endif; ?>" alt="Vista previa de la imagen" width="300px"></img>
             </div>

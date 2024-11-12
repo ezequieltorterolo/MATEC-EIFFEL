@@ -58,15 +58,16 @@
                     <option value="2" <?php if ($res["estado"] == 2): ?>selected <?php endif ?>>Cancelado</option>
                   </select>
                 </td>
-                <?php foreach($usuario as $user):?> <?php if($user["id"] == $res["usuario_id"]):?>
-                <td><?= $user["nombre"] ?> <?php endif;?></td>
-                <?php endforeach;?>
-                <td><input type="text" name="direccion[]" value="<?= $res["entrega_direccion"] ?>" disabled></td>
-                <td><input type="datetime-local" name="fecha[]" value="<?= date('Y-m-d\TH:i', strtotime($res['entrega_fechahora'])) ?>" disabled></td>
-                <td><input type="text" name="aclaraciones[]" value="<?= $res["aclaraciones"] ?>" disabled></td>
-                <td>
-                  <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
-                </td>
+                <?php foreach ($usuario as $user): ?> <?php if ($user["id"] == $res["usuario_id"]): ?>
+                    <td><?= $user["nombre"] ?> <?php endif; ?></td>
+                  <?php endforeach; ?>
+                  <td><input type="text" name="direccion[]" value="<?= $res["entrega_direccion"] ?>" disabled></td>
+                  <td><input type="datetime-local" name="fecha[]" value="<?= $res['entrega_fechahora'] ?>" disabled></td>
+                  <td><input type="text" name="aclaraciones[]" value="<?= $res["aclaraciones"] ?>" disabled></td>
+                  <td>
+                    <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
+                    <img onclick="eliminarReserva(<?= $res['id'] ?>)" src="../img/basura.svg">
+                  </td>
               </tr>
 
               <tr class="detalles-fila" style="display: none;">
@@ -95,13 +96,13 @@
                                   <td>
                                     <div id="quitaragregar">
                                       <button type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'quitar')" disabled>-</button>
-                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock']?>"disabled>
+                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock'] ?>" disabled>
                                       <button type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'agregar')" disabled>+</button>
                                     </div>
                                   </td>
                                   <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
                                   <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
-                                  <td><img onclick="eliminarProducto(<?= $resprd['id'] ?>)"src="../img/basura.svg"></td>
+                                  <td><img onclick="eliminarProducto(<?= $resprd['id'] ?>)" src="../img/basura.svg"></td>
                                 </tr>
                               <?php endif; ?>
                             <?php endforeach; ?>
@@ -109,7 +110,6 @@
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
-                        <td><button type="button"onclick="agregarProducto(<?= $res['id'] ?>)">+</button></td>
                       </tbody>
                     </table>
                 </td>
@@ -168,15 +168,25 @@
         element.disabled = false;
       });
     }
-    function agregarProducto(id){
-    document.location.href = "/admin/agregarProducto?resid="+id;
+
+    function agregarProducto(id) {
+      document.location.href = "/admin/agregarProducto?resid=" + id;
     }
+
     function eliminarProducto(id) {
       let confirmacion = confirm("Estas seguro de eliminar el producto?");
       if (confirmacion) {
-        document.location.href = "/admin/eliminarProducto?prdid="+id;
+        document.location.href = "/admin/eliminarProducto?prdid=" + id;
+      }
+    }
+
+    function eliminarReserva(id) {
+      let confirmacion = confirm("Estas seguro de eliminar la reserva?");
+      if (confirmacion) {
+        document.location.href = "/admin/eliminarReserva?resid=" + id;
       }
     }
   </script>
 </body>
+
 </html>

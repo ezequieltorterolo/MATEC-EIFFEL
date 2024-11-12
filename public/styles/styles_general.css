@@ -22,7 +22,6 @@ header {
     justify-content: center;
     align-items: center;
     color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
     background-color: #253141;
 }
     header img{
@@ -35,15 +34,71 @@ header {
         border-radius: 20px;
     }
 
-
-.icono-alternativo-logueado{
-    
-}
+.cont-opciones-header{
+    display: flex;
+    position: relative;
+} 
 
 
 .cont-sesion-nombre-y-foto{
-    display: flex;
+    position: relative;
 }
+
+.icono-alternativo-logueado{
+    margin-right: 20px;
+}
+
+
+.submenu-logueado{
+    width: min-content; 
+    list-style: none;
+    left: 0;
+    position: absolute;
+    display: none;
+    z-index: 100;
+    padding: 0px;
+    
+}
+
+.submenu-logueado li{
+    background-color: #253141;
+    border-bottom: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+
+a.esconder-nombre{
+    text-decoration: underline;
+    color: whitesmoke;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+a.esconder-nombre:hover{
+    font-weight: 600;
+}
+
+
+p.esconder-nombre{
+    color: whitesmoke;
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+
+.cont-sesion-nombre-y-foto:hover .submenu-logueado {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+    flex-wrap: wrap;
+}
+
+
+
 
 .cont-menu {
     display: flex;
@@ -73,6 +128,11 @@ header {
     bottom: 10px;
 }
 
+
+.login-usuario-margin{
+    margin-right: 20px;
+}
+
 body {
    background-color: #EFF3F6;
    font-family: 'Poppins', semi-bold;
@@ -88,50 +148,7 @@ body {
     border-radius: 20px;
 }
 
-
-#buscador2 {
-    transition: all 1s;
-    width: 0%;
-    display:none;
-    padding: 6px;
-
-    border-radius: 20px;
-}
-
-a svg:hover{
-    fill: aqua;
-}
-
-/* Estilos para el contenedor principal del modal */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-left: 25%;
-top:25%;
-    width: 50%;
-    height: 60%;
-    background-color: #b2b2b2; /* Fondo oscuro semi-transparente */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border:2px solid #253141;
-}
-
-/* Estilos para el contenido del modal */
-#myModal > div {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400;
-}
 /* Nav */
-
-.iconos button {
-    background-color:transparent;
-    border:transparent;
-}
-
 
 .navegacion ul{
     list-style: none;
@@ -148,22 +165,7 @@ top:25%;
     color: #253141;
 }
 
-#sidebar { 
-    transition: 1s;
-    display:none;
-    background-color: #B7BCC0;
- 
-    height: 100%; /* Toma toda la altura de la pantalla */
-width:0%; /* Ancho inicial de 0 para que esté oculta */
-    position: fixed; /* Fija la posición para superponerse */
-       top: 0;
-      left: 0;
-        
-      overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
-      /* Transición para un efecto suave */
-      z-index: 1001; /* Se superpone a otros elementos */
-     padding-top: 60px; /* Espacio superior */
-}
+
 
 
 
@@ -185,7 +187,7 @@ nav ul li a:hover::after {
   }
   
   a  {
-    text-decoration:none !important;
+    text-decoration:none;
   }
 
 footer{
@@ -316,7 +318,7 @@ footer {
 
 #seccion-titulo{
     margin-bottom: 20px ;
-    width: 100%;
+    width: fit-content;
 }
 #seccion-filtros{
     display: flex;
@@ -368,14 +370,12 @@ footer {
      float:left;
   }
 
-  
-
   /*los subtitulos de las paginas*/
 .subtitulo {
     margin-bottom: 20px;
     font-weight: bold;
 }
-  .cont-menu {
+  .menu {
      display:none;
   }
 
