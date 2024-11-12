@@ -110,34 +110,6 @@
                             </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
-                        <!-- Botón para abrir el popup -->
-                        <button onclick="mostrarPopup()">Agregar Producto</button>
-
-                        <!-- Contenedor del popup -->
-                        <div id="popup" style="display: none;">
-                          <div class="popup-content">
-                            <h2>Seleccionar Producto</h2>
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>Producto</th>
-                                  <th>Nombre</th>
-                                  <th>cantidad</th>
-                                  <th>Seleccionar</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <?php foreach($producto as $prod):?>
-                                  <td><a href="../img/<?=$prd["imagen"]?>"></td>
-                                  <td><?=$prd["nombre"]?></td>
-                                  <td><input type="text" placeholder="cantidad"></td>
-                                  <td><input type="checkbox"></td>
-                                <?php endforeach;?>
-                              </tbody>
-                            </table>
-                            <button onclick="cerrarPopup()">Cerrar</button>
-                          </div>
-                        </div>
                       </tbody>
                     </table>
                 </td>

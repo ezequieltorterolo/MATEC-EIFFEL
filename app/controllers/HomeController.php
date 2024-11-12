@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Categoria;
 use rutex\BaseController;
 use app\models\Producto;
 
@@ -11,7 +12,8 @@ class HomeController extends BaseController
     function index($data)
     {
         $producto        = new Producto;
-        $data["ofertas"] = $producto->where("oferta", "=", true)->getall();
+        $data["ofertas"] =$producto-> where("oferta", "=", true)->and("stock", ">", 0)
+        ->getall();
 
         return $this->view("home", $data);
     }
@@ -19,9 +21,12 @@ class HomeController extends BaseController
     function producto($data)
     {
         $producto    = new Producto;
+        $categoria   = new Categoria;
         $data["prd"] = $producto->getById($_GET["id"]);
+        $cat = $data["prd"]["categoria_id"];
+        $data["cat"] = $categoria->getById($cat);
 
-        return $this->view("producto", $data);
+        return $this->view("producto",$data);
     }
 
     function catalogo($data)

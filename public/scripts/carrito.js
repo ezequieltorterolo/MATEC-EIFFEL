@@ -1,4 +1,3 @@
-
 var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 let carritoContainer = document.querySelector('#tabla-prod table');
 console.log(carrito);
@@ -6,6 +5,7 @@ console.log(carrito);
 function carrito_confirmar(event) {
     event.preventDefault();
 
+    // Obtener los elementos del formulario
     const dirent = document.getElementById("dirent").value;
     const horaent = document.getElementById("horaent").value;
     const aclaraciones = document.getElementById("msg").value;
@@ -16,6 +16,7 @@ function carrito_confirmar(event) {
         return;
     }
 
+    // Construir el objeto reserva
     let reserva = {
         "dirent": dirent,
         "horaent": horaent,
@@ -30,28 +31,21 @@ function carrito_confirmar(event) {
         },
         body: JSON.stringify(reserva)
     })
-  
-    
+    .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert("Reserva registrada correctamente");
-            localStorage.setItem('carrito', JSON.stringify([]));
-            window.location.reload();
+            alert(data.message); // Mensaje de éxito
+            localStorage.setItem('carrito', JSON.stringify([])); // Vaciar el carrito
+            window.location.reload(); // Recargar la página
         } else {
-            alert("Error: " + data.error);
-            window.location.reload();
+            alert("Error: " + data.error); // Mostrar mensaje de error
         }
     })
     .catch(error => {
-        console.error("Error:", error);
+        console.error("Error en la solicitud:", error);
         alert("Ha ocurrido un error en el servidor: " + error.message);
-        window.location.reload();
     });
 }
-
-
-
-
 
 function mostrarCarrito() {
     carritoContainer.innerHTML = `
@@ -90,7 +84,7 @@ function mostrarCarrito() {
         carritoContainer.innerHTML += "<tr><td colspan='4'>El carrito está vacío</td></tr>";
         document.querySelector('#cont-total h2').innerText = "$0.00";
 
-        document.getElementById("cont-abajo").style.display="none";
+        document.getElementById("cont-abajo").style.display = "none";
     }
 }
 
@@ -154,6 +148,7 @@ function borrarProducto(index) {
     carrito.splice(index, 1);
     localStorage.setItem('carrito', JSON.stringify(carrito));
     mostrarCarrito();
+    mostrarCantidadP();
 }
 
 function agregar(id) {
@@ -183,4 +178,3 @@ function quitar(id) {
         total(id);
     }
 }
-
