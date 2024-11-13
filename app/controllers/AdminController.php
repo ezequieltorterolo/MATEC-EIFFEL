@@ -177,7 +177,7 @@ class AdminController extends BaseController
                 "descripcion"   => $_POST["descripcion"],
                 "precioCaja"    => $_POST["precioCaja"],
                 "precio"        => $_POST["precio"],
-                "categoria_id"     => $_POST["categoria_id"],
+                "categoria_id"  => $_POST["categoria_id"],
                 "subcategoria"  => $_POST["subcategoria"],
                 "stock"         => $_POST["stock"],
                 "oferta"        => isset($_POST["oferta"]),
@@ -300,9 +300,24 @@ class AdminController extends BaseController
     function agregarProducto($data)
     {
         if (isset($_SESSION["admin"])) {
-            $reserva = new Reserva();
-            $id = $_GET["resid"];
-            $reserva = $reserva->where("id", "=", $id);
+            $reservaprd = new ReservaProductos();
+            echo $_POST["prdSeleccionado"];
+            $campos = [
+                "producto_id"   => $_POST["prdSeleccionado"],
+                "reserva_id"    => $_POST["reservaId"],
+                "cantidad"      => $_POST["cantidadPrd"],
+                "totalProducto" => 1,
+
+            ];
+            $reservaprd->insert($campos);
+            if($reservaprd->success()){
+                $data["msg"] = "producto agregado con exito";
+                $this->redirect("gestionReservas",$data);
+            }else{
+                $data["msg"] = "hubo un error al agregar el producto,intente nuevamente";
+                $this->redirect("gestionReservas",$data);
+            }
+
         } else {
             $this->redirect("/admin");
         }

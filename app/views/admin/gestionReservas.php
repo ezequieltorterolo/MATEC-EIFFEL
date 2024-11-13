@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
-
+  <link href="../styles/popup.css" rel="stylesheet" type="text/css">
   <script src="../scripts/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -30,11 +29,12 @@
   </div>
 
   <div id="botones" class="container">
-    <form method="POST" action="/admin/gestionReservas">
+    <form id="formulario" method="POST" action="/admin/gestionReservas">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
         <button type="button" class="btn btn-primary" onclick="activarEdicion()">Editar</button>
       </div>
+    
 
       <div id="tabla-prod">
         <table>
@@ -45,6 +45,7 @@
               <th>Calle</th>
               <th>Fecha</th>
               <th>Aclaraciones</th>
+              <th>Opciones</th>
             </tr>
           </thead>
           <tbody>
@@ -58,8 +59,8 @@
                     <option value="2" <?php if ($res["estado"] == 2): ?>selected <?php endif ?>>Cancelado</option>
                   </select>
                 </td>
-                <?php foreach ($usuario as $user): ?> <?php if ($user["id"] == $res["usuario_id"]): ?>
-                    <td><?= $user["nombre"] ?> <?php endif; ?></td>
+                <?php foreach ($usuario as $user): ?>
+                  <?php if ($user["id"] == $res["usuario_id"]): ?><td><?= $user["nombre"] ?><?php endif; ?></td>
                   <?php endforeach; ?>
                   <td><input type="text" name="direccion[]" value="<?= $res["entrega_direccion"] ?>" disabled></td>
                   <td><input type="datetime-local" name="fecha[]" value="<?= $res['entrega_fechahora'] ?>" disabled></td>
@@ -102,16 +103,33 @@
                                   </td>
                                   <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
                                   <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
-                                  <td><img onclick="eliminarProducto(<?= $resprd['id'] ?>)" src="../img/basura.svg"></td>
+                                  <td><img onclick="eliminarProducto(<?=$resprd['id']?>)" src="../img/basura.svg"></td>
                                 </tr>
                               <?php endif; ?>
                             <?php endforeach; ?>
-                            <tr>
-                            </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
                       </tbody>
                     </table>
+                    <!-- Popup modal -->
+                    <button type="button" class="btn btn-secondary" onclick="openPopup(<?= $res['id'] ?>)">Añadir Producto</button>
+                    <div class="popup-overlay" id="popup-<?= $res['id'] ?>" style="display:none;">
+                    <form method="POST" action="/admin/agregarProducto">
+                      <div class="popup-content">
+                        <h4>Seleccione el Producto y la cantidad deseada</h4><br>
+                        <input type="hidden" name="reservaId" value="<?= $res['id'] ?>">
+                        <select name="prdSeleccionado" >
+                          <?php foreach ($producto as $prod): ?>
+                            <option value="<?=$prod['id'] ?>"><?=$prod["nombre"]?></option>
+                          <?php endforeach ?>
+                        </select><br><br>
+                        <input type="number" placeholder="cantidad" name="cantidadPrd"><br><br>
+                        <button type="button" class="btn btn-secondary" onclick="agregarProducto()">Añadir Producto</button>
+                        <button type="button" class="btn btn-secondary" onclick="closePopup(<?= $res['id']?>)">Cancelar</button>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -121,36 +139,20 @@
   </div>
 
   <script>
-    $(document).ready(function() {
-      function actualizarSubtotal($row) {
-        const precio = parseFloat($row.find(".precio").text());
-        const cantidad = parseInt($row.find("input[type='number']").val());
-        const subtotal = (cantidad * precio).toFixed(2);
-        $row.find(".subtotal").text(subtotal);
-      }
-      $(document).on("change", "input[type='number']", function() {
-        const row = $(this).closest("tr");
-        actualizarSubtotal(row);
-      });
-
-      function actualizarCantidad(id, accion) {
-        const $cantidadInput = $(`#cantidad-${id}`);
-        let cantidad = parseInt($cantidadInput.val());
-        if (accion === 'agregar') cantidad++;
-        if (accion === 'quitar') cantidad--;
-        $cantidadInput.val(cantidad);
-        const row = $cantidadInput.closest("tr");
-        actualizarSubtotal(row);
-      }
-      window.actualizarCantidad = actualizarCantidad;
-    });
-
-    window.addEventListener("load", (event) => {
+     window.addEventListener("load", (event) => {
       <?php if (!empty($msg)): ?>
         let mensaje = <?= json_encode($msg) ?>;
         alert(mensaje);
       <?php endif; ?>
     });
+
+    function openPopup(id) {
+      document.getElementById("popup-" + id).style.display = "flex";
+    }
+
+    function closePopup(id) {
+      document.getElementById("popup-" + id).style.display = "none";
+    }
 
     function mostrarProductos(boton) {
       const detallesFila = boton.closest("tr").nextElementSibling;
@@ -168,11 +170,10 @@
         element.disabled = false;
       });
     }
-
-    function agregarProducto(id) {
-      document.location.href = "/admin/agregarProducto?resid=" + id;
+    function agregarProducto() {
+        document.getElementById("formulario").action = "/admin/agregarProducto";
+        document.getElementById("formulario").submit();
     }
-
     function eliminarProducto(id) {
       let confirmacion = confirm("Estas seguro de eliminar el producto?");
       if (confirmacion) {

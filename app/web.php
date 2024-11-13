@@ -51,7 +51,7 @@ Route::get("/admin/eliminar"           , [AdminController::class, "eliminar"]);
 //Administrador-pagina de reservas
 Route::get("/admin/gestionReservas"    , [AdminController::class, "gestionReservas"]);
 Route::post("/admin/gestionReservas"   , [AdminController::class, "guardarTodoReservas"]);
-Route::get("/admin/agregarProducto"    , [AdminController::class, "agregarProducto"]);
+Route::post("/admin/agregarProducto"    , [AdminController::class, "agregarProducto"]);
 Route::get("/admin/eliminarProducto"   , [AdminController::class, "eliminarProducto"]);
 Route::get("/admin/eliminarReserva"    , [AdminController::class, "eliminarReserva"]);
 

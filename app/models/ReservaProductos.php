@@ -7,11 +7,11 @@ class ReservaProductos extends Model {
 
     //Estructura de la tabla indicando los campos obligatorios en el insert
     protected $struct = [
-        "id"           => ["required" => false],  
-        "reserva_id"   => ["required" => true ],      
-        "producto_id"  => ["required" => true ],
-        "cantidad"     => ["required" => true ],
-        "totalProducto"       => ["required" => true ],
+        "id"            => ["required" => false],  
+        "reserva_id"    => ["required" => true ],      
+        "producto_id"   => ["required" => true ],
+        "cantidad"      => ["required" => true ],
+        "totalProducto" => ["required" => true ],
        
    ];
 }
