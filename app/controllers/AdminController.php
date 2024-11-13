@@ -147,7 +147,7 @@ class AdminController extends BaseController
             if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
             } else {
                 $data['msg'] = "Error al subir la imagen.";
-                return $this->view("admin/formularioProducto", $data);
+                $this->redirect("formularioProducto", $data);
             }
         }
         if (!empty($_POST["categoria2"])) {
@@ -169,7 +169,7 @@ class AdminController extends BaseController
             } else {
                 $data['msg'] = "Hubo un error al registrar el producto.";
             }
-            $this->redirect("admin/añadirProducto", $data);
+            $this->redirect("añadirProducto",$data);
         } elseif ($modo === 'editprd') {
             $id = $_POST['id'];
             $campos = [
@@ -193,10 +193,10 @@ class AdminController extends BaseController
 
             if ($producto->success()) {
                 $data['msg'] = "El producto se ha modificado con éxito.";
-                $this->redirect("/admin/gestionProductos");
+                $this->redirect("gestionProductos");
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                $this->redirect("admin/formularioProducto", $data);
+                $this->redirect("formularioProducto", $data);
             }
         } elseif ($modo == "editprd2") {
             foreach ($_POST["id"] as $id) {
@@ -209,10 +209,11 @@ class AdminController extends BaseController
                 $producto->update($id, $campos);
             }
             if ($producto->success()) {
-                $this->redirect("/admin/gestionProductos");
+                $data["msg"] = "producto modificado con exito";
+                $this->redirect("gestionProductos",$data);
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                $this->redirect("admin/formularioProducto", $data);
+                $this->redirect("formularioProducto", $data);
             }
         }
     }
@@ -232,14 +233,14 @@ class AdminController extends BaseController
 
             if ($producto->success()) {
                 $data["msg"] = "los cambios se realizaron con exito";
-                $this->redirect("admin/gestionProductos", $data);
+                $this->redirect("gestionProductos", $data);
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
-                $this->redirect("admin/gestionProductos", $data);
+                $this->redirect("gestionProductos",$data);
             }
         } else {
             $data['msg'] = "No se recibieron productos para actualizar.";
-            $this->redirect("admin/gestionProductos", $data);
+            $this->redirect("gestionProductos", $data);
         }
     }
     function gestionReservas($data)
