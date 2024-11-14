@@ -10,6 +10,8 @@
     <link href="styles/style5.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8" />
     <script src="scripts/script.js"></script>
+    <link href="styles/alertpopup.css" rel="stylesheet" type="text/css">
+    <link href="styles/modal.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <title>Eiffel Importaciones</title>
@@ -19,11 +21,11 @@
     <?php include "segments/nav.php" ?>
 
     <div id="body-carrito">
-        <div id="parte-titulo" class="container-fluid">
-            <h1>CARRITO</h1>
+        <div id="seccion-titulo" class="container-fluid float-start">
             <hr>
         </div>
-
+</br>
+</br>
         <div id="tabla-prod" class="container justify-content-center align-items-center">
             <div class="row">
             <table>
@@ -57,8 +59,8 @@
     </div>
 </div>
 </div>
-
-
+   
+       <script src="scripts/alertpopup.js"></script>
     <?php include  "segments/footer.php" ?>
     <script src="scripts/carrito.js"></script>
 </body>

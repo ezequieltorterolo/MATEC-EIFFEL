@@ -106,8 +106,8 @@ class CarritoController extends BaseController
 
         foreach ($carrito as $producto) {
             $stock_producto = $obj_producto->getbyid($producto["id"]);
-            if ($stock_producto["stock"] < $producto["cantidad"]) {
-                return $producto["id"]; // Devuelve el ID del producto con stock insuficiente
+            if ($stock_producto["stock"] < $producto["cantidad"] || $stock_producto["stock"] = 0 ) {
+                return $producto["nombre"]; // Devuelve el ID del producto con stock insuficiente
             }
         }
 

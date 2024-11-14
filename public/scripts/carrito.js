@@ -1,9 +1,13 @@
 var carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 let carritoContainer = document.querySelector('#tabla-prod table');
-console.log(carrito);
+
 
 function carrito_confirmar(event) {
+    
+
+
     event.preventDefault();
+        
 
     // Obtener los elementos del formulario
     const dirent = document.getElementById("dirent").value;
@@ -34,16 +38,16 @@ function carrito_confirmar(event) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert(data.message); // Mensaje de éxito
+            mostrarPopup(data.message,true);// Mensaje de éxito
             localStorage.setItem('carrito', JSON.stringify([])); // Vaciar el carrito
             window.location.reload(); // Recargar la página
         } else {
-            alert("Error: " + data.error); // Mostrar mensaje de error
+            mostrarPopup(data.error, false); // Mostrar mensaje de error
         }
     })
     .catch(error => {
         console.error("Error en la solicitud:", error);
-        alert("Ha ocurrido un error en el servidor: " + error.message);
+        mostrarPopup(data.error, false);
     });
 }
 
@@ -85,6 +89,7 @@ function mostrarCarrito() {
         document.querySelector('#cont-total h2').innerText = "$0.00";
 
         document.getElementById("cont-abajo").style.display = "none";
+        document.getElementById("tabla-prod").style.marginBottom = "200px";
     }
 }
 
@@ -92,8 +97,10 @@ function agregarFila(producto, index) {
     let prdinfo = producto.info;
     let productRow = document.createElement('tr');
     let stockIndicator = "";
-
-    if (producto.cantidad > prdinfo.stock) {
+  
+    if(prdinfo.stock = 0){
+        stockIndicator = `<span style="red;">No queda stock ${prdinfo.stock}</span>`;
+    }else if (producto.cantidad > prdinfo.stock) {
         producto.cantidad = prdinfo.stock;
         stockIndicator = `<span style="color:orange;">Stock limitado: ${prdinfo.stock}</span>`;
     } else if (prdinfo.stock <= 5) {

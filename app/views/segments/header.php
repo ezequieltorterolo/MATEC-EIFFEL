@@ -75,14 +75,10 @@
         document.location.href = "/logout?usuarioid=" + id;
     };
 
-<<<<<<< HEAD
 
 
 
     $("#lupa").mouseenter(function(){
-=======
-    $("#lupa").mouseenter(function() {
->>>>>>> 0a351e2a361177a5ce08cbd733bfa9f4e42cb6c6
         $("#lupa").css("opacity", "1");
         $("#lupa").css("transform", "scale(1.1");
     });
