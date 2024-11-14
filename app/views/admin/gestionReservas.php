@@ -8,7 +8,7 @@
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
-  <script src="../scripts/reservas.js"></script>
+  <script src="../scriptÑs/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Eiffel Importaciones - Gestión de Reservas</title>
@@ -32,9 +32,9 @@
     <form id="formulario" method="POST" action="/admin/gestionReservas">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        <button type="button" class="btn btn-primary" onclick="activarEdicion()">Editar</button>
+        <button id="#editar" type="button" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
       </div>
-    
+
 
       <div id="tabla-prod">
         <table>
@@ -53,7 +53,7 @@
               <tr>
                 <input type="hidden" name="id[]" value="<?= $res["id"] ?>">
                 <td>
-                  <select name="estado[]" disabled>
+                  <select name="estado[]" id="editable" disabled>
                     <option value="0" <?php if ($res["estado"] == 0): ?>selected <?php endif ?>>En proceso</option>
                     <option value="1" <?php if ($res["estado"] == 1): ?>selected <?php endif ?>>Finalizado</option>
                     <option value="2" <?php if ($res["estado"] == 2): ?>selected <?php endif ?>>Cancelado</option>
@@ -62,9 +62,9 @@
                 <?php foreach ($usuario as $user): ?>
                   <?php if ($user["id"] == $res["usuario_id"]): ?><td><?= $user["nombre"] ?><?php endif; ?></td>
                   <?php endforeach; ?>
-                  <td><input type="text" name="direccion[]" value="<?= $res["entrega_direccion"] ?>" disabled></td>
-                  <td><input type="datetime-local" name="fecha[]" value="<?= $res['entrega_fechahora'] ?>" disabled></td>
-                  <td><input type="text" name="aclaraciones[]" value="<?= $res["aclaraciones"] ?>" disabled></td>
+                  <td><input id="editable" type="text" name="direccion[]" value="<?= $res["entrega_direccion"] ?>" disabled></td>
+                  <td><input id="editable" type="text" name="fecha[]" value="<?= $res['entrega_fechahora'] ?>" disabled></td>
+                  <td><input id="editable" type="text" name="aclaraciones[]" value="<?= $res["aclaraciones"] ?>" disabled></td>
                   <td>
                     <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
                     <img onclick="eliminarReserva(<?= $res['id'] ?>)" src="../img/basura.svg">
@@ -96,14 +96,14 @@
                                   <td><?= $prd["nombre"] ?></td>
                                   <td>
                                     <div id="quitaragregar">
-                                      <button type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'quitar')" disabled>-</button>
-                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock'] ?>" disabled>
-                                      <button type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'agregar')" disabled>+</button>
+                                      <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'quitar')" disabled>-</button>
+                                      <input id="editable" type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock'] ?>" disabled>
+                                      <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'agregar')" disabled>+</button>
                                     </div>
                                   </td>
                                   <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
                                   <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
-                                  <td><img onclick="eliminarProducto(<?=$resprd['id']?>)" src="../img/basura.svg"></td>
+                                  <td><img onclick="eliminarProducto(<?= $resprd['id'] ?>)" src="../img/basura.svg"></td>
                                 </tr>
                               <?php endif; ?>
                             <?php endforeach; ?>
@@ -112,22 +112,22 @@
                       </tbody>
                     </table>
                     <!-- Popup modal -->
-                    <button type="button" class="btn btn-secondary" onclick="openPopup(<?= $res['id'] ?>)">Añadir Producto</button>
+                    <button type="button" id="boton" class="btn btn-secondary" onclick="openPopup(<?= $res['id'] ?>)">Añadir Producto</button>
                     <div class="popup-overlay" id="popup-<?= $res['id'] ?>" style="display:none;">
-                    <form method="POST" action="/admin/agregarProducto">
-                      <div class="popup-content">
-                        <h4>Seleccione el Producto y la cantidad deseada</h4><br>
-                        <input type="hidden" name="reservaId" value="<?= $res['id'] ?>">
-                        <select name="prdSeleccionado" >
-                          <?php foreach ($producto as $prod): ?>
-                            <option value="<?=$prod['id'] ?>"><?=$prod["nombre"]?></option>
-                          <?php endforeach ?>
-                        </select><br><br>
-                        <input type="number" placeholder="cantidad" name="cantidadPrd"><br><br>
-                        <button type="button" class="btn btn-secondary" onclick="agregarProducto()">Añadir Producto</button>
-                        <button type="button" class="btn btn-secondary" onclick="closePopup(<?= $res['id']?>)">Cancelar</button>
-                      </div>
-                    </form>
+                      <form method="POST" action="/admin/agregarProducto">
+                        <div class="popup-content">
+                          <h4>Seleccione el Producto y la cantidad deseada</h4><br>
+                          <input type="hidden" name="reservaId" value="<?= $res['id'] ?>">
+                          <select name="prdSeleccionado">
+                            <?php foreach ($producto as $prod): ?>
+                              <option value="<?= $prod['id'] ?>"><?= $prod["nombre"] ?></option>
+                            <?php endforeach ?>
+                          </select><br><br>
+                          <input type="number" placeholder="cantidad" name="cantidadPrd"><br><br>
+                          <button type="button" class="btn btn-secondary" onclick="agregarProducto()">Añadir Producto</button>
+                          <button type="button" class="btn btn-secondary" onclick="closePopup(<?= $res['id'] ?>)">Cancelar</button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </td>
@@ -139,7 +139,7 @@
   </div>
 
   <script>
-     window.addEventListener("load", (event) => {
+    window.addEventListener("load", (event) => {
       <?php if (!empty($msg)): ?>
         let mensaje = <?= json_encode($msg) ?>;
         alert(mensaje);
@@ -166,14 +166,22 @@
     }
 
     function activarEdicion() {
-      document.querySelectorAll("input,button, select").forEach(element => {
-        element.disabled = false;
+      document.querySelectorAll("#editable").forEach(element => {
+        if (element.disabled == true) {
+          $("#editar").text("Activar Edicion");
+          element.disabled = false;
+        } else {
+          $("#editar").text("Desactivar Edicion");
+          element.disabled = true;
+        }
       });
     }
+
     function agregarProducto() {
-        document.getElementById("formulario").action = "/admin/agregarProducto";
-        document.getElementById("formulario").submit();
+      document.getElementById("formulario").action = "/admin/agregarProducto";
+      document.getElementById("formulario").submit();
     }
+
     function eliminarProducto(id) {
       let confirmacion = confirm("Estas seguro de eliminar el producto?");
       if (confirmacion) {

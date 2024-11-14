@@ -50,12 +50,13 @@ class AdminController extends BaseController
             $data["mode"]   = "editprd2";
             $categoria = new Categoria();
             $producto  = new Producto;
+            $data["catego"] = $categoria->getAll();
             if (isset($_GET["categoria"])) {
-                $categoria = $_GET["categoria"];
-                if (!empty($categoria)) $categoria->where("id", "=", $categoria);
+                $catego = $_GET["categoria"];
+                if (!empty($categoria)) $producto->and("categoria_id", "=", $catego);
             } elseif (isset($_GET["nombre"])) {
                 $nombre = $_GET["nombre"];
-                if (!empty($nombre)) $producto->where("nombre", "like", "%$nombre%");
+                if (!empty($nombre)) $producto->and("nombre", "like", "%$nombre%");
             };
 
             $data["data"]   = $producto->getAll();
@@ -252,7 +253,7 @@ class AdminController extends BaseController
             $reservaproducto = new ReservaProductos();
             $usuario = new Usuario();
             if (isset($_GET["nombre"])) {
-                $nombre = $_GET["nombre"];
+                $nombre = trim($_GET["nombre"]);
                 if (!empty($nombre)) $usuario->where("nombre", "like", "%$nombre%");
             };
             $data["reservas"] = $reservas->getAll();

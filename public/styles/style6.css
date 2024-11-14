@@ -6,12 +6,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+     text-align: center;
 }
 
 
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+    text-align: center;
+    margin-right:2px;
 }
 
 
@@ -54,6 +57,7 @@ td {
 
     text-align: center;
     padding-top: 30px;
+    width: 150px;
 
 }
 
@@ -70,6 +74,7 @@ table {
 th {
     font-size: 20px;
     background-color: #B7BCC0;
+    text-align: center;
 
 }
 

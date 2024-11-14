@@ -2,12 +2,12 @@
 <html>
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style6.css" rel="stylesheet" type="text/css">
-  
+
   <script src="../scripts/producto.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,29 +18,39 @@
   <?php include  "segments/header.php" ?>
   <div id="titulo" class="container-fluid">
     <div class="row">
-    
-<div class="col-12 text-left mt-3">
-   <h2> Gestión de Productos </h2> 
-</div>
-<hr>
-  <div class="col-4 mt-3 mb-3" id="atras"  onclick="history.back()">
-   <p> <img src="../img/angle-left.png"> Volver atras <p>
-</div>
-</div>
-</div>
-  <div id="botones" class="container">
-  <div class="btn-group" role="group" aria-label="Basic example">
 
-  <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
-  <button type="button" class="btn btn-primary" onclick="activarEdicion()">Editar</button>
-    <form method="POST" action="/admin/gestionProductos"> 
- <button type="submit" class="btn btn-primary">Guardar Todo</button> </div>
-</div>
+      <div class="col-12 text-left mt-3">
+        <h2> Gestión de Productos </h2>
+      </div>
+      <hr>
+      <div class="col-4 mt-3 mb-3" id="atras" onclick="history.back()">
+        <p> <img src="../img/angle-left.png"> Volver atras
+        <p>
+      </div>
+    </div>
+  </div>
+  <div id="botones" class="container">
+    <div class="btn-group" role="group" aria-label="Basic example">
+    <form id="formCat" method="GET" action="/admin/gestionProductos">
+    <select id="filtroCat" name="categoria">
+          <option default>Filtrar por Categoria</option>
+          <?php foreach($catego as $cat):?>
+            <option value="<?=$cat["id"]?>"><?=$cat["nombreCategoria"]?></option>
+            <?php endforeach;?>
+        </select>
+      </form>
+      <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
+      <button type="button" id="editar" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
+      <form method="POST" action="/admin/gestionProductos">
+        <button type="submit" class="btn btn-primary">Guardar Todo</button>
+    </div>
+  </div>
   </div>
   <div id="tabla-prod">
     <table>
       <tr>
         <th>Producto</th>
+        <th>Nombre</th>
         <th>Precio x Unidad</th>
         <th>Precio x Caja</th>
         <th>Stock</th>
@@ -56,27 +66,29 @@
             <a href="/admin/productoAdmin?id=<?= $prd['id'] ?>">
               <img src="../img/<?= $prd['imagen'] ?>">
             </a>
+
+          </td>
+          <td>
             <?= $prd['nombre'] ?>
           </td>
-
           <td>
-            <input type="number" name="precio[]" value="<?= $prd['precio'] ?>" min="1" disabled>
+            <input id="editable" type="number" name="precio[]" value="<?= $prd['precio'] ?>" min="1" disabled>
           </td>
 
           <td>
-            <input type="number" name="precioCaja[]" value="<?= $prd['precioCaja'] ?>" min="1" disabled>
+            <input id="editable" type="number" name="precioCaja[]" value="<?= $prd['precioCaja'] ?>" min="1" disabled>
           </td>
 
           <td>
             <div id="quitaragregar">
-              <button type="button" onclick="actualizarStock(<?= $index ?>, 'quitar')">-</button>
-              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly disabled>
-              <button type="button" onclick="actualizarStock(<?= $index ?>, 'agregar')">+</button>
+              <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'quitar')" disabled>-</button>
+              <input id="editable" type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly disabled>
+              <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'agregar')" disabled>+</button>
             </div>
           </td>
 
           <td>
-            <input type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled>
+            <input id="editable" type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled>
           </td>
 
           <td>
@@ -99,19 +111,23 @@
       <?php endif; ?>
     });
 
+    document.getElementById("filtroCat").addEventListener("change", (event) => {
+    document.getElementById("formCat").submit();
+  });
+
 
     function añadirProducto() {
       document.location.href = "/admin/aniadirProducto";
     }
 
     function editar(id) {
-      document.location.href = "/admin/modificarProducto?prdid="+id;
+      document.location.href = "/admin/modificarProducto?prdid=" + id;
     }
 
     function eliminar(id) {
       let confirmacion = confirm("Estas seguro de eliminar el producto?");
       if (confirmacion) {
-        document.location.href = "/admin/eliminar?prdid="+id;
+        document.location.href = "/admin/eliminar?prdid=" + id;
       }
     }
 
@@ -140,9 +156,16 @@
       stockInput.value = stock;
       actualizarProducto(id, 'stock', stock);
     }
+
     function activarEdicion() {
-      document.querySelectorAll("input,button, select").forEach(element => {
-        element.disabled = false;
+      document.querySelectorAll("#editable").forEach(element => {
+        if (element.disabled == true) {
+          $("#editar").text("Activar Edicion");
+          element.disabled = false;
+        } else {
+          $("#editar").text("Desactivar Edicion");
+          element.disabled = true;
+        }
       });
     }
   </script>
