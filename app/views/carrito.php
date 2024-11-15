@@ -10,6 +10,7 @@
     <link href="styles/style5.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8" />
     <script src="scripts/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="styles/alertpopup.css" rel="stylesheet" type="text/css">
     <link href="styles/modal.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,11 +22,13 @@
     <?php include "segments/nav.php" ?>
 
     <div id="body-carrito">
-        <div id="seccion-titulo" class="container-fluid float-start">
+        <div id="parte-titulo" class="container-fluid"> <!-- Porque borraste???? Me rompiste la responsividad-->
+            <h1>CARRITO</h1>
             <hr>
         </div>
-</br>
-</br>
+
+
+<br>
         <div id="tabla-prod" class="container justify-content-center align-items-center">
             <div class="row">
             <table>
