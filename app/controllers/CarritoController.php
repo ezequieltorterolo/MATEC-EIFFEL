@@ -11,23 +11,19 @@ use app\models\ReservaProductos;
 
 
 
-
 class CarritoController extends BaseController
 {
-
     function carrito()
     {
         return $this->view("carrito");
     }
 
-    function prdinfo($data){
- 
-        $prd = new Producto ;
-
+    function prdinfo($data)
+    {
+        $prd = new Producto;
         return $prd->getById($data["id"]);
     }
 
-        
     function carrito_confirmar()
     {
         // Verificar si el usuario está logueado
@@ -97,7 +93,25 @@ class CarritoController extends BaseController
             $obj_producto->update($producto["id"], ["stock" => $stock]);
         }
 
-        echo json_encode(["success" => true, "message" => "Reserva registrada correctamente."]);
+        // Configuración del correo
+        $propietarioEmail = "torteroloezequiel@gmail.com"; // Email del dueño del local
+        $subject = "Nueva reserva realizada"; // Asunto del correo
+        $message = "Tenés una nueva reserva. Ingresá al sistema para revisarla."; // Mensaje genérico
+        
+        // Encabezados del correo
+        $headers = "From: notificaciones@eiffelimportaciones.com" . "\r\n" .
+                   "Reply-To: no-reply@eiffelimportaciones.com" . "\r\n" .
+                   "X-Mailer: PHP/" . phpversion();
+
+        // Enviar el correo al dueño
+        $correoEnviado = mail($propietarioEmail, $subject, $message, $headers);
+
+        // Respuesta final
+        if ($correoEnviado) {
+            echo json_encode(["success" => true, "message" => "Reserva registrada correctamente y correo enviado."]);
+        } else {
+            echo json_encode(["success" => true, "message" => "Reserva registrada correctamente, pero no se pudo enviar el correo."]);
+        }
     }
 
     private function carrito_validar_stock($carrito)
@@ -106,8 +120,8 @@ class CarritoController extends BaseController
 
         foreach ($carrito as $producto) {
             $stock_producto = $obj_producto->getbyid($producto["id"]);
-            if ($stock_producto["stock"] < $producto["cantidad"] || $stock_producto["stock"] = 0 ) {
-                return $producto["nombre"]; // Devuelve el ID del producto con stock insuficiente
+            if ($stock_producto["stock"] < $producto["cantidad"] || $stock_producto["stock"] == 0) {
+                return $producto["nombre"]; // Devuelve el nombre del producto con stock insuficiente
             }
         }
 
