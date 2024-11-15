@@ -56,7 +56,7 @@
 </header>
 
 <script>
-    function mostrarCantidadP() {
+    function mostrarCantidadP() {w
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         let cantidadCarrito = carrito.length;
         localStorage.setItem("contenidoDiv", cantidadCarrito);

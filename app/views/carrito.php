@@ -57,7 +57,7 @@
     <div id="formulario-carrito">
     <form id="form-carrito" method="post" onsubmit="carrito_confirmar(event)">
     Dirección:<br>
-    <input id="dirent" class="input-form" required type="text" value="<?php $valorDirent ?>"><br>
+    <input id="dirent" class="input-form" required type="text" value="<?php echo $valorDirent ?>"><br>
     Horario de entrega:</br>
     <input id="horaent" class="input-form" required type="text"><br>
     Aclaraciones:<br>
