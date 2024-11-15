@@ -31,7 +31,7 @@
 
 
 
-<div id="login" class="container d-flex justify-content-center align-items-center">
+<div id="login" class="container  d-flex justify-content-center align-items-center">
     <div class="row">
     <form id="dataForm" method="POST" action=<?=$action?>>
 

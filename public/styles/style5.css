@@ -30,7 +30,8 @@ input[type=number] {
 
 
     #parte-titulo{
-        margin-bottom: 30px;
+        margin-top: 11px;
+       
        text-align:left;
       
       
@@ -49,7 +50,7 @@ tr {
     border-bottom:2px solid #253141 !important;
 }
 table {
- margin-top:5px;
+
   text-align:center;
 
    

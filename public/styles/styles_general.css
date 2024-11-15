@@ -207,23 +207,32 @@ a {
     visibility: visible;
   }
 
-
-
-
-nav ul li a::after {
-    content: "";
+  .nav-item a {
+    position: relative;
+    text-decoration: none;
+    border-bottom: 2px solid transparent; /* Línea inicial transparente */
+  }
+  
+  .nav-item a:hover {
+    border-bottom-color: transparent; /* Para evitar solapamiento */
+  }
+  
+  .nav-item a::before {
+    content: '';
     position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #253141;
-    transition: width 0.3s;
    
-}
-
-nav ul li a:hover::after {
+    left: 0;
+    height: 2px;
     width: 100%;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    bottom: -2px;
+  }
+  
+  .nav-item a:hover::before {
+    transform: scaleX(1); /* Expande la línea en hover */
   }
   
 .iconos button {
@@ -504,6 +513,8 @@ footer {
     }
 
 
+
+
     /*SOBRE NOSOTROS*/
     #seccion-imagen img{
         display: none;
@@ -512,6 +523,8 @@ footer {
     .cont-menu {
         display:none !important;
      }
+
+     
 }
 
 

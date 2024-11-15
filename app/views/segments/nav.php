@@ -38,7 +38,8 @@ use app\models\Categoria;
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
           </svg>
-          <div id="badge-carrito" class="badge bg-danger"></div>
+          <div id="badge-carrito" class="badge bg-danger" style="position: relative; right: 15px; bottom: 10px;">
+div>
                 </a>
         </button>
 
@@ -102,10 +103,10 @@ use app\models\Categoria;
          <p class="textopadding grueso4"> CATEGORIAS </p>
          <?php foreach($categoria as $cate):?>
           <div class="row mb-1 ">
-                 <div class="col-9" <li> <a class="dropdown-item textopadding"  href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></a></div> <div class="col-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                 <div class="col-8"> <a class="dropdown-item textopadding"  href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></div></a> <div class="col-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/></div>
-</svg></li> 
-         </div>
+</svg>  </div>
+         
                 <?php endforeach?>
          
    <hr>
@@ -123,7 +124,7 @@ use app\models\Categoria;
     
           $('#lupa2').click(function() {
 
-                  $("#buscador2").css({"display": "block", "width": "100%"});       
+                  $("#buscador2").css({"width": "100%", "display": "block" });       
           });
 
 
@@ -140,6 +141,20 @@ $("#sidebar").css({ "width": "0%"});
 });
     });
 
+
+    function mostrarCantidadP() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let cantidadCarrito = carrito.length;
+        localStorage.setItem("contenidoDiv", cantidadCarrito);
+        document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
+
+    }
+    window.addEventListener("load", function() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let cantidadCarrito = carrito.length;
+        localStorage.setItem("contenidoDiv", cantidadCarrito);
+        document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
+    });
 
 
 
