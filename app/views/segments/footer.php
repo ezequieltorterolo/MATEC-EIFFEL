@@ -25,8 +25,8 @@
             <div class="social">
                 <h4>SÍGUENOS EN</h4>
                 <div class="social-icons">
-                    <a href="#"><img src="img/icons8-instagram.svg" alt="Instagram"></a>
-                    <a href="#"><img src="img/icons8-facebook.svg" alt="Icono adicional"></a>
+                    <a href="https://www.instagram.com/eiffel_importaciones?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D"><img src="img/icons8-instagram.svg" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/people/Eiffel-Importaciones/100075923287978/?_rdr"><img src="img/icons8-facebook.svg" alt="Facebook"></a>
                 </div>
             </div>
     </div>
