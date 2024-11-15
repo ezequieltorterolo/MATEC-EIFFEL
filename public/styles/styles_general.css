@@ -350,7 +350,7 @@ footer {
     padding: 10px;
 }
 
-.footer-container a, p {
+.footer-container a , .footer-container p {
     font-family: 'Poppins';
 }
 
