@@ -9,12 +9,12 @@ use app\models\Categoria;
 <nav class="navegacion">
     <ul class="menu nav">
         
-        <li class="nav-item grueso3">
+        <li class="nav-item elemento-lista">
           <a href="/">INICIO</a>
         </li>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle grueso3" data-bs-toggle="dropdown">CATEGORIAS</a>
+        <li class="nav-item dropdown elemento-lista">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">CATEGORIAS</a>
             <ul class="dropdown-menu">
                 <?php foreach($categoria as $cate):?>
                   <li> <a class="dropdown-item"  href="/catalogo?catego=<?=$cate["id"]?>"><?=$cate["nombreCategoria"]?></a></li> <li><hr class="dropdown-divider"></li>
@@ -22,9 +22,9 @@ use app\models\Categoria;
             </ul>
         </li>
    
-        <li class="nav-item grueso3"><a href="/catalogo">CATALOGO</a></li> 
+        <li class="nav-item elemento-lista"><a href="/catalogo">CATALOGO</a></li> 
            
-        <li class="nav-item grueso3"><a href="/sobreNosotros"> SOBRE NOSOTROS </a></li>
+        <li class="nav-item elemento-lista"><a href="/sobreNosotros"> SOBRE NOSOTROS </a></li>
    
     </ul>
            

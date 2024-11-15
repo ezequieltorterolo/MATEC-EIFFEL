@@ -1,21 +1,39 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,800;1,600&display=swap');
- * {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); 
+* {
    padding: 0px;
    margin: 0px;
    
 }
 
-.grueso5 {
-    font-weight:bolder;
+h1{
+    font-family: 'Poppins'  !important;
+    font-weight: 700        !important;
 }
 
-.grueso4 {
+h2{
+    font-family: 'Poppins'  !important;
+    font-weight: 600        !important;
+}
+
+
+p, a {
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+h4{
+    font-family: 'Poppins'  !important;
+    font-weight: 600        !important;
+    font-size: 18px         !important;
+}
+
+
+
+.menu ul {
     font-weight:bold;
-}
-
-.grueso3 {
-    font-weight:600;
+    font-family: 'Poppins';
 }
 
 
@@ -175,13 +193,17 @@ body {
     background-color: #B7BCC0;
 }
 .menu > li {
+    font-weight: 600;
+    font-family: 'Poppins';
+    cursor: pointer;
     position: relative;
     display: inline-block;
 }
 .menu > li > a {
+    font-weight: 600;
+    font-family: 'Poppins';
     display: block;
     padding: 15px 20px;
- 
     color: #253141 !important;
 }
 
@@ -189,13 +211,19 @@ a {
     text-decoration:none !important;
 }
 
+.dropdown-menu a {
+    font-family: 'Poppins';
+}
+
 .nav .dropdown:hover .dropdown-menu {
+    
     display: block;
     margin-top: 0; /* opcional: ajusta según el diseño */
   }
   
   /* Opcional: aplicar una transición para un efecto más suave */
   .dropdown-menu {
+    border-radius: 0px 0px 10px 10px;
     transition: opacity 0.3s ease;
     opacity: 0;
     display: block; /* Para evitar problemas de transición */
@@ -320,6 +348,10 @@ footer {
 .footer-container div {
     flex: 1;
     padding: 10px;
+}
+
+.footer-container a , .footer-container p {
+    font-family: 'Poppins';
 }
 
 .logo img {

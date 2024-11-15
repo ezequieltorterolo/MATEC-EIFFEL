@@ -73,7 +73,7 @@
 
        
             <div class="seccion-titulo">
-                <h1>CÓMO ENCARGAR</h1>
+                <h1 id="comoEncargar">CÓMO ENCARGAR</h1>
                 <hr>
             </div>
             <p>Para realizar una reserva será necesario que tengas una cuenta existente, que puedes crear clickeando el ícono de usuario en el menú de navegación. Luego, añade productos al carrito:</p>
