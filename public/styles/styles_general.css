@@ -504,6 +504,8 @@ footer {
     }
 
 
+
+
     /*SOBRE NOSOTROS*/
     #seccion-imagen img{
         display: none;
@@ -512,6 +514,8 @@ footer {
     .cont-menu {
         display:none !important;
      }
+
+     
 }
 
 

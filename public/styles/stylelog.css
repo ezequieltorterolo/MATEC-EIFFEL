@@ -50,3 +50,11 @@ input:focus::placeholder {
 .botones:hover {
     transform: scale(1.1);
 }
+
+
+
+@media (max-width: 768px) { 
+#carcel {
+    max-width:90%;
+    }
+}
