@@ -1,4 +1,4 @@
-/* Hoja de style para casi todos los views asi no tengo que copiar y pegar como boluda */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,800;1,600&display=swap');
  * {
    padding: 0px;
@@ -515,3 +515,35 @@ footer {
 }
 
 
+#back {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#back img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    transition: transform 0.1s ease;
+}
+
+#back p {
+    margin: 0;
+}
+
+#back:hover {
+    
+    transform: scale(1.05);
+}
+
+#back:hover img {
+    transform: translateX(-3px);
+}

@@ -2,7 +2,7 @@
 <header>
 
 
-    <img src="img/logomenu.png">
+  <a href="/">  <img src="img/logomenu.png" >
 
 <div class="cont-menu" style="display:flex;">    
     <form class="cont-buscador"  action="/catalogo" method="GET">

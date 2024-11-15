@@ -24,7 +24,7 @@
     
     <?php include  "segments/nav.php" ?>
 
-
+    <br>
   
     <div id="contenedor-destacados" class="container-fluid"></div>
     <div id="slides">
@@ -42,9 +42,10 @@
       </div>
     </div>
   
-   
-   
+
+    <br> <br> <br>
     <h1 class="subtitulo">OFERTAS</h1>
+    <br> <br>
     <div id="productos-nuevos" class="container">
             <?php foreach($ofertas as $prd):?>
                 <div class="producto-posicion">
@@ -62,7 +63,7 @@
         </div>
                         </div>
 </div>
-
+<br> <br>
 <?php include  "segments/footer.php" ?>
   
 

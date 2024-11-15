@@ -1,7 +1,7 @@
 <footer>
     <div class="footer-container">
             <div class="logo">
-                <img src="img/logo.jpg" alt="Logo Eiffel">
+                <img src="img/logomenu.png" alt="Logo Eiffel" >
                 <p>Ayudando a las empresas a conseguir los mejores precios</p>
             </div>
             <div class="contact-info">

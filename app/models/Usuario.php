@@ -19,6 +19,7 @@ class Usuario extends Model {
     return [
         "id"     => $this->current["id"],
         "nombre" => $this->current["nombre"],
+        "direccion" => $this->current["direccion"],
     ];
 }
 }
