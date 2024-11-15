@@ -39,11 +39,19 @@ function carrito_confirmar(event) {
     .then(data => {
         if (data.success) {
             mostrarPopup(data.message,true);// Mensaje de éxito
-            localStorage.setItem('carrito', JSON.stringify([])); // Vaciar el carrito
-            window.location.reload(); // Recargar la página
+            setTimeout(() => {
+                localStorage.setItem('carrito', JSON.stringify([])); // Vaciar el carrito
+                window.location.reload(); // Recargar la página
+                
+            }, 2000);
+            
         } else {
             mostrarPopup(data.error, false); // Mostrar mensaje de error
-            window.location.reload();
+            setTimeout(() => {//esto es para que cuando suceda el error le de e tiempo a la persona de ver la alerta antes de que se reinicie el carrito
+                 window.location.reload();
+        }, 2500);
+          
+            
         }
     })
     .catch(error => {
