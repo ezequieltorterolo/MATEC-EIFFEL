@@ -19,8 +19,8 @@
             </div>
             <div class="about">
                 <h4>SOBRE EIFFEL</h4>
-                <a href="#"><u>Sobre nosotros</a><br>
-                <a href="#">Cómo encargar</u></a>
+                <a href="/sobreNosotros"><u>Sobre nosotros</a><br>
+                <a href="/sobreNosotros#comoEncargar">Cómo encargar</u></a>
             </div>
             <div class="social">
                 <h4>SÍGUENOS EN</h4>
