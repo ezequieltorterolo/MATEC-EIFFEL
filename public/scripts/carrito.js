@@ -104,7 +104,8 @@ function agregarFila(producto, index) {
     let stock = parseInt(prdinfo.stock, 10);
 
     if (stock === 0) {
-        stockIndicator = `<span style="color:red;">No queda stock ${stock}</span>`;
+        producto.cantidad = stock;
+        stockIndicator = `<span style="color:red;">No queda stock </span>`;
     } else if (cantidad > stock) {
         producto.cantidad = stock;
         stockIndicator = `<span style="color:red;">El stock ha bajado a ${stock}</span>`;
