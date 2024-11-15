@@ -45,6 +45,7 @@ div>
 
         <!-- Login -->
         <button>
+        <a href="login" style="color:rgba(37,49,65,1);">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
@@ -89,12 +90,12 @@ div>
       <div>
          <div class="row">
          
-       <p class="textopadding grueso4"><a href="/catalogo">CATALOGO</a></p>
+       <p class="textopadding grueso4"><a href="/catalogo" style="color:black;">CATALOGO</a></p>
  <hr>
                 </div>
                 <div class="row">
          
-         <p class="textopadding grueso4"> <a href="/sobreNosotros"> SOBRE NOSOTROS </a></p>
+         <p class="textopadding grueso4"> <a href="/sobreNosotros" style="color:black;"> SOBRE NOSOTROS </a></p>
    <hr>
       
                 </div>
@@ -120,26 +121,31 @@ div>
 
 <script>
 
-    $(document).ready(function() {
+
     
-          $('#lupa2').click(function() {
-
-                  $("#buscador2").css({"width": "100%", "display": "block" });       
-          });
-
-
-          $('#menu-list').click(function() {
-                  $("#sidebar").css({"width": "50%", "display": "block" });
-                
-          });
-
-
-          $('#cerrar1').click(function() {
-
-$("#sidebar").css({ "width": "0%"});  
+      $(document).ready(function() {
     
-});
+    $('#lupa2').click(function() {
+        // Cierra el sidebar si está abierto
+        $("#sidebar").removeClass("active");
+        
+        // Alterna el buscador (abre/cierra)
+        $("#buscador2").toggleClass("active");
     });
+
+    $('#menu-list').click(function() {
+        // Cierra el buscador si está abierto
+        $("#buscador2").removeClass("active");
+        
+        // Abre el sidebar
+        $("#sidebar").addClass("active");
+    });
+
+    $('#cerrar1').click(function() {
+        // Cierra el sidebar
+        $("#sidebar").removeClass("active");
+    });
+});
 
 
     function mostrarCantidadP() {

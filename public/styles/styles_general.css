@@ -240,25 +240,42 @@ background-color:transparent;
 border:none;
 }
 
-#buscador2 {
-  width:0px;
-    transition:width 1s;
-    display:none;
-   
-  
+
+
+#buscador2{
+    border-radius:20px;
+    border:none;
+    margin:3px;
+    padding:3px;
+}
+
+
+#buscador2, #sidebar {
+    width: 0;
+    opacity: 0;
+    transition: width 0.5s ease, opacity 0.5s ease;
+    overflow: hidden; /* Evita que el contenido se desborde al contraer */
+}
+#sidebar.active {
+    opacity: 1;
+    width:50%;
+}
+#buscador2.active {
+    width: 100%; /* O el ancho deseado, como 50% para el sidebar */
+    opacity: 1;
 }
 #sidebar > a {
     color: #253141 !important;
 }
 
 #sidebar { 
-    transition: 1s;
+   
     box-shadow: 13px 5px 25px -4px rgba(16,17,20,0.23);
     background-color: #B7BCC0;
     background: rgb(183,188,192);
     background: linear-gradient(180deg, rgba(183,188,192,1) 0%, rgba(158,170,179,1) 35%); 
     height: 100%; /* Toma toda la altura de la pantalla */
-    width:0%; /* Ancho inicial de 0 para que esté oculta */
+   /* Ancho inicial de 0 para que esté oculta */
     position: fixed; /* Fija la posición para superponerse */
        top: 0;
       left: 0;
