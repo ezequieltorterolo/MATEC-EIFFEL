@@ -43,6 +43,7 @@ function carrito_confirmar(event) {
             window.location.reload(); // Recargar la página
         } else {
             mostrarPopup(data.error, false); // Mostrar mensaje de error
+            window.location.reload();
         }
     })
     .catch(error => {
@@ -56,7 +57,7 @@ function mostrarCarrito() {
         <tr>
             <th id="pro">Producto</th>
             <th>Cantidad</th>
-            <th>Total</th>
+            <th>Subtotal</th>
             <th>Stock</th>
             <th>Eliminar</th>
         </tr>`;
@@ -97,37 +98,45 @@ function agregarFila(producto, index) {
     let prdinfo = producto.info;
     let productRow = document.createElement('tr');
     let stockIndicator = "";
-  
-    if(prdinfo.stock = 0){
-        stockIndicator = `<span style="red;">No queda stock ${prdinfo.stock}</span>`;
-    }else if (producto.cantidad > prdinfo.stock) {
-        producto.cantidad = prdinfo.stock;
-        stockIndicator = `<span style="color:orange;">Stock limitado: ${prdinfo.stock}</span>`;
-    } else if (prdinfo.stock <= 5) {
-        stockIndicator = `<span style="color:red;">Stock bajo: ${prdinfo.stock}</span>`;
+
+    // Convertir cantidad y stock a números
+    let cantidad = parseInt(producto.cantidad, 10);
+    let stock = parseInt(prdinfo.stock, 10);
+
+    if (stock === 0) {
+        stockIndicator = `<span style="color:red;">No queda stock ${stock}</span>`;
+    } else if (cantidad > stock) {
+        producto.cantidad = stock;
+        stockIndicator = `<span style="color:red;">El stock ha bajado a ${stock}</span>`;
+    } else if (stock <= 5) {
+        stockIndicator = `<span style="color:red;">Solo quedan ${stock} unidades</span>`;
+    } else if (cantidad === stock) {
+        stockIndicator = `<span style="color:orange;">Stock limitado ${stock}</span>`;
     } else {
-        stockIndicator = `${prdinfo.stock}`;
+        stockIndicator = `<span style="color:green;">Stock alto</span>`;
     }
 
     productRow.innerHTML = `
         <td style="width:30%;">
             <img src="img/${prdinfo.imagen}">
-         <p id="pnombre">   <a href="/producto?id=${prdinfo.id}" style="color:black";>${prdinfo.nombre}</p></a>
-            <span id="code">codigo de producto:${prdinfo.id}</span>
+            <p id="pnombre"><a href="/producto?id=${prdinfo.id}" style="color:black;">${prdinfo.nombre}</a></p>
+            <span id="code">Código de producto: ${prdinfo.id}</span>
         </td>
         <td>
-        <p>
-            <button onclick="quitar(${producto.id})">-</button>
-            <input type="number" id="cantidad_${producto.id}" value="${producto.cantidad}" min="1" max="${prdinfo.stock}" readonly>
-            <button onclick="agregar(${producto.id})">+</button>
+            <p>
+                <button onclick="quitar(${producto.id})">-</button>
+                <input type="number" id="cantidad_${producto.id}" value="${producto.cantidad}" min="1" max="${stock}" readonly>
+                <button onclick="agregar(${producto.id})">+</button>
             </p>
         </td>
         <td id="total_${producto.id}">${calcularTotal(producto).toFixed(2)}</td>
-        <td>${stockIndicator}</td>
+         <td>${stockIndicator}</td>
         <td><button><img onclick="borrarProducto(${index})" src="img/basura.svg" id="basura"></button></td>
+       
     `;
     carritoContainer.appendChild(productRow);
 }
+
 
 function calcularTotal(producto) {
     let prdinfo = producto.info;
@@ -171,6 +180,8 @@ function agregar(id) {
         producto.cantidad = cantidad;
         localStorage.setItem('carrito', JSON.stringify(carrito));
         total(id);
+        agregarFila();
+
     }
 }
 
@@ -185,5 +196,6 @@ function quitar(id) {
         producto.cantidad = cantidad;
         localStorage.setItem('carrito', JSON.stringify(carrito));
         total(id);
+
     }
 }

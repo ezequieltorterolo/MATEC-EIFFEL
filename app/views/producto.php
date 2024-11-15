@@ -161,7 +161,7 @@ var producto = <?php echo json_encode($prd); ?>;
                         let cantidadElejida = document.getElementById('cantidad');
                         cantidadElejida.value = parseInt(cantidadElejida.value) - 1;
         
-                        mostrarPopup("el stock no es", false);
+                        mostrarPopup("el stock no es`suficiente", false);
                       
                      
                      
