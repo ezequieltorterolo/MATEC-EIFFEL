@@ -1,0 +1,30 @@
+
+
+body {
+    overflow-x:hidden;
+}
+
+#seccion-imagen1 img {
+    object-fit: cover;
+    height: 50vh;
+    overflow: hidden;
+ 
+    mask-image: linear-gradient(180deg, rgba(37,49,65,1) 27%, rgba(37,49,65,1) 89%);
+   -webkit-mask-image: linear-gradient(180deg, rgba(37,49,65,1) 27%, rgba(37,49,65,0) 89%);
+}
+
+
+#texto {
+    text-align:center;
+}
+
+#megatitulo {
+    text-align:center;
+}
+
+
+
+@media (max-width: 768px) {
+    #seccion-imagen1 img {
+        height: 30vh;
+    }
