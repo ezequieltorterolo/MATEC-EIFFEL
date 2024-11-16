@@ -108,9 +108,9 @@ class CarritoController extends BaseController
 
         // Respuesta final
         if ($correoEnviado) {
-            echo json_encode(["success" => true, "message" => "Reserva registrada correctamente"]);
+            echo json_encode(["success" => true, "message" => "Reserva registrada correctamente y correo enviado."]);
         } else {
-            echo json_encode(["success" => true, "message" => "Reserva registrada correctamente."]);
+            echo json_encode(["success" => true, "message" => "Reserva registrada correctamente, pero no se pudo enviar el correo."]);
         }
     }
 
