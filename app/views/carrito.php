@@ -62,7 +62,7 @@
     <input id="horaent" class="input-form" required type="text"><br>
     Aclaraciones:<br>
     <textarea id="msg" ></textarea><br>
-    <button type="submit">CONFIRMAR</button>
+    <button type="submit" id="buttonconf">CONFIRMAR</button>
 </form>
     </div>
     <div id="cont-total">

@@ -43,9 +43,8 @@
     </div>
   
 
-    <br> <br> <br>
-    <h1 class="subtitulo">OFERTAS</h1>
-    <br> <br>
+    <h1 class="subtitulo ofertas">OFERTAS <hr style="max-width:30%; margin:auto; margin-top:5px;"></h1>
+   
     <div id="productos-nuevos" class="container">
             <?php foreach($ofertas as $prd):?>
                 <div class="producto-posicion">
@@ -63,6 +62,7 @@
         </div>
                         </div>
 </div>
+
 <br> <br>
 <?php include  "segments/footer.php" ?>
   
