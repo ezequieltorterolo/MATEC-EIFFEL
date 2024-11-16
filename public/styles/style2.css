@@ -58,7 +58,9 @@ border: 3px solid #253141;
 
 }
 
-
+tbody {
+    background-color:transparent;
+}
 
 #info {
 width: 30%;

@@ -77,10 +77,16 @@ td {
 }
 
 td button {
-    background-color: none;
-    border:none;
+    background-color:transparent;
+    border:transparent;
 }
 
+#buttonconf {
+    background-color:#253141;
+    color:#ffffff;
+    padding:5px;
+    border: none;
+}
 
 
 #code {
@@ -207,56 +213,38 @@ float:left;
 #pnombre {
     display:none;
 }
+
+
     
-tr {
-    border-bottom:2px solid #253141 !important;
-}
 table {
- margin-top:5px;
-  text-align:center;
   
-width:fit-content;
-
-
-   
+    width: 95%;
+    overflow-x: auto; /* Permite desplazamiento horizontal */
+    -webkit-overflow-scrolling: touch; 
+    scroll-behavior: smooth; 
+    display: block; 
 }
 
-#pro {
-    width:5px;
-    text-align:left;
+td, th {
+    font-size: 16px; /* Reducir el tamaño de texto en pantallas pequeñas */
+    padding: 10px; /* Ajustar espacio en celdas */
 }
 
-th {
-    font-size:16px;
-
-   padding-left:2px;
-
-
+td img {
+    height: 75px; /* Reducir el tamaño de las imágenes */
+    width: auto; /* Escalar ancho automáticamente */
 }
-td img{
-    height:100px;
-
-    
-    margin-left: 20px;
-    
-}
-
 
 #code {
-    font-size:10px;
- 
-    
-    
-       margin-left:10px;
-        float:left;
-        color:#B7BCC0;
-    }
-    
+    font-size: 8px; /* Reducir tamaño del texto del código */
+    margin-left: 10px;
 }
+
 td > input {
-    width:20px;
-    font-size:12px;
+    width: 20px;
+    font-size: 12px;
 }
+
 
 
 #body-carrito{
