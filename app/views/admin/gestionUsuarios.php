@@ -26,22 +26,23 @@
 
   <div id="todo" class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
-    <?php foreach ($usuarios as $user): ?>
-      <div class="col-md-3">
-        <div class="card">
+      <?php foreach ($usuarios as $user): ?>
+        <div class="col-md-3">
+          <div class="card">
 
-          <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">ID DE USUARIO: <?= $user["id"] ?></h6>
-            <h5 class="card-title">NOMBRE: <?= $user["nombre"] ?></h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Correo electronico: <?= $user["email"] ?></li>
-            <li class="list-group-item">Telefono: <?= $user["telefono"] ?></li>
-            <li class="list-group-item">Direccion: <?= $user["direccion"] ?></li>
-          </ul>
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ID DE USUARIO: <?= $user["id"] ?></h6>
+              <h5 class="card-title">NOMBRE: <?= $user["nombre"] ?></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Correo electronico: <?= $user["email"] ?></li>
+              <li class="list-group-item">Telefono: <?= $user["telefono"] ?></li>
+              <li class="list-group-item">Direccion: <?= $user["direccion"] ?></li>
+              <li><button class="btn btn-primary" onclick="eliminarUsuario(<?= $user['id'] ?>)">Eliminar Usuario</button></li>
+            </ul>
         </div>
-      </div>
-      <?php endforeach;?>
+        </div>
+      <?php endforeach; ?>
     </div>
   </div>
   </div>
@@ -54,4 +55,12 @@
   </div>
   </div>
 </body>
+<script>
+  function eliminarUsuario(id) {
+    let confirmacion = confirm("Estas seguro de eliminar este Usuario?");
+    if (confirmacion) {
+      document.location.href = "/admin/eliminarUsuario?userid=" + id;
+    }
+  }
+</script>
 <html>
