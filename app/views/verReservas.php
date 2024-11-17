@@ -62,7 +62,7 @@
                           <th>Cantidad</th>
                           <th>Precio</th>
                           <th>Subtotal</th>
-                          <th>Accion</th>
+                         
                         </tr>
                       </thead>
                       <tbody>
@@ -76,7 +76,7 @@
                                   <td><?= $resprd['cantidad']?></td>
                                   <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
                                   <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
-                                  <td><img onclick="eliminarProducto(<?= $resprd['id'] ?>)" src="../img/basura.svg"></td>
+                                 
                                 </tr>
                               <?php endif; ?>
                             <?php endforeach; ?>
