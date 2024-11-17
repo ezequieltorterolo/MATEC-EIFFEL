@@ -388,10 +388,11 @@ class AdminController extends BaseController
         $categoria = $catego->getAll();
         return $categoria;
     }
+    
 
-function verUser()
+function gestionUsuarios()
     {
-        $data["action"] = "/admin/Usuarios";
+        $data["action"] = "/admin/gestionUsuarios";
         $usuarios = new Usuario();
         if (isset($_GET["nombre"])) {
             $nombre = $_GET["nombre"];
@@ -400,8 +401,26 @@ function verUser()
             }
         }
         $data["usuarios"] = $usuarios->getAll();
-        return $this->view("admin/Usuarios",$data);
+        return $this->view("admin/gestionUsuarios",$data);
     }
+
+    function eliminarUsuario($data)
+    {
+        if (isset($_SESSION["admin"])) {
+            $usuario = new Usuario();
+            $id = $_GET["userid"];
+            $usuario->delete($id);
+            if ($usuario->success()) {
+                $data["msg"] = "el usuario fue eliminado con exito";
+                $this->redirect("gestionUsuarios",$data);
+            } else {
+                $data["msg"] = "no se pudo eliminar el usuario";
+                $this->redirect("gestionUsuarios",$data);
+            }
+        } else {
+            $this->redirect("/admin");
+        }
+    }    
 
 
 }
