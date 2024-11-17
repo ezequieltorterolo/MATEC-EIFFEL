@@ -14,6 +14,7 @@ Route::get("/sobreNosotros"            , [HomeController::class, "sobreNos"]);
 
 
 
+
 //CARRITO
 Route::get("/carrito"                  , [CarritoController::class , "carrito"]             );
 Route::get("/prdinfo/:id"              , [CarritoController::class , "prdinfo"]             );
@@ -55,3 +56,5 @@ Route::post("/admin/agregarProducto"    , [AdminController::class, "agregarProdu
 Route::get("/admin/eliminarProducto"   , [AdminController::class, "eliminarProducto"]);
 Route::get("/admin/eliminarReserva"    , [AdminController::class, "eliminarReserva"]);
 
+
+Route::get("/admin/gestionUsuarios"            , [AdminController::class, "gestionUser"]);

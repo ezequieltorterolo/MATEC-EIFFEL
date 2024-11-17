@@ -366,4 +366,12 @@ class AdminController extends BaseController
         $categoria = $catego->getAll();
         return $categoria;
     }
+
+function gestionUser()
+    {
+        return $this->view("admin/gestionUsuarios");
+    }
+
+
 }
+

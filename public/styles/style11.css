@@ -1,0 +1,16 @@
+body {
+    overflow-y:hidden;
+}
+
+
+#titlee {
+   margin:40px;
+}
+
+#todo {
+    margin-left:100px;
+}
+
+.datosbasicos {
+    color:grey;
+}
