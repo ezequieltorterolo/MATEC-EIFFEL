@@ -47,12 +47,12 @@ div>
 
         <?php if (isset($_SESSION["usuario"])): ?>
           <button>
-        <div class="cont-sesion-nombre-y-foto">
-            <img class="icono-alternativo-logueado" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;">
-            <ul class="submenu-logueado">
-                <li><p class="esconder-nombre"><?=$_SESSION["usuario"]["nombre"]?></p></li>
-                <li><a class="esconder-nombre" href="/verReservas">Ver mis Reservas</a></li>
-                <li><a class="esconder-nombre" onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)">Cerrar sesion</a></li>
+            <img src="img/user-solid.svg">
+            <div class="submenu-logueado-2">
+            <ul>
+                <li><p><?=$_SESSION["usuario"]["nombre"]?></p></li>
+                <li><a  href="/verReservas">Ver mis Reservas</a></li>
+                <li><a  onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)">Cerrar sesion</a></li>
             </ul>
             </button> 
         </div>
@@ -60,10 +60,7 @@ div>
         <?php else: ?>
         <button>
         <a href="login" style="color:rgba(37,49,65,1);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-            </svg>
+            <img src="user-regular.svg">
         </button> </a>
     </div>
     <?php endif?>
@@ -160,7 +157,19 @@ div>
         // Cierra el sidebar
         $("#sidebar").removeClass("active");
     });
+
+ 
 });
+
+$(document).ready(function() {
+    
+    $('#lupa2').click(function() {
+        // Cierra el sidebar si está abierto
+        $("#sidebar").removeClass("active");
+        
+        // Alterna el buscador (abre/cierra)
+        $("#buscador2").toggleClass("active");
+    });
 
 
     function mostrarCantidadP() {
