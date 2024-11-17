@@ -10,6 +10,7 @@
     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
   
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="styles/alertpopup.css" rel="stylesheet" type="text/css">
      <link href="styles/stylelog.css" rel="stylesheet" type="text/css">
 
     <title>Eiffel Importaciones</title>
@@ -94,13 +95,13 @@
     window.addEventListener("load", (event) => {
       <?php if (!empty($msg)): ?>
         let mensaje = <?= json_encode($msg) ?>;
-        alert(mensaje);
+        mostrarPopup(mensaje,false);
       <?php endif; ?>
     });
 
 
         
-
+     src="scripts/alertpopup.js"
 
 
 

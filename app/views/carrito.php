@@ -66,7 +66,7 @@
 </form>
     </div>
     <div id="cont-total">
-        <h1>TOTAL</h1>
+        <h1 style="margin: 0 auto;">TOTAL</h1>
         <h2>$0.00</h2>
     </div>
 </div>

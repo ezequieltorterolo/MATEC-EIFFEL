@@ -86,3 +86,20 @@
                 padding: 10px;
             }
         }
+ /* esto es para la animacion de que el login baje  */
+        form {
+            position: relative;
+            transform: translateY(-100vh); /* Empieza fuera de la pantalla */
+            animation: dropIn 1s ease-out forwards; /* Aplica la animación */
+        }
+
+        @keyframes dropIn {
+            from {
+                transform: translateY(-100vh); /* Fuera de la pantalla arriba */
+                opacity: 0; /* Invisible */
+            }
+            to {
+                transform: translateY(0); /* Entra a la pantalla */
+                opacity: 1; /* Visible */
+            }
+        }
