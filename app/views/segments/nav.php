@@ -44,6 +44,20 @@ div>
         </button>
 
         <!-- Login -->
+
+        <?php if (isset($_SESSION["usuario"])): ?>
+          <button>
+        <div class="cont-sesion-nombre-y-foto">
+            <img class="icono-alternativo-logueado" src="img/avatar-user-relleno.svg" style="width:35px; height:35px;">
+            <ul class="submenu-logueado">
+                <li><p class="esconder-nombre"><?=$_SESSION["usuario"]["nombre"]?></p></li>
+                <li><a class="esconder-nombre" href="/verReservas">Ver mis Reservas</a></li>
+                <li><a class="esconder-nombre" onclick="cerrarSesion(<?=$_SESSION['usuario']['id']?>)">Cerrar sesion</a></li>
+            </ul>
+            </button> 
+        </div>
+       
+        <?php else: ?>
         <button>
         <a href="login" style="color:rgba(37,49,65,1);">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -52,6 +66,7 @@ div>
             </svg>
         </button> </a>
     </div>
+    <?php endif?>
 
 
     <div class="izquierda">
