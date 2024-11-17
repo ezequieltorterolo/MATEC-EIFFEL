@@ -11,15 +11,15 @@
   <script src="../script/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Eiffel Importaciones - Gestión de Usuarios</title>
+  <title>Eiffel Importaciones - Usuarios </title>
 </head>
 
 <body>
 
 
-  <?php include "segments/header.php" ?>
+
   <div id="titlee" class="container">
-    <h1> Gestionar Usuarios
+    <h1> Usuarios
       <hr>
     </h1>
   </div>

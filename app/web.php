@@ -57,4 +57,4 @@ Route::get("/admin/eliminarProducto"   , [AdminController::class, "eliminarProdu
 Route::get("/admin/eliminarReserva"    , [AdminController::class, "eliminarReserva"]);
 
 
-Route::get("/admin/gestionUsuarios"            , [AdminController::class, "gestionUser"]);
+Route::get("/admin/Usuarios"            , [AdminController::class, "verUser"]);

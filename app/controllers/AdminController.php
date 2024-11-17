@@ -389,9 +389,9 @@ class AdminController extends BaseController
         return $categoria;
     }
 
-function gestionUser()
+function verUser()
     {
-        $data["action"] = "/admin/gestionUsuarios";
+        $data["action"] = "/admin/Usuarios";
         $usuarios = new Usuario();
         if (isset($_GET["nombre"])) {
             $nombre = $_GET["nombre"];
@@ -400,7 +400,7 @@ function gestionUser()
             }
         }
         $data["usuarios"] = $usuarios->getAll();
-        return $this->view("admin/gestionUsuarios",$data);
+        return $this->view("admin/Usuarios",$data);
     }
 
 
