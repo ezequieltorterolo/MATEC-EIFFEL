@@ -31,12 +31,12 @@
   </div>
   <div id="botones" class="container">
     <div class="btn-group" role="group" aria-label="Basic example">
-    <form id="formCat" method="GET" action="/admin/gestionProductos">
-    <select id="filtroCat" name="categoria">
-          <option default>Filtrar por Categoria</option>
-          <?php foreach($catego as $cat):?>
-            <option value="<?=$cat["id"]?>"><?=$cat["nombreCategoria"]?></option>
-            <?php endforeach;?>
+      <form id="formCat" method="GET" action="/admin/gestionProductos">
+        <select id="filtroCat" name="categoria">
+          <option value="-1">Filtrar por Categoria</option>
+          <?php foreach ($catego as $cat): ?>
+            <option value="<?=$cat["id"] ?>"><?= $cat["nombreCategoria"] ?></option>
+          <?php endforeach; ?>
         </select>
       </form>
       <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
@@ -82,7 +82,7 @@
           <td>
             <div id="quitaragregar">
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'quitar')" disabled>-</button>
-              <input id="editable" type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly disabled>
+              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly disabled>
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'agregar')" disabled>+</button>
             </div>
           </td>
@@ -104,17 +104,26 @@
 
 
   <script>
-    window.addEventListener("load", (event) => {
+    window.addEventListener("load", () => {
       <?php if (!empty($msg)): ?>
-        let mensaje = <?= json_encode($msg) ?>;
+        let mensaje = <?= json_encode($msg); ?>;
         alert(mensaje);
       <?php endif; ?>
     });
 
-    document.getElementById("filtroCat").addEventListener("change", (event) => {
-    document.getElementById("formCat").submit();
-  });
 
+    //filtrar por categoria
+    const selectFiltroCat = document.getElementById("filtroCat");
+    const formCat = document.getElementById("formCat");
+    const defaultEstado = localStorage.getItem("defaultEstado2");
+    if (defaultEstado !== null) {
+      selectFiltroCat.value = defaultEstado;
+    }
+    selectFiltroCat.addEventListener("change", (event) => {
+      localStorage.setItem("defaultEstado2", selectFiltroCat.value);
+
+      formCat.submit();
+    });
 
     function añadirProducto() {
       document.location.href = "/admin/aniadirProducto";
@@ -157,15 +166,13 @@
       actualizarProducto(id, 'stock', stock);
     }
 
+
     function activarEdicion() {
+      const editButton = document.getElementById("editar");
+      const isCurrentlyDisabled = document.querySelector("#editable").disabled;
       document.querySelectorAll("#editable").forEach(element => {
-        if (element.disabled == true) {
-          $("#editar").text("Activar Edicion");
-          element.disabled = false;
-        } else {
-          $("#editar").text("Desactivar Edicion");
-          element.disabled = true;
-        }
+        element.disabled = !isCurrentlyDisabled;
       });
+      editButton.textContent = isCurrentlyDisabled ? "Desactivar Edicion" : "Activar Edicion";
     }
   </script>

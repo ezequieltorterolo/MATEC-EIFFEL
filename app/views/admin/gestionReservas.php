@@ -8,7 +8,6 @@
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
-  <script src="../scriptÑs/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Eiffel Importaciones - Gestión de Reservas</title>
@@ -29,10 +28,18 @@
   </div>
 
   <div id="botones" class="container">
+    <form id="formEst" method="GET" action="/admin/gestionReservas">
+      <select id="filtroEst" name="estado2">
+        <option value="-1">Filtrar por Estado</option>
+        <option value="0">En proceso</option>
+        <option value="1">Finalizado</option>
+        <option value="2">Cancelado</option>
+      </select>
+    </form>
     <form id="formulario" method="POST" action="/admin/gestionReservas">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        <button id="#editar" type="button" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
+        <button id="editar" type="button" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
       </div>
 
 
@@ -97,7 +104,7 @@
                                   <td>
                                     <div id="quitaragregar">
                                       <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'quitar')" disabled>-</button>
-                                      <input id="editable" type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock'] ?>" disabled>
+                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock'] ?>" disabled>
                                       <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'agregar')" disabled>+</button>
                                     </div>
                                   </td>
@@ -164,23 +171,57 @@
         boton.textContent = "▼";
       }
     }
+    //filtrar por estado
+    const selectFiltroEst = document.getElementById("filtroEst");
+    const formEst = document.getElementById("formEst");
+    const defaultEstado = localStorage.getItem("defaultEstado2");
+    if (defaultEstado !== null) {
+      selectFiltroEst.value = defaultEstado;
+    }
+    selectFiltroEst.addEventListener("change", (event) => {
+      localStorage.setItem("defaultEstado2", selectFiltroEst.value);
+
+      formEst.submit();
+    });
 
     function activarEdicion() {
+      const editButton = document.getElementById("editar");
+      const isCurrentlyDisabled = document.querySelector("#editable").disabled;
       document.querySelectorAll("#editable").forEach(element => {
-        if (element.disabled == true) {
-          $("#editar").text("Activar Edicion");
-          element.disabled = false;
-        } else {
-          $("#editar").text("Desactivar Edicion");
-          element.disabled = true;
-        }
+        element.disabled = !isCurrentlyDisabled;
       });
+      editButton.textContent = isCurrentlyDisabled ? "Desactivar Edicion" : "Activar Edicion";
     }
+
 
     function agregarProducto() {
       document.getElementById("formulario").action = "/admin/agregarProducto";
       document.getElementById("formulario").submit();
     }
+
+    $(document).ready(function() {
+      function actualizarSubtotal($row) {
+        const precio = parseFloat($row.find(".precio").text());
+        const cantidad = parseInt($row.find("input[type='number']").val());
+        const subtotal = (cantidad * precio).toFixed(2);
+        $row.find(".subtotal").text(subtotal);
+      }
+      $(document).on("change", "input[type='number']", function() {
+        const row = $(this).closest("tr");
+        actualizarSubtotal(row);
+      });
+
+      function actualizarCantidad(id, accion) {
+        const $cantidadInput = $(`#cantidad-${id}`);
+        let cantidad = parseInt($cantidadInput.val());
+        if (accion === 'agregar' && cantidad < 99) cantidad++;
+        if (accion === 'quitar' && cantidad > 0) cantidad--;
+        $cantidadInput.val(cantidad);
+        const row = $cantidadInput.closest("tr");
+        actualizarSubtotal(row);
+      }
+      window.actualizarCantidad = actualizarCantidad;
+    });
 
     function eliminarProducto(id) {
       let confirmacion = confirm("Estas seguro de eliminar el producto?");

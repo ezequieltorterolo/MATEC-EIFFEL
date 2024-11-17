@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\models\Categoria;
 use rutex\BaseController;
 use app\models\Producto;
+use app\models\Reserva;
+use app\models\ReservaProductos;
 
 class HomeController extends BaseController
 {
@@ -12,8 +14,8 @@ class HomeController extends BaseController
     function index($data)
     {
         $producto        = new Producto;
-        $data["ofertas"] =$producto-> where("oferta", "=", true)->and("stock", ">", 0)
-        ->getall();
+        $data["ofertas"] = $producto->where("oferta", "=", true)->and("stock", ">", 0)
+            ->getall();
 
         return $this->view("home", $data);
     }
@@ -26,26 +28,26 @@ class HomeController extends BaseController
         $cat = $data["prd"]["categoria_id"];
         $data["cat"] = $categoria->getById($cat);
 
-        return $this->view("producto",$data);
+        return $this->view("producto", $data);
     }
 
     function catalogo($data)
-    { 
+    {
 
         $producto = new Producto;
         $producto->where("stock", ">", 0);
 
         if (isset($_GET["catego"])) {
             $catego = $_GET["catego"];
-            $producto->and("categoria_id","=",$catego);
-        } 
-        
+            $producto->and("categoria_id", "=", $catego);
+        }
+
         if (isset($_GET["nombre"])) {
             $nombre = $_GET["nombre"];
             $producto->and("nombre", "like", "%$nombre%");
         };
 
-        $ordenarPor = $_POST["ordenarPor"] ?? "id"  ;
+        $ordenarPor = $_POST["ordenarPor"] ?? "id";
         $producto->orderBy($ordenarPor);
 
         $data["ordenadoPor"] = $ordenarPor;
@@ -59,15 +61,30 @@ class HomeController extends BaseController
         return $this->view("carrito");
     }
 
-    function sobreNos() 
+    function sobreNos()
     {
-        return $this ->view ("sobreNosotros");
+        return $this->view("sobreNosotros");
     }
 
 
     //REST llamado con fetch por carrigo.js
-    function prdinfo($data){
-        $prd = new Producto ;
+    function prdinfo($data)
+    {
+        $prd = new Producto;
         return $prd->getById($data["id"]);
+    }
+    function verReservas($data)
+    {
+        if (isset($_SESSION["usuario"])) {
+            $reservas = new Reserva();
+            $producto = new Producto();
+            $reservaproducto = new ReservaProductos();
+            $data["reservas"] = $reservas->and("usuario_id", "=", $_SESSION["usuario"]["id"])->getAll();
+            $data["producto"] = $producto->getAll();
+            $data["reservaproducto"] = $reservaproducto->getAll();
+            return $this->view("verReservas", $data);
+        } else {
+            $this->redirect("login");
+        }
     }
 }

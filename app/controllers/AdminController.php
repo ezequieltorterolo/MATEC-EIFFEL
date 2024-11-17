@@ -53,7 +53,7 @@ class AdminController extends BaseController
             $data["catego"] = $categoria->getAll();
             if (isset($_GET["categoria"])) {
                 $catego = $_GET["categoria"];
-                if (!empty($categoria)) $producto->and("categoria_id", "=", $catego);
+                if (!empty($catego) && $catego !== "-1") $producto->and("categoria_id", "=", $catego);
             } elseif (isset($_GET["nombre"])) {
                 $nombre = $_GET["nombre"];
                 if (!empty($nombre)) $producto->and("nombre", "like", "%$nombre%");
@@ -66,7 +66,7 @@ class AdminController extends BaseController
         } else {
             $this->redirect("/admin");
         }
-    }
+    }   
 
     function productoAdmin($data)
     {
@@ -245,26 +245,48 @@ class AdminController extends BaseController
         }
     }
     function gestionReservas($data)
-    {
-        if (isset($_SESSION["admin"])) {
-            $data["action"] = "/admin/gestionReservas";
-            $reservas = new Reserva();
-            $producto = new Producto();
-            $reservaproducto = new ReservaProductos();
-            $usuario = new Usuario();
-            if (isset($_GET["nombre"])) {
-                $nombre = trim($_GET["nombre"]);
-                if (!empty($nombre)) $usuario->where("nombre", "like", "%$nombre%");
-            };
-            $data["reservas"] = $reservas->getAll();
-            $data["producto"] = $producto->getAll();
-            $data["reservaproducto"] = $reservaproducto->getAll();
-            $data["usuario"] = $usuario->getAll();
-            return $this->view("admin/gestionReservas", $data);
-        } else {
-            $this->redirect("/admin");
+{
+    if (isset($_SESSION["admin"])) {
+        $data["action"] = "/admin/gestionReservas";
+        $reservas = new Reserva();
+        $producto = new Producto();
+        $reservaproducto = new ReservaProductos();
+        $usuario = new Usuario();
+
+        // Filtrado por estado
+        if (isset($_GET["estado2"])) {
+            $estado = $_GET["estado2"];
+            if (!empty($estado)) {
+                if($estado !== "-1"){
+                $reservas->and("estado", "=", $estado);
+            }
         }
+        }
+        if (isset($_GET["nombre"])) {
+            $nombre = $_GET["nombre"];
+            if (!empty($nombre)) {
+                $usuario->and("nombre", "like", "%$nombre%");
+                $id = $usuario["id"];
+                if (!empty($usuario)) {
+                $reservas->where("usuario_id","=",$id)->getAll();
+                } else {
+                    $data["msg"] = "No se encontraron usuarios con ese nombre.";
+                    $this->redirect("gestionReservas", $data);
+                    return;
+                }
+            }
+        }
+
+        $data["reservas"] = $reservas->getAll();
+        $data["producto"] = $producto->getAll();
+        $data["reservaproducto"] = $reservaproducto->getAll();
+        $data["usuario"] = $usuario->getAll();
+
+        return $this->view("admin/gestionReservas", $data);
+    } else {
+        $this->redirect("/admin");
     }
+}
     function guardarTodoReservas($data)
     {
         $reserva = new Reserva();
@@ -369,7 +391,16 @@ class AdminController extends BaseController
 
 function gestionUser()
     {
-        return $this->view("admin/gestionUsuarios");
+        $data["action"] = "/admin/gestionUsuarios";
+        $usuarios = new Usuario();
+        if (isset($_GET["nombre"])) {
+            $nombre = $_GET["nombre"];
+            if (!empty($nombre)) {
+                $usuarios->and("nombre", "like", "%$nombre%")->select()->getFirst();
+            }
+        }
+        $data["usuarios"] = $usuarios->getAll();
+        return $this->view("admin/gestionUsuarios",$data);
     }
 
 

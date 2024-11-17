@@ -18,89 +18,40 @@
 
 
   <?php include "segments/header.php" ?>
-<div id="titlee" class="container">
-  <h1> Gestionar Usuarios  <hr></h1>
-</div>
-
-<div id="todo" class="container">
-
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-<div class="col-md-3">
-  <div class="card">
- 
-  <div class="card-body">
-    <h5 class="card-title">NOMBRE</h5>
-    <h6 class="card-subtitle mb-2 text-muted">ID DE USUARIO</h6>
+  <div id="titlee" class="container">
+    <h1> Gestionar Usuarios
+      <hr>
+    </h1>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Correo electronico</li>
-    <li class="list-group-item">Telefono</li>
-    <li class="list-group-item">Direccion</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Suspender cuenta</a>
-    <a href="#" class="card-link">Modificar</a>
+
+  <div id="todo" class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <?php foreach ($usuarios as $user): ?>
+      <div class="col-md-3">
+        <div class="card">
+
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">ID DE USUARIO: <?= $user["id"] ?></h6>
+            <h5 class="card-title">NOMBRE: <?= $user["nombre"] ?></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Correo electronico: <?= $user["email"] ?></li>
+            <li class="list-group-item">Telefono: <?= $user["telefono"] ?></li>
+            <li class="list-group-item">Direccion: <?= $user["direccion"] ?></li>
+          </ul>
+        </div>
+      </div>
+      <?php endforeach;?>
+    </div>
   </div>
-</div>
-</div>
-<div class="col-md-3">
-  <div class="card">
- 
-  <div class="card-body">
-    <h5 class="card-title">NOMBRE</h5>
-    <h6 class="card-subtitle mb-2 text-muted">ID DE USUARIO</h6>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Correo electronico</li>
-    <li class="list-group-item">Telefono</li>
-    <li class="list-group-item">Direccion</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Suspender cuenta</a>
-    <a href="#" class="card-link">Modificar</a>
   </div>
-</div>
-</div>
-<div class="col-md-3">
-  <div class="card">
- 
-  <div class="card-body">
-    <h5 class="card-title">NOMBRE</h5>
-    <h6 class="card-subtitle mb-2 text-muted">ID DE USUARIO</h6>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Correo electronico</li>
-    <li class="list-group-item">Telefono</li>
-    <li class="list-group-item">Direccion</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Suspender cuenta</a>
-    <a href="#" class="card-link">Modificar</a>
+
   </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-</div>
   </div>
-</div>
-    
-</div>
-</div>
 
-</div>
-</div>
+  </div>
+  </div>
 </body>
 <html>
