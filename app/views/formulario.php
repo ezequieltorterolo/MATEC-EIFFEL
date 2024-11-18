@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<meta charset="UTF-8" />
-<link href="styles/styles_general.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="styles/stylelog.css" rel="stylesheet" type="text/css">
-<title>Eiffel Importaciones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8" />
+    <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="styles/stylelog.css" rel="stylesheet" type="text/css">
+    <title>Eiffel Importaciones</title>
 </head>
 <body>
 <div id="carcel" class="container">
@@ -72,13 +71,16 @@
         </div>
     </div>
 </div>
+
+<script src="scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
 <script>
     window.addEventListener("load", (event) => {
-      <?php if (!empty($msg)): ?>
-        let mensaje = <?= json_encode($msg) ?>;
-        alert(mensaje);
-      <?php endif; ?>
+        <?php if (!empty($msg)): ?>
+            let mensaje = <?= json_encode($msg) ?>;
+            mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
+        <?php endif; ?>
     });
+
     function validateForm(event) {
         event.preventDefault(); // Evita el envío del formulario hasta que las validaciones se completen
 
@@ -145,9 +147,10 @@
         }
 
         if (!valid) {
-            alert("Errores en el formulario:\n" + errorMsg);
+            mostrarPopup( errorMsg, false);
         } else {
-            document.getElementById("dataForm").submit(); 
+            mostrarPopup("Operación realizada con éxito. ", true);
+            document.getElementById("dataForm").submit();
         }
     }
 

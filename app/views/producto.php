@@ -138,6 +138,7 @@ var producto = <?php echo json_encode($prd); ?>;
     
                  
                var total =  cantidad * precioUnidad;
+               total= total.toFixed(2);
     
                document.getElementById('total').innerText=  "TOTAL $"+ total;
                producto.total = total;
@@ -147,7 +148,8 @@ var producto = <?php echo json_encode($prd); ?>;
 
               if(cantidad > (cantidadCaja - 1) ){
                  
-                    var total =  cantidad * precioCaja;
+                    let total=cantidad * precioCaja;
+                    total= total.toFixed(2);
                 
                     document.getElementById('total').innerText= "TOTAL $"+ total;
                   
@@ -160,6 +162,7 @@ var producto = <?php echo json_encode($prd); ?>;
               
                         let cantidadElejida = document.getElementById('cantidad');
                         cantidadElejida.value = parseInt(cantidadElejida.value) - 1;
+                        cantidadElejida= cantidadElejida.toFixed(2);
         
                         mostrarPopup("Cantidad maxima", false);
                       
