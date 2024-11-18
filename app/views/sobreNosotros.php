@@ -72,12 +72,13 @@
         </div>
 
        
+        <div id="comoEncargarses" class="container mx-auto">
             <div class="seccion-titulo">
                 <h1 id="comoEncargar">CÓMO ENCARGAR</h1>
                 <hr>
             </div>
             <p>Para realizar una reserva será necesario que tengas una cuenta existente, que puedes crear clickeando el ícono de usuario en el menú de navegación. Luego, añade productos al carrito:</p>
-            <ul class="lista-pasos">
+            <ul>
                 <li>Clickea en la foto del producto que desees.</li>
                 <li>En la página del producto, selecciona la cantidad y añade al carrito. Se aplicará el precio por mayor automáticamente cuando llegues a la cantidad de la caja.</li>
                 <li>Consulta el carrito y revisa el total de los productos añadidos.</li>
@@ -85,6 +86,7 @@
                 <li>Recibirás una confirmación por e-mail y una notificación cuando tu pedido esté listo para la entrega.</li>
             </ul>
         </div>
+</div>
  
         <script>
             $(document).ready(function() {
