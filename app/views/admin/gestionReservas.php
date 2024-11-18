@@ -74,7 +74,7 @@
                   <td><input id="editable" type="text" name="aclaraciones[]" value="<?= $res["aclaraciones"] ?>" disabled></td>
                   <td>
                     <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
-                    <img onclick="eliminarReserva(<?= $res['id'] ?>)" src="../img/basura.svg">
+                    <img id="basura" onclick="eliminarReserva(<?= $res['id'] ?>)" src="../img/basura.svg">
                   </td>
               </tr>
 
@@ -99,7 +99,7 @@
                               <?php if ($prd["id"] == $resprd["producto_id"]): ?>
                                 <tr>
                                   <input type="hidden" name="idPrd[]" value="<?= $resprd['id'] ?>">
-                                  <td><img src="../img/<?= $prd['imagen'] ?>" alt="Imagen del producto" id="imagen-pro"></td>
+                                  <td><img id="imagen-pro" src="../img/<?= $prd['imagen'] ?>" alt="Imagen del producto" ></td>
                                   <td><?= $prd["nombre"] ?></td>
                                   <td>
                                     <div id="quitaragregar">

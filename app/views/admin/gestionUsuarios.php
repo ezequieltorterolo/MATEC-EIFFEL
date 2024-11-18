@@ -38,8 +38,11 @@
               <li class="list-group-item">Correo electronico: <?= $user["email"] ?></li>
               <li class="list-group-item">Telefono: <?= $user["telefono"] ?></li>
               <li class="list-group-item">Direccion: <?= $user["direccion"] ?></li>
-              <li><button class="btn btn-primary" onclick="eliminarUsuario(<?= $user['id'] ?>)">Eliminar Usuario</button></li>
+              
             </ul>
+            <div class="card-body">
+            <a href="#" class="card-link button" onclick="eliminarUsuario(<?= $user['id'] ?>)">Eliminar Usuario</a>
+      </div>
         </div>
         </div>
       <?php endforeach; ?>

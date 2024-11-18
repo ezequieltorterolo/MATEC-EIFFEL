@@ -16,12 +16,15 @@ body {
 
 }
 
+
+td input {
+  width:200px;
+}
 #tabla-prod {
     flex-direction: row;
     flex: auto;
-    margin-left: 10px;
-}
-
+ 
+} 
 #dropdown {
     width: 100%;
     position: relative;
@@ -49,7 +52,7 @@ body {
 }
 
 
-#titulo img {
+#titulo img{
     height:30px;
     width:30px;
 }
@@ -82,9 +85,21 @@ td {
     color: #B7BCC0;
 }
 
+#basura {
+  height: 50px;
+  width: 50px;
+  border:none;
+
+  
+}
+
 td img {
-    height: fit-content;
-    width: 80px;
+  height:100px;
+  width:100px;
+}
+#img-pro img {
+    max-height:50px;
+    width: 50px;
     border: 3px solid #253141;
 
     float: left;
@@ -95,6 +110,7 @@ table {
     width: 95%;
     margin:auto;
     border-collapse: collapse;
+   
   }
     
 input {

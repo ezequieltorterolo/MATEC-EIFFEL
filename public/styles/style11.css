@@ -14,3 +14,9 @@ body {
 .datosbasicos {
     color:grey;
 }
+button {
+    background-color:#253141;
+    color:aliceblue;
+    border-radius:4px;
+    padding:3px;
+}
