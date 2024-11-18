@@ -87,6 +87,7 @@ header {
 
 
 .submenu-logueado{
+    
     width: min-content; 
     list-style: none;
     left: 0;
@@ -97,16 +98,8 @@ header {
     
 }
 
-.submenu-logueado-2 {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    z-index: 100;
-    border-radius: 5px;
-}
+
+
 
 .submenu-logueado li{
     background-color: #253141;
@@ -313,14 +306,14 @@ border:none;
     background-color: #B7BCC0;
     background: rgb(183,188,192);
     background: linear-gradient(180deg, rgba(183,188,192,1) 0%, rgba(158,170,179,1) 35%); 
-    height: 100%; /* Toma toda la altura de la pantalla */
-   /* Ancho inicial de 0 para que esté oculta */
-    position: fixed; /* Fija la posición para superponerse */
+    height: 100%; 
+ 
+    position: fixed; 
        top: 0;
       left: 0;
         overflow:auto;
-      overflow-x: hidden; /* Deshabilita el desplazamiento horizontal */
-      /* Transición para un efecto suave */
+      overflow-x: hidden; 
+
       z-index: 1001; /* Se superpone a otros elementos */
      padding-top: 20px;
    
@@ -493,7 +486,7 @@ footer {
 @media (max-width: 768px) { 
 
  
-    .navegacion ul {
+    #pantalla-grande ul {
         display:none;
     }
 
@@ -503,12 +496,40 @@ footer {
    width:100%;
  }
 
-   svg {
+  .iconos svg, button img {
+   
     width:50px;
     height:30px;
  
     padding:2px;
   }
+  .submenu-logueado {
+  
+    width: min-content;
+    list-style: none;
+    left: 323px;
+    position: absolute;
+    display: none;
+    z-index: 100;
+    padding: 1px;
+    font-size:15px;
+    text-align:center;
+   
+    
+  }
+  .submenu-logueado li {
+    background-color: #B7BCC0;
+    border-bottom: 1px solid black;
+    padding-left: 10px;
+    padding-right: 9px;
+    max-width: 100%;
+
+  }
+
+  .a>esconder-nombre {
+    color:#253141 !important;
+  }
+  
  
  
   .derecha {
