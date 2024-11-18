@@ -27,117 +27,117 @@
       </div>
     </div>
   </div>
-      <div id="tabla-prod">
-        <table>
-          <thead>
-            <tr>
-              <th>Estado</th>
-              <th>Calle</th>
-              <th>Fecha</th>
-              <th>Aclaraciones</th>
-              <th>Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($reservas as $index => $res): ?>
-              <tr>
-              <td id="estado" data-estado="<?= $res['estado'] ?>"></td>
-                <td><?= $res["entrega_direccion"] ?></td>
-                <td><?= $res['entrega_fechahora'] ?></td>
-                <td><?= $res["aclaraciones"] ?></td>
-                <td>
-                  <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
-                  <button type="button" class="btn btn-primary" onclick="cancelarReserva(<?= $res['id'] ?>)">Cancelar</button>
-                </td>
-              </tr>
+  <div id="tabla-prod">
+    <table>
+      <thead>
+        <tr>
+          <th>Estado</th>
+          <th>Calle</th>
+          <th>Fecha</th>
+          <th>Aclaraciones</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($reservas as $index => $res): ?>
+          <tr>
+            <td id="estado" data-estado="<?= $res['estado'] ?>"></td>
+            <td><?= $res["entrega_direccion"] ?></td>
+            <td><?= $res['entrega_fechahora'] ?></td>
+            <td><?= $res["aclaraciones"] ?></td>
+            <td>
+              <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
+              <?php if ($res['estado'] == 0): ?>
+                <button type="button" class="btn btn-primary" onclick="cancelarReserva(<?= $res['id'] ?>)">Cancelar</button>
+              <?php endif; ?>
+            </td>
+          </tr>
 
-              <tr class="detalles-fila" style="display: none;">
-                <td colspan="6">
-                  <div id="dropdown">
-                    <table class="detalles-contenido">
-                      <thead>
-                        <tr>
-                          <th>Producto</th>
-                          <th>Nombre</th>
-                          <th>Cantidad</th>
-                          <th>Precio</th>
-                          <th>Subtotal</th>
-                         
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php foreach ($reservaproducto as $index2 => $resprd): ?>
-                          <?php if ($resprd["reserva_id"] == $res["id"]): ?>
-                            <?php foreach ($producto as $prd): ?>
-                              <?php if ($prd["id"] == $resprd["producto_id"]):?>
-                                <tr>
-                                  <td><img src="../img/<?= $prd['imagen'] ?>" alt="Imagen del producto" id="imagen-pro"></td>
-                                  <td><?= $prd["nombre"] ?></td>
-                                  <td><?= $resprd['cantidad']?></td>
-                                  <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
-                                  <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
-                                 
-                                </tr>
-                              <?php endif; ?>
-                            <?php endforeach; ?>
+          <tr class="detalles-fila" style="display: none;">
+            <td colspan="6">
+              <div id="dropdown">
+                <table class="detalles-contenido">
+                  <thead>
+                    <tr>
+                      <th>Producto</th>
+                      <th>Nombre</th>
+                      <th>Cantidad</th>
+                      <th>Precio</th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($reservaproducto as $index2 => $resprd): ?>
+                      <?php if ($resprd["reserva_id"] == $res["id"]): ?>
+                        <?php foreach ($producto as $prd): ?>
+                          <?php if ($prd["id"] == $resprd["producto_id"]): ?>
+                            <tr>
+                              <td><img src="../img/<?= $prd['imagen'] ?>" alt="Imagen del producto" id="imagen-pro"></td>
+                              <td><?= $prd["nombre"] ?></td>
+                              <td><?= $resprd['cantidad'] ?></td>
+                              <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
+                              <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
+                            </tr>
                           <?php endif; ?>
                         <?php endforeach; ?>
-                      </tbody>
-                    </table>
-                </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
 
-  <script>
-    function mostrarProductos(boton) {
-      const detallesFila = boton.closest("tr").nextElementSibling;
-      if (detallesFila.style.display === "none") {
-        detallesFila.style.display = "table-row";
-        boton.textContent = "▲";
-      } else {
-        detallesFila.style.display = "none";
-        boton.textContent = "▼";
+    <script>
+      function mostrarProductos(boton) {
+        const detallesFila = boton.closest("tr").nextElementSibling;
+        if (detallesFila.style.display === "none") {
+          detallesFila.style.display = "table-row";
+          boton.textContent = "▲";
+        } else {
+          detallesFila.style.display = "none";
+          boton.textContent = "▼";
+        }
       }
-    }
-  // Función que establece el estado basado en la variable PHP $estado
-  function establecerEstado() {
-    // Selecciona todos los elementos con id "estado"
-    const estadoCells = document.querySelectorAll("td#estado");
+      // Función que establece el estado basado en la variable PHP $estado
+      function establecerEstado() {
+        // Selecciona todos los elementos con id "estado"
+        const estadoCells = document.querySelectorAll("td#estado");
 
-    estadoCells.forEach(cell => {
-      // Obtén el valor del atributo data-estado
-      const estado = cell.getAttribute("data-estado");
+        estadoCells.forEach(cell => {
+          // Obtén el valor del atributo data-estado
+          const estado = cell.getAttribute("data-estado");
 
-      // Define el texto correspondiente al estado
-      let textoEstado = "";
-      switch (estado) {
-        case "0":
-          textoEstado = "En proceso";
-          break;
-        case "1":
-          textoEstado = "Finalizado";
-          break;
-        case "2":
-          textoEstado = "Cancelado";
-          break;
-        default:
-          textoEstado = "Desconocido";
-          break;
+          // Define el texto correspondiente al estado
+          let textoEstado = "";
+          switch (estado) {
+            case "0":
+              textoEstado = "En proceso";
+              break;
+            case "1":
+              textoEstado = "Finalizado";
+              break;
+            case "2":
+              textoEstado = "Cancelado";
+              break;
+            default:
+              textoEstado = "Desconocido";
+              break;
+          }
+          cell.textContent = textoEstado;
+        });
       }
-      cell.textContent = textoEstado;
-    });
-  }
-  document.addEventListener("DOMContentLoaded", establecerEstado);
+      document.addEventListener("DOMContentLoaded", establecerEstado);
 
-    function cancelarReserva(id) {
-      let confirmacion = confirm("Estas seguro de querer cancelar la reserva?");
-      if (confirmacion) {
-        document.location.href = "/cancelarReserva?resid=" + id;
+      function cancelarReserva(id) {
+        let confirmacion = confirm("Estas seguro de querer cancelar la reserva?");
+        if (confirmacion) {
+          document.location.href = "/cancelarReserva?resid=" + id;
+        }
       }
-    }
-  </script>
+    </script>
 </body>
 
 </html>

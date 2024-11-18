@@ -87,4 +87,20 @@ class HomeController extends BaseController
             $this->redirect("login");
         }
     }
+    function cancelarReserva($data){
+        if (isset($_SESSION["usuario"])) {
+            $reservas = new Reserva();
+            $id = $_GET["resid"];
+            $campo =[
+                "estado" => 2,
+            ];
+            $reservas->update($id,$campo);
+            if($reservas->success()){
+                $data["msg"] = "su reserva fue cancelada con exito";
+                $this->redirect("verReservas",$data);
+            }
+        } else {
+            $this->redirect("login");
+        }
+    }
 }

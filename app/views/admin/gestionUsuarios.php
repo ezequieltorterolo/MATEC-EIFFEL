@@ -11,7 +11,7 @@
   <script src="../script/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Eiffel Importaciones - Usuarios </title>
+  <title>Eiffel Importaciones - Gestionar Usuarios </title>
 </head>
 
 <body>

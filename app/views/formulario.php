@@ -147,7 +147,6 @@
         if (!valid) {
             alert("Errores en el formulario:\n" + errorMsg);
         } else {
-            alert("Formulario completado correctamente. Enviando datos...");
             document.getElementById("dataForm").submit(); 
         }
     }

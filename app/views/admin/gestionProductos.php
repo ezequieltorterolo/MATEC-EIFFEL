@@ -136,7 +136,7 @@
     function eliminar(id) {
       let confirmacion = confirm("Estas seguro de eliminar el producto?");
       if (confirmacion) {
-        document.location.href = "/admin/eliminar?prdid=" + id;
+        document.location.href = "/admin/eliminarProducto?prdid=" + id;
       }
     }
 

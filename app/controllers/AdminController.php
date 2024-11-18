@@ -81,11 +81,22 @@ class AdminController extends BaseController
         }
     }
 
-    function eliminar($data)
+    function eliminarProducto($data)
     {
         if (isset($_SESSION["admin"])) {
             $producto = new Producto();
             $id = $_GET["prdid"];
+            $productoData = $producto->getById($id);
+            if ($productoData && !empty($productoData['imagen'])) {
+                $rutaImagen = $_SERVER['DOCUMENT_ROOT'] . '/eiffel/public/img/' . $productoData['imagen'];
+                if (file_exists($rutaImagen)) {
+                    if (unlink($rutaImagen)) {
+                        $data['msg'] = "Imagen eliminada correctamente.";
+                    } else {
+                        $data['msg'] = "No se pudo eliminar la imagen.";
+                    }
+                }
+            }
             $producto->delete($id);
             if ($producto->success()) {
                 $data["msg"] = "el producto fue eliminado con exito";
@@ -347,7 +358,7 @@ class AdminController extends BaseController
         }
     }
 
-    function eliminarProducto($data)
+    function eliminarProductoReserva($data)
     {
         if (isset($_SESSION["admin"])) {
             $reservaProductos = new ReservaProductos();
