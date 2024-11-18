@@ -286,20 +286,25 @@ border:none;
     width: 0;
     opacity: 0;
     transition: width 0.5s ease, opacity 0.5s ease;
-    overflow: hidden; /* Evita que el contenido se desborde al contraer */
+    overflow: hidden; 
 }
 #sidebar.active {
     opacity: 1;
     width:50%;
 }
 #buscador2.active {
-    width: 100%; /* O el ancho deseado, como 50% para el sidebar */
+    width: 100%; 
     opacity: 1;
 }
-#sidebar > a {
+#sidebar  a {
     color: #253141 !important;
+    font-weight:inherit;
 }
 
+
+#sidebar h1 {
+    color:black;
+}
 #sidebar { 
    
     box-shadow: 13px 5px 25px -4px rgba(16,17,20,0.23);
@@ -307,7 +312,7 @@ border:none;
     background: rgb(183,188,192);
     background: linear-gradient(180deg, rgba(183,188,192,1) 0%, rgba(158,170,179,1) 35%); 
     height: 100%; 
- 
+    color: #253141;
     position: fixed; 
        top: 0;
       left: 0;
@@ -325,6 +330,8 @@ border:none;
 
 .textopadding {
     padding-left:24px;
+    font-weight:bold;
+   
       
 }
 footer{
@@ -414,71 +421,9 @@ footer {
 
 
 
-#productos-nuevos{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.producto-posicion{
-    margin-right: 20px;
-    border: 2px solid black;
-    width: 200px;
-    transition: 0.2s;
-    margin-bottom: 20px;
-}
-
-.producto-posicion:hover {
-    border-radius: 5px;
-    transform: scale(1.01);
-    box-shadow: 5px 5px 8px 0px #0000008c;
-}
-
-.producto-posicion:hover .img-prod{
-    border-radius: 5px;
-}
 
 
-.img-prod{
-    width: 196px;
-    height: 200px;
-    background-color: white;
-}
-.nombre-prod{
-    margin: 0px;
-    background-color: #253141;
-    color: whitesmoke;
-}
-.precio-prod{
-    text-align: center;
-}
 
-
-/*FILTROS CATALOGO*/
-
-#seccion-titulo{
-    margin-bottom: 20px ;
-    width: fit-content;
-}
-#seccion-filtros{
-    display: flex;
-}
-#seccion-filtros h3 {
-    margin-left: 50px;
-}
-#seccion-filtros select{
-    margin-left: 10px;
-    padding: 5px;
-    border-radius: 5px;
-}
-#seccion-filtros p{
-    margin-left: 50px;
-}
-#hr-catalogo{
-    width: 90%;
-    margin-top: 20px;
-}
 
 
 

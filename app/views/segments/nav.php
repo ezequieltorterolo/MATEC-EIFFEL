@@ -98,7 +98,7 @@ use app\models\Categoria;
 <div id="sidebar">
   <div class="row">
     <div class="col-8">
-  <h1 class="textopadding grueso5 text-align-left"> MENU </h1> </div> <div class="col-1 float-end"><span id="cerrar1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+  <h1 class="textopadding text-align-left"> MENU </h1> </div> <div class="col-1 float-end"><span id="cerrar1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
   <path d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753"/>
 </svg></span> </div> 
 <hr>
@@ -107,12 +107,12 @@ use app\models\Categoria;
       <div>
          <div class="row">
          
-       <p class="textopadding "><a href="/catalogo" style="color:black;">CATALOGO</a></p>
+       <p class="textopadding"><a href="/catalogo" style="color:black;">CATALOGO</a></p>
  <hr>
                 </div>
                 <div class="row">
          
-         <p class="textopadding "> <a href="/sobreNosotros" style="color:black;"> SOBRE NOSOTROS </a></p>
+         <p class="textopadding"> <a href="/sobreNosotros" style="color:black;"> SOBRE NOSOTROS </a></p>
    <hr>
       
                 </div>
@@ -163,11 +163,13 @@ use app\models\Categoria;
         $("#sidebar").removeClass("active");
     });
 
+  
 
     
  
 });
-function abrirMenu() {
+
+ function abrirMenu() {
       $(".submenu-logueado").toggle();
 }
 
