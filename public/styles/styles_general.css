@@ -239,7 +239,7 @@ a {
     visibility: visible;
   }
 
-  .dropdown-item {
+  .dropdown-item:hover {
     background-color:transparent;
   }
 

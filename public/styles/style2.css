@@ -139,6 +139,9 @@ float:right;
 
 }
 
+table tr td, table tr th{
+    background-color:transparent !important;
+}
 
 #botones1 button:hover {
   transform:scale(1.1);
