@@ -21,8 +21,8 @@
         <h2> Gestión de Reservas </h2>
       </div>
       <hr>
-      <div class="col-4 mt-3 mb-3" id="atras" onclick="history.back()">
-        <p><img src="../img/angle-left.png"> Volver atras</p>
+      <div class="col-4 mt-3 mb-3" id="atras">
+        <p><img src="../img/angle-left.png"><a href="/admin"> Volver atras </a></p>
       </div>
     </div>
   </div>

@@ -23,9 +23,8 @@
         <h2> Gestión de Productos </h2>
       </div>
       <hr>
-      <div class="col-4 mt-3 mb-3" id="atras" onclick="history.back()">
-        <p> <img src="../img/angle-left.png"> Volver atras
-        <p>
+      <div class="col-4 mt-3 mb-3" id="atras">
+        <p><img src="../img/angle-left.png"><a href="/admin"> Volver atras</a></p>
       </div>
     </div>
   </div>
@@ -82,7 +81,7 @@
           <td>
             <div id="quitaragregar">
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'quitar')" disabled>-</button>
-              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly disabled>
+              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?=$prd['stock'] ?>" min="0" max="99" readonly disabled>
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'agregar')" disabled>+</button>
             </div>
           </td>

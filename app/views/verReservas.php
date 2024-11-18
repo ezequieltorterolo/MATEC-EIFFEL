@@ -8,7 +8,6 @@
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
-  <script src="../scriptÑs/reservas.js"></script>
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Eiffel Importaciones - Gestión de Reservas</title>
@@ -44,7 +43,7 @@
             <td id="estado" data-estado="<?= $res['estado'] ?>"></td>
             <td><?= $res["entrega_direccion"] ?></td>
             <td><?= $res['entrega_fechahora'] ?></td>
-            <td><?= $res["aclaraciones"] ?></td>
+            <td><?php if(isset($res["aclaraciones"])):?><?= $res["aclaraciones"] ?><?php else: ?>N/A<?php endif;?></td>
             <td>
               <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
               <?php if ($res['estado'] == 0): ?>
