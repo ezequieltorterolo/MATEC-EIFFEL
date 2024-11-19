@@ -11,8 +11,9 @@
     <meta charset="UTF-8" />
     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="styles/style2.css" rel="stylesheet" type="text/css">
-    <link href="styles/alertpopup.css" rel="stylesheet" type="text/css">
+     <link href="styles/style2.css" rel="stylesheet" type="text/css">
+     <link href="styles/alertpopup.css" rel="stylesheet" type="text/css">
+     <link rel="icon"  href="../img/logito.ico">
     <title>Eiffel Importaciones</title>
 </head>
 

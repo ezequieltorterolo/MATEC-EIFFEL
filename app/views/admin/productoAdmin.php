@@ -6,6 +6,7 @@
     <script src="../scripts/producto.js"></script>
     <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon"  href="../img/logito.ico">
     <script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
     <title>Eiffel Importaciones</title>
 </head>

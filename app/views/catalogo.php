@@ -9,6 +9,7 @@
     <link href="styles/style3.css" rel="stylesheet" type="text/css">
     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon"  href="../img/logito.ico">
     <title>CATÁLOGO</title>
 </head>
 

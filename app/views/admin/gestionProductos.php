@@ -8,6 +8,7 @@
   <script src="../scripts/alertpopup.js"></script>
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style6.css" rel="stylesheet" type="text/css">
+  <link rel="icon"  href="../img/logito.ico">
 
   <script src="../scripts/producto.js"></script>
   <meta charset="UTF-8" />

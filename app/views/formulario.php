@@ -8,6 +8,7 @@
     <link href="styles/styles_general.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="styles/stylelog.css" rel="stylesheet" type="text/css">
+    <link rel="icon"  href="../img/logito.ico">
     <title>Eiffel Importaciones</title>
 </head>
 <body>
