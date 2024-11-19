@@ -54,7 +54,8 @@
            ?>         
 
         <div id="cont-abajo" class="container">
-    <div id="formulario-carrito">
+            <div class="row gx-4 container-fluid">
+    <div id="formulario-carrito" class="col-md-6 col-12 order-2 order-md-1">
     <form id="form-carrito" method="post" onsubmit="carrito_confirmar(event)">
     Dirección:<br>
     <input id="dirent" class="input-form" required type="text" value="<?=$valorDirent ?>"><br>
@@ -65,9 +66,10 @@
     <button type="submit" id="buttonconf">CONFIRMAR</button>
 </form>
     </div>
-    <div id="cont-total">
+    <div id="cont-total" class="container col-md-6 pt-md-4  order-1 order-md-2 mt-md-0 mt-2 mb-2 mb-mb-0 col-12">
         <h1 style="margin: 0 auto;">TOTAL</h1>
         <h2>$0.00</h2>
+    </div>
     </div>
 </div>
 </div>
