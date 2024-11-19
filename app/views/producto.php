@@ -217,6 +217,7 @@ var producto = <?php echo json_encode($prd); ?>;
  
            // Cambiar el contenido de un div
              document.getElementById("badge-carrito").innerHTML = cantidadCarrito;
+             document.getElementById("carr-cantidad").innerHTML = cantidadCarrito;
 // Guardar el cambio en localStorage
              localStorage.setItem("contenidoDiv", cantidadCarrito);
 
