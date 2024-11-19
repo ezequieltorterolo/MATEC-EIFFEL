@@ -367,7 +367,20 @@ border:none;
    
       
 }
+ .btn-primary {
 
+      background-color:#253141;
+      color:#EFF3F6;
+    
+  }
+
+.btn {
+    border: 0px solid;
+    margin-bottom: 30px;
+      margin-left: 5px;
+}
+  
+  
  
 
 
