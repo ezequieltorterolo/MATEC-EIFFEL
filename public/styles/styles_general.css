@@ -338,11 +338,8 @@ border:none;
    
       
 }
-footer{
-    margin-top: 200px;
-    background-color: #253141;
-    height:30%;
-}
+
+ 
 
 
 
@@ -350,21 +347,19 @@ footer {
     background-color: #253141;
     color: #b2b2b2;
     padding: 20px 0;
+    margin-top: 200px;
+   
+    height:30%;
+}
 }
 
 .footer-container {
     max-width: 1200px;
     margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  
     padding: 0 20px;
 }
 
-.footer-container div {
-    flex: 1;
-    padding: 10px;
-}
 
 .footer-container a , .footer-container p {
     font-family: 'Poppins';
@@ -540,8 +535,13 @@ footer {
      display:none;
   }
 
-  .footer-container{
-    display: grid;
+  .footer{
+ display:flex;
+ justify-content:center;
+    }
+
+    .social, .logo {
+        text-align:center;
     }
     .logo img{
         width: 200px ;
