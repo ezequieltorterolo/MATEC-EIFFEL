@@ -18,8 +18,13 @@ h2{
 }
 
 
-p, a {
+p{
     font-family: 'Roboto' !important;
+    font-weight: 400;
+}
+
+a {
+    font-family: 'Roboto';
     font-weight: 400;
 }
 
@@ -461,8 +466,22 @@ footer {
     text-align: center;
 }
 
+#subtituloHome, #productos-nuevos{
+    opacity: 1;
+    animation: all 0.3s linear;
+}
 
+#caratula {
+    margin:0px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 
+#foto-caratula{
+    width:fit-content;
+    height: fit-content;
+}
 
 
 

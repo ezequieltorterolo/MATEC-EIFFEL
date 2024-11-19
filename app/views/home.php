@@ -23,27 +23,12 @@
     <?php include  "segments/header.php" ?>
     
     <?php include  "segments/nav.php" ?>
-
-    <br>
-  
-    <div id="contenedor-destacados" class="container-fluid"></div>
-    <div id="slides">
-        <div class="slide showing"></div> 
-        <div class="slide"></div>
-        <div class="slide"></div>
-        
-        <div class="arrow">
-             <div id="left">
-                <img src="img/angle-left.png">
-            </div>
-            <div id="right">
-                <img src="img/angle-right.png">
-            </div>
-      </div>
+    <div id="caratula">
+            <a href="/catalogo?catego=2"><img id="foto-caratula" src="img/caratulaBanner.gif"></a>
     </div>
   
 
-    <h1 class="subtitulo ofertas">OFERTAS <hr style="max-width:30%; margin:auto; margin-top:5px;"></h1>
+    <h1 id="subtituloHome" class="subtitulo ofertas">OFERTAS <hr style="max-width:30%; margin:auto; margin-top:5px;"></h1>
    
     <div id="productos-nuevos" class="container">
             <?php foreach($ofertas as $prd):?>
@@ -59,8 +44,7 @@
                         $<?=$prd["precio"]?> c/u </p>
                 </div>
             <?php endforeach?>
-        </div>
-                        </div>
+    </div>
 </div>
 
 <br> <br>
@@ -69,6 +53,7 @@
 
 
     <script>
+
         var slides = document.querySelectorAll('#slides .slide');
         var currentSlide = 0;
         function nextSlide() {
@@ -89,6 +74,30 @@
         document.getElementById("right").onclick = function(){
         nextSlide();
         };
+
+        function hacerQueAparezca(){
+        var contHome = document.getElementById("productos-nuevos");
+        var subHome = document.getElementById("subtituloHome");
+        subHome.style.opacity = 0;
+        subHome.style.transform = "translateY(20px)";
+        subHome.style.transition = "all 0.3s linear";
+
+        contHome.style.opacity = 0;
+        contHome.style.transform = "translateY(20px)";
+        contHome.style.transition = "all 0.3s linear";
+
+        var distanciaOfertas = window.innerHeight - contHome.getBoundingClientRect().top;
+        var distanciaSubtitulo = window.innerHeight - subHome.getBoundingClientRect().top;
+        if(distanciaOfertas > 300){
+            contHome.style.opacity = 1;
+            contHome.style.transform = "translateY(0px)";
+        } 
+        if(distanciaSubtitulo > 150){
+            subHome.style.opacity = 1;
+            subHome.style.transform = "translateY(0px)";
+        }
+    }
+    window.addEventListener("scroll", hacerQueAparezca);
 
 
     </script>
