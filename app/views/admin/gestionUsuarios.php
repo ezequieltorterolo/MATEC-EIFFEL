@@ -44,7 +44,8 @@
             <td><?= $user["id"]?></td>
             <td><?= $user["nombre"]?></td>
             <td><?= $user["email"]?></td>
-            <td><?php if(isset($res["direccion"])):?><?= $res["direccion"] ?><?php else: ?>N/A<?php endif;?></td>
+           <td><?php if($user["direccion"] == 0):?>N/A<?php else:?> <?=$user["direccion"]?><?php endif;?></td>
+
             <td><?= $user["telefono"]?></td>
             <td>
             <button type="button" id="eliminar" class="btn btn-primary" onclick="eliminarUsuario(<?= $user['id'] ?>)">Eliminar</button>

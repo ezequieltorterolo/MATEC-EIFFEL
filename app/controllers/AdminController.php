@@ -229,30 +229,30 @@ class AdminController extends BaseController
             }
         }
     }
-    function guardarTodoProductos($data)
-    {
+    function guardarTodoProductos($data) {
         $producto = new Producto();
+    
+        // Asegúrate de que 'id' sea un array y procesa cada producto
         if (is_array($_POST["id"])) {
             foreach ($_POST["id"] as $index => $id) {
                 $campos = [
                     "precioCaja" => $_POST["precioCaja"][$index],
                     "precio"     => $_POST["precio"][$index],
-                    "stock"      => $_POST["stock"][$index],
-                    "oferta"     => isset($_POST["oferta"][$index]),
+                    "stock"      => $_POST["stock"][$index] ?? null,
+                    "oferta"     => isset($_POST["oferta"][$index]) ? 1 : 0, // Checkbox handling
                 ];
                 $producto->update($id, $campos);
             }
-
+    
             if ($producto->success()) {
-                $data["msg"] = "los cambios se realizaron con exito";
-                $this->redirect("gestionProductos", $data);
+                $this->redirect("/admin/gestionProductos");
             } else {
-                $data['msg'] = "Hubo un error al modificar el producto.";
-                $this->redirect("gestionProductos",$data);
+                $data['msg'] = "Hubo un error al modificar los productos.";
+                return $this->gestionProductos($data);
             }
         } else {
             $data['msg'] = "No se recibieron productos para actualizar.";
-            $this->redirect("gestionProductos", $data);
+            return $this->gestionProductos($data);
         }
     }
     function gestionReservas($data)

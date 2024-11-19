@@ -43,7 +43,7 @@
             <td id="estado" data-estado="<?= $res['estado'] ?>"></td>
             <td><?= $res["entrega_direccion"] ?></td>
             <td><?= $res['entrega_fechahora'] ?></td>
-            <td><?php if(isset($res["aclaraciones"])):?><?= $res["aclaraciones"] ?><?php else: ?>N/A<?php endif;?></td>
+            <td><?php if(empty($res["aclaraciones"])):?>N/A<?php else:?><?=$res["aclaraciones"]?><?php endif;?></td>
             <td>
               <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
               <?php if ($res['estado'] == 0): ?>

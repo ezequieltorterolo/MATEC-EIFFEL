@@ -34,7 +34,7 @@
         <select id="filtroCat" name="categoria">
           <option value="-1">Filtrar por Categoria</option>
           <?php foreach ($catego as $cat): ?>
-            <option value="<?=$cat["id"] ?>"><?= $cat["nombreCategoria"] ?></option>
+            <option value="<?= $cat["id"] ?>"><?= $cat["nombreCategoria"] ?></option>
           <?php endforeach; ?>
         </select>
       </form>
@@ -43,7 +43,6 @@
       <form method="POST" action="/admin/gestionProductos">
         <button type="submit" class="btn btn-primary">Guardar Todo</button>
     </div>
-  </div>
   </div>
   <div id="tabla-prod">
     <table>
@@ -81,7 +80,7 @@
           <td>
             <div id="quitaragregar">
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'quitar')" disabled>-</button>
-              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?=$prd['stock'] ?>" min="0" max="99" readonly disabled>
+              <input type="number" name="stock[]" id="stock-<?= $index ?>" value="<?= $prd['stock'] ?>" min="0" max="99" readonly>
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'agregar')" disabled>+</button>
             </div>
           </td>
@@ -162,7 +161,6 @@
       if (accion === 'agregar' && stock < 99) stock++;
       if (accion === 'quitar' && stock > 0) stock--;
       stockInput.value = stock;
-      actualizarProducto(id, 'stock', stock);
     }
 
 
