@@ -28,9 +28,9 @@
     </div>
   
 
-    <h1 id="subtituloHome" class="subtitulo ofertas">OFERTAS <hr style="max-width:30%; margin:auto; margin-top:5px;"></h1>
+    <h1 class="subtitulo ofertas">OFERTAS</h1>
    
-    <div id="productos-nuevos" class="container">
+    <div id="cont-productos-home" class="container">
             <?php foreach($ofertas as $prd):?>
                 <div class="producto-posicion">
                     <a href =/producto?id=<?=$prd["id"]?>><img class="img-prod" src=img/<?=$prd["imagen"]?>></a>
@@ -46,57 +46,24 @@
             <?php endforeach?>
     </div>
 </div>
-
-<br> <br>
 <?php include  "segments/footer.php" ?>
   
 
 
     <script>
-
-        var slides = document.querySelectorAll('#slides .slide');
-        var currentSlide = 0;
-        function nextSlide() {
-            slides[currentSlide].className = 'slide';
-            currentSlide = (currentSlide+1)%slides.length;
-            slides[currentSlide].className = 'slide showing';
-        }
-
-        function previousSlide(){
-        slides[currentSlide].className = 'slide';
-            currentSlide = (currentSlide+slides.length-1)%slides.length;
-            slides[currentSlide].className = 'slide showing';
-        }
-
-        document.getElementById("left").onclick = function(){
-        previousSlide();
-        };
-        document.getElementById("right").onclick = function(){
-        nextSlide();
-        };
-
         function hacerQueAparezca(){
-        var contHome = document.getElementById("productos-nuevos");
-        var subHome = document.getElementById("subtituloHome");
-        subHome.style.opacity = 0;
-        subHome.style.transform = "translateY(20px)";
-        subHome.style.transition = "all 0.3s linear";
-
+        var contHome = document.getElementById("cont-productos-home");
         contHome.style.opacity = 0;
         contHome.style.transform = "translateY(20px)";
         contHome.style.transition = "all 0.3s linear";
-
         var distanciaOfertas = window.innerHeight - contHome.getBoundingClientRect().top;
-        var distanciaSubtitulo = window.innerHeight - subHome.getBoundingClientRect().top;
-        if(distanciaOfertas > 300){
+
+        if(distanciaOfertas > 150){
             contHome.style.opacity = 1;
             contHome.style.transform = "translateY(0px)";
-        } 
-        if(distanciaSubtitulo > 150){
-            subHome.style.opacity = 1;
-            subHome.style.transform = "translateY(0px)";
-        }
-    }
+            console.log(distanciaOfertas);
+        };
+    };
     window.addEventListener("scroll", hacerQueAparezca);
 
 

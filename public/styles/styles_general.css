@@ -422,7 +422,7 @@ footer {
 
 
 /*FICHA PRODUCTO EN CATALOGO Y HOME*/
-#productos-nuevos{
+#productos-nuevos , #cont-productos-home{
     display: flex;
     justify-content: space-around;
     flex-direction: row;
@@ -462,9 +462,10 @@ footer {
     text-align: center;
 }
 
-#subtituloHome, #productos-nuevos{
-    opacity: 1;
-    animation: all 0.3s linear;
+#cont-productos-home {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s linear;
 }
 
 #caratula {
