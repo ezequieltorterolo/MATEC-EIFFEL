@@ -32,6 +32,14 @@ Route::get("/logout"                          , [UserController::class, "logout"
 Route::post("/login"                          , [UserController::class, "ValidarIngreso"]);
 Route::post("/ValidarRegistro"                , [UserController::class, "ValidarRegistro"]);
 
+//recuperacion de contraseña
+Route::get("/recuperarContraseniaCorreo"      , [UserController::class, "recuperarContraseñaCorreo"]);
+Route::get("/recuperarContraseniaPregunta"    , [UserController::class, "recuperarContraseñaPregunta"]);
+Route::get("/nuevaContrasenia"                , [UserController::class, "nuevaContraseña"]);
+Route::post("/recuperarContraseniaCorreo"     , [UserController::class, "validarPasosdeRecuperacion"]);
+Route::post("/recuperarContraseniaPregunta"   , [UserController::class, "validarPasosdeRecuperacion"]);
+Route::post("/nuevaContrasenia"               , [UserController::class, "validarPasosdeRecuperacion"]);
+
 //ADMINISTRADOR
 Route::get("/admin"                           , [AdminController::class, "login"]);
 Route::post("/ValidarIngreso"                 , [AdminController::class, "ValidarIngresoAdmin"]);
