@@ -53,12 +53,14 @@
 
                             <div class="row">
                                 <label for="pregunta">Pregunta de Recuperación</label>
-                                <input id="telefono" name="telefono" type="tel" placeholder="telefono de contacto"><br><br>
+                                <p>Ingrese una pregunta personal que se usará en caso de perder la contraseña</p>
+                                <input id="telefono" name="telefono" type="tel" placeholder="Escriba una pregunta íntima"><br><br>
                             </div>
 
                             <div class="row">
-                                <label for="respuesta">Numero de telefono</label>
-                                <input id="telefono" name="telefono" type="tel" placeholder="telefono de contacto"><br><br>
+                                <label for="respuesta">Respuesta de la Pregunta</label>
+                                <p>Escriba la respuesta a la pregunta de seguridad de arriba</p>
+                                <input id="telefono" name="telefono" type="tel" placeholder="Escriba una respuesta que recuerde"><br><br>
                             </div>
                         <?php endif ?>
                     </div>
