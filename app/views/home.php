@@ -53,50 +53,19 @@
 
 
     <script>
-
-        var slides = document.querySelectorAll('#slides .slide');
-        var currentSlide = 0;
-        function nextSlide() {
-            slides[currentSlide].className = 'slide';
-            currentSlide = (currentSlide+1)%slides.length;
-            slides[currentSlide].className = 'slide showing';
-        }
-
-        function previousSlide(){
-        slides[currentSlide].className = 'slide';
-            currentSlide = (currentSlide+slides.length-1)%slides.length;
-            slides[currentSlide].className = 'slide showing';
-        }
-
-        document.getElementById("left").onclick = function(){
-        previousSlide();
-        };
-        document.getElementById("right").onclick = function(){
-        nextSlide();
-        };
-
         function hacerQueAparezca(){
         var contHome = document.getElementById("productos-nuevos");
-        var subHome = document.getElementById("subtituloHome");
-        subHome.style.opacity = 0;
-        subHome.style.transform = "translateY(20px)";
-        subHome.style.transition = "all 0.3s linear";
-
         contHome.style.opacity = 0;
         contHome.style.transform = "translateY(20px)";
         contHome.style.transition = "all 0.3s linear";
-
         var distanciaOfertas = window.innerHeight - contHome.getBoundingClientRect().top;
-        var distanciaSubtitulo = window.innerHeight - subHome.getBoundingClientRect().top;
+
         if(distanciaOfertas > 300){
             contHome.style.opacity = 1;
             contHome.style.transform = "translateY(0px)";
-        } 
-        if(distanciaSubtitulo > 150){
-            subHome.style.opacity = 1;
-            subHome.style.transform = "translateY(0px)";
-        }
-    }
+            console.log(distanciaOfertas);
+        };
+    };
     window.addEventListener("scroll", hacerQueAparezca);
 
 
