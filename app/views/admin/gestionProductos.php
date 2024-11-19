@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
+  <script src="../scripts/alertpopup.js"></script>
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style6.css" rel="stylesheet" type="text/css">
 
@@ -39,10 +39,10 @@
           <?php endforeach; ?>
         </select>
       </form>
-      <button onclick="añadirProducto()" class="botonesAdmin">Añadir Producto</button>
-      <button type="button" id="editar" class="botonesAdmin" onclick="activarEdicion()">Activar Edicion</button>
+      <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
+      <button class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
       <form method="POST" action="/admin/gestionProductos">
-        <button type="submit" id="botonGuardar" class="botonesAdmin">Guardar Todo</button>
+        <button type="submit" class="btn btn-success">Guardar Todo</button>
     </div>
   </div>
   <div id="tabla-prod">
@@ -54,7 +54,7 @@
         <th>Precio x Caja</th>
         <th>Stock</th>
         <th>Oferta</th>
-        <th>Opciones</th>
+        <th>        </th>
       </tr>
 
       <?php foreach ($data as $index => $prd): ?>
@@ -82,6 +82,7 @@
     </table>
     </form>
   </div>
+  <?php include "segments/footer.php" ?>
   <script>
       window.addEventListener("load", (event) => {
         <?php if (!empty($msg)): ?>

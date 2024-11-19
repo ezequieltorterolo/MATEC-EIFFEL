@@ -370,7 +370,20 @@ border:none;
    
       
 }
+ .btn-primary {
 
+      background-color:#253141;
+      color:#EFF3F6;
+    
+  }
+
+.btn {
+    border: 0px solid;
+    margin-bottom: 30px;
+      margin-left: 5px;
+}
+  
+  
  
 
 
@@ -380,7 +393,7 @@ footer {
     color: #b2b2b2;
     padding: 20px 0;
     margin-top: 58px;
-    min-height: max-content
+    min-height: max-content;
 }
 
 .footer-container {
@@ -395,7 +408,7 @@ footer {
 }
 
 .logo img {
-    width: 100px;
+    width: 180px;
     margin-bottom: 10px;
 }
 
