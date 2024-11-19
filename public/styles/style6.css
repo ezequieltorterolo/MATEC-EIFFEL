@@ -99,13 +99,30 @@ td img {
 }
 
 #basura {
+ 
     width: 35px;
     height: 35px;
     border: none;
-    transition: all 1s
+    transition: all 1s;
+   
+  
 }
 
 #basura:hover {
+    transform: scale(1.1);
+
+
+}
+#editar {
+    width: auto;
+    height: 35px;
+    border: none;
+    transition: all 1s;
+    padding-left:35px;
+  
+}
+
+#editar:hover {
     transform: scale(1.1);
 
 
