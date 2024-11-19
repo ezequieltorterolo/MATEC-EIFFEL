@@ -41,7 +41,7 @@
         </form>
 
 
-
+        <div id="seccion-productos-linea">
         <hr id="hr-catalogo">
         <div id="productos-nuevos">
             <?php foreach($data as $prd):?>
@@ -58,23 +58,49 @@
                 </div>
             <?php endforeach?>
         </div>
+       </div>
     </div>
                     
     <?php include  "segments/footer.php" ?>
     <script>
-        function apareceAlCargar(){
-        var contCatalogo = document.getElementById("body-catalogo");
-        contCatalogo.style.opacity = 0;
-        contCatalogo.style.transition = "all 0.3s linear";
-        var distanciaOfertas = window.innerHeight - contHome.getBoundingClientRect().top;
+        document.addEventListener("DOMContentLoaded", function() {
+            var contSubtitulo = document.getElementById("seccion-titulo");
+            var contFiltro = document.getElementById("seccion-filtros");
+            var contProductos = document.getElementById("seccion-productos-linea");
+            var contProductosSinLinea = document.getElementById("productos-nuevos");
 
-        if(distanciaOfertas > 150){
-            contHome.style.opacity = 1;
-            contHome.style.transform = "translateY(0px)";
-            console.log(distanciaOfertas);
-        };
-    };
-    window.addEventListener("scroll", apareceAlCargar);
+            contSubtitulo.style.opacity = 0;
+            contSubtitulo.style.transition = "all 1s linear";
+
+            contFiltro.style.opacity = 0;
+            contFiltro.style.transition = "all 1s linear";
+
+            contProductos.style.opacity = 0;
+            contProductos.style.transition = "all 1s linear";
+
+            contProductosSinLinea.style.opacity = 0;
+            contProductosSinLinea.style.transform = "translateY(20px)";
+            contProductosSinLinea.style.transition = "all 0.5s linear";
+            
+
+            setTimeout(function () {
+                contSubtitulo.style.opacity = 1;
+            }, 100);
+
+            setTimeout(function () {
+                contFiltro.style.opacity = 1;
+            }, 120);
+
+            setTimeout(function () {
+                contProductos.style.opacity = 1;
+            }, 140);
+
+            setTimeout(function () {
+                contProductosSinLinea.style.opacity = 1;
+                contProductosSinLinea.style.transform = "translateY(0px)";
+            }, 160);
+        });
+
     </script>
 </body>
 </html>

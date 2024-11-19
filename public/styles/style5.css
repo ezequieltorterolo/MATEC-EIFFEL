@@ -144,19 +144,14 @@ float:left;
 #cont-abajo {
     margin-top: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #B7BCC0;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#formulario-carrito {
-    width: 50%;
-    margin-right: 20px;
-    padding-right: 62px;
-    border-right: solid   1px #253141;
-}
+
 
 .input-form {
     width: 100%;
@@ -199,11 +194,11 @@ float:left;
 }
 
 #cont-total {
-    width: 40%;
+   
     color: white;
     min-height: 200px; /* Altura mínima */
     text-align: center;
-    padding: 20px;
+   
     background-color: #253141;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
