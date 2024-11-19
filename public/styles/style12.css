@@ -76,14 +76,17 @@
             text-align: center;
 
         }
-        img{
+        #preview{
             width: 70%;
             height: 200px;
             border: 2px solid black;
         }
+        #atras img{
+            width: 30px;
+            height: 30px;
+            margin-bottom:20px;
+        }
         
-
-
         @media (max-width: 480px) {
             form {
                 padding: 20px;

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
@@ -26,6 +27,14 @@
       </div>
     </div>
   </div>
+    <form id="formEst" method="GET" action="/verReservas">
+      <select id="filtroEst" name="estado">
+        <option value="-1">Todas las reservas</option>
+        <option value="0">En proceso</option>
+        <option value="1">Finalizado</option>
+        <option value="2">Cancelado</option>
+      </select>
+    </form>
   <div id="tabla-prod">
     <table>
       <thead>
@@ -47,7 +56,7 @@
             <td>
               <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
               <?php if ($res['estado'] == 0): ?>
-                <button type="button" class="btn btn-primary" onclick="cancelarReserva(<?= $res['id'] ?>)">Cancelar</button>
+                <button type="button" id="cancelar" class="btn btn-primary" onclick="cancelarReserva(<?= $res['id'] ?>)"><span>Cancelar</span></button>
               <?php endif; ?>
             </td>
           </tr>
@@ -90,6 +99,13 @@
     </table>
 
     <script>
+         window.addEventListener("load", (event) => {
+        <?php if (!empty($msg)): ?>
+            let mensaje = <?= json_encode($msg) ?>;
+            mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
+        <?php endif; ?>
+    });
+
       function mostrarProductos(boton) {
         const detallesFila = boton.closest("tr").nextElementSibling;
         if (detallesFila.style.display === "none") {
@@ -128,6 +144,18 @@
           cell.textContent = textoEstado;
         });
       }
+      const selectFiltroEst = document.getElementById("filtroEst");
+    const formEst = document.getElementById("formEst");
+    const defaultEstado = localStorage.getItem("defaultEstado2");
+    if (defaultEstado !== null) {
+      selectFiltroEst.value = defaultEstado;
+    }
+    selectFiltroEst.addEventListener("change", (event) => {
+      localStorage.setItem("defaultEstado2", selectFiltroEst.value);
+
+      formEst.submit();
+    });
+
       document.addEventListener("DOMContentLoaded", establecerEstado);
 
       function cancelarReserva(id) {

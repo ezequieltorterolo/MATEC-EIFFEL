@@ -60,6 +60,7 @@ td {
     width: 150px;
     margin-top: 5px;
     padding: 5px;
+    padding-top: 10px;
     padding-bottom: 14px;
     border-bottom: solid 1px #253141;
 
@@ -133,4 +134,5 @@ td img {
     padding: 5px;
     text-align: center;
 }
+
 

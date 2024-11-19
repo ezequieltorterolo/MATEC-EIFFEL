@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
@@ -31,7 +32,7 @@
   <div class="btn-group" role="group" aria-label="Basic example">
     <form id="formEst" method="GET" action="/admin/gestionReservas">
       <select id="filtroEst" name="estado2">
-        <option value="-1">Filtrar por Estado</option>
+        <option value="-1">Todas las reservas</option>
         <option value="0">En proceso</option>
         <option value="1">Finalizado</option>
         <option value="2">Cancelado</option>
@@ -146,12 +147,13 @@
   </div>
 
   <script>
-    window.addEventListener("load", (event) => {
-      <?php if (!empty($msg)): ?>
-        let mensaje = <?= json_encode($msg) ?>;
-        alert(mensaje);
-      <?php endif; ?>
+       window.addEventListener("load", (event) => {
+        <?php if (!empty($msg)): ?>
+            let mensaje = <?= json_encode($msg) ?>;
+            mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
+        <?php endif; ?>
     });
+
 
     function openPopup(id) {
       document.getElementById("popup-" + id).style.display = "flex";

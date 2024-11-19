@@ -1,12 +1,16 @@
 <title>Eiffel Importaciones</title>
 <link href="../styles\style12.css" rel="stylesheet" type="text/css">
+<script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
 
 <body>
     <div class="form-container">
 
 
         <form id="dataForm" method="POST" action=<?= $action ?> enctype="multipart/form-data">
-        <h2><?= $title ?? ucfirst($mode) ?></h2>
+            <div class="col-4 mt-3 mb-3" id="atras" onclick="history.back()">
+                <p><img src="../img/angle-left.png"></p>
+            </div>
+            <h2><?= $title ?? ucfirst($mode) ?></h2>
 
             <?php if (isset($method)): ?>
                 <input type="hidden" name="_method" value=<?= $method ?>>
@@ -101,7 +105,7 @@
                 window.addEventListener("load", (event) => {
                     <?php if (!empty($msg)): ?>
                         let mensaje = <?= json_encode($msg) ?>;
-                        alert(mensaje);
+                        mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
                     <?php endif; ?>
                 });
             </script>

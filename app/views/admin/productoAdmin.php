@@ -6,6 +6,7 @@
     <script src="../scripts/producto.js"></script>
     <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
     <title>Eiffel Importaciones</title>
 </head>
 <body>
@@ -56,6 +57,13 @@
   
     </div>
     <script>
+           window.addEventListener("load", (event) => {
+        <?php if (!empty($msg)): ?>
+            let mensaje = <?= json_encode($msg) ?>;
+            mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
+        <?php endif; ?>
+    });
+
         function confirmar(id){
           let confirmacion = confirm("Estas seguro de eliminar el producto?");
           if(confirmacion){

@@ -351,7 +351,6 @@ footer {
    
     height:30%;
 }
-}
 
 .footer-container {
     max-width: 1200px;
@@ -457,15 +456,16 @@ footer {
     text-align: center;
 }
 
-
-
-
-
-
-
-
-
-
+#atras {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 1s;
+    height: 20px;
+    width: 600px;
+    color: #253141;
+    display: flex;
+    align-items: center;
+  }
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 
@@ -622,3 +622,4 @@ footer {
 #back:hover img {
     transform: translateX(-3px);
 }
+

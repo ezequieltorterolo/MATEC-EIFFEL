@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style6.css" rel="stylesheet" type="text/css">
 
@@ -32,7 +33,7 @@
     <div class="btn-group" role="group" aria-label="Basic example">
       <form id="formCat" method="GET" action="/admin/gestionProductos">
         <select id="filtroCat" name="categoria">
-          <option value="-1">Filtrar por Categoria</option>
+          <option value="-1">Todos los productos</option>
           <?php foreach ($catego as $cat): ?>
             <option value="<?= $cat["id"] ?>"><?= $cat["nombreCategoria"] ?></option>
           <?php endforeach; ?>
@@ -60,23 +61,10 @@
         <tr>
           <input type="hidden" name="id[]" value="<?= $prd['id'] ?>">
 
-          <td>
-            <a href="/admin/productoAdmin?id=<?= $prd['id'] ?>">
-              <img src="../img/<?= $prd['imagen'] ?>">
-            </a>
-
-          </td>
-          <td>
-            <?= $prd['nombre'] ?>
-          </td>
-          <td>
-            <input id="editable" type="number" name="precio[]" value="<?= $prd['precio'] ?>" min="1" disabled>
-          </td>
-
-          <td>
-            <input id="editable" type="number" name="precioCaja[]" value="<?= $prd['precioCaja'] ?>" min="1" disabled>
-          </td>
-
+          <td><a href="/admin/productoAdmin?id=<?= $prd['id'] ?>"><img src="../img/<?= $prd['imagen'] ?>"></a></td>
+          <td><?= $prd['nombre'] ?></td>
+          <td><input id="editable" type="number" name="precio[]" value="<?= $prd['precio'] ?>" min="1" disabled></td>
+          <td><input id="editable" type="number" name="precioCaja[]" value="<?= $prd['precioCaja'] ?>" min="1" disabled></td>
           <td>
             <div id="quitaragregar">
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'quitar')" disabled>-</button>
@@ -84,11 +72,7 @@
               <button id="editable" type="button" onclick="actualizarStock(<?= $index ?>, 'agregar')" disabled>+</button>
             </div>
           </td>
-
-          <td>
-            <input id="editable" type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled>
-          </td>
-
+          <td><input id="editable" type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled></td>
           <td>
             <img src="../img/basura.svg" id="basura" onclick="eliminar(<?= $prd['id'] ?>)">
             <button type="button" onclick="editar(<?= $prd['id'] ?>)">Editar</button>
@@ -97,16 +81,13 @@
       <?php endforeach; ?>
     </table>
     </form>
-
   </div>
-
-
   <script>
-    window.addEventListener("load", () => {
-      <?php if (!empty($msg)): ?>
-        let mensaje = <?= json_encode($msg); ?>;
-        alert(mensaje);
-      <?php endif; ?>
+      window.addEventListener("load", (event) => {
+        <?php if (!empty($msg)): ?>
+            let mensaje = <?= json_encode($msg) ?>;
+            mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
+        <?php endif; ?>
     });
 
 
