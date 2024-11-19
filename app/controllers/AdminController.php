@@ -267,10 +267,8 @@ class AdminController extends BaseController
         // Filtrado por estado
         if (isset($_GET["estado2"])) {
             $estado = $_GET["estado2"];
-            if (!empty($estado)) {
                 if($estado !== "-1"){
                 $reservas->and("estado", "=", $estado);
-            }
         }
         }
         if (isset($_GET["nombre"])) {
