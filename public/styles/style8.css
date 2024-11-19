@@ -1,84 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,800;1,600&display=swap');
 
 /* Chrome, Safari, Edge, Opera */
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-h
-
 
 body {
     background-color: #EFF3F6;
     font-family: 'Poppins', semi-bold;
-
 }
-
 
 td input {
-  width:200px;
+  width: 200px;
 }
+
 #tabla-prod {
     flex-direction: row;
     flex: auto;
- 
 } 
+
 #dropdown {
     width: 100%;
     position: relative;
-}
-
-#atras {
-
-  text-decoration: underline;
-  transition: all 1s;
-  height: 20px;
-  width: 600px;
-  color: #253141;
-  display: flex;
-  align-items: center;
 }
 
 
 
 #botones button {
     border: 0px solid;
-    background-color:#253141;
-    color:#EFF3F6;
+    background-color: #253141;
+    color: #EFF3F6;
     margin-bottom: 30px;
-    margin-right: 5px;
+    margin-left: 10px;
 }
 
-
-#titulo img{
-    height:30px;
-    width:30px;
+#titulo img {
+    height: 30px;
+    width: 30px;
 }
-
 
 th {
     font-size: 20px;
     background-color: #B7BCC0;
-    text-align:center;
-
+    text-align: center;
 }
 
-
 td {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 20px;
     padding-bottom: 14px;
     height: 100px;
     border-bottom: solid 1px #253141;
-    width:5px;
+    width: 5px;
     text-align: center;
     padding-top: 30px;
-
-
 }
-
 
 #code {
     font-size: 17px;
@@ -88,59 +66,135 @@ td {
 #basura {
   height: 50px;
   width: 50px;
-  border:none;
-
-  
+  border: none;
 }
 
 td img {
-  height:100px;
-  width:100px;
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
 }
+
 #img-pro img {
-    max-height:50px;
+    max-height: 50px;
     width: 50px;
     border: 3px solid #253141;
-
     float: left;
-
-
 }
+
 table {
     width: 95%;
-    margin:auto;
+    margin: auto;
     border-collapse: collapse;
-   
-  }
-    
-input {
-    width:auto;
 }
 
+input {
+    width: auto;
+}
 
-
-
-  .detalles-fila {
+.detalles-fila {
     display: none;
-  }
-  
-  .detalles-contenido {
+}
+
+.detalles-contenido {
     padding: 10px;
     background-color: #f9f9f9;
     border-top: 1px solid #ddd;
-  }
-  
-  #boton {
+}
+
+.boton {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    margin:5px;
-  }
-  
-  #boton.abierto {
+    margin: 5px;
+}
+
+.boton.abierto {
     transform: rotate(180deg);
-  }
-  #cantidad{
+}
+
+#cantidad {
     width: 50px;
-  }
+}
+select{
+  margin-left:50px;
+  margin-bottom:20px;
+}
+#cancelar {
+  font-size: 16px; 
+  padding: 10px 20px;
+  background-color: red;
+  border:2px solid black;
+}
+#cancelar:hover {
+  background-color: rgb(219, 9, 9);
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 12px;
+    }
+
+    #atras {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    #botones button {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    td input {
+        width: 100%;
+    }
+
+    #tabla-prod {
+        flex-direction: column;
+    }
+
+    th {
+        font-size: 12px;
+    }
+
+    td {
+        font-size: 12px;
+        padding-top: 20px;
+    }
+
+    #img-pro img {
+        max-height: 40px;
+        width: 40px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    #cantidad {
+        width: 40px;
+    }
+
+    .boton {
+        font-size: 12px;
+        margin-bottom:20px;
+        width: 10px;
+    }
+
+      #cancelar {
+        font-size: 20px;
+        padding: 10px;
+      }
+    
+      #cancelar::before {
+        content: '×'; /* Usamos el símbolo de la "X" */
+        font-size: 15px; /* Aumentamos el tamaño de la "X" */
+        font-weight: bold;
+      }
+    
+      #cancelar span {
+        display: none; /* Ocultamos el texto dentro del botón */
+      }
+    
+}

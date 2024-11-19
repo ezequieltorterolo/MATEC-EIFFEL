@@ -28,7 +28,14 @@
     </div>
   
 
+<<<<<<< HEAD
     <h1 id="subtituloHome" class="subtitulo ofertas">OFERTAS <hr style="max-width:30%; margin:auto; margin-top:5px;"></h1>
+=======
+    <h1 class="subtitulo ofertas">OFERTAS </h1>
+
+</br>
+</br>
+>>>>>>> 71411e762713283548cf53d1fd97d8bd5391e42e
    
     <div id="productos-nuevos" class="container">
             <?php foreach($ofertas as $prd):?>

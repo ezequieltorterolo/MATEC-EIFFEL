@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style8.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
@@ -21,23 +22,23 @@
         <h2> Gestión de Reservas </h2>
       </div>
       <hr>
-      <div class="col-4 mt-3 mb-3" id="atras" onclick="history.back()">
-        <p><img src="../img/angle-left.png"> Volver atras</p>
+      <div class="col-4 mt-3 mb-3" id="atras">
+        <p><img src="../img/angle-left.png"><a href="/admin"> Volver atras </a></p>
       </div>
     </div>
   </div>
 
   <div id="botones" class="container">
+  <div class="btn-group" role="group" aria-label="Basic example">
     <form id="formEst" method="GET" action="/admin/gestionReservas">
       <select id="filtroEst" name="estado2">
-        <option value="-1">Filtrar por Estado</option>
+        <option value="-1">Todas las reservas</option>
         <option value="0">En proceso</option>
         <option value="1">Finalizado</option>
         <option value="2">Cancelado</option>
       </select>
     </form>
     <form id="formulario" method="POST" action="/admin/gestionReservas">
-      <div class="btn-group" role="group" aria-label="Basic example">
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
         <button id="editar" type="button" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
       </div>
@@ -67,11 +68,11 @@
                   </select>
                 </td>
                 <?php foreach ($usuario as $user): ?>
-                  <?php if ($user["id"] == $res["usuario_id"]): ?><td><?= $user["nombre"] ?><?php endif; ?></td>
+                  <?php if ($user["id"] == $res["usuario_id"]):?><td><?= $user["nombre"] ?><?php endif; ?></td>
                   <?php endforeach; ?>
                   <td><input id="editable" type="text" name="direccion[]" value="<?= $res["entrega_direccion"] ?>" disabled></td>
                   <td><input id="editable" type="text" name="fecha[]" value="<?= $res['entrega_fechahora'] ?>" disabled></td>
-                  <td><input id="editable" type="text" name="aclaraciones[]" value="<?= $res["aclaraciones"] ?>" disabled></td>
+                  <td><input id="editable" type="text" name="aclaraciones[]" value="<?= !empty($res['aclaraciones']) ? $res['aclaraciones'] : 'N/A' ?>" disabled></td>
                   <td>
                     <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
                     <img id="basura" onclick="eliminarReserva(<?= $res['id'] ?>)" src="../img/basura.svg">
@@ -104,13 +105,13 @@
                                   <td>
                                     <div id="quitaragregar">
                                       <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'quitar')" disabled>-</button>
-                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock'] ?>" disabled>
+                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock']?>">
                                       <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'agregar')" disabled>+</button>
                                     </div>
                                   </td>
                                   <td class="precio"><?= number_format($prd["precio"], 2) ?></td>
                                   <td class="subtotal"><?= number_format($resprd["cantidad"] * $prd["precio"], 2) ?></td>
-                                  <td><img onclick="eliminarProducto(<?= $resprd['id'] ?>)" src="../img/basura.svg"></td>
+                                  <td><img id="basura" onclick="eliminarProducto(<?= $resprd['id'] ?>)" src="../img/basura.svg"></td>
                                 </tr>
                               <?php endif; ?>
                             <?php endforeach; ?>
@@ -146,12 +147,13 @@
   </div>
 
   <script>
-    window.addEventListener("load", (event) => {
-      <?php if (!empty($msg)): ?>
-        let mensaje = <?= json_encode($msg) ?>;
-        alert(mensaje);
-      <?php endif; ?>
+       window.addEventListener("load", (event) => {
+        <?php if (!empty($msg)): ?>
+            let mensaje = <?= json_encode($msg) ?>;
+            mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
+        <?php endif; ?>
     });
+
 
     function openPopup(id) {
       document.getElementById("popup-" + id).style.display = "flex";

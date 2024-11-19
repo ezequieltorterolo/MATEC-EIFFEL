@@ -50,6 +50,16 @@
                                 <label for="telefono">Numero de telefono</label>
                                 <input id="telefono" name="telefono" type="tel" placeholder="telefono de contacto"><br><br>
                             </div>
+
+                            <div class="row">
+                                <label for="pregunta">Pregunta de Recuperación</label>
+                                <input id="telefono" name="telefono" type="tel" placeholder="telefono de contacto"><br><br>
+                            </div>
+
+                            <div class="row">
+                                <label for="respuesta">Numero de telefono</label>
+                                <input id="telefono" name="telefono" type="tel" placeholder="telefono de contacto"><br><br>
+                            </div>
                         <?php endif ?>
                     </div>
                     <hr>

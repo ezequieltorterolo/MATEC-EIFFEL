@@ -42,7 +42,7 @@
                 <hr style="width:100%;">
             </div>
 
-            <div>
+            <div class="mt-3 mb-3 w-100">
                 <p><?=$prd["descripcion"]?></p>
             </div>
 

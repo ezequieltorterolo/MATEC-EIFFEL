@@ -58,7 +58,8 @@
             <?php endforeach?>
         </div>
     </div>
-
+                    
     <?php include  "segments/footer.php" ?>
+                        </div>
 </body>
 </html>

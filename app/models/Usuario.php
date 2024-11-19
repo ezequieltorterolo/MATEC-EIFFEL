@@ -12,7 +12,7 @@ class Usuario extends Model {
         "email"            => ["required" => true  ],  
         "contraseña"       => ["required" => true  ],
         "direccion"        => ["required" => false ],
-        "telefono"         => ["required" => false ],          
+        "telefono"         => ["required" => true  ],          
 
    ];
    function usuarioLoggeado() {

@@ -79,7 +79,13 @@ class HomeController extends BaseController
             $reservas = new Reserva();
             $producto = new Producto();
             $reservaproducto = new ReservaProductos();
-            $data["reservas"] = $reservas->and("usuario_id", "=", $_SESSION["usuario"]["id"])->getAll();
+            if (isset($_GET["estado"])) {
+                $estado = $_GET["estado"];
+                    if($estado !== "-1"){
+                    $reservas->and("estado", "=", $estado);
+            }
+        }
+            $data["reservas"] = $reservas->and("usuario_id", "=", $_SESSION["usuario"]["id"])->orderBy("estado ASC")->getAll();
             $data["producto"] = $producto->getAll();
             $data["reservaproducto"] = $reservaproducto->getAll();
             return $this->view("verReservas", $data);
