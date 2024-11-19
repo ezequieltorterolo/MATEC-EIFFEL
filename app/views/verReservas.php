@@ -16,6 +16,7 @@
 
 <body>
   <?php include "segments/header.php" ?>
+  <?php include "segments/nav.php" ?>
   <div id="titulo" class="container-fluid">
     <div class="row">
       <div class="col-12 text-left mt-3">

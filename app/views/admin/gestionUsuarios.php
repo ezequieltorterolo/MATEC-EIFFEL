@@ -57,6 +57,8 @@
     </table>
     </div>
 
+    <?php include "segments/footer.php" ?>
+    
 <script>
      window.addEventListener("load", (event) => {
         <?php if (!empty($msg)): ?>

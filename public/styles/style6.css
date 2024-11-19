@@ -29,20 +29,17 @@ input[type=number] {
     align-items: center;
   }
   
-  .btn-primary {
-
+  
+  
+  #botones button {
+      border: 0px solid;
       background-color:#253141;
       color:#EFF3F6;
-    
-  }
-
-.btn {
-    border: 0px solid;
-    margin-bottom: 30px;
+     
+      margin-bottom: 30px;
       margin-left: 5px;
-}
   
-  
+  }
   
   
   #titulo img {
@@ -104,13 +101,30 @@ td img {
 }
 
 #basura {
+ 
     width: 35px;
     height: 35px;
     border: none;
-    transition: all 1s
+    transition: all 1s;
+   
+  
 }
 
 #basura:hover {
+    transform: scale(1.1);
+
+
+}
+#editar {
+    width: auto;
+    height: 35px;
+    border: none;
+    transition: all 1s;
+    padding-left:35px;
+  
+}
+
+#editar:hover {
     transform: scale(1.1);
 
 
