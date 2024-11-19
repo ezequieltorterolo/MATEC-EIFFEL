@@ -7,7 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../scripts/alertpopup.js"></script> <!-- Incluye el script aquí -->
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
-  <link href="../styles/style11.css" rel="stylesheet" type="text/css">
+  <link href="../styles/style8.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
   <link rel="icon"  href="../img/logito.ico">
   <meta charset="UTF-8" />
@@ -50,7 +50,7 @@
 
             <td><?= $user["telefono"]?></td>
             <td>
-            <button type="button" id="eliminar" class="btn btn-primary" onclick="eliminarUsuario(<?= $user['id'] ?>)">Eliminar</button>
+            <button type="button" id="cancelar" class="btn btn-primary" onclick="eliminarUsuario(<?= $user['id'] ?>)"><span>Eliminar</span></button>
             </td>
           </tr>
           <?php endforeach;?>

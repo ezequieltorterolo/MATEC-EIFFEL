@@ -49,6 +49,7 @@ input[type=number] {
     border-radius: 5px;
 }
 
+
   
   
   #titulo img {
@@ -72,9 +73,6 @@ td {
     padding-top: 10px;
     padding-bottom: 14px;
     border-bottom: solid 1px #253141;
-
-
-
 }
 
 table {
@@ -103,10 +101,7 @@ td img {
     height: fit-content;
     width: 80px;
     border: 3px solid #253141;
-
     float: left;
-
-
 }
 
 #basura {
@@ -123,20 +118,24 @@ td img {
 
 
 }
+.tdbotones{
+    text-align: center !important;
+    width: 30px !important;
+    height: 20px !important;
+}
+
 .editar {
     width: auto;
     height: 35px;
     border: none;
     transition: all 1s;
-    padding-left:35px;
     cursor: pointer;
+    margin-left: 2px;
   
 }
 
-#editar:hover {
+.editar:hover {
     transform: scale(1.1);
-
-
 }
 
 #quitaragregar button {

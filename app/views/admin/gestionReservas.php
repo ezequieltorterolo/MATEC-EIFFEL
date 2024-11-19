@@ -42,7 +42,7 @@
     <form id="formulario" method="POST"  onsubmit="verificarCamposHabilitados(event)" action="/admin/gestionReservas">
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
         <button id="edicion" type="button" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
-      </div>
+  </div>
 
 
       <div id="tabla-prod">
@@ -104,9 +104,9 @@
                                   <td><img id="imagen-pro" src="../img/<?= $prd['imagen'] ?>" alt="Imagen del producto" ></td>
                                   <td><?= $prd["nombre"] ?></td>
                                   <td>
-                                    <div id="quitaragregar">
+                                    <div class="quitaragregar">
                                       <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'quitar')" disabled>-</button>
-                                      <input type="number" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock']?>">
+                                      <input type="number" class="stock" id="cantidad-<?= $prd["id"] ?>" name="cantidad[]" value="<?= $resprd['cantidad'] ?>" min="1" max="<?php $prd['stock']?>">
                                       <button id="editable" type="button" onclick="actualizarCantidad(<?= $prd['id'] ?>,'agregar')" disabled>+</button>
                                     </div>
                                   </td>

@@ -130,6 +130,21 @@ select{
 #cancelar:hover {
   background-color: rgb(219, 9, 9);
 }
+.quitaragregar{
+    margin: 5px;
+}
+
+.quitaragregar input{
+        width: 50px !important;
+        height: 30px !important;
+        padding:5px !important;
+        font-size: 90% !important;
+        text-align: center;
+}
+.quitaragregar button{
+    padding:5px !important;
+    margin-left: 0px !important;
+}
 
 @media (max-width: 700px) {
     body {

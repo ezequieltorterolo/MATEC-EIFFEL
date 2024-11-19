@@ -74,7 +74,7 @@
             </div>
           </td>
           <td><input id="editable" type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled></td>
-          <td>
+          <td class="tdbotones">
             <img src="../img/basura.svg" id="basura" onclick="eliminar(<?= $prd['id'] ?>)">
             <img src="../img/imgeditar.png" class="editar" onclick="editar(<?= $prd['id'] ?>)">
           </td>
