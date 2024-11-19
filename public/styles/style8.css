@@ -131,7 +131,7 @@ select{
   background-color: rgb(219, 9, 9);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     body {
         font-size: 12px;
     }
@@ -181,15 +181,13 @@ select{
         margin-bottom:20px;
         width: 10px;
     }
-
-      #cancelar {
-        font-size: 20px;
+    #cancelar {
         padding: 10px;
       }
     
       #cancelar::before {
-        content: '×'; /* Usamos el símbolo de la "X" */
-        font-size: 15px; /* Aumentamos el tamaño de la "X" */
+        content: '×';
+        font-size: 15px;
         font-weight: bold;
       }
     

@@ -10,11 +10,18 @@ class UserController extends BaseController
 
     function login($data)
     {
+        if(isset($_SESSION["user"])){
+            unset($_SESSION["user"]);
+        }
+        if(!isset($_SESSION["usuario"])){
         $data["title"]  = "Login";
         $data["mode"]   = "login";
         $data["action"] = "/login";
         $data["method"] = "POST";
         return $this->view("formulario", $data);
+    }else{
+        $this->redirect("/");
+    }
     }
 
     function validaringreso($data)
@@ -36,11 +43,15 @@ class UserController extends BaseController
     }
     function registro($data)
     {
+        if(!isset($_SESSION["usuario"])){
         $data["title"]  = "Nuevo Usuario";
         $data["mode"]   = "registro";
         $data["action"] = "/validarregistro";
         $data["method"] = "POST";
         return $this->view("formulario", $data);
+    }else{
+        $this->redirect("/");
+    }
     }
 
     function validarRegistro($data)
@@ -77,7 +88,6 @@ class UserController extends BaseController
     }
     function recuperarContraseñaCorreo($data)
     {
-        $data["title"]  = "Ingrese su Correo";
         $data["mode"]   = "email";
         $data["action"] = "/recuperarContraseniaCorreo";
         $data["method"] = "POST";
@@ -85,7 +95,7 @@ class UserController extends BaseController
     }
     function recuperarContraseñaPregunta($data)
     {
-        $data["title"]  = "Ingrese su Correo";
+        if(isset($_SESSION["user"])){
         $data["mode"]   = "pregunta";
         $data["action"] = "/recuperarContraseniaPregunta";
         $data["method"] = "POST";
@@ -93,16 +103,22 @@ class UserController extends BaseController
         $user = $usuario->getById($_SESSION["user"]["id"]);
         $data["usuario"] = $user;
         return $this->view("recuperarContraseña", $data);
+        }else{
+            $this->redirect("recuperarContraseniaCorreo");
+        }
     }
 
 
     function nuevaContraseña($data)
     {
-        $data["title"]  = "Ingrese su Correo";
-        $data["mode"]   = "nueva contraseña";
+        if(isset($_SESSION["user"])){
+        $data["mode"]   = "nuevaContraseña";
         $data["action"] = "/nuevaContrasenia";
         $data["method"] = "POST";
-        return $this->view("recuperarContraseña",$data);
+        return $this->view("recuperarContraseña", $data);
+        }else{
+            $this->redirect("recuperarContraseniaCorreo");
+        }
     }
     function validarPasosdeRecuperacion($data)
     {
@@ -128,7 +144,7 @@ class UserController extends BaseController
                 return $this->redirect("recuperarContraseniaPregunta");
             }
         }
-        if ($mode == "nueva contraseña") {
+        if ($mode == "nuevaContraseña") {
             if ($_POST["contraseña"] == $_POST["repass"]) {
                 $_POST["contraseña"] = password_hash($_POST["contraseña"], PASSWORD_DEFAULT);
                 $campos = [
@@ -136,16 +152,14 @@ class UserController extends BaseController
                 ];
                 $usuario->update($_SESSION["user"]["id"], $campos);
                 if ($usuario->success()) {
-                    unset($_SESSION["user"]);
-                    return $this->redirect("login");
-                }else{
+                    $this->redirect("login");
+                } else {
                     $data["msg"] = "no se pudo cambiar la contraseña";
-                    return $this->redirect("nuevaContrasenia");
-                    echo $data["msg"];
+                    $this->redirect("nuevaContrasenia");
                 }
-            }else{
+            } else {
                 $data["msg"] = "las contraseñas no son iguales";
-                return $this->redirect("nuevaContrasenia");
+                $this->redirect("nuevaContrasenia");
             }
         }
     }

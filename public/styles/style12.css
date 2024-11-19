@@ -42,7 +42,11 @@
             background-color: #fafafa;
             transition: border-color 0.3s;
         }
+        input[type="checkbox"]{
+            height:20px;
 
+        }
+        
         input[type="text"]:focus,
         select:focus{
             border-color: #007bff;

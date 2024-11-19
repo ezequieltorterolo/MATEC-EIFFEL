@@ -60,6 +60,20 @@
     </div>
                     
     <?php include  "segments/footer.php" ?>
-                        
+    <script>
+        function apareceAlCargar(){
+        var contCatalogo = document.getElementById("body-catalogo");
+        contCatalogo.style.opacity = 0;
+        contCatalogo.style.transition = "all 0.3s linear";
+        var distanciaOfertas = window.innerHeight - contHome.getBoundingClientRect().top;
+
+        if(distanciaOfertas > 150){
+            contHome.style.opacity = 1;
+            contHome.style.transform = "translateY(0px)";
+            console.log(distanciaOfertas);
+        };
+    };
+    window.addEventListener("scroll", apareceAlCargar);
+    </script>
 </body>
 </html>
