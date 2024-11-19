@@ -46,10 +46,12 @@ a {
 }
 
 .boton-admin-opciones{
-    margin-bottom: 15px;
+    width: 200px;
+    margin: 15px;
     background-color: #253141;
-    border-radius: 30px;
+    border-radius: 5px;
     transition: all 0.2s;
+    padding: 20px;
 }
 
 .boton-admin-opciones:hover {
@@ -58,6 +60,9 @@ a {
     box-shadow: 2px 4px 8px rgb(19, 2, 41);
 }
 
+.boton-admin-opciones a {
+    text-decoration: none;
+}
 .boton-admin-opciones:hover a {
     color:#253141;
 }

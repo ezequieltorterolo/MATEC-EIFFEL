@@ -39,10 +39,10 @@
           <?php endforeach; ?>
         </select>
       </form>
-      <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
-      <button type="button" id="editar" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
+      <button onclick="añadirProducto()" class="botonesAdmin">Añadir Producto</button>
+      <button type="button" id="editar" class="botonesAdmin" onclick="activarEdicion()">Activar Edicion</button>
       <form method="POST" action="/admin/gestionProductos">
-        <button type="submit" class="btn btn-primary">Guardar Todo</button>
+        <button type="submit" id="botonGuardar" class="botonesAdmin">Guardar Todo</button>
     </div>
   </div>
   <div id="tabla-prod">

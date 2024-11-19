@@ -10,11 +10,11 @@
 #seccion-filtros h3 {
     margin-left: 50px;
 }
-#seccion-filtros select{
+/* #seccion-filtros select{
     margin-left: 10px;
     padding: 5px;
     border-radius: 5px;
-}
+} */
 #seccion-filtros p{
     margin-left: 50px;
 }

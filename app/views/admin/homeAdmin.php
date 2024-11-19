@@ -15,6 +15,6 @@
         <div class="boton-admin-opciones"><a href="/admin/gestionProductos">Gestionar Productos</a></div>
         <div class="boton-admin-opciones"><a href="/admin/gestionReservas">Gestionar Reservas</a></div>
         <div class="boton-admin-opciones"><a href="/admin/gestionUsuarios">Gestionar Usuarios</a></div>
-        <img src="../img/logo.jpg">
+        <img src="../img/logomenu.png">
     </div>
 

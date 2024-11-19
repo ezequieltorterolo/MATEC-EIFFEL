@@ -31,15 +31,13 @@ input[type=number] {
   
   
   
-  #botones button {
+#botones button {
       border: 0px solid;
       background-color:#253141;
       color:#EFF3F6;
-     
       margin-bottom: 30px;
       margin-left: 5px;
-  
-  }
+}
   
   
   #titulo img {
