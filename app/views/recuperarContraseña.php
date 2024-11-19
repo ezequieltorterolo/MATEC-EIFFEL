@@ -35,7 +35,7 @@
                                     <input id="email" name="email" type="email" placeholder="email" value="<?= $email ?? "" ?>"><br><br>
                                 </div>
                             <?php endif; ?>
-                            <?php if ($mode == "nueva contraseña"): ?>
+                            <?php if ($mode == "nuevaContraseña"): ?>
                                 <div class="row">
                                     <label for="contraseña">Contraseña</label>
                                     <input id="contraseña" name="contraseña" type="password" placeholder="contraseña"><br><br>
@@ -82,6 +82,72 @@
                 mostrarPopup(mensaje, false);
             <?php endif; ?>
         });
+    function validateForm(event) {
+        event.preventDefault(); // Evita que el formulario se envíe directamente
+
+        const email = document.getElementById("email");
+        const contraseña = document.getElementById("contraseña");
+        const repass = document.getElementById("repass");
+
+        const emailRegex = /^[^\s@]+@gmail\.com$/;
+        const contraseñaRegex = /^[A-Z][A-Za-z0-9]{7,}[0-9]+$/;
+
+        let valid = true;
+        let errorMsg = "";
+
+        // Verifica el modo actual del formulario
+        const mode = document.querySelector('input[name="modo"]')?.value;
+
+        // Validaciones dependiendo del modo
+        if (mode === "email") {
+            // Validar correo electrónico
+            if (email && email.value.trim() === "") {
+                valid = false;
+                errorMsg += "El campo 'Correo Electrónico' no puede estar vacío.\n";
+            } else if (email && !emailRegex.test(email.value)) {
+                valid = false;
+                errorMsg += "El correo debe ser una dirección válida de Gmail (@gmail.com).\n";
+            }
+        }
+
+        if (mode === "nuevaContraseña") {
+            // Validar contraseña
+            if (contraseña && contraseña.value.trim() === "") {
+                valid = false;
+                errorMsg += "El campo 'Contraseña' no puede estar vacío.\n";
+            } else if (contraseña && !contraseñaRegex.test(contraseña.value)) {
+                valid = false;
+                errorMsg += "La contraseña debe comenzar con una mayúscula, tener al menos 8 caracteres y al menos un número.\n";
+            }
+
+            // Confirmar contraseñas coinciden
+            if (repass && contraseña.value !== repass.value) {
+                valid = false;
+                errorMsg += "Las contraseñas no coinciden.\n";
+            }
+        }
+
+        if (mode === "pregunta") {
+            // Validar respuesta a la pregunta de seguridad
+            if (respuesta && respuesta.value.trim() === "") {
+                valid = false;
+                errorMsg += "El campo 'Respuesta' no puede estar vacío.\n";
+            }
+        }
+
+        // Mostrar errores o enviar el formulario
+        if (!valid) {
+            mostrarPopup("Errores en el formulario:\n" + errorMsg, false);
+        } else {
+            mostrarPopup("Formulario completado correctamente. Enviando datos...", true);
+            document.getElementById("dataForm").submit(); // Enviar formulario
+        }
+    }
+
+    window.addEventListener("load", () => {
+        document.getElementById("dataForm").addEventListener("submit", validateForm);
+    });
+
     </script>
 </body>
 

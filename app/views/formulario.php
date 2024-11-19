@@ -66,12 +66,18 @@
                     </div>
                     <hr>
                     <div class="button-group container" id="botones">
+
+                    <div class="row">
+                        <a href="/recuperarContraseniaCorreo">Recuperar Contraseña</a>
+                    </div>
                         <div class="row">
                             <button class="botones">Confirmar <?=$mode?></button>
+                        </div>
+                        <div class="row">
                             <?php if ($mode=="login"):?> 
-                                <p><a href="/registro">Registrarse</a></p>
+                                <button class="botones" onclick="location.href='/registro';">Registrarse</button>
                             <?php else:?>
-                                <p><a href="/login">Iniciar Sesion</a></p>
+                                <button class="botones" onclick="location.href='/login';">Iniciar Sesion</button>
                             <?php endif?>
                         </div>
                         <div class="row">
@@ -92,7 +98,6 @@
             mostrarPopup(mensaje, false); // Cambia alert por mostrarPopup
         <?php endif; ?>
     });
-
     function validateForm(event) {
         event.preventDefault(); // Evita el envío del formulario hasta que las validaciones se completen
 
@@ -111,6 +116,7 @@
         let valid = true;
         let errorMsg = "";
 
+        // Validar si los campos requeridos están completos
         if (nombre && nombre.value.trim() === "") {
             valid = false;
             errorMsg += "El campo 'Nombre' no puede estar vacío.\n";
@@ -128,41 +134,48 @@
             errorMsg += "El campo 'Confirmar Contraseña' no puede estar vacío.\n";
         }
 
+        // Validar nombre
         if (nombre && nombre.value && !nombreRegex.test(nombre.value)) {
             valid = false;
             errorMsg += "El nombre solo puede contener letras.\n";
         }
 
+        // Validar correo electrónico
         if (email.value && !emailRegex.test(email.value)) {
             valid = false;
             errorMsg += "El correo debe ser una dirección válida de Gmail (@gmail.com).\n";
         }
 
+        // Validar contraseña
         if (contraseña.value && !contraseñaRegex.test(contraseña.value)) {
             valid = false;
             errorMsg += "La contraseña debe comenzar con una mayúscula, tener al menos 8 caracteres y al menos un número.\n";
         }
 
+        // Confirmar contraseña
         if (repass && contraseña.value !== repass.value) {
             valid = false;
             errorMsg += "Las contraseñas no coinciden.\n";
         }
 
+        // Validar número de teléfono (solo si se llena)
         if (telefono && telefono.value.trim() !== "" && !telefonoRegex.test(telefono.value)) {
             valid = false;
             errorMsg += "El número de teléfono solo puede contener números.\n";
         }
 
+        // Validar dirección (opcional, pero debe tener al menos 5 caracteres si se llena)
         if (direccion && direccion.value.trim() !== "" && direccion.value.trim().length < 5) {
             valid = false;
-            errorMsg += "Si se proporciona, la dirección debe tener al menos 5 caracteres.\n";
+            errorMsg += "Si se proporciona, la dirección debe tener al menos 5 caracteres.\N";
         }
 
+        // Mostrar errores o enviar el formulario
         if (!valid) {
-            mostrarPopup( errorMsg, false);
+            mostrarPopup(errorMsg,false);
         } else {
-            mostrarPopup("Operación realizada con éxito. ", true);
-            document.getElementById("dataForm").submit();
+            mostrarPopup("Formulario completado correctamente. Enviando datos...",true);
+            document.getElementById("dataForm").submit(); // Enviar el formulario
         }
     }
 
@@ -170,5 +183,6 @@
         document.getElementById("dataForm").addEventListener("submit", validateForm);
     });
 </script>
+
 </body>
 </html>
