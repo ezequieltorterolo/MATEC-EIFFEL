@@ -371,15 +371,13 @@ footer {
     background-color: #253141;
     color: #b2b2b2;
     padding: 20px 0;
-    margin-top: 200px;
-   
-    height:30%;
+    margin-top: 58px;
+    min-height: max-content
 }
 
 .footer-container {
     max-width: 1200px;
     margin: auto;
-  
     padding: 0 20px;
 }
 
