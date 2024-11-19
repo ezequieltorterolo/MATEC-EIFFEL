@@ -44,6 +44,10 @@ input[type=number] {
     margin-left: 5px;
 }
 
+#botones button{
+    margin-left:10px;
+    border-radius: 5px;
+}
 
   
   
@@ -111,8 +115,7 @@ td img {
     height: 35px;
     border: none;
     transition: all 1s;
-   
-  
+
 }
 
 #basura:hover {
@@ -120,12 +123,13 @@ td img {
 
 
 }
-#editar {
+.editar {
     width: auto;
     height: 35px;
     border: none;
     transition: all 1s;
     padding-left:35px;
+    cursor: pointer;
   
 }
 

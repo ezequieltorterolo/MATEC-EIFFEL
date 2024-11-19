@@ -41,7 +41,7 @@
       </form>
       <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
       <button class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
-      <form method="POST" action="/admin/gestionProductos">
+      <form method="POST"  onsubmit="verificarCamposHabilitados(event)" action="/admin/gestionProductos">
         <button type="submit" class="btn btn-success">Guardar Todo</button>
     </div>
   </div>
@@ -54,7 +54,7 @@
         <th>Precio x Caja</th>
         <th>Stock</th>
         <th>Oferta</th>
-        <th>        </th>
+        <th>Accion</th>
       </tr>
 
       <?php foreach ($data as $index => $prd): ?>
@@ -75,7 +75,7 @@
           <td><input id="editable" type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled></td>
           <td>
             <img src="../img/basura.svg" id="basura" onclick="eliminar(<?= $prd['id'] ?>)">
-            <button type="button" class="btn btn-primary" onclick="editar(<?= $prd['id'] ?>)">Editar</button>
+            <img src="../img/imgeditar.png" class="editar" onclick="editar(<?= $prd['id'] ?>)">
           </td>
         </tr>
       <?php endforeach; ?>
@@ -146,12 +146,34 @@
     }
 
 
-    function activarEdicion() {
-      const editButton = document.getElementById("editar");
-      const isCurrentlyDisabled = document.querySelector("#editable").disabled;
-      document.querySelectorAll("#editable").forEach(element => {
-        element.disabled = !isCurrentlyDisabled;
-      });
-      editButton.textContent = isCurrentlyDisabled ? "Desactivar Edicion" : "Activar Edicion";
+    function verificarCamposHabilitados(event) {
+    event.preventDefault(); // Prevenir el envío predeterminado del formulario
+    const camposEditables = document.querySelectorAll('#editable');
+    let todosHabilitados = true;
+
+    camposEditables.forEach(campo => {
+        if (campo.disabled) {
+            todosHabilitados = false;
+            campo.disabled = false;
+        }
+    });
+
+    if (!todosHabilitados) {
+        alert("Algunos campos estaban deshabilitados. Ahora están habilitados. Por favor, revisa los datos y vuelve a enviar.");
+        return;
     }
+
+    // Usamos event.target.submit() para enviar el formulario correcto
+    event.target.submit();
+}
+
+
+function activarEdicion() {
+    const campos = document.querySelectorAll('#editable');
+    const editButton = document.getElementById("edicion");
+    const habilitar = campos[0].disabled;
+    campos.forEach(campo => campo.disabled = !habilitar);
+    editButton.textContent = habilitar ? "Desactivar Edición" : "Activar Edición";
+}
+
   </script>

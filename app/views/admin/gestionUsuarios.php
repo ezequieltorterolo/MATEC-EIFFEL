@@ -36,7 +36,7 @@
           <th>Email</th>
           <th>Direccion</th>
           <th>Telefono</th>
-          <th>Opciones</th>
+          <th>Accion</th>
         </tr>
       </thead>
       <tbody>
@@ -73,5 +73,6 @@
       document.location.href = "/admin/eliminarUsuario?userid=" + id;
     }
   }
+ 
 </script>
 <html>

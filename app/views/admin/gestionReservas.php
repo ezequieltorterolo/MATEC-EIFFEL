@@ -38,9 +38,9 @@
         <option value="2">Cancelado</option>
       </select>
     </form>
-    <form id="formulario" method="POST" action="/admin/gestionReservas">
+    <form id="formulario" method="POST"  onsubmit="verificarCamposHabilitados(event)" action="/admin/gestionReservas">
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        <button id="editar" type="button" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
+        <button id="edicion" type="button" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
       </div>
 
 
@@ -53,7 +53,7 @@
               <th>Calle</th>
               <th>Fecha</th>
               <th>Aclaraciones</th>
-              <th>Opciones</th>
+              <th>Accion</th>
             </tr>
           </thead>
           <tbody>
@@ -188,15 +188,41 @@
       formEst.submit();
     });
 
-    function activarEdicion() {
-      const editButton = document.getElementById("editar");
-      const isCurrentlyDisabled = document.querySelector("#editable").disabled;
-      document.querySelectorAll("#editable").forEach(element => {
-        element.disabled = !isCurrentlyDisabled;
-      });
-      editButton.textContent = isCurrentlyDisabled ? "Desactivar Edicion" : "Activar Edicion";
+    function verificarCamposHabilitados(event) {
+    // Prevenir el envío del formulario
+    event.preventDefault();
+
+    // Seleccionar todos los elementos con el atributo "id=editable"
+    const camposEditables = document.querySelectorAll('#editable');
+    let todosHabilitados = true;
+
+    // Verificar si todos los campos están habilitados
+    camposEditables.forEach(campo => {
+        if (campo.disabled) {
+            todosHabilitados = false;
+            campo.disabled = false; // Habilitar el campo
+        }
+    });
+
+    // Si había campos deshabilitados, detener el envío y alertar al usuario
+    if (!todosHabilitados) {
+        alert("Algunos campos estaban deshabilitados. Ahora están habilitados. Por favor, revisa los datos y vuelve a enviar.");
+        return;
     }
 
+    // Si todos los campos estaban habilitados, proceder con el envío del formulario
+    document.getElementById('formulario').submit();
+}
+
+function activarEdicion() {
+    const campos = document.querySelectorAll('#editable');
+    const editButton = document.getElementById("edicion");
+
+    // Cambiar el estado de los campos y actualizar el texto del botón
+    const habilitar = campos[0].disabled; // Asume que todos los campos tienen el mismo estado
+    campos.forEach(campo => campo.disabled = !habilitar);
+    editButton.textContent = habilitar ? "Desactivar Edición" : "Activar Edición";
+}
 
     function agregarProducto() {
       document.getElementById("formulario").action = "/admin/agregarProducto";

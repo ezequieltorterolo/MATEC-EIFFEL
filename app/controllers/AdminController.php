@@ -181,7 +181,7 @@ class AdminController extends BaseController
             } else {
                 $data['msg'] = "Hubo un error al registrar el producto.";
             }
-            $this->redirect("añadirProducto",$data);
+            $this->redirect("aniadirProducto",$data);
         } elseif ($modo === 'editprd') {
             $id = $_POST['id'];
             $campos = [
