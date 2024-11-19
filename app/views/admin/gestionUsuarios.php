@@ -9,6 +9,7 @@
   <link href="../styles/styles_general.css" rel="stylesheet" type="text/css">
   <link href="../styles/style11.css" rel="stylesheet" type="text/css">
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
+  <link rel="icon"  href="../img/logito.ico">
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Eiffel Importaciones - Gestión de Usuarios</title>
@@ -58,7 +59,7 @@
     </div>
 
     <?php include "segments/footer.php" ?>
-    
+
 <script>
      window.addEventListener("load", (event) => {
         <?php if (!empty($msg)): ?>

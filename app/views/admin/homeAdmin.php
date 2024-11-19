@@ -3,6 +3,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="../styles/styleAdmin.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon"  href="../img/logito.ico">
     <title>ADMIN</title>
 </head>
 <body>

@@ -2,7 +2,9 @@
 <html lang="es">
 <html>
 <head> 
+<link rel="icon"  href="../img/logito.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,6 +17,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link href="styles/style.css" rel="stylesheet" type="text/css">
     <title>Eiffel Importaciones</title>
+
+   
     
 
 </head>

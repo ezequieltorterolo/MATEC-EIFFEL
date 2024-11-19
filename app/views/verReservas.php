@@ -11,6 +11,7 @@
   <link href="../styles/popup.css" rel="stylesheet" type="text/css">
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon"  href="../img/logito.ico">
   <title>Eiffel Importaciones - Gestión de Reservas</title>
 </head>
 

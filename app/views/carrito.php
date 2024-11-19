@@ -12,6 +12,7 @@
     <script src="scripts/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="styles/alertpopup.css" rel="stylesheet" type="text/css">
+    <link rel="icon"  href="../img/logito.ico">
     <link href="styles/modal.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
