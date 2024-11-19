@@ -12,7 +12,9 @@ class Usuario extends Model {
         "email"            => ["required" => true  ],  
         "contraseña"       => ["required" => true  ],
         "direccion"        => ["required" => false ],
-        "telefono"         => ["required" => true  ],          
+        "telefono"         => ["required" => true  ],
+        "respuesta"        => ["required" => false ],
+        "pregunta"         => ["required" => false ],
 
    ];
    function usuarioLoggeado() {
@@ -20,6 +22,11 @@ class Usuario extends Model {
         "id"     => $this->current["id"],
         "nombre" => $this->current["nombre"],
         "direccion" => $this->current["direccion"],
+    ];
+}
+function usuarioRecuperando() {
+    return [
+        "id"     => $this->current["id"],
     ];
 }
 }
