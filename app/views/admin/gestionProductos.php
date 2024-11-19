@@ -40,7 +40,7 @@
         </select>
       </form>
       <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
-      <button type="button" id="editar" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
+      <button class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
       <form method="POST" action="/admin/gestionProductos">
         <button type="submit" class="btn btn-success">Guardar Todo</button>
     </div>
