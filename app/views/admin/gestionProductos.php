@@ -42,7 +42,7 @@
       <button onclick="añadirProducto()" class="btn btn-primary">Añadir Producto</button>
       <button type="button" id="editar" class="btn btn-primary" onclick="activarEdicion()">Activar Edicion</button>
       <form method="POST" action="/admin/gestionProductos">
-        <button type="submit" class="btn btn-primary">Guardar Todo</button>
+        <button type="submit" class="btn btn-success"">Guardar Todo</button>
     </div>
   </div>
   <div id="tabla-prod">
@@ -75,7 +75,7 @@
           <td><input id="editable" type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled></td>
           <td>
             <img src="../img/basura.svg" id="basura" onclick="eliminar(<?= $prd['id'] ?>)">
-            <button type="button" onclick="editar(<?= $prd['id'] ?>)">Editar</button>
+            <button type="button" class="btn btn-primary" onclick="editar(<?= $prd['id'] ?>)">Editar</button>
           </td>
         </tr>
       <?php endforeach; ?>
