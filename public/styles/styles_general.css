@@ -200,6 +200,8 @@ body {
 .navegacion ul{
     list-style: none;
     background-color: #B7BCC0;
+    display: flex;
+    justify-content: center;
 }
 .menu > li {
     font-weight: 600;
@@ -207,6 +209,7 @@ body {
     cursor: pointer;
     position: relative;
     display: inline-block;
+    padding-left: 50px;
 }
 .menu > li > a {
     font-weight: 600;
@@ -461,7 +464,6 @@ footer {
     text-align: center;
 }
 
-<<<<<<< HEAD
 #subtituloHome, #productos-nuevos{
     opacity: 1;
     animation: all 0.3s linear;
@@ -485,7 +487,6 @@ footer {
 
 
 
-=======
 #atras {
     text-decoration: underline;
     cursor: pointer;
@@ -496,7 +497,6 @@ footer {
     display: flex;
     align-items: center;
   }
->>>>>>> 71411e762713283548cf53d1fd97d8bd5391e42e
 
 /* Responsividad  NOTA: MEDIA QUERIES VA DE ULTIMO*/
 @media (max-width: 768px) { 
