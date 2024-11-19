@@ -63,7 +63,10 @@ input[type="checkbox" i]{
 }
 
 
-
+#seccion-titulo , #seccion-filtros , #seccion-productos-linea{
+    opacity: 0;
+    
+}
 
 
 #body-catalogo{

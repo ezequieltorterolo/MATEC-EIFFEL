@@ -75,7 +75,7 @@
           <td><input id="editable" type="checkbox" name="oferta[<?= $index ?>]" value="1" <?= $prd['oferta'] ? 'checked' : '' ?> disabled></td>
           <td>
             <img src="../img/basura.svg" id="basura" onclick="eliminar(<?= $prd['id'] ?>)">
-            <button type="button" onclick="editar(<?= $prd['id'] ?>)">Editar</button>
+            <button type="button" class="btn btn-primary" onclick="editar(<?= $prd['id'] ?>)">Editar</button>
           </td>
         </tr>
       <?php endforeach; ?>
