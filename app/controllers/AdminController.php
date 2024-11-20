@@ -298,29 +298,29 @@ class AdminController extends BaseController
 }
     function guardarTodoReservas($data)
     {
-        $reserva = new Reserva();
-        $reservaProductos = new ReservaProductos();
-        if (is_array($_POST["id"])) {
-            foreach ($_POST["id"] as $index => $id) {
-                $campos = [
-                    "estado"                => $_POST["estado"][$index],
-                    "entrega_direccion"     => $_POST["direccion"][$index],
-                    "entrega_fechahora"     => $_POST["fecha"][$index],
-                    "aclaraciones"          => $_POST["aclaraciones"][$index],
-                ];
-                $reserva->update($id, $campos);
-                if (!empty($_POST["idPrd"])) {
-                    if (is_array($_POST["idPrd"])) {
-                        foreach ($_POST["idPrd"] as $index2 => $idPrd) {
-                            $camposProducto = [
-                                "cantidad"    => $_POST["cantidad"][$index2],
-                            ];
-                            $reservaProductos->update($idPrd, $camposProducto);
+            $reserva = new Reserva();
+            $reservaProductos = new ReservaProductos();
+            if (is_array($_POST["id"])) {
+                foreach ($_POST["id"] as $index => $id) {
+                    $campos = [
+                        "estado"                => $_POST["estado"][$index],
+                        "entrega_direccion"     => $_POST["direccion"][$index],
+                        "entrega_fechahora"     => $_POST["fecha"][$index],
+                        "aclaraciones"          => $_POST["aclaraciones"][$index],
+                    ];
+                    $reserva->update($id, $campos);
+                    if (!empty($_POST["idPrd"])) {
+                        if (is_array($_POST["idPrd"])) {
+                            foreach ($_POST["idPrd"] as $index2 => $idPrd) {
+                                $camposProducto = [
+                                    "cantidad"    => $_POST["cantidad"][$index2],
+                                ];
+                                $reservaProductos->update($idPrd, $camposProducto);
+                            }
                         }
                     }
                 }
             }
-        }
         if ($reserva->success() || $reservaProductos->success()) {
             $data["msg"] = "Los cambios se realizaron con éxito";
             $this->redirect("gestionReservas",$data);
@@ -334,7 +334,6 @@ class AdminController extends BaseController
     {
         if (isset($_SESSION["admin"])) {
             $reservaprd = new ReservaProductos();
-            echo $_POST["prdSeleccionado"];
             $campos = [
                 "producto_id"   => $_POST["prdSeleccionado"],
                 "reserva_id"    => $_POST["reservaId"],

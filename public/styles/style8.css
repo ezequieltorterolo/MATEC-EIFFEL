@@ -32,7 +32,7 @@ td input {
 
 #botones button {
     border: 0px solid;
-    color: #EFF3F6;
+    color:#253141;
     margin-bottom: 30px;
     margin-left: 10px;
 }
@@ -58,18 +58,25 @@ td {
     text-align: center;
     padding-top: 30px;
 }
-
 #code {
     font-size: 17px;
     color: #B7BCC0;
 }
 
 #basura {
-  height: 50px;
-  width: 50px;
-  border: none;
+ 
+    width: 35px;
+    height: 35px;
+    border: none;
+    transition: all 1s;
+
 }
 
+#basura:hover {
+    transform: scale(1.1);
+
+
+}
 td img {
   height: 100px;
   width: 100px;

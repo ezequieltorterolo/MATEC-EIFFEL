@@ -49,6 +49,7 @@
         </tr>
       </thead>
       <tbody>
+        <?php if(!empty($reservas)):?>
         <?php foreach ($reservas as $index => $res): ?>
           <tr>
             <td id="estado" data-estado="<?= $res['estado'] ?>"></td>
@@ -97,6 +98,7 @@
             </td>
           </tr>
         <?php endforeach; ?>
+        <?php else:?><td><h1>No hay Reservas</h1></td><?php endif?>
       </tbody>
     </table>
 
