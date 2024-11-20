@@ -559,15 +559,13 @@ footer {
   
     width: min-content;
     list-style: none;
-    left: 323px;
+    left: 75%;
     position: absolute;
     display: none;
     z-index: 100;
     padding: 1px;
     font-size:15px;
-    text-align:center;
-   
-    
+    text-align:center; 
   }
   .submenu-logueado li {
     background-color: #B7BCC0;

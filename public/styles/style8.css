@@ -28,11 +28,12 @@ td input {
     position: relative;
 }
 
-
+.mostrar{
+    color:#253141;
+}
 
 #botones button {
     border: 0px solid;
-    color:#253141;
     margin-bottom: 30px;
     margin-left: 10px;
 }

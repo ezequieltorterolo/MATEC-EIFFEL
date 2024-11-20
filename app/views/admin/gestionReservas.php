@@ -78,7 +78,7 @@
                   <td><input type="text" name="aclaraciones[]" id="editable" value="<?= $res["aclaraciones"] ?>" disabled></td>
                   <td>
                     <img id="basura" onclick="eliminarReserva(<?= $res['id'] ?>)" src="../img/basura.svg">
-                    <button class="boton" type="button" onclick="mostrarProductos(this)">▼</button>
+                    <button class="mostrar" type="button" onclick="mostrarProductos(this)">▼</button>
                   </td>
               </tr>
               <tr class="detalles-fila" style="display: none;">
