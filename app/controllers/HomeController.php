@@ -7,6 +7,7 @@ use rutex\BaseController;
 use app\models\Producto;
 use app\models\Reserva;
 use app\models\ReservaProductos;
+use app\models\SubCategoria;
 
 class HomeController extends BaseController
 {
@@ -24,9 +25,12 @@ class HomeController extends BaseController
     {
         $producto    = new Producto;
         $categoria   = new Categoria;
+        $subcategoria   = new SubCategoria;
         $data["prd"] = $producto->getById($_GET["id"]);
         $cat = $data["prd"]["categoria_id"];
+        $subcat = $data["prd"]["subcategoria_id"];
         $data["cat"] = $categoria->getById($cat);
+        $data["subcat"] = $subcategoria->getById($subcat);
 
         return $this->view("producto", $data);
     }

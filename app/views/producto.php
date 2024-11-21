@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <th>SUBCATEGORÍA</th>
-                            <td><?= $prd["subcategoria"] ?></td>
+                            <td><?= $subcat["nombreSubCategoria"] ?></td>
                         </tr>
                     </table>
                 </div>
