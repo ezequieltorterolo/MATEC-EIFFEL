@@ -55,13 +55,13 @@
                             <div class="row">
                                 <label for="pregunta">Pregunta de Recuperación</label>
                                 <p>Ingrese una pregunta personal que se usará en caso de perder la contraseña</p>
-                                <input id="telefono" name="telefono" type="tel" placeholder="Escriba una pregunta íntima"><br><br>
+                                <input id="pregunta" name="pregunta" type="text" placeholder="Escriba una pregunta íntima"><br><br>
                             </div>
 
                             <div class="row">
                                 <label for="respuesta">Respuesta de la Pregunta</label>
                                 <p>Escriba la respuesta a la pregunta de seguridad de arriba</p>
-                                <input id="telefono" name="telefono" type="tel" placeholder="Escriba una respuesta que recuerde"><br><br>
+                                <input id="respuesta" name="respuesta" type="text" placeholder="Escriba una respuesta que recuerde"><br><br>
                             </div>
                         <?php endif ?>
                     </div>
@@ -76,9 +76,9 @@
                         </div>
                         <div class="row">
                             <?php if ($mode=="login"):?> 
-                                <button class="botones" onclick="location.href='/registro';">Registrarse</button>
+                                <button class="botones" type="button" onclick="location.href='/registro';">Registrarse</button>
                             <?php else:?>
-                                <button class="botones" onclick="location.href='/login';">Iniciar Sesion</button>
+                                <button class="botones" type="button" onclick="location.href='/login';">Iniciar Sesion</button>
                             <?php endif?>
                         </div>
                         <div class="row">

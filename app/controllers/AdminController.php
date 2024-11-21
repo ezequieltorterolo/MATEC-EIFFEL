@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Producto;
 use app\models\Reserva;
 use app\models\Categoria;
+use app\models\SubCategoria;
 use app\models\Usuario;
 use app\models\ReservaProductos;
 use rutex\BaseController;
@@ -66,7 +67,7 @@ class AdminController extends BaseController
         } else {
             $this->redirect("/admin");
         }
-    }   
+    }
 
     function productoAdmin($data)
     {
@@ -118,6 +119,8 @@ class AdminController extends BaseController
             $data["method"] = "POST";
             $categoria = $this->categoria();
             $data["categoria"] = $categoria;
+            $subcategoria = $this->subcategoria();
+            $data["subcategoria"] = $subcategoria;
             return $this->view("admin/formularioProducto", $data);
         } else {
             $this->redirect("/admin");
@@ -134,6 +137,8 @@ class AdminController extends BaseController
             $producto = new Producto();
             $categoria = $this->categoria();
             $data["categoria"] = $categoria;
+            $subcategoria = $this->subcategoria();
+            $data["subcategoria"] = $subcategoria;
             if (isset($_GET["prdid"])) {
                 $data["prd"] = $producto->getById($_GET["prdid"]);
             }
@@ -147,6 +152,7 @@ class AdminController extends BaseController
     {
         $producto = new Producto();
         $categorias = new Categoria();
+        $subCategorias = new SubCategoria();
         $modo = $_POST['modo'];
 
         $directorioDestino = $_SERVER['DOCUMENT_ROOT'] . "../../public/img/";
@@ -169,6 +175,13 @@ class AdminController extends BaseController
             $id_categoria = $categorias->insert($campos2);
             $_POST["categoria_id"] = $id_categoria;
         }
+        if (!empty($_POST["subcategoria2"])) {
+            $campos3 = [
+                'nombreSubCategoria' => $_POST["subcategoria2"],
+            ];        
+            $id_subCategoria = $subCategorias->insert($campos3);
+            $_POST["subcategoria_id"] = $id_subCategoria;  
+        }
 
         if ($modo === 'addprd') {
             $_POST['imagen'] = $nombreArchivo;
@@ -181,23 +194,27 @@ class AdminController extends BaseController
             } else {
                 $data['msg'] = "Hubo un error al registrar el producto.";
             }
-            $this->redirect("aniadirProducto",$data);
+            $this->redirect("aniadirProducto", $data);
         } elseif ($modo === 'editprd') {
             $id = $_POST['id'];
             $campos = [
-                "nombre"        => $_POST["nombre"],
-                "descripcion"   => $_POST["descripcion"],
-                "precioCaja"    => $_POST["precioCaja"],
-                "precio"        => $_POST["precio"],
-                "categoria_id"  => $_POST["categoria_id"],
-                "subcategoria"  => $_POST["subcategoria"],
-                "stock"         => $_POST["stock"],
-                "oferta"        => isset($_POST["oferta"]),
-                "cantidadCaja"  => $_POST["cantidadCaja"],
+                "nombre"         => $_POST["nombre"],
+                "descripcion"    => $_POST["descripcion"],
+                "precioCaja"     => $_POST["precioCaja"],
+                "precio"         => $_POST["precio"],
+                "stock"          => $_POST["stock"],
+                "oferta"         => isset($_POST["oferta"]),
+                "cantidadCaja"   => $_POST["cantidadCaja"],
             ];
 
             if (!empty($nombreArchivo)) {
                 $campos['imagen'] = $nombreArchivo;
+            }
+            if ($_POST["categoria_id"] !== 0) {
+                $campos["categoria_id"] = $_POST["categoria_id"];
+            }
+            if ($_POST["subcategoria_id"] !== 0) {
+                $campos["subcategoria_id"] = $_POST["subcategoria_id"];
             }
 
 
@@ -222,16 +239,17 @@ class AdminController extends BaseController
             }
             if ($producto->success()) {
                 $data["msg"] = "producto modificado con exito";
-                $this->redirect("gestionProductos",$data);
+                $this->redirect("gestionProductos", $data);
             } else {
                 $data['msg'] = "Hubo un error al modificar el producto.";
                 $this->redirect("formularioProducto", $data);
             }
         }
     }
-    function guardarTodoProductos($data) {
+    function guardarTodoProductos($data)
+    {
         $producto = new Producto();
-    
+
         // Asegúrate de que 'id' sea un array y procesa cada producto
         if (is_array($_POST["id"])) {
             foreach ($_POST["id"] as $index => $id) {
@@ -243,7 +261,7 @@ class AdminController extends BaseController
                 ];
                 $producto->update($id, $campos);
             }
-    
+
             if ($producto->success()) {
                 $this->redirect("/admin/gestionProductos");
             } else {
@@ -256,77 +274,77 @@ class AdminController extends BaseController
         }
     }
     function gestionReservas($data)
-{
-    if (isset($_SESSION["admin"])) {
-        $data["action"] = "/admin/gestionReservas";
-        $reservas = new Reserva();
-        $producto = new Producto();
-        $reservaproducto = new ReservaProductos();
-        $usuario = new Usuario();
+    {
+        if (isset($_SESSION["admin"])) {
+            $data["action"] = "/admin/gestionReservas";
+            $reservas = new Reserva();
+            $producto = new Producto();
+            $reservaproducto = new ReservaProductos();
+            $usuario = new Usuario();
 
-        // Filtrado por estado
-        if (isset($_GET["estado2"])) {
-            $estado = $_GET["estado2"];
-                if($estado !== "-1"){
-                $reservas->and("estado", "=", $estado);
-        }
-        }
-        if (isset($_GET["nombre"])) {
-            $nombre = $_GET["nombre"];
-            if (!empty($nombre)) {
-                $usuario->and("nombre", "like", "%$nombre%");
-                $id = $usuario["id"];
-                if (!empty($usuario)) {
-                $reservas->where("usuario_id","=",$id)->getAll();
-                } else {
-                    $data["msg"] = "No se encontraron usuarios con ese nombre.";
-                    $this->redirect("gestionReservas", $data);
-                    return;
+            // Filtrado por estado
+            if (isset($_GET["estado2"])) {
+                $estado = $_GET["estado2"];
+                if ($estado !== "-1") {
+                    $reservas->and("estado", "=", $estado);
                 }
             }
+            if (isset($_GET["nombre"])) {
+                $nombre = $_GET["nombre"];
+                if (!empty($nombre)) {
+                    $usuario->and("nombre", "like", "%$nombre%");
+                    $id = $usuario["id"];
+                    if (!empty($usuario)) {
+                        $reservas->where("usuario_id", "=", $id)->getAll();
+                    } else {
+                        $data["msg"] = "No se encontraron usuarios con ese nombre.";
+                        $this->redirect("gestionReservas", $data);
+                        return;
+                    }
+                }
+            }
+
+            $data["reservas"] = $reservas->getAll();
+            $data["producto"] = $producto->getAll();
+            $data["reservaproducto"] = $reservaproducto->getAll();
+            $data["usuario"] = $usuario->getAll();
+
+            return $this->view("admin/gestionReservas", $data);
+        } else {
+            $this->redirect("/admin");
         }
-
-        $data["reservas"] = $reservas->getAll();
-        $data["producto"] = $producto->getAll();
-        $data["reservaproducto"] = $reservaproducto->getAll();
-        $data["usuario"] = $usuario->getAll();
-
-        return $this->view("admin/gestionReservas", $data);
-    } else {
-        $this->redirect("/admin");
     }
-}
     function guardarTodoReservas($data)
     {
-            $reserva = new Reserva();
-            $reservaProductos = new ReservaProductos();
-            if (is_array($_POST["id"])) {
-                foreach ($_POST["id"] as $index => $id) {
-                    $campos = [
-                        "estado"                => $_POST["estado"][$index],
-                        "entrega_direccion"     => $_POST["direccion"][$index],
-                        "entrega_fechahora"     => $_POST["fecha"][$index],
-                        "aclaraciones"          => $_POST["aclaraciones"][$index],
-                    ];
-                    $reserva->update($id, $campos);
-                    if (!empty($_POST["idPrd"])) {
-                        if (is_array($_POST["idPrd"])) {
-                            foreach ($_POST["idPrd"] as $index2 => $idPrd) {
-                                $camposProducto = [
-                                    "cantidad"    => $_POST["cantidad"][$index2],
-                                ];
-                                $reservaProductos->update($idPrd, $camposProducto);
-                            }
+        $reserva = new Reserva();
+        $reservaProductos = new ReservaProductos();
+        if (is_array($_POST["id"])) {
+            foreach ($_POST["id"] as $index => $id) {
+                $campos = [
+                    "estado"                => $_POST["estado"][$index],
+                    "entrega_direccion"     => $_POST["direccion"][$index],
+                    "entrega_fechahora"     => $_POST["fecha"][$index],
+                    "aclaraciones"          => $_POST["aclaraciones"][$index],
+                ];
+                $reserva->update($id, $campos);
+                if (!empty($_POST["idPrd"])) {
+                    if (is_array($_POST["idPrd"])) {
+                        foreach ($_POST["idPrd"] as $index2 => $idPrd) {
+                            $camposProducto = [
+                                "cantidad"    => $_POST["cantidad"][$index2],
+                            ];
+                            $reservaProductos->update($idPrd, $camposProducto);
                         }
                     }
                 }
             }
+        }
         if ($reserva->success() || $reservaProductos->success()) {
             $data["msg"] = "Los cambios se realizaron con éxito";
-            $this->redirect("gestionReservas",$data);
+            $this->redirect("gestionReservas", $data);
         } else {
             $data['msg'] = "Hubo un error al guardar las reservas y productos.";
-            $this->redirect("gestionReservas",$data);
+            $this->redirect("gestionReservas", $data);
         }
     }
 
@@ -342,14 +360,13 @@ class AdminController extends BaseController
 
             ];
             $reservaprd->insert($campos);
-            if($reservaprd->success()){
+            if ($reservaprd->success()) {
                 $data["msg"] = "producto agregado con exito";
-                $this->redirect("gestionReservas",$data);
-            }else{
+                $this->redirect("gestionReservas", $data);
+            } else {
                 $data["msg"] = "hubo un error al agregar el producto,intente nuevamente";
-                $this->redirect("gestionReservas",$data);
+                $this->redirect("gestionReservas", $data);
             }
-
         } else {
             $this->redirect("/admin");
         }
@@ -363,10 +380,10 @@ class AdminController extends BaseController
             $reservaProductos->delete($id);
             if ($reservaProductos->success()) {
                 $data["msg"] = "el producto fue eliminado con exito";
-                $this->redirect("gestionReservas",$data);
+                $this->redirect("gestionReservas", $data);
             } else {
                 $data["msg"] = "no se pudo eliminar el producto";
-                $this->redirect("gestionReservas",$data);
+                $this->redirect("gestionReservas", $data);
             }
         } else {
             $this->redirect("/admin");
@@ -380,10 +397,10 @@ class AdminController extends BaseController
             $reserva->delete($id);
             if ($reserva->success()) {
                 $data["msg"] = "la reserva fue eliminada con exito";
-                $this->redirect("gestionReservas",$data);
+                $this->redirect("gestionReservas", $data);
             } else {
                 $data["msg"] = "no se pudo eliminar la reserva";
-                $this->redirect("gestionReservas",$data);
+                $this->redirect("gestionReservas", $data);
             }
         } else {
             $this->redirect("/admin");
@@ -396,9 +413,15 @@ class AdminController extends BaseController
         $categoria = $catego->getAll();
         return $categoria;
     }
-    
+    function subcategoria()
+    {
+        $subcatego = new SubCategoria();
+        $subcategoria = $subcatego->getAll();
+        return $subcategoria;
+    }
 
-function gestionUsuarios()
+
+    function gestionUsuarios()
     {
         $data["action"] = "/admin/gestionUsuarios";
         $usuarios = new Usuario();
@@ -409,7 +432,7 @@ function gestionUsuarios()
             }
         }
         $data["usuarios"] = $usuarios->getAll();
-        return $this->view("admin/gestionUsuarios",$data);
+        return $this->view("admin/gestionUsuarios", $data);
     }
 
     function eliminarUsuario($data)
@@ -420,16 +443,13 @@ function gestionUsuarios()
             $usuario->delete($id);
             if ($usuario->success()) {
                 $data["msg"] = "el usuario fue eliminado con exito";
-                $this->redirect("gestionUsuarios",$data);
+                $this->redirect("gestionUsuarios", $data);
             } else {
                 $data["msg"] = "no se pudo eliminar el usuario";
-                $this->redirect("gestionUsuarios",$data);
+                $this->redirect("gestionUsuarios", $data);
             }
         } else {
             $this->redirect("/admin");
         }
-    }    
-
-
+    }
 }
-

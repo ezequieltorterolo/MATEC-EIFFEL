@@ -34,20 +34,23 @@
 
                 <label for="categoria">Categoria: </label>
                 <select id="categoria" name="categoria_id">
-                    <option <?php if ($mode == "addprd"): ?>default <?php endif; ?>>Seleccione una categoria</option>
+                    <option value="0" <?php if ($mode == "addprd"): ?>default <?php endif; ?>>Seleccione una Categoria</option>
                     <?php foreach ($categoria as $catego): ?>
                         <option value="<?= $catego["id"] ?>"><?= $catego["nombreCategoria"] ?></option>
                     <?php endforeach ?>
-                    <option>Nueva categoría</option>
+                    <option>Nueva Categoría</option>
                 </select required><br><br>
                 <input type="hidden" id="categoria2" name="categoria2" placeholder="nueva categoria">
 
-                <label for="subcategoria">Subcategoria: </label>
-                <select name="subcategoria">
-                    <option>Jabones</option>
-                    <option>Salsas</option>
-                    <option>Toallas</option>
+                <label for="subcategoria">SubCategoria: </label>
+                <select id="subcategoria" name="subcategoria_id">
+                    <option value="0" <?php if ($mode == "addprd"): ?>default <?php endif; ?>>Seleccione una SubCategoria</option>
+                    <?php foreach ($subcategoria as $subCatego): ?>
+                        <option value="<?= $subCatego["id"] ?>"><?= $subCatego["nombreSubCategoria"] ?></option>
+                    <?php endforeach ?>
+                    <option>Nueva SubCategoría</option>
                 </select required><br><br>
+                <input type="hidden" id="subcategoria2" name="subcategoria2" placeholder="nueva subcategoria">
 
                 <label for="stock">Stock: </label>
                 <input id="stock" name="stock" type="text" placeholder="stock" <?php if (isset($prd)): ?>value="<?= $prd["stock"] ?><?php endif ?>" required><br><br>
@@ -96,10 +99,22 @@
                 categoriaSelect.addEventListener("change", function() {
 
                     const opcionSeleccionada = categoriaSelect.options[categoriaSelect.selectedIndex].text;
-                    if (opcionSeleccionada.includes("Nueva categoría")) {
+                    if (opcionSeleccionada.includes("Nueva Categoría")) {
                         categoriaInput.type = "text";
                     } else {
                         categoriaInput.type = "hidden";
+                    }
+                });
+                const subCategoriaSelect = document.getElementById("subcategoria");
+                const subCategoriaInput = document.getElementById("subcategoria2");
+
+                subCategoriaSelect.addEventListener("change", function() {
+
+                    const opcionSeleccionada = subCategoriaSelect.options[subCategoriaSelect.selectedIndex].text;
+                    if (opcionSeleccionada.includes("Nueva SubCategoría")) {
+                        subCategoriaInput.type = "text";
+                    } else {
+                        subCategoriaInput.type = "hidden";
                     }
                 });
                 window.addEventListener("load", (event) => {
