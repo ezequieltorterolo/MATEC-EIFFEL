@@ -108,6 +108,8 @@
         const repass = document.getElementById("repass");
         const telefono = document.getElementById("telefono");
         const direccion = document.getElementById("direccion");
+        const pregunta = document.getElementById("pregunta");
+        const respuesta = document.getElementById("respuesta");
         
         const nombreRegex = /^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/;
         const emailRegex = /^[^\s@]+@gmail\.com$/;
@@ -130,6 +132,11 @@
             valid = false;
             errorMsg += "El campo 'Contraseña' no puede estar vacío.\n";
         }
+        if (direccion.value.trim() === "") {
+            valid = false;
+            errorMsg += "El campo 'Direccion' no puede estar vacío.\n";
+        }
+
         if (repass && repass.value.trim() === "") {
             valid = false;
             errorMsg += "El campo 'Confirmar Contraseña' no puede estar vacío.\n";

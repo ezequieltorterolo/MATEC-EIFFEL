@@ -11,7 +11,7 @@ class Usuario extends Model {
         "nombre"           => ["required" => true  ],
         "email"            => ["required" => true  ],  
         "contraseña"       => ["required" => true  ],
-        "direccion"        => ["required" => false ],
+        "direccion"        => ["required" => true  ],
         "telefono"         => ["required" => true  ],
         "respuesta"        => ["required" => false ],
         "pregunta"         => ["required" => false ],
